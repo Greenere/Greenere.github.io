@@ -3,8 +3,6 @@
 
 <center>Huazhong University of Science and Technology (HUST), Wuhan, China</center>
 <center>lihaoyangjingzhou@outlook.com</center>
-### **Resume** 
-
 This is a resume/CV originally set up for application. `You can click the red text for detials.`
 
 **EDUCATION**
