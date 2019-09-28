@@ -1,6 +1,6 @@
 # TIMELINE
 
-This is a timeline for mine from Fall 2016 to Spring 2019. It noted some events included in the resume.
+This is a timeline of mine from Fall 2016 to Spring 2019. It noted some events included in the resume.
 
 <table border="0">
     <tr>
