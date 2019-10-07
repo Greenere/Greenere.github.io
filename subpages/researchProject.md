@@ -68,9 +68,28 @@ The generated adversarial examples were also proved to be resistant to the backg
 
 We drafted a paper detailing the whole process and the evaluation of this method and it is on submission currently. I designed and implemented the algorithm and wrote the majority of the paper. This experience of research is really refreshing to me. I walked through a whole process from literature review and algorithm design and implementation to paper writing and learned a lot, including Tensorflow, Latex and how to organize a paper.
 
+## Extra ones
+
+### Louvre Evacuation Strategy (ICM 2019), Jan. 2019
+
+In Janurary. 2019,  I led a group of three competed in the Interdisciplinary Contest in Modeling (ICM). We chose the problem designated as "D" that required us to build a model for the Louvre Museum and design an evacuation  strategy for it.  It took us one day to discuss and decide an appropriate model and finally I proposed a cellular automata model for the Louvre. You may thought that we represented each person to be evacuated as a cell, but actually we chose several representative exhibition halls to be the cells in our model.
+
+<img width=400 src="imgs/louvre.png">
+
+This model of Louvre is presented above. For each cell, there was a state that represented the number of people stuck inside when the evacuation began. The neighbors were linked according to the structure of the building. For each iteration, the people in each cell would be evacuated to the neighbors following the strategy.  The baseline strategy we considered was "random wandering", which meant that no instructions were given and people just walked randomly. The evacuation process of the five levels of the Louvre is presented below on the left. Our solution was called "dynamic plan "
+
+<center>
+<img width=400  src="imgs/randomwandering.png"></img>
+<img  width=400 src="imgs/dynamicplan.png"></img>
+</center>
+
+It is very clear that under our simulation, our strategy reduces the overall evacuation time from 3000s to 600s. This so called "dynamic plan" was very simple. The core idea of it was to make sure that no congestion would occur during the whole process, for which people would be welcomed by relatively empty exhibition halls and rejected by nearly congested ones. Our simulation showed that no matter what the original strategy was, all people would be evacuated quickly with a dynamic control of congestion.
+
+This model was implemented in MATLAB. The paper we drafted was done in a rash, which is not ideal if I give a score now. Therefore, I think a "Honorable Mention" is good enough for us in this time.  
+
 ### More to come...
 
-There were a lot of small projects and courseworks that I didn't mention. In Fall 2019, I am working on a Weibo emotion analysis system, it may be included in the future. I believe that there will more to be detailed here.
+There were a lot of small projects and courseworks that I didn't mention. In Fall 2019, I am working on a Weibo emotion analysis system, it may be included in the future. I believe that there will be more projects detailed here.
 
 ---
 
