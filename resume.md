@@ -3,15 +3,13 @@
 
 <center>Huazhong University of Science and Technology (HUST), Wuhan, China</center>
 <center>lihaoyangjingzhou@outlook.com</center>
-
-
 This is a resume/CV originally set up for application. `You can click the red text for detials.`
 
 **EDUCATION**
 
-<table width=400 align="center" border="0">
+<table align="center" border="0">
     <tr>
-        <td align="left" width=300>Sep. 2016 -July 2020 (anticipated)</td>
+        <td align="left">Sep. 2016 -July 2020 (anticipated)</td>
         <td align="left">Bachelor’s Degree, Electronic and Information Engineering,<br>
             Huazhong University of Science and Technology,<br> Wuhan, Hubei, China</td>
     </tr>
@@ -137,7 +135,7 @@ Wuhan Research Institute of Post and Technology (FiberHome),<br>
                 Comprehensible
             </div>
         </td>
-        <td align="left">Java, Go</td>
+        <td align="left">Java, Go,Verilog</td>
     </tr>
 </table>
 
@@ -232,7 +230,7 @@ Wuhan Research Institute of Post and Technology (FiberHome),<br>
 <table width=400 align="center" border="0">
     <tr>
         <td align="left" width=100>Research</td>
-        <td align="left">Image processing, Computer vision, Big data, Data Science</td>
+        <td align="left">Image processing, Computer vision, Big data</td>
     </tr>
     <tr>
         <td align="left">Extracurricular</td>
