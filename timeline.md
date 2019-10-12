@@ -1,6 +1,6 @@
 # TIMELINE
 
-This is a timeline of mine from Fall 2016 to Spring 2019. It noted some events included in the resume.
+This is a timeline of mine from Fall 2016 on. All of these events are noted in the resume with a few exceptions.
 
 ```mermaid
 gantt
