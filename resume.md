@@ -115,7 +115,7 @@ Wuhan Research Institute of Post and Technology (FiberHome),<br>
 
 <table width=400 align="center" border="0">
     <tr>
-        <td align="left" width=200>
+        <td align="left">
             <div title="Being able to create large project or implement complicated algorithms with it.">
                 Proficient
             </div>
@@ -139,6 +139,7 @@ Wuhan Research Institute of Post and Technology (FiberHome),<br>
         <td align="left">Java, Go,Verilog</td>
     </tr>
 </table>
+
 
 
 <font size='1'>*Technically these are markup languages</font>
@@ -239,7 +240,6 @@ Wuhan Research Institute of Post and Technology (FiberHome),<br>
         <td align="left">Reading, Poetry, <a href="interests/graphicDesign.html" title="Click for a small gallery">Graphic design</a>, Writing, Hiking, Traveling, Badminton</td>
     </tr>
 </table>
-
 ---
 
 <b><a href="index.html">BACK TO THE HOMEPAGE</a></b>
