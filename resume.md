@@ -21,7 +21,6 @@ This is a resume/CV originally set up for application. `You can click the red te
             Oriel College, Oxford University, Oxford, United Kingdom</a></td>
     </tr>
 </table>
-
 **GPA,TOEFL & GRE**
 
 <table width=400 align="center" border="0">
@@ -50,20 +49,20 @@ This is a resume/CV originally set up for application. `You can click the red te
         </td>
     </tr>
 </table>
-
 <b><a href='subpages/researchProject.html' title="Click for details">RESEARCH & PROJECT</a></b>
 
-<table width=400 align="center" border="0">
+<table align="center" border="0">
     <tr>
-        <td align="left" width=200>Nov. 2018 - Dec.2018</td>
-        <td align="left"><b>Software project:</b>“WELLMAIL” e-mail client. <br>
+        <td align="left">Nov.2018 <br>-<br>Dec.2018</td>
+        <td align="left">
+        <b>Software project:</b>“WELLMAIL” e-mail client. <br>
         <b>Project description:</b> A fully functional e-mail client with graphic interface, being compatible to all e-mail addresses. It was developed with Python, using SMTP and IMAP4 protocols.<br>
-<b>My role:</b> Group leader and major programmer.<br>
+         <b>My role:</b> Group leader and major programmer.<br>
          <b>My contribution:</b> While in charge of the project management, I designed the user-interface, implemented the Inbox module and integrated the modules.
         </td>
     </tr>
     <tr>
-        <td align="left">Mar. 2019 – Apr. 2019</td>
+        <td align="left">Mar.2019<br>–<br>Apr.2019</td>
         <td align="left"><b>Image processing coursework:</b> Characters recognition for passport.<br>
 <b>Project description:</b> An image of a passport was given, required to recognize the information on the passport by recognizing the characters within a limited time. We broke it into two steps: character segmentation and character recognition. It was implemented with MATLAB.<br>
 <b>My role:</b> Group leader and major programmer.<br>
@@ -71,7 +70,7 @@ This is a resume/CV originally set up for application. `You can click the red te
         </td>
     </tr>
     <tr>
-        <td align="left">May 2019 – June 2019</td>
+        <td align="left">May.2019<br> –<br>June.2019</td>
         <td align="left">
         <b>Hardware project:</b> 3-D displayer (with 2-D LED array) .<br>
 <b>Project description:</b> A holographic displayer of 3-D objects. It exploited the persistence of vision to display a 3-D object. For the hardware, we adopted Arduino. A software simulator was developed to aid the design and display of 3-D object, programed with Python and JavaScript.<br>
@@ -80,7 +79,7 @@ This is a resume/CV originally set up for application. `You can click the red te
         </td>
     </tr>
     <tr>
-        <td align="left">July 2019 – Sep. 2019</td>
+        <td align="left">July.2019<br>–<br>Sep.2019</td>
         <td align="left">
         <b>Summer research:</b> Black-box adversarial attack against signature verification system.<br>
             <b>Research description:</b> We developed a method for the black-box adversarial attack against offline handwritten signature verification system. A region-restricted perturbation was applied to the original signature to generate an adversarial example. We fooled the state-of-art signature verification system with a high success rate. A paper was drafted and it is on submission currently.<br>
@@ -92,9 +91,9 @@ This is a resume/CV originally set up for application. `You can click the red te
 
 **INTERNSHIPS**
 
-<table width=400 align="center" border="0">
+<table align="center" border="0">
     <tr>
-        <td align="left" width=200>July 2019 - Present</td>
+        <td align="left">July 2019 - Present</td>
         <td align="left">
             <b>Research intern</b>, <br>
 Data Science and Computer Vision Lab, <br>
@@ -129,7 +128,7 @@ Wuhan Research Institute of Post and Technology (FiberHome),<br>
                 Familiar
             </div>
         </td>
-        <td align="left">MATLAB, JavaScript, C, C++, TeX*, HTML *</td>
+        <td align="left">MATLAB, JavaScript, C, C++, SQL, TeX*, HTML *</td>
     </tr>
     <tr>
         <td align="left">
@@ -141,11 +140,12 @@ Wuhan Research Institute of Post and Technology (FiberHome),<br>
     </tr>
 </table>
 
+
 <font size='1'>*Technically these are markup languages</font>
 
 <b>SELECTED <a href="subpages/selectedCoursesAndGrades.html" title="Click for the transcript" >COURSES</a> AND GRADES</b>
 
-<table width=400 align="center" border="0">
+<table align="center" border="0">
     <tr>
         <td align="left">Advanced Programming Language (C++)</td>
         <td align="left">90</td>
@@ -184,6 +184,7 @@ Wuhan Research Institute of Post and Technology (FiberHome),<br>
     </tr>
 </table>
 
+
 <b><a href="subpages/honorsAndAwards.html" title="Click for details">HONORS AND AWARDS</a></b>
 
 <table width=400 align="center" border="0">
@@ -208,12 +209,11 @@ Wuhan Research Institute of Post and Technology (FiberHome),<br>
         <td align="left">“Excellent Reader”, the main library of Huazhong University of Science and Technology</td>
     </tr>
 </table>
-
 <b>EXTRACURRICULAR ACTIVITIES</b>
 
 <table width=400 align="center" border="0">
     <tr>
-        <td align="left" width=200>Sep. 2016- Feb. 2017</td>
+        <td align="left">Sep.2016<br>-<br>Feb.2017</td>
         <td align="left">Organized an orienteering in the campus for the “Special Activity of Youth League” as the league branch secretary in class. It was awarded as one of the best 30 in the university.
         </td>
     </tr>
@@ -222,7 +222,7 @@ Wuhan Research Institute of Post and Technology (FiberHome),<br>
         <td align="left">Carried out an investigation on the construction of modern social culture in Xinjiang Uygur Autonomous Region with five teammates. It was awarded as an “Excellent Social Practice” in the university.</td>
     </tr>
     <tr>
-        <td align="left">July 2017- June 2018</td>
+        <td align="left">July.2017<br>-<br>June.2018</td>
         <td align="left">Took charge of the exhibition “100 Years Development of China’s Modern Poems” in the major library as the vice proprietor in Xiayu Association of Poetry. Plus, I also participated in the organization of the second Show of Traditional Culture and published the first poetry anthology of our association with other members. </td>
     </tr>
 </table>
@@ -231,8 +231,8 @@ Wuhan Research Institute of Post and Technology (FiberHome),<br>
 
 <table width=400 align="center" border="0">
     <tr>
-        <td align="left" width=100>Research</td>
-        <td align="left">Image processing, Computer vision, Big data</td>
+        <td align="left">Research</td>
+        <td align="left">Image processing, Computer vision, Big data, Machine Learning</td>
     </tr>
     <tr>
         <td align="left">Extracurricular</td>
