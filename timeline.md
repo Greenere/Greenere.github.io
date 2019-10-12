@@ -2,6 +2,36 @@
 
 This is a timeline of mine from Fall 2016 to Spring 2019. It noted some events included in the resume.
 
+```mermaid
+gantt
+section Undergraduate study
+Huazhong University of Science and Technology :active,u1, 2016-09-01,1460d
+the 11th Central China Mathematic Modelling Contest of University Students:done, u2,2018-05-01,4d
+Summer School in Oxford:done, u3,2018-08-15,15d
+"WELLMAIL" e-mail client development:done, u4,2018-11,60d
+the Interdisciplinary Contest in Modeling (ICM), 2019:done,u5,2019-01-28,4d
+Character recognition for passport:done, u6,2019-03,40d
+3-D displayer with 2-D LED array:done,u7,2019-05,50d
+Engineer intern in Fiberhome: done,u9,2019-08-15,15d
+Summer research about adversarial example:crit,u8,2019-07,60d
+Research intern in Data Science and Computer Vision Lab: active,u10,2019-07,420d
+
+section Honors&Awards (Approximate Dates)
+"Excellent New Student Award": h1,2017-03,2d
+"Merit Student Award 2016-2017":h2,2017-10,2d
+"The Third Prize":h3,2018-05-30,2d after u2
+"Honorable Mention": h4,2019-04-29,2d
+"Excellent Reader": h5,2019-04-25,2d
+"New Oriental TOEFL/IELTS High Score Award":h6,2019-06-15,2d
+"Merit Student Award 2018-2019":h7,2019-10,2d
+
+section Extracurricular activities
+Special Activity of Youth League :done, e1,2016-09-30,150d
+Social Practice in Xingjiang:done, e2,2017-06-30,15d
+Vice Proprieter in Xiayu Poetry Association:done, e3,2017-06-20,365d
+Graphic Designer in Student International Communication Association:done,e4,2017-09,300d
+```
+
 <table border="0">
     <tr>
         <td width=200>Sep. 2016</td>
@@ -66,7 +96,6 @@ Awarded as an "Excellent Reader" by the main library of Huazhong University of S
         <td>Remain as a research intern in Data Science and Computer Vision Lab, National Anti-counterfeit Engineering Research Center, working on some new problems.</td>
     </tr>
 </table>
-
 ---
 
 <b><a href="index.html">BACK TO THE HOMEPAGE</a></b>
