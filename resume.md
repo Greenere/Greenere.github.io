@@ -11,7 +11,7 @@ This is a resume/CV originally set up for application. `You can click the red te
 
 <table align="center" border="0">
     <tr>
-        <td align="left">Sep. 2016 -July 2020 (anticipated)</td>
+        <td align="left">Sep. 2016 -June 2020 (expected)</td>
         <td align="left">Bachelor’s Degree, Electronic and Information Engineering,<br>
             Huazhong University of Science and Technology,<br> Wuhan, Hubei, China</td>
     </tr>
@@ -21,6 +21,7 @@ This is a resume/CV originally set up for application. `You can click the red te
             Oriel College, Oxford University, Oxford, United Kingdom</a></td>
     </tr>
 </table>
+
 **GPA,TOEFL & GRE**
 
 <table width=400 align="center" border="0">
@@ -28,7 +29,7 @@ This is a resume/CV originally set up for application. `You can click the red te
         <td align="left" width=200>GPA</td>
         <td align="left">
             <div title="Cumulative Average Grade: 88.90, Ranking: 10/140">
-                3.90
+                3.90 (Top 7%)
             </div>
         </td>
     </tr>
@@ -49,6 +50,7 @@ This is a resume/CV originally set up for application. `You can click the red te
         </td>
     </tr>
 </table>
+
 <b><a href='subpages/researchProject.html' title="Click for details">RESEARCH & PROJECT</a></b>
 
 <table align="center" border="0">
@@ -233,13 +235,14 @@ Wuhan Research Institute of Post and Technology (FiberHome),<br>
 <table width=400 align="center" border="0">
     <tr>
         <td align="left">Research</td>
-        <td align="left">Image processing, Computer vision, Big data, Machine Learning</td>
+        <td align="left">Image processing, Computer vision, Big data, Data mining</td>
     </tr>
     <tr>
         <td align="left">Extracurricular</td>
         <td align="left">Reading, Poetry, <a href="interests/graphicDesign.html" title="Click for a small gallery">Graphic design</a>, Writing, Hiking, Traveling, Badminton</td>
     </tr>
 </table>
+
 ---
 
 <b><a href="index.html">BACK TO THE HOMEPAGE</a></b>
