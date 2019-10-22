@@ -211,6 +211,10 @@ Wuhan Research Institute of Post and Technology (FiberHome),<br>
         <td align="left">Apr. 2019</td>
         <td align="left">“Excellent Reader”, the main library of Huazhong University of Science and Technology</td>
     </tr>
+    <tr>
+        <td align="left">Oct. 2019</td>
+        <td align="left">“Merit Student Award”, Huazhong University of Science and Technology</td>
+    </tr>
 </table>
 <b>EXTRACURRICULAR ACTIVITIES</b>
 
@@ -235,7 +239,7 @@ Wuhan Research Institute of Post and Technology (FiberHome),<br>
 <table width=400 align="center" border="0">
     <tr>
         <td align="left">Research</td>
-        <td align="left">Image processing, Computer vision, Big data, Data mining</td>
+        <td align="left">Image processing, Computer vision, Big data, Data mining, Artificial intelligence</td>
     </tr>
     <tr>
         <td align="left">Extracurricular</td>
