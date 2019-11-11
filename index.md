@@ -15,7 +15,7 @@
 <br>-->
 <hr>
 Welcome to Haoyang Li's world !<br>
-You may reach me at <b>lihaoyangjingzhou@outlook.com</b>
+    You may reach me at <b><a href="mailto:lihaoyangjingzhou@outlook.com">lihaoyangjingzhou@outlook.com</a></b>
 <hr>
 </center>
 </div>
