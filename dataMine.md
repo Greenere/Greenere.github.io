@@ -173,122 +173,6 @@ I have taken courses worth 153.8 credits in Huazhong University of Science and T
                     ]
                 },
                 {
-                    "name": "Engineering",
-                    "value": 22,
-                    "children": [
-                        {
-                            "name": "Computer Networks",
-                            "value": 2.0,
-                            "grade": 84
-                        },
-                        {
-                            "name": "Software Project",
-                            "value": 1.0,
-                            "grade": 95
-                        },
-                        {
-                            "name": "Principles and application of big data technology",
-                            "value": 3.5,
-                            "grade": 85
-                        },
-                        {
-                            "name": "Database Applications and Practice",
-                            "value": 3.5,
-                            "grade": 92
-                        },
-                        {
-                            "name": "Data Mining",
-                            "value": 3.0,
-                            "grade": 92
-                        },
-                        {
-                            "name": "Digital Image Processing",
-                            "value": 3.0,
-                            "grade": 88
-                        },
-                        {
-                            "name": "Engineering Graphics (IV) part A",
-                            "value": 2.5,
-                            "grade": 88
-                        },
-                        {
-                            "name": "Program and Course Orientation",
-                            "value": 1.0,
-                            "grade": 85
-                        },
-                        {
-                            "name": "Circuit Theory (III)",
-                            "value": 4.0,
-                            "grade": 76
-                        },
-                        {
-                            "name": "Circuit Testing Lab",
-                            "value": 1.0,
-                            "grade": 82
-                        },
-                        {
-                            "name": "Electronic Circuitry Design Test and Experiment (I)",
-                            "value": 1.0,
-                            "grade": 85
-                        },
-                        {
-                            "name": "Electronic Circuitry Design, Testing and Experiment (II)",
-                            "value": 1.0,
-                            "grade": 79
-                        },
-                        {
-                            "name": "Analog Circuit and Digital System (II)",
-                            "value": 3.0,
-                            "grade": 88
-                        },
-                        {
-                            "name": "Analog Circuit and Digital System (I)",
-                            "value": 3.5,
-                            "grade": 99
-                        },
-                        {
-                            "name": "Project-based Practice",
-                            "value": 2.0,
-                            "grade": 86
-                        },
-                        {
-                            "name": "Electrical Skills Practice",
-                            "value": 1.0,
-                            "grade": 89
-                        },
-                        {
-                            "name": "Analog Circuit and Digital System (III)",
-                            "value": 3.0,
-                            "grade": 93
-                        },
-                        {
-                            "name": "Analog Circuit and Digital System Lab (III)",
-                            "value": 1.0,
-                            "grade": 86
-                        },
-                        {
-                            "name": "Antenna and Radio Wave Propagation",
-                            "value": 2.0,
-                            "grade": 84
-                        },
-                        {
-                            "name": "Electronic Circuits of Communications",
-                            "value": 3.5,
-                            "grade": 96
-                        },
-                        {
-                            "name": "Field Practice",
-                            "value": 1.0,
-                            "grade": 95
-                        },
-                        {
-                            "name": "Hardware Project",
-                            "value": 1.0,
-                            "grade": 95
-                        }
-                    ]
-                },
-                {
                     "name": "Science",
                     "value": 15,
                     "children": [
@@ -404,7 +288,123 @@ I have taken courses worth 153.8 credits in Huazhong University of Science and T
                             "grade": 98
                         }
                     ]
-                }
+                },
+                {
+                    "name": "Engineering",
+                    "value": 22,
+                    "children": [
+                        {
+                            "name": "Computer Networks",
+                            "value": 2.0,
+                            "grade": 84
+                        },
+                        {
+                            "name": "Software Project",
+                            "value": 1.0,
+                            "grade": 95
+                        },
+                        {
+                            "name": "Principles and application of big data technology",
+                            "value": 3.5,
+                            "grade": 85
+                        },
+                        {
+                            "name": "Database Applications and Practice",
+                            "value": 3.5,
+                            "grade": 92
+                        },
+                        {
+                            "name": "Data Mining",
+                            "value": 3.0,
+                            "grade": 92
+                        },
+                        {
+                            "name": "Digital Image Processing",
+                            "value": 3.0,
+                            "grade": 88
+                        },
+                        {
+                            "name": "Engineering Graphics (IV) part A",
+                            "value": 2.5,
+                            "grade": 88
+                        },
+                        {
+                            "name": "Program and Course Orientation",
+                            "value": 1.0,
+                            "grade": 85
+                        },
+                        {
+                            "name": "Circuit Theory (III)",
+                            "value": 4.0,
+                            "grade": 76
+                        },
+                        {
+                            "name": "Circuit Testing Lab",
+                            "value": 1.0,
+                            "grade": 82
+                        },
+                        {
+                            "name": "Electronic Circuitry Design Test and Experiment (I)",
+                            "value": 1.0,
+                            "grade": 85
+                        },
+                        {
+                            "name": "Electronic Circuitry Design, Testing and Experiment (II)",
+                            "value": 1.0,
+                            "grade": 79
+                        },
+                        {
+                            "name": "Analog Circuit and Digital System (II)",
+                            "value": 3.0,
+                            "grade": 88
+                        },
+                        {
+                            "name": "Analog Circuit and Digital System (I)",
+                            "value": 3.5,
+                            "grade": 99
+                        },
+                        {
+                            "name": "Project-based Practice",
+                            "value": 2.0,
+                            "grade": 86
+                        },
+                        {
+                            "name": "Electrical Skills Practice",
+                            "value": 1.0,
+                            "grade": 89
+                        },
+                        {
+                            "name": "Analog Circuit and Digital System (III)",
+                            "value": 3.0,
+                            "grade": 93
+                        },
+                        {
+                            "name": "Analog Circuit and Digital System Lab (III)",
+                            "value": 1.0,
+                            "grade": 86
+                        },
+                        {
+                            "name": "Antenna and Radio Wave Propagation",
+                            "value": 2.0,
+                            "grade": 84
+                        },
+                        {
+                            "name": "Electronic Circuits of Communications",
+                            "value": 3.5,
+                            "grade": 96
+                        },
+                        {
+                            "name": "Field Practice",
+                            "value": 1.0,
+                            "grade": 95
+                        },
+                        {
+                            "name": "Hardware Project",
+                            "value": 1.0,
+                            "grade": 95
+                        }
+                    ]
+                },
             ],
             "label": {
                 "show": true,
@@ -412,17 +412,6 @@ I have taken courses worth 153.8 credits in Huazhong University of Science and T
                 "margin": 8
             },
             "drillDownIcon": "\u25b6"
-        }
-    ],
-    "legend": [
-        {
-            "data": [
-                "Courses",
-            ],
-            "selected": {
-                "Courses": true
-            },
-            "show": false
         }
     ],
     "tooltip": {
@@ -449,22 +438,32 @@ I have taken courses worth 153.8 credits in Huazhong University of Science and T
 <div id="cr" style="width:900px;height:500px;"></div>
 <script type="text/javascript">
 var cr= echarts.init(document.getElementById('cr'));
+var lineStyle = {
+    normal: {
+        width: 2,
+        opacity: 0.5
+    }
+};
 var options= {
     title: {
         text: ''
     },
     tooltip: {},
     legend: {
-        data: ['Credits Distribution']
+        // orient: 'vertical',
+        // top: 'middle',
+        bottom: 10,
+        left: 'center',
+        data: ['Engineering', 'Science','Humanities','Math','Sports']
     },
     radar: {
          shape: 'circle',
          name: {
             textStyle: {
                 color: '#fff',
-                backgroundColor: '#999',
+                backgroundColor: 'rgba(25,100,100,0.5)',
                 borderRadius: 3,
-                padding: [3, 5]
+                padding: [5, 5]
             }
          },
         indicator: [
@@ -479,6 +478,8 @@ var options= {
     {
         name:"Cumulative Average Grade",
         type:"radar",
+        center:["50%","50%"],
+        lineStyle:lineStyle,
         data:[
             {
                 value:[88.6,82.6,91.3,89.1,89.5],
@@ -499,11 +500,13 @@ var options= {
         name: 'Total Credits',
         type: 'pie',
         radius:["72%","75%"],
-         label: {
+        center:["50%","50%"],
+        label: {
                 normal: {
                     textStyle: {
-                        color: 'rgba(255, 255, 255, 0)'
-                    }
+                        color: 'rgba(0, 0, 0, 0)'
+                    },
+                    position:"inner",
                 }
             },
         labelLine: {
@@ -533,7 +536,7 @@ var options= {
             {
                 value:5,
                 name:"Sports"
-            }
+            },
         ]
     }]
 };
