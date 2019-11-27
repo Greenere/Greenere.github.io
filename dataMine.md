@@ -8,6 +8,8 @@ I have taken courses worth 153.8 credits in Huazhong University of Science and T
 
 #### Components of My Courses by Credits
 
+The courses in Science are more theoretical and those in Engineering are more practical. Most of those courses in Humanities are not counted when calculating the GPA or Cumulative Average Grade.
+
 <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
 <style>
     #ctGPA{
@@ -437,18 +439,22 @@ I have taken courses worth 153.8 credits in Huazhong University of Science and T
        chart_dd7c0dea7cf04565a492fe6aa9dea788.setOption(option_dd7c0dea7cf04565a492fe6aa9dea788);
 </script>
 
+Of no surprise, as an engineering student, most of my courses fall into Engineering, Science and Math. Most of the courses in Humanities are public electives and a large bunch of them are English courses. 
+
 #### Courses Radar
 
-<div id="cr" style="width:900px;height:500px;"></div>
+This radar shows the Cumulative Average Grade I acquired in each category. The outer ring gives a comparison of credits from each category.
+
+<div id="cr" style="width:900px;height:500px;"></div
 <script type="text/javascript">
-var cr= echarts.init(document.getElementById('cr'));
-var lineStyle = {
+   var cr= echarts.init(document.getElementById('cr'));
+   var lineStyle = {
     normal: {
         width: 2,
         opacity: 0.5
     }
-};
-var options= {
+   };
+   var options= {
     title: {
         text: ''
     },
@@ -543,9 +549,12 @@ var options= {
             },
         ]
     }]
-};
-cr.setOption(options)
+   };
+   cr.setOption(options);
 </script>
+
+
+It is true and clear that I am not a great student for sports. 
 
 ### Book Net - Records from Library in 2017 -  2018
 
@@ -2387,6 +2396,10 @@ I have always been a passionate reader. It is exciting to know that we can expor
 };
        chart_0edce7bef863442797df7a8d4a8e3b24.setOption(option_0edce7bef863442797df7a8d4a8e3b24);
 </script>
+
+It is important to know that generally I do not borrow technical tutorials from library and books of literature are excluded from the analysis because of their abstract titles. For a technical issue I haven't solved, only the titles of the most connected books are visible by hover or click. 
+
+The book groups of SCIENCE are centered around *Data Science* .  Those in NATURE and MISC are generally independent and isolated, therefore only a few are visible above. Those in HISTORY and CULTURE are highly connected and clustered around history of empires and culture of China.  My second year's reading  list was about scientific curiosity and Neadham Problem. 
 
 ### More To Come...
 
