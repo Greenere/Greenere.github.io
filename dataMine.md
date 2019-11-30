@@ -445,7 +445,7 @@ Of no surprise, as an engineering student, most of my courses fall into Engineer
 
 This radar shows the Cumulative Average Grade I acquired in each category. The outer ring gives a comparison of credits from each category.
 
-<div id="cr" style="width:900px;height:500px;"></div
+<div id="cr" style="width:900px;height:500px;"></div>
 <script type="text/javascript">
    var cr= echarts.init(document.getElementById('cr'));
    var lineStyle = {
@@ -560,11 +560,11 @@ It is true and clear that I am not a great student for sports.
 
 I have always been a passionate reader. It is exciting to know that we can export our library records and I exploit a few mining from this data to find our my book preference revealt from this record. This is a book net of my sophomore years library records, connected by the similarities of titles. The translation of title is not official and seems weird sometime, but it conveys a basic idea.
 
-<div id="bnet" class="chart-container" style="width:900px; height:500px;"></div>
+<div id="booknet" class="chart-container" style="width:900px; height:500px;"></div>
 <script>
-        var chart_0edce7bef863442797df7a8d4a8e3b24 = echarts.init(
-            document.getElementById('bnet'), 'white', {renderer: 'canvas'});
-        var option_0edce7bef863442797df7a8d4a8e3b24 = {
+        var chart_ad65ea9446bd42299e68a02c62f631ad = echarts.init(
+            document.getElementById('booknet'), 'white', {renderer: 'canvas'});
+        var option_ad65ea9446bd42299e68a02c62f631ad = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -603,7 +603,6 @@ I have always been a passionate reader. It is exciting to know that we can expor
         {
             "type": "graph",
             "layout": "force",
-            "draggable":true,
             "circular": {
                 "rotateLabel": false
             },
@@ -631,858 +630,868 @@ I have always been a passionate reader. It is exciting to know that we can expor
                         shadowBlur: 10,
                         shadowColor: 'rgba(0, 0, 0, 0.2)'
                     }
-                },
+            },
+            "draggable":true,
             "roam": true,
             "focusNodeAdjacency": true,
             "data": [
                 {
                     "name": 0,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "NATURE"
                 },
                 {
+                    "name": "DIALECTICS OF MATHEMATICS",
+                    "symbolSize": 18.0,
+                    "value": 8.0,
+                    "category": "SCIENCE"
+                },
+                {
                     "name": 2,
-                    "symbolSize": 1.5,
-                    "value": 1.0,
+                    "symbolSize": 2.0,
+                    "value": 0.0,
                     "category": "MISC"
                 },
                 {
-                    "name": "Computer graphics",
-                    "symbolSize": 7.5,
+                    "name": "COMPUTER GRAPHICS",
+                    "symbolSize": 12.0,
                     "value": 5.0,
                     "category": "SCIENCE"
                 },
                 {
                     "name": 4,
-                    "symbolSize": 1.5,
+                    "symbolSize": 4.0,
                     "value": 1.0,
                     "category": "NATURE"
                 },
                 {
                     "name": 5,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "NATURE"
                 },
                 {
-                    "name": "Design and Analysis of Algorithms",
-                    "symbolSize": 7.5,
+                    "name": "DESIGN AND ANALYSIS OF ALGORITHMS",
+                    "symbolSize": 12.0,
                     "value": 5.0,
                     "category": "SCIENCE"
                 },
                 {
-                    "name": "Study of Chinese Poetry Art",
-                    "symbolSize": 6.0,
+                    "name": "STUDY OF CHINESE POETRY ART",
+                    "symbolSize": 10.0,
                     "value": 4.0,
                     "category": "CULTURE"
                 },
                 {
                     "name": 8,
-                    "symbolSize": 3.0,
-                    "value": 2.0,
+                    "symbolSize": 8.0,
+                    "value": 3.0,
                     "category": "MISC"
                 },
                 {
                     "name": 9,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "NATURE"
                 },
                 {
                     "name": 10,
-                    "symbolSize": 1.5,
-                    "value": 1.0,
+                    "symbolSize": 2.0,
+                    "value": 0.0,
                     "category": "NATURE"
                 },
                 {
-                    "name": "Mathematics and physics in games",
-                    "symbolSize": 12.0,
+                    "name": "MATHEMATICS AND PHYSICS IN GAMES",
+                    "symbolSize": 18.0,
                     "value": 8.0,
                     "category": "SCIENCE"
                 },
                 {
-                    "name": "Human zoo",
-                    "symbolSize": 6.0,
+                    "name": "HUMAN ZOO",
+                    "symbolSize": 10.0,
                     "value": 4.0,
-                    "category": "NATURE"
+                    "category": "CULTURE"
                 },
                 {
-                    "name": "Native China",
-                    "symbolSize": 9.0,
+                    "name": "NATIVE CHINA",
+                    "symbolSize": 14.0,
                     "value": 6.0,
                     "category": "HISTORY"
                 },
                 {
-                    "name": "Aztec Empire",
-                    "symbolSize": 9.0,
+                    "name": "AZTEC EMPIRE",
+                    "symbolSize": 14.0,
                     "value": 6.0,
                     "category": "HISTORY"
                 },
                 {
                     "name": 15,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "NATURE"
                 },
                 {
-                    "name": "The essence of civilization",
-                    "symbolSize": 6.0,
+                    "name": "THE ESSENCE OF CIVILIZATION",
+                    "symbolSize": 10.0,
                     "value": 4.0,
                     "category": "CULTURE"
                 },
                 {
-                    "name": "Mongol Empire",
-                    "symbolSize": 6.0,
-                    "value": 4.0,
+                    "name": 17,
+                    "symbolSize": 8.0,
+                    "value": 3.0,
                     "category": "HISTORY"
                 },
                 {
-                    "name": 18,
-                    "symbolSize": 4.5,
-                    "value": 3.0,
+                    "name": "GREEN WORLD HISTORY",
+                    "symbolSize": 10.0,
+                    "value": 4.0,
                     "category": "CULTURE"
                 },
                 {
                     "name": 19,
-                    "symbolSize": 4.5,
+                    "symbolSize": 8.0,
                     "value": 3.0,
                     "category": "NATURE"
                 },
                 {
-                    "name": "Mayan Empire",
-                    "symbolSize": 6.0,
+                    "name": "MAYAN EMPIRE",
+                    "symbolSize": 10.0,
                     "value": 4.0,
                     "category": "HISTORY"
                 },
                 {
                     "name": 21,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "NATURE"
                 },
                 {
                     "name": 22,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "NATURE"
                 },
                 {
-                    "name": "Applied Mathematical Model",
-                    "symbolSize": 9.0,
+                    "name": "APPLIED MATHEMATICAL MODEL",
+                    "symbolSize": 14.0,
                     "value": 6.0,
                     "category": "SCIENCE"
                 },
                 {
                     "name": 24,
-                    "symbolSize": 1.5,
+                    "symbolSize": 4.0,
                     "value": 1.0,
-                    "category": "NATURE"
+                    "category": "MISC"
                 },
                 {
                     "name": 25,
-                    "symbolSize": 1.5,
+                    "symbolSize": 4.0,
                     "value": 1.0,
                     "category": "MISC"
                 },
                 {
                     "name": 26,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
-                    "category": "NATURE"
+                    "category": "MISC"
                 },
                 {
-                    "name": "Data\nScience",
-                    "symbolSize": 19.5,
+                    "name": "DATA\nSCIENCE",
+                    "symbolSize": 28.0,
                     "value": 13.0,
                     "category": "SCIENCE"
                 },
                 {
                     "name": 28,
-                    "symbolSize": 1.5,
+                    "symbolSize": 4.0,
                     "value": 1.0,
                     "category": "MISC"
                 },
                 {
                     "name": 29,
-                    "symbolSize": 4.5,
+                    "symbolSize": 8.0,
                     "value": 3.0,
                     "category": "CULTURE"
                 },
                 {
-                    "name": "Ancient Persian Empires",
-                    "symbolSize": 7.5,
+                    "name": "ANCIENT PERSIAN EMPIRES",
+                    "symbolSize": 12.0,
                     "value": 5.0,
                     "category": "HISTORY"
                 },
                 {
                     "name": 31,
-                    "symbolSize": 1.5,
+                    "symbolSize": 4.0,
                     "value": 1.0,
                     "category": "NATURE"
                 },
                 {
-                    "name": "Mathematical physics method",
-                    "symbolSize": 10.5,
+                    "name": "MATHEMATICAL PHYSICS METHOD",
+                    "symbolSize": 16.0,
                     "value": 7.0,
                     "category": "SCIENCE"
                 },
                 {
-                    "name": "Ancient Mesopotamian Empire",
-                    "symbolSize": 19.5,
-                    "value": 13.0,
+                    "name": "ANCIENT MESOPOTAMIAN EMPIRE",
+                    "symbolSize": 26.0,
+                    "value": 12.0,
                     "category": "HISTORY"
                 },
                 {
                     "name": 34,
-                    "symbolSize": 4.5,
+                    "symbolSize": 8.0,
                     "value": 3.0,
                     "category": "CULTURE"
                 },
                 {
-                    "name": "Academic economics",
-                    "symbolSize": 9.0,
+                    "name": "ACADEMIC ECONOMICS",
+                    "symbolSize": 14.0,
                     "value": 6.0,
                     "category": "SCIENCE"
                 },
                 {
                     "name": 36,
-                    "symbolSize": 1.5,
+                    "symbolSize": 4.0,
                     "value": 1.0,
                     "category": "NATURE"
                 },
                 {
-                    "name": "On China",
-                    "symbolSize": 9.0,
+                    "name": "ON CHINA",
+                    "symbolSize": 14.0,
                     "value": 6.0,
                     "category": "HISTORY"
                 },
                 {
                     "name": 38,
-                    "symbolSize": 1.5,
+                    "symbolSize": 4.0,
                     "value": 1.0,
                     "category": "HISTORY"
                 },
                 {
                     "name": 39,
-                    "symbolSize": 4.5,
+                    "symbolSize": 8.0,
                     "value": 3.0,
                     "category": "SCIENCE"
                 },
                 {
-                    "name": "Basics of Microeconomics",
-                    "symbolSize": 7.5,
+                    "name": "BASICS OF MICROECONOMICS",
+                    "symbolSize": 12.0,
                     "value": 5.0,
                     "category": "SCIENCE"
                 },
                 {
                     "name": 41,
-                    "symbolSize": 1.5,
+                    "symbolSize": 4.0,
                     "value": 1.0,
                     "category": "NATURE"
                 },
                 {
-                    "name": "Why China",
-                    "symbolSize": 9.0,
+                    "name": "WHY CHINA",
+                    "symbolSize": 14.0,
                     "value": 6.0,
                     "category": "HISTORY"
                 },
                 {
                     "name": 43,
-                    "symbolSize": 4.5,
+                    "symbolSize": 8.0,
                     "value": 3.0,
                     "category": "CULTURE"
                 },
                 {
-                    "name": "Inca Empire",
-                    "symbolSize": 7.5,
-                    "value": 5.0,
+                    "name": 44,
+                    "symbolSize": 8.0,
+                    "value": 3.0,
                     "category": "HISTORY"
                 },
                 {
                     "name": 45,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "MISC"
                 },
                 {
                     "name": 46,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "MISC"
                 },
                 {
-                    "name": "Graphical Economic Game Theory",
-                    "symbolSize": 7.5,
+                    "name": "GRAPHICAL ECONOMIC GAME THEORY",
+                    "symbolSize": 12.0,
                     "value": 5.0,
                     "category": "SCIENCE"
                 },
                 {
                     "name": 48,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "NATURE"
                 },
                 {
-                    "name": "Plant Biology",
-                    "symbolSize": 13.5,
+                    "name": "PLANT BIOLOGY",
+                    "symbolSize": 20.0,
                     "value": 9.0,
                     "category": "SCIENCE"
                 },
                 {
                     "name": 50,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "NATURE"
                 },
                 {
                     "name": 51,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "NATURE"
                 },
                 {
                     "name": 52,
-                    "symbolSize": 1.5,
+                    "symbolSize": 4.0,
                     "value": 1.0,
-                    "category": "NATURE"
+                    "category": "MISC"
                 },
                 {
                     "name": 53,
-                    "symbolSize": 1.5,
+                    "symbolSize": 4.0,
                     "value": 1.0,
                     "category": "HISTORY"
                 },
                 {
                     "name": 54,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "NATURE"
                 },
                 {
                     "name": 55,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "NATURE"
                 },
                 {
                     "name": 56,
-                    "symbolSize": 1.5,
+                    "symbolSize": 4.0,
                     "value": 1.0,
                     "category": "SCIENCE"
                 },
                 {
                     "name": 57,
-                    "symbolSize": 1.5,
+                    "symbolSize": 4.0,
                     "value": 1.0,
                     "category": "MISC"
                 },
                 {
                     "name": 58,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "NATURE"
                 },
                 {
-                    "name": "American history on the map",
-                    "symbolSize": 9.0,
+                    "name": "AMERICAN HISTORY ON THE MAP",
+                    "symbolSize": 14.0,
                     "value": 6.0,
                     "category": "CULTURE"
                 },
                 {
-                    "name": "World history in twelve maps",
-                    "symbolSize": 7.5,
-                    "value": 5.0,
+                    "name": 60,
+                    "symbolSize": 8.0,
+                    "value": 3.0,
                     "category": "CULTURE"
                 },
                 {
                     "name": 61,
-                    "symbolSize": 3.0,
+                    "symbolSize": 6.0,
                     "value": 2.0,
                     "category": "CULTURE"
                 },
                 {
                     "name": 62,
-                    "symbolSize": 1.5,
+                    "symbolSize": 4.0,
                     "value": 1.0,
                     "category": "NATURE"
                 },
                 {
-                    "name": "History of Western art for everyone",
-                    "symbolSize": 10.5,
+                    "name": "HISTORY OF WESTERN ART FOR EVERYONE",
+                    "symbolSize": 16.0,
                     "value": 7.0,
                     "category": "CULTURE"
                 },
                 {
                     "name": 64,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "NATURE"
                 },
                 {
                     "name": 65,
-                    "symbolSize": 4.5,
+                    "symbolSize": 8.0,
                     "value": 3.0,
                     "category": "MISC"
                 },
                 {
                     "name": 66,
-                    "symbolSize": 4.5,
+                    "symbolSize": 8.0,
                     "value": 3.0,
                     "category": "NATURE"
                 },
                 {
-                    "name": "Chinese art history for everyone",
-                    "symbolSize": 12.0,
+                    "name": "CHINESE ART HISTORY FOR EVERYONE",
+                    "symbolSize": 18.0,
                     "value": 8.0,
                     "category": "CULTURE"
                 },
                 {
                     "name": 68,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "MISC"
                 },
                 {
-                    "name": "Analysis of Information-Based Theory",
-                    "symbolSize": 6.0,
+                    "name": "ANALYSIS OF INFORMATION-BASED THEORY",
+                    "symbolSize": 10.0,
                     "value": 4.0,
                     "category": "SCIENCE"
                 },
                 {
                     "name": 70,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "MISC"
                 },
                 {
-                    "name": "Database Principles and SQL",
-                    "symbolSize": 6.0,
+                    "name": "DATABASE PRINCIPLES AND SQL",
+                    "symbolSize": 10.0,
                     "value": 4.0,
                     "category": "SCIENCE"
                 },
                 {
                     "name": 72,
-                    "symbolSize": 1.5,
+                    "symbolSize": 4.0,
                     "value": 1.0,
-                    "category": "MISC"
+                    "category": "NATURE"
                 },
                 {
                     "name": 73,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "NATURE"
                 },
                 {
                     "name": 74,
-                    "symbolSize": 4.5,
+                    "symbolSize": 8.0,
                     "value": 3.0,
                     "category": "SCIENCE"
                 },
                 {
                     "name": 75,
-                    "symbolSize": 3.0,
+                    "symbolSize": 6.0,
                     "value": 2.0,
                     "category": "HISTORY"
                 },
                 {
                     "name": 76,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "NATURE"
                 },
                 {
-                    "name": "Concise History of Chinese Music",
-                    "symbolSize": 18.0,
-                    "value": 12.0,
+                    "name": "CONCISE HISTORY OF CHINESE MUSIC",
+                    "symbolSize": 24.0,
+                    "value": 11.0,
                     "category": "CULTURE"
                 },
                 {
-                    "name": "China Road",
-                    "symbolSize": 6.0,
+                    "name": "CHINA ROAD",
+                    "symbolSize": 10.0,
                     "value": 4.0,
                     "category": "HISTORY"
                 },
                 {
                     "name": 79,
-                    "symbolSize": 1.5,
+                    "symbolSize": 4.0,
                     "value": 1.0,
                     "category": "MISC"
                 },
                 {
                     "name": 80,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "NATURE"
                 },
                 {
-                    "name": "World history in infographic",
-                    "symbolSize": 9.0,
+                    "name": "WORLD HISTORY IN INFOGRAPHIC",
+                    "symbolSize": 14.0,
                     "value": 6.0,
                     "category": "CULTURE"
                 },
                 {
                     "name": 82,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "NATURE"
                 },
                 {
                     "name": 83,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "NATURE"
                 },
                 {
                     "name": 84,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "NATURE"
                 },
                 {
                     "name": 85,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "NATURE"
                 },
                 {
                     "name": 86,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "NATURE"
                 },
                 {
                     "name": 87,
-                    "symbolSize": 1.5,
+                    "symbolSize": 4.0,
                     "value": 1.0,
                     "category": "MISC"
                 },
                 {
                     "name": 88,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "NATURE"
                 },
                 {
-                    "name": "Fractal",
-                    "symbolSize": 7.5,
+                    "name": "FRACTAL",
+                    "symbolSize": 12.0,
                     "value": 5.0,
                     "category": "SCIENCE"
                 },
                 {
-                    "name": "Big history,",
-                    "symbolSize": 7.5,
+                    "name": "BIG HISTORY,",
+                    "symbolSize": 12.0,
                     "value": 5.0,
                     "category": "CULTURE"
                 },
                 {
                     "name": 91,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "NATURE"
                 },
                 {
                     "name": 92,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "NATURE"
                 },
                 {
                     "name": 93,
-                    "symbolSize": 3.0,
+                    "symbolSize": 6.0,
                     "value": 2.0,
                     "category": "NATURE"
                 },
                 {
                     "name": 94,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
-                    "category": "MISC"
+                    "category": "NATURE"
                 },
                 {
-                    "name": "Discrete mathematics",
-                    "symbolSize": 7.5,
+                    "name": "DISCRETE MATHEMATICS",
+                    "symbolSize": 12.0,
                     "value": 5.0,
                     "category": "SCIENCE"
                 },
                 {
                     "name": 96,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "NATURE"
                 },
                 {
                     "name": 97,
-                    "symbolSize": 1.5,
-                    "value": 1.0,
-                    "category": "NATURE"
+                    "symbolSize": 6.0,
+                    "value": 2.0,
+                    "category": "MISC"
                 },
                 {
                     "name": 98,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "NATURE"
                 },
                 {
-                    "name": "Digital signal processing",
-                    "symbolSize": 10.5,
+                    "name": "DIGITAL SIGNAL PROCESSING",
+                    "symbolSize": 16.0,
                     "value": 7.0,
                     "category": "SCIENCE"
                 },
                 {
                     "name": 100,
-                    "symbolSize": 0.0,
-                    "value": 0.0,
+                    "symbolSize": 6.0,
+                    "value": 2.0,
                     "category": "MISC"
                 },
                 {
                     "name": 101,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "NATURE"
                 },
                 {
                     "name": 102,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "NATURE"
                 },
                 {
                     "name": 103,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "NATURE"
                 },
                 {
                     "name": 104,
-                    "symbolSize": 3.0,
-                    "value": 2.0,
+                    "symbolSize": 8.0,
+                    "value": 3.0,
                     "category": "NATURE"
                 },
                 {
-                    "name": "Full history of the earth",
-                    "symbolSize": 6.0,
+                    "name": "FULL HISTORY OF THE EARTH",
+                    "symbolSize": 10.0,
                     "value": 4.0,
                     "category": "CULTURE"
                 },
                 {
                     "name": 106,
-                    "symbolSize": 1.5,
+                    "symbolSize": 4.0,
                     "value": 1.0,
-                    "category": "NATURE"
+                    "category": "MISC"
                 },
                 {
                     "name": 107,
-                    "symbolSize": 4.5,
+                    "symbolSize": 8.0,
                     "value": 3.0,
                     "category": "CULTURE"
                 },
                 {
                     "name": 108,
-                    "symbolSize": 1.5,
+                    "symbolSize": 4.0,
                     "value": 1.0,
-                    "category": "CULTURE"
+                    "category": "MISC"
                 },
                 {
                     "name": 109,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
-                    "category": "SCIENCE"
+                    "category": "MISC"
                 },
                 {
                     "name": 110,
-                    "symbolSize": 3.0,
-                    "value": 2.0,
+                    "symbolSize": 8.0,
+                    "value": 3.0,
                     "category": "NATURE"
                 },
                 {
-                    "name": "Cultural China in Global History",
-                    "symbolSize": 19.5,
+                    "name": "CULTURAL CHINA IN GLOBAL HISTORY",
+                    "symbolSize": 28.0,
                     "value": 13.0,
                     "category": "CULTURE"
                 },
                 {
                     "name": 112,
-                    "symbolSize": 1.5,
+                    "symbolSize": 4.0,
                     "value": 1.0,
                     "category": "CULTURE"
                 },
                 {
                     "name": 113,
-                    "symbolSize": 1.5,
+                    "symbolSize": 4.0,
                     "value": 1.0,
                     "category": "NATURE"
                 },
                 {
                     "name": 114,
-                    "symbolSize": 1.5,
+                    "symbolSize": 4.0,
                     "value": 1.0,
                     "category": "NATURE"
                 },
                 {
                     "name": 115,
-                    "symbolSize": 3.0,
+                    "symbolSize": 6.0,
                     "value": 2.0,
                     "category": "NATURE"
                 },
                 {
-                    "name": "The beauty of the earth",
-                    "symbolSize": 12.0,
+                    "name": "THE BEAUTY OF THE EARTH",
+                    "symbolSize": 18.0,
                     "value": 8.0,
                     "category": "NATURE"
                 },
                 {
                     "name": 117,
-                    "symbolSize": 1.5,
+                    "symbolSize": 4.0,
                     "value": 1.0,
-                    "category": "NATURE"
+                    "category": "MISC"
                 },
                 {
                     "name": 118,
-                    "symbolSize": 1.5,
+                    "symbolSize": 4.0,
                     "value": 1.0,
                     "category": "NATURE"
                 },
                 {
                     "name": 119,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "NATURE"
                 },
                 {
                     "name": 120,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "NATURE"
                 },
                 {
                     "name": 121,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "NATURE"
                 },
                 {
                     "name": 122,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "MISC"
                 },
                 {
                     "name": 123,
-                    "symbolSize": 1.5,
+                    "symbolSize": 4.0,
                     "value": 1.0,
                     "category": "NATURE"
                 },
                 {
                     "name": 124,
-                    "symbolSize": 3.0,
+                    "symbolSize": 6.0,
                     "value": 2.0,
                     "category": "MISC"
                 },
                 {
                     "name": 125,
-                    "symbolSize": 4.5,
+                    "symbolSize": 8.0,
                     "value": 3.0,
-                    "category": "NATURE"
+                    "category": "MISC"
                 },
                 {
                     "name": 126,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "NATURE"
                 },
                 {
                     "name": 127,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "NATURE"
                 },
                 {
                     "name": 128,
-                    "symbolSize": 1.5,
+                    "symbolSize": 4.0,
                     "value": 1.0,
                     "category": "HISTORY"
                 },
                 {
                     "name": 129,
-                    "symbolSize": 1.5,
+                    "symbolSize": 4.0,
                     "value": 1.0,
-                    "category": "NATURE"
+                    "category": "CULTURE"
                 },
                 {
                     "name": 130,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "NATURE"
                 },
                 {
                     "name": 131,
-                    "symbolSize": 1.5,
+                    "symbolSize": 4.0,
                     "value": 1.0,
                     "category": "MISC"
                 },
                 {
                     "name": 132,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "NATURE"
                 },
                 {
                     "name": 133,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "NATURE"
                 },
                 {
-                    "name": "Cybernetics Basics",
-                    "symbolSize": 9.0,
+                    "name": "CYBERNETICS BASICS",
+                    "symbolSize": 14.0,
                     "value": 6.0,
                     "category": "SCIENCE"
                 },
                 {
-                    "name": "Numerical analysis",
-                    "symbolSize": 9.0,
+                    "name": "NUMERICAL ANALYSIS",
+                    "symbolSize": 14.0,
                     "value": 6.0,
                     "category": "SCIENCE"
                 },
                 {
                     "name": 136,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "NATURE"
                 },
                 {
                     "name": 137,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "MISC"
                 },
                 {
                     "name": 138,
-                    "symbolSize": 1.5,
+                    "symbolSize": 4.0,
                     "value": 1.0,
-                    "category": "NATURE"
+                    "category": "MISC"
                 },
                 {
                     "name": 139,
-                    "symbolSize": 1.5,
+                    "symbolSize": 4.0,
                     "value": 1.0,
                     "category": "NATURE"
                 },
                 {
                     "name": 140,
-                    "symbolSize": 3.0,
+                    "symbolSize": 6.0,
                     "value": 2.0,
-                    "category": "CULTURE"
+                    "category": "MISC"
                 },
                 {
                     "name": 141,
-                    "symbolSize": 0.0,
+                    "symbolSize": 2.0,
                     "value": 0.0,
                     "category": "NATURE"
                 }
             ],
             "categories": [
+                {
+                    "name": "CULTURE"
+                },
                 {
                     "name": "MISC"
                 },
@@ -1491,9 +1500,6 @@ I have always been a passionate reader. It is exciting to know that we can expor
                 },
                 {
                     "name": "NATURE"
-                },
-                {
-                    "name": "CULTURE"
                 },
                 {
                     "name": "SCIENCE"
@@ -1506,68 +1512,63 @@ I have always been a passionate reader. It is exciting to know that we can expor
             "edgeSymbolSize": 10,
             "links": [
                 {
-                    "source": "Dialectics of mathematics",
-                    "target": "Computer graphics",
+                    "source": "DIALECTICS OF MATHEMATICS",
+                    "target": "COMPUTER GRAPHICS",
                     "weight": 1.0
                 },
                 {
-                    "source": "Dialectics of mathematics",
-                    "target": "Design and Analysis of Algorithms",
+                    "source": "DIALECTICS OF MATHEMATICS",
+                    "target": "DESIGN AND ANALYSIS OF ALGORITHMS",
                     "weight": 1.0
                 },
                 {
-                    "source": "Dialectics of mathematics",
-                    "target": "Applied Mathematical Model",
+                    "source": "DIALECTICS OF MATHEMATICS",
+                    "target": "APPLIED MATHEMATICAL MODEL",
                     "weight": 1.0
                 },
                 {
-                    "source": "Dialectics of mathematics",
-                    "target": "Data\nScience",
+                    "source": "DIALECTICS OF MATHEMATICS",
+                    "target": "DATA\nSCIENCE",
                     "weight": 1.0
                 },
                 {
-                    "source": "Dialectics of mathematics",
-                    "target": "Mathematical physics method",
+                    "source": "DIALECTICS OF MATHEMATICS",
+                    "target": "MATHEMATICAL PHYSICS METHOD",
                     "weight": 1.0
                 },
                 {
-                    "source": "Dialectics of mathematics",
-                    "target": "Basics of Microeconomics",
+                    "source": "DIALECTICS OF MATHEMATICS",
+                    "target": "BASICS OF MICROECONOMICS",
                     "weight": 1.0
                 },
                 {
-                    "source": "Dialectics of mathematics",
-                    "target": "Plant Biology",
+                    "source": "DIALECTICS OF MATHEMATICS",
+                    "target": "PLANT BIOLOGY",
                     "weight": 1.0
                 },
                 {
-                    "source": "Dialectics of mathematics",
-                    "target": "Numerical analysis",
+                    "source": "DIALECTICS OF MATHEMATICS",
+                    "target": "NUMERICAL ANALYSIS",
                     "weight": 1.0
                 },
                 {
-                    "source": 2,
-                    "target": 10,
+                    "source": "COMPUTER GRAPHICS",
+                    "target": "DATA\nSCIENCE",
                     "weight": 1.0
                 },
                 {
-                    "source": "Computer graphics",
-                    "target": "Data\nScience",
-                    "weight": 1.0
-                },
-                {
-                    "source": "Computer graphics",
+                    "source": "COMPUTER GRAPHICS",
                     "target": 56,
                     "weight": 1.0
                 },
                 {
-                    "source": "Computer graphics",
+                    "source": "COMPUTER GRAPHICS",
                     "target": 79,
                     "weight": 1.0
                 },
                 {
-                    "source": "Computer graphics",
-                    "target": "Digital signal processing",
+                    "source": "COMPUTER GRAPHICS",
+                    "target": "DIGITAL SIGNAL PROCESSING",
                     "weight": 1.0
                 },
                 {
@@ -1576,43 +1577,48 @@ I have always been a passionate reader. It is exciting to know that we can expor
                     "weight": 1.0
                 },
                 {
-                    "source": "Design and Analysis of Algorithms",
-                    "target": "Applied Mathematical Model",
+                    "source": "DESIGN AND ANALYSIS OF ALGORITHMS",
+                    "target": "APPLIED MATHEMATICAL MODEL",
                     "weight": 1.0
                 },
                 {
-                    "source": "Design and Analysis of Algorithms",
-                    "target": "Mathematical physics method",
+                    "source": "DESIGN AND ANALYSIS OF ALGORITHMS",
+                    "target": "MATHEMATICAL PHYSICS METHOD",
                     "weight": 1.0
                 },
                 {
-                    "source": "Design and Analysis of Algorithms",
-                    "target": "Database Principles and SQL",
+                    "source": "DESIGN AND ANALYSIS OF ALGORITHMS",
+                    "target": "DATABASE PRINCIPLES AND SQL",
                     "weight": 1.0
                 },
                 {
-                    "source": "Design and Analysis of Algorithms",
-                    "target": "Numerical analysis",
+                    "source": "DESIGN AND ANALYSIS OF ALGORITHMS",
+                    "target": "NUMERICAL ANALYSIS",
                     "weight": 1.0
                 },
                 {
-                    "source": "Study of Chinese Poetry Art",
-                    "target": "Mathematics and physics in games",
+                    "source": "STUDY OF CHINESE POETRY ART",
+                    "target": "MATHEMATICS AND PHYSICS IN GAMES",
                     "weight": 1.0
                 },
                 {
-                    "source": "Study of Chinese Poetry Art",
-                    "target": "Concise History of Chinese Music",
+                    "source": "STUDY OF CHINESE POETRY ART",
+                    "target": "CONCISE HISTORY OF CHINESE MUSIC",
                     "weight": 1.0
                 },
                 {
-                    "source": "Study of Chinese Poetry Art",
+                    "source": "STUDY OF CHINESE POETRY ART",
                     "target": 108,
                     "weight": 1.0
                 },
                 {
-                    "source": "Study of Chinese Poetry Art",
-                    "target": "Cultural China in Global History",
+                    "source": "STUDY OF CHINESE POETRY ART",
+                    "target": "CULTURAL CHINA IN GLOBAL HISTORY",
+                    "weight": 1.0
+                },
+                {
+                    "source": 8,
+                    "target": 97,
                     "weight": 1.0
                 },
                 {
@@ -1626,168 +1632,168 @@ I have always been a passionate reader. It is exciting to know that we can expor
                     "weight": 1.0
                 },
                 {
-                    "source": "Mathematics and physics in games",
-                    "target": 18,
+                    "source": "MATHEMATICS AND PHYSICS IN GAMES",
+                    "target": "GREEN WORLD HISTORY",
                     "weight": 1.0
                 },
                 {
-                    "source": "Mathematics and physics in games",
-                    "target": "Academic economics",
+                    "source": "MATHEMATICS AND PHYSICS IN GAMES",
+                    "target": "ACADEMIC ECONOMICS",
                     "weight": 1.0
                 },
                 {
-                    "source": "Mathematics and physics in games",
-                    "target": "World history in twelve maps",
+                    "source": "MATHEMATICS AND PHYSICS IN GAMES",
+                    "target": 60,
                     "weight": 1.0
                 },
                 {
-                    "source": "Mathematics and physics in games",
-                    "target": "History of Western art for everyone",
+                    "source": "MATHEMATICS AND PHYSICS IN GAMES",
+                    "target": "HISTORY OF WESTERN ART FOR EVERYONE",
                     "weight": 1.0
                 },
                 {
-                    "source": "Mathematics and physics in games",
-                    "target": "Chinese art history for everyone",
+                    "source": "MATHEMATICS AND PHYSICS IN GAMES",
+                    "target": "CHINESE ART HISTORY FOR EVERYONE",
                     "weight": 1.0
                 },
                 {
-                    "source": "Mathematics and physics in games",
-                    "target": "Concise History of Chinese Music",
+                    "source": "MATHEMATICS AND PHYSICS IN GAMES",
+                    "target": "CONCISE HISTORY OF CHINESE MUSIC",
                     "weight": 1.0
                 },
                 {
-                    "source": "Mathematics and physics in games",
-                    "target": "World history in infographic",
+                    "source": "MATHEMATICS AND PHYSICS IN GAMES",
+                    "target": "WORLD HISTORY IN INFOGRAPHIC",
                     "weight": 1.0
                 },
                 {
-                    "source": "Human zoo",
-                    "target": "The essence of civilization",
+                    "source": "HUMAN ZOO",
+                    "target": "THE ESSENCE OF CIVILIZATION",
                     "weight": 1.0
                 },
                 {
-                    "source": "Human zoo",
+                    "source": "HUMAN ZOO",
                     "target": 24,
                     "weight": 1.0
                 },
                 {
-                    "source": "Human zoo",
-                    "target": "Plant Biology",
+                    "source": "HUMAN ZOO",
+                    "target": "PLANT BIOLOGY",
                     "weight": 1.0
                 },
                 {
-                    "source": "Human zoo",
-                    "target": "Concise History of Chinese Music",
+                    "source": "HUMAN ZOO",
+                    "target": "CONCISE HISTORY OF CHINESE MUSIC",
                     "weight": 1.0
                 },
                 {
-                    "source": "Native China",
-                    "target": "Ancient Mesopotamian Empire",
+                    "source": "NATIVE CHINA",
+                    "target": "ANCIENT MESOPOTAMIAN EMPIRE",
                     "weight": 1.0
                 },
                 {
-                    "source": "Native China",
-                    "target": "On China",
+                    "source": "NATIVE CHINA",
+                    "target": "ON CHINA",
                     "weight": 1.0
                 },
                 {
-                    "source": "Native China",
-                    "target": "Why China",
+                    "source": "NATIVE CHINA",
+                    "target": "WHY CHINA",
                     "weight": 1.0
                 },
                 {
-                    "source": "Native China",
+                    "source": "NATIVE CHINA",
                     "target": 65,
                     "weight": 1.0
                 },
                 {
-                    "source": "Native China",
-                    "target": "Cultural China in Global History",
+                    "source": "NATIVE CHINA",
+                    "target": "CULTURAL CHINA IN GLOBAL HISTORY",
                     "weight": 1.0
                 },
                 {
-                    "source": "Native China",
-                    "target": "The beauty of the earth",
+                    "source": "NATIVE CHINA",
+                    "target": "THE BEAUTY OF THE EARTH",
                     "weight": 1.0
                 },
                 {
-                    "source": "Aztec Empire",
-                    "target": "Mongol Empire",
+                    "source": "AZTEC EMPIRE",
+                    "target": 17,
                     "weight": 1.0
                 },
                 {
-                    "source": "Aztec Empire",
-                    "target": "Mayan Empire",
+                    "source": "AZTEC EMPIRE",
+                    "target": "MAYAN EMPIRE",
                     "weight": 1.0
                 },
                 {
-                    "source": "Aztec Empire",
-                    "target": "Ancient Persian Empires",
+                    "source": "AZTEC EMPIRE",
+                    "target": "ANCIENT PERSIAN EMPIRES",
                     "weight": 1.0
                 },
                 {
-                    "source": "Aztec Empire",
-                    "target": "Ancient Mesopotamian Empire",
+                    "source": "AZTEC EMPIRE",
+                    "target": "ANCIENT MESOPOTAMIAN EMPIRE",
                     "weight": 1.0
                 },
                 {
-                    "source": "Aztec Empire",
-                    "target": "Inca Empire",
+                    "source": "AZTEC EMPIRE",
+                    "target": 44,
                     "weight": 1.0
                 },
                 {
-                    "source": "Aztec Empire",
+                    "source": "AZTEC EMPIRE",
                     "target": 53,
                     "weight": 1.0
                 },
                 {
-                    "source": "The essence of civilization",
+                    "source": "THE ESSENCE OF CIVILIZATION",
                     "target": 29,
                     "weight": 1.0
                 },
                 {
-                    "source": "The essence of civilization",
+                    "source": "THE ESSENCE OF CIVILIZATION",
                     "target": 34,
                     "weight": 1.0
                 },
                 {
-                    "source": "The essence of civilization",
-                    "target": "Plant Biology",
+                    "source": "THE ESSENCE OF CIVILIZATION",
+                    "target": "PLANT BIOLOGY",
                     "weight": 1.0
                 },
                 {
-                    "source": "Mongol Empire",
-                    "target": "Ancient Persian Empires",
+                    "source": 17,
+                    "target": "ANCIENT PERSIAN EMPIRES",
                     "weight": 1.0
                 },
                 {
-                    "source": "Mongol Empire",
-                    "target": "Ancient Mesopotamian Empire",
+                    "source": 17,
+                    "target": "ANCIENT MESOPOTAMIAN EMPIRE",
                     "weight": 1.0
                 },
                 {
-                    "source": "Mongol Empire",
-                    "target": "Inca Empire",
+                    "source": "GREEN WORLD HISTORY",
+                    "target": "CHINESE ART HISTORY FOR EVERYONE",
                     "weight": 1.0
                 },
                 {
-                    "source": 18,
-                    "target": "Concise History of Chinese Music",
+                    "source": "GREEN WORLD HISTORY",
+                    "target": "CONCISE HISTORY OF CHINESE MUSIC",
                     "weight": 1.0
                 },
                 {
-                    "source": 18,
-                    "target": "Cultural China in Global History",
-                    "weight": 1.0
-                },
-                {
-                    "source": 19,
-                    "target": "On China",
+                    "source": "GREEN WORLD HISTORY",
+                    "target": "CULTURAL CHINA IN GLOBAL HISTORY",
                     "weight": 1.0
                 },
                 {
                     "source": 19,
-                    "target": "Why China",
+                    "target": "ON CHINA",
+                    "weight": 1.0
+                },
+                {
+                    "source": 19,
+                    "target": "WHY CHINA",
                     "weight": 1.0
                 },
                 {
@@ -1796,38 +1802,38 @@ I have always been a passionate reader. It is exciting to know that we can expor
                     "weight": 1.0
                 },
                 {
-                    "source": "Mayan Empire",
-                    "target": "Ancient Persian Empires",
+                    "source": "MAYAN EMPIRE",
+                    "target": "ANCIENT PERSIAN EMPIRES",
                     "weight": 1.0
                 },
                 {
-                    "source": "Mayan Empire",
-                    "target": "Ancient Mesopotamian Empire",
+                    "source": "MAYAN EMPIRE",
+                    "target": "ANCIENT MESOPOTAMIAN EMPIRE",
                     "weight": 1.0
                 },
                 {
-                    "source": "Mayan Empire",
-                    "target": "Inca Empire",
+                    "source": "MAYAN EMPIRE",
+                    "target": 44,
                     "weight": 1.0
                 },
                 {
-                    "source": "Applied Mathematical Model",
-                    "target": "Data\nScience",
+                    "source": "APPLIED MATHEMATICAL MODEL",
+                    "target": "DATA\nSCIENCE",
                     "weight": 1.0
                 },
                 {
-                    "source": "Applied Mathematical Model",
-                    "target": "Mathematical physics method",
+                    "source": "APPLIED MATHEMATICAL MODEL",
+                    "target": "MATHEMATICAL PHYSICS METHOD",
                     "weight": 1.0
                 },
                 {
-                    "source": "Applied Mathematical Model",
-                    "target": "Fractal",
+                    "source": "APPLIED MATHEMATICAL MODEL",
+                    "target": "FRACTAL",
                     "weight": 1.0
                 },
                 {
-                    "source": "Applied Mathematical Model",
-                    "target": "Numerical analysis",
+                    "source": "APPLIED MATHEMATICAL MODEL",
+                    "target": "NUMERICAL ANALYSIS",
                     "weight": 1.0
                 },
                 {
@@ -1836,58 +1842,58 @@ I have always been a passionate reader. It is exciting to know that we can expor
                     "weight": 1.0
                 },
                 {
-                    "source": "Data\nScience",
-                    "target": "Mathematical physics method",
+                    "source": "DATA\nSCIENCE",
+                    "target": "MATHEMATICAL PHYSICS METHOD",
                     "weight": 1.0
                 },
                 {
-                    "source": "Data\nScience",
+                    "source": "DATA\nSCIENCE",
                     "target": 39,
                     "weight": 1.0
                 },
                 {
-                    "source": "Data\nScience",
-                    "target": "Plant Biology",
+                    "source": "DATA\nSCIENCE",
+                    "target": "PLANT BIOLOGY",
                     "weight": 1.0
                 },
                 {
-                    "source": "Data\nScience",
-                    "target": "Analysis of Information-Based Theory",
+                    "source": "DATA\nSCIENCE",
+                    "target": "ANALYSIS OF INFORMATION-BASED THEORY",
                     "weight": 1.0
                 },
                 {
-                    "source": "Data\nScience",
-                    "target": "Database Principles and SQL",
+                    "source": "DATA\nSCIENCE",
+                    "target": "DATABASE PRINCIPLES AND SQL",
                     "weight": 1.0
                 },
                 {
-                    "source": "Data\nScience",
+                    "source": "DATA\nSCIENCE",
                     "target": 74,
                     "weight": 1.0
                 },
                 {
-                    "source": "Data\nScience",
-                    "target": "Fractal",
+                    "source": "DATA\nSCIENCE",
+                    "target": "FRACTAL",
                     "weight": 1.0
                 },
                 {
-                    "source": "Data\nScience",
-                    "target": "Discrete mathematics",
+                    "source": "DATA\nSCIENCE",
+                    "target": "DISCRETE MATHEMATICS",
                     "weight": 1.0
                 },
                 {
-                    "source": "Data\nScience",
-                    "target": "Digital signal processing",
+                    "source": "DATA\nSCIENCE",
+                    "target": "DIGITAL SIGNAL PROCESSING",
                     "weight": 1.0
                 },
                 {
-                    "source": "Data\nScience",
-                    "target": "Cybernetics Basics",
+                    "source": "DATA\nSCIENCE",
+                    "target": "CYBERNETICS BASICS",
                     "weight": 1.0
                 },
                 {
                     "source": 28,
-                    "target": "Digital signal processing",
+                    "target": "DIGITAL SIGNAL PROCESSING",
                     "weight": 1.0
                 },
                 {
@@ -1897,142 +1903,137 @@ I have always been a passionate reader. It is exciting to know that we can expor
                 },
                 {
                     "source": 29,
-                    "target": "Big history,",
+                    "target": "BIG HISTORY,",
                     "weight": 1.0
                 },
                 {
-                    "source": "Ancient Persian Empires",
-                    "target": "Ancient Mesopotamian Empire",
+                    "source": "ANCIENT PERSIAN EMPIRES",
+                    "target": "ANCIENT MESOPOTAMIAN EMPIRE",
                     "weight": 1.0
                 },
                 {
-                    "source": "Ancient Persian Empires",
-                    "target": "Inca Empire",
+                    "source": "ANCIENT PERSIAN EMPIRES",
+                    "target": 44,
                     "weight": 1.0
                 },
                 {
                     "source": 31,
-                    "target": "The beauty of the earth",
+                    "target": "THE BEAUTY OF THE EARTH",
                     "weight": 1.0
                 },
                 {
-                    "source": "Mathematical physics method",
-                    "target": "Plant Biology",
+                    "source": "MATHEMATICAL PHYSICS METHOD",
+                    "target": "PLANT BIOLOGY",
                     "weight": 1.0
                 },
                 {
-                    "source": "Mathematical physics method",
-                    "target": "Database Principles and SQL",
+                    "source": "MATHEMATICAL PHYSICS METHOD",
+                    "target": "DATABASE PRINCIPLES AND SQL",
                     "weight": 1.0
                 },
                 {
-                    "source": "Mathematical physics method",
-                    "target": "Numerical analysis",
+                    "source": "MATHEMATICAL PHYSICS METHOD",
+                    "target": "NUMERICAL ANALYSIS",
                     "weight": 1.0
                 },
                 {
-                    "source": "Ancient Mesopotamian Empire",
-                    "target": "On China",
+                    "source": "ANCIENT MESOPOTAMIAN EMPIRE",
+                    "target": "ON CHINA",
                     "weight": 1.0
                 },
                 {
-                    "source": "Ancient Mesopotamian Empire",
+                    "source": "ANCIENT MESOPOTAMIAN EMPIRE",
                     "target": 38,
                     "weight": 1.0
                 },
                 {
-                    "source": "Ancient Mesopotamian Empire",
-                    "target": "Why China",
+                    "source": "ANCIENT MESOPOTAMIAN EMPIRE",
+                    "target": "WHY CHINA",
                     "weight": 1.0
                 },
                 {
-                    "source": "Ancient Mesopotamian Empire",
-                    "target": "Inca Empire",
+                    "source": "ANCIENT MESOPOTAMIAN EMPIRE",
+                    "target": "HISTORY OF WESTERN ART FOR EVERYONE",
                     "weight": 1.0
                 },
                 {
-                    "source": "Ancient Mesopotamian Empire",
-                    "target": "History of Western art for everyone",
+                    "source": "ANCIENT MESOPOTAMIAN EMPIRE",
+                    "target": "CHINESE ART HISTORY FOR EVERYONE",
                     "weight": 1.0
                 },
                 {
-                    "source": "Ancient Mesopotamian Empire",
-                    "target": "Chinese art history for everyone",
-                    "weight": 1.0
-                },
-                {
-                    "source": "Ancient Mesopotamian Empire",
+                    "source": "ANCIENT MESOPOTAMIAN EMPIRE",
                     "target": 75,
                     "weight": 1.0
                 },
                 {
-                    "source": "Ancient Mesopotamian Empire",
-                    "target": "China Road",
+                    "source": "ANCIENT MESOPOTAMIAN EMPIRE",
+                    "target": "CHINA ROAD",
                     "weight": 1.0
                 },
                 {
                     "source": 34,
-                    "target": "Big history,",
+                    "target": "BIG HISTORY,",
                     "weight": 1.0
                 },
                 {
-                    "source": "Academic economics",
-                    "target": "Basics of Microeconomics",
+                    "source": "ACADEMIC ECONOMICS",
+                    "target": "BASICS OF MICROECONOMICS",
                     "weight": 1.0
                 },
                 {
-                    "source": "Academic economics",
+                    "source": "ACADEMIC ECONOMICS",
                     "target": 57,
                     "weight": 1.0
                 },
                 {
-                    "source": "Academic economics",
+                    "source": "ACADEMIC ECONOMICS",
                     "target": 72,
                     "weight": 1.0
                 },
                 {
-                    "source": "Academic economics",
-                    "target": "Fractal",
+                    "source": "ACADEMIC ECONOMICS",
+                    "target": "FRACTAL",
                     "weight": 1.0
                 },
                 {
-                    "source": "Academic economics",
-                    "target": "Discrete mathematics",
+                    "source": "ACADEMIC ECONOMICS",
+                    "target": "DISCRETE MATHEMATICS",
                     "weight": 1.0
                 },
                 {
-                    "source": "On China",
-                    "target": "Why China",
+                    "source": "ON CHINA",
+                    "target": "WHY CHINA",
                     "weight": 1.0
                 },
                 {
-                    "source": "On China",
-                    "target": "Cultural China in Global History",
+                    "source": "ON CHINA",
+                    "target": "CULTURAL CHINA IN GLOBAL HISTORY",
                     "weight": 1.0
                 },
                 {
-                    "source": "On China",
-                    "target": "The beauty of the earth",
-                    "weight": 1.0
-                },
-                {
-                    "source": 39,
-                    "target": "Basics of Microeconomics",
+                    "source": "ON CHINA",
+                    "target": "THE BEAUTY OF THE EARTH",
                     "weight": 1.0
                 },
                 {
                     "source": 39,
-                    "target": "Graphical Economic Game Theory",
+                    "target": "BASICS OF MICROECONOMICS",
                     "weight": 1.0
                 },
                 {
-                    "source": "Basics of Microeconomics",
-                    "target": "Graphical Economic Game Theory",
+                    "source": 39,
+                    "target": "GRAPHICAL ECONOMIC GAME THEORY",
                     "weight": 1.0
                 },
                 {
-                    "source": "Basics of Microeconomics",
-                    "target": "Cybernetics Basics",
+                    "source": "BASICS OF MICROECONOMICS",
+                    "target": "GRAPHICAL ECONOMIC GAME THEORY",
+                    "weight": 1.0
+                },
+                {
+                    "source": "BASICS OF MICROECONOMICS",
+                    "target": "CYBERNETICS BASICS",
                     "weight": 1.0
                 },
                 {
@@ -2041,23 +2042,23 @@ I have always been a passionate reader. It is exciting to know that we can expor
                     "weight": 1.0
                 },
                 {
-                    "source": "Why China",
-                    "target": "Cultural China in Global History",
+                    "source": "WHY CHINA",
+                    "target": "CULTURAL CHINA IN GLOBAL HISTORY",
                     "weight": 1.0
                 },
                 {
-                    "source": "Why China",
-                    "target": "The beauty of the earth",
-                    "weight": 1.0
-                },
-                {
-                    "source": 43,
-                    "target": "American history on the map",
+                    "source": "WHY CHINA",
+                    "target": "THE BEAUTY OF THE EARTH",
                     "weight": 1.0
                 },
                 {
                     "source": 43,
-                    "target": "Full history of the earth",
+                    "target": "AMERICAN HISTORY ON THE MAP",
+                    "weight": 1.0
+                },
+                {
+                    "source": 43,
+                    "target": "FULL HISTORY OF THE EARTH",
                     "weight": 1.0
                 },
                 {
@@ -2066,88 +2067,78 @@ I have always been a passionate reader. It is exciting to know that we can expor
                     "weight": 1.0
                 },
                 {
-                    "source": "Graphical Economic Game Theory",
-                    "target": "Analysis of Information-Based Theory",
+                    "source": "GRAPHICAL ECONOMIC GAME THEORY",
+                    "target": "ANALYSIS OF INFORMATION-BASED THEORY",
                     "weight": 1.0
                 },
                 {
-                    "source": "Graphical Economic Game Theory",
+                    "source": "GRAPHICAL ECONOMIC GAME THEORY",
                     "target": 87,
                     "weight": 1.0
                 },
                 {
-                    "source": "Graphical Economic Game Theory",
+                    "source": "GRAPHICAL ECONOMIC GAME THEORY",
                     "target": 140,
                     "weight": 1.0
                 },
                 {
-                    "source": "Plant Biology",
+                    "source": "PLANT BIOLOGY",
                     "target": 74,
                     "weight": 1.0
                 },
                 {
-                    "source": "Plant Biology",
+                    "source": "PLANT BIOLOGY",
                     "target": 114,
                     "weight": 1.0
                 },
                 {
-                    "source": "Plant Biology",
-                    "target": "Cybernetics Basics",
+                    "source": "PLANT BIOLOGY",
+                    "target": "CYBERNETICS BASICS",
                     "weight": 1.0
                 },
                 {
-                    "source": "Plant Biology",
+                    "source": "PLANT BIOLOGY",
                     "target": 138,
                     "weight": 1.0
                 },
                 {
                     "source": 52,
-                    "target": "Full history of the earth",
+                    "target": "FULL HISTORY OF THE EARTH",
                     "weight": 1.0
                 },
                 {
-                    "source": "American history on the map",
-                    "target": "History of Western art for everyone",
+                    "source": "AMERICAN HISTORY ON THE MAP",
+                    "target": "HISTORY OF WESTERN ART FOR EVERYONE",
                     "weight": 1.0
                 },
                 {
-                    "source": "American history on the map",
-                    "target": "Chinese art history for everyone",
+                    "source": "AMERICAN HISTORY ON THE MAP",
+                    "target": "CHINESE ART HISTORY FOR EVERYONE",
                     "weight": 1.0
                 },
                 {
-                    "source": "American history on the map",
-                    "target": "Concise History of Chinese Music",
+                    "source": "AMERICAN HISTORY ON THE MAP",
+                    "target": "CONCISE HISTORY OF CHINESE MUSIC",
                     "weight": 1.0
                 },
                 {
-                    "source": "American history on the map",
-                    "target": "Full history of the earth",
+                    "source": "AMERICAN HISTORY ON THE MAP",
+                    "target": "FULL HISTORY OF THE EARTH",
                     "weight": 1.0
                 },
                 {
-                    "source": "American history on the map",
-                    "target": "Cultural China in Global History",
+                    "source": "AMERICAN HISTORY ON THE MAP",
+                    "target": "CULTURAL CHINA IN GLOBAL HISTORY",
                     "weight": 1.0
                 },
                 {
-                    "source": "World history in twelve maps",
-                    "target": "Chinese art history for everyone",
+                    "source": 60,
+                    "target": "WORLD HISTORY IN INFOGRAPHIC",
                     "weight": 1.0
                 },
                 {
-                    "source": "World history in twelve maps",
-                    "target": "Concise History of Chinese Music",
-                    "weight": 1.0
-                },
-                {
-                    "source": "World history in twelve maps",
-                    "target": "World history in infographic",
-                    "weight": 1.0
-                },
-                {
-                    "source": "World history in twelve maps",
-                    "target": "Cultural China in Global History",
+                    "source": 60,
+                    "target": "CULTURAL CHINA IN GLOBAL HISTORY",
                     "weight": 1.0
                 },
                 {
@@ -2157,27 +2148,27 @@ I have always been a passionate reader. It is exciting to know that we can expor
                 },
                 {
                     "source": 61,
-                    "target": "Cybernetics Basics",
+                    "target": "CYBERNETICS BASICS",
                     "weight": 1.0
                 },
                 {
-                    "source": "History of Western art for everyone",
-                    "target": "Chinese art history for everyone",
+                    "source": "HISTORY OF WESTERN ART FOR EVERYONE",
+                    "target": "CHINESE ART HISTORY FOR EVERYONE",
                     "weight": 1.0
                 },
                 {
-                    "source": "History of Western art for everyone",
-                    "target": "Concise History of Chinese Music",
+                    "source": "HISTORY OF WESTERN ART FOR EVERYONE",
+                    "target": "CONCISE HISTORY OF CHINESE MUSIC",
                     "weight": 1.0
                 },
                 {
-                    "source": "History of Western art for everyone",
-                    "target": "World history in infographic",
+                    "source": "HISTORY OF WESTERN ART FOR EVERYONE",
+                    "target": "WORLD HISTORY IN INFOGRAPHIC",
                     "weight": 1.0
                 },
                 {
-                    "source": "History of Western art for everyone",
-                    "target": "Cultural China in Global History",
+                    "source": "HISTORY OF WESTERN ART FOR EVERYONE",
+                    "target": "CULTURAL CHINA IN GLOBAL HISTORY",
                     "weight": 1.0
                 },
                 {
@@ -2187,111 +2178,111 @@ I have always been a passionate reader. It is exciting to know that we can expor
                 },
                 {
                     "source": 65,
-                    "target": "The beauty of the earth",
+                    "target": "THE BEAUTY OF THE EARTH",
                     "weight": 1.0
                 },
                 {
                     "source": 66,
-                    "target": "China Road",
+                    "target": "CHINA ROAD",
                     "weight": 1.0
                 },
                 {
                     "source": 66,
-                    "target": "The beauty of the earth",
+                    "target": "THE BEAUTY OF THE EARTH",
                     "weight": 1.0
                 },
                 {
-                    "source": "Chinese art history for everyone",
-                    "target": "Concise History of Chinese Music",
+                    "source": "CHINESE ART HISTORY FOR EVERYONE",
+                    "target": "CONCISE HISTORY OF CHINESE MUSIC",
                     "weight": 1.0
                 },
                 {
-                    "source": "Chinese art history for everyone",
-                    "target": "World history in infographic",
+                    "source": "CHINESE ART HISTORY FOR EVERYONE",
+                    "target": "WORLD HISTORY IN INFOGRAPHIC",
                     "weight": 1.0
                 },
                 {
-                    "source": "Chinese art history for everyone",
-                    "target": "Cultural China in Global History",
+                    "source": "CHINESE ART HISTORY FOR EVERYONE",
+                    "target": "CULTURAL CHINA IN GLOBAL HISTORY",
                     "weight": 1.0
                 },
                 {
-                    "source": "Analysis of Information-Based Theory",
-                    "target": "Database Principles and SQL",
+                    "source": "ANALYSIS OF INFORMATION-BASED THEORY",
+                    "target": "DATABASE PRINCIPLES AND SQL",
                     "weight": 1.0
                 },
                 {
-                    "source": "Analysis of Information-Based Theory",
-                    "target": "Digital signal processing",
+                    "source": "ANALYSIS OF INFORMATION-BASED THEORY",
+                    "target": "DIGITAL SIGNAL PROCESSING",
                     "weight": 1.0
                 },
                 {
                     "source": 74,
-                    "target": "Cybernetics Basics",
+                    "target": "CYBERNETICS BASICS",
                     "weight": 1.0
                 },
                 {
                     "source": 75,
-                    "target": "The beauty of the earth",
+                    "target": "THE BEAUTY OF THE EARTH",
                     "weight": 1.0
                 },
                 {
-                    "source": "Concise History of Chinese Music",
-                    "target": "World history in infographic",
+                    "source": "CONCISE HISTORY OF CHINESE MUSIC",
+                    "target": "WORLD HISTORY IN INFOGRAPHIC",
                     "weight": 1.0
                 },
                 {
-                    "source": "Concise History of Chinese Music",
+                    "source": "CONCISE HISTORY OF CHINESE MUSIC",
                     "target": 107,
                     "weight": 1.0
                 },
                 {
-                    "source": "Concise History of Chinese Music",
-                    "target": "Cultural China in Global History",
+                    "source": "CONCISE HISTORY OF CHINESE MUSIC",
+                    "target": "CULTURAL CHINA IN GLOBAL HISTORY",
                     "weight": 1.0
                 },
                 {
-                    "source": "Concise History of Chinese Music",
+                    "source": "CONCISE HISTORY OF CHINESE MUSIC",
                     "target": 118,
                     "weight": 1.0
                 },
                 {
-                    "source": "China Road",
-                    "target": "The beauty of the earth",
+                    "source": "CHINA ROAD",
+                    "target": "THE BEAUTY OF THE EARTH",
                     "weight": 1.0
                 },
                 {
-                    "source": "China Road",
+                    "source": "CHINA ROAD",
                     "target": 128,
                     "weight": 1.0
                 },
                 {
-                    "source": "World history in infographic",
-                    "target": "Cultural China in Global History",
+                    "source": "WORLD HISTORY IN INFOGRAPHIC",
+                    "target": "CULTURAL CHINA IN GLOBAL HISTORY",
                     "weight": 1.0
                 },
                 {
-                    "source": "Fractal",
-                    "target": "Discrete mathematics",
+                    "source": "FRACTAL",
+                    "target": "DISCRETE MATHEMATICS",
                     "weight": 1.0
                 },
                 {
-                    "source": "Fractal",
-                    "target": "Numerical analysis",
+                    "source": "FRACTAL",
+                    "target": "NUMERICAL ANALYSIS",
                     "weight": 1.0
                 },
                 {
-                    "source": "Big history,",
+                    "source": "BIG HISTORY,",
                     "target": 107,
                     "weight": 1.0
                 },
                 {
-                    "source": "Big history,",
-                    "target": "Cultural China in Global History",
+                    "source": "BIG HISTORY,",
+                    "target": "CULTURAL CHINA IN GLOBAL HISTORY",
                     "weight": 1.0
                 },
                 {
-                    "source": "Big history,",
+                    "source": "BIG HISTORY,",
                     "target": 115,
                     "weight": 1.0
                 },
@@ -2301,13 +2292,13 @@ I have always been a passionate reader. It is exciting to know that we can expor
                     "weight": 1.0
                 },
                 {
-                    "source": "Discrete mathematics",
+                    "source": "DISCRETE MATHEMATICS",
                     "target": 131,
                     "weight": 1.0
                 },
                 {
-                    "source": "Discrete mathematics",
-                    "target": "Numerical analysis",
+                    "source": "DISCRETE MATHEMATICS",
+                    "target": "NUMERICAL ANALYSIS",
                     "weight": 1.0
                 },
                 {
@@ -2316,18 +2307,28 @@ I have always been a passionate reader. It is exciting to know that we can expor
                     "weight": 1.0
                 },
                 {
-                    "source": "Digital signal processing",
+                    "source": "DIGITAL SIGNAL PROCESSING",
                     "target": 104,
                     "weight": 1.0
                 },
                 {
-                    "source": "Digital signal processing",
+                    "source": "DIGITAL SIGNAL PROCESSING",
                     "target": 110,
                     "weight": 1.0
                 },
                 {
-                    "source": "Digital signal processing",
-                    "target": "Cybernetics Basics",
+                    "source": "DIGITAL SIGNAL PROCESSING",
+                    "target": "CYBERNETICS BASICS",
+                    "weight": 1.0
+                },
+                {
+                    "source": 100,
+                    "target": 104,
+                    "weight": 1.0
+                },
+                {
+                    "source": 100,
+                    "target": 110,
                     "weight": 1.0
                 },
                 {
@@ -2336,8 +2337,8 @@ I have always been a passionate reader. It is exciting to know that we can expor
                     "weight": 1.0
                 },
                 {
-                    "source": "Full history of the earth",
-                    "target": "Cultural China in Global History",
+                    "source": "FULL HISTORY OF THE EARTH",
+                    "target": "CULTURAL CHINA IN GLOBAL HISTORY",
                     "weight": 1.0
                 },
                 {
@@ -2366,17 +2367,17 @@ I have always been a passionate reader. It is exciting to know that we can expor
     "legend": [
         {
             "data": [
+                "CULTURE",
                 "MISC",
                 "HISTORY",
                 "NATURE",
-                "CULTURE",
                 "SCIENCE"
             ],
             "selected": {
+                "CULTURE": true,
                 "MISC": true,
                 "HISTORY": true,
                 "NATURE": true,
-                "CULTURE": true,
                 "SCIENCE": true
             }
         }
@@ -2394,12 +2395,12 @@ I have always been a passionate reader. It is exciting to know that we can expor
         "borderWidth": 0
     }
 };
-       chart_0edce7bef863442797df7a8d4a8e3b24.setOption(option_0edce7bef863442797df7a8d4a8e3b24);
+        chart_ad65ea9446bd42299e68a02c62f631ad.setOption(option_ad65ea9446bd42299e68a02c62f631ad);
 </script>
 
 It is important to know that generally I do not borrow technical tutorials from library and books of literature are excluded from the analysis because of their abstract titles. For a technical issue I haven't solved, only the titles of the most connected books are visible by hover or click. 
 
-The book groups of SCIENCE are centered around *Data Science* .  Those in NATURE and MISC are generally independent and isolated, therefore only a few are visible above. Those in HISTORY and CULTURE are highly connected and clustered around history of empires and culture of China.  My second year's reading  list was about scientific curiosity and Neadham Problem. 
+The book groups of SCIENCE are centered around *Data Science* .  Those in NATURE and MISC are generally independent and isolated, therefore only a few are visible above. Those in HISTORY and CULTURE are highly connected and clustered around history of empires and culture of China. But the majority of books are scattered in the background. My second year's reading  list was about scientific curiosity and Neadham Problem. 
 
 ### More To Come...
 
