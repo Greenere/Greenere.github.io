@@ -15,6 +15,7 @@ Character recognition for passport:done, u6,2019-03,40d
 Engineer intern in Fiberhome: done,u9,2019-08-15,15d
 Summer research about adversarial example:crit,u8,2019-07,60d
 Research intern in Data Science and Computer Vision Lab: active,u10,2019-07,420d
+Weibo Emotion Analysis System: active,u11,2019-11,67d
 
 section Honors&Awards (Approximate Dates)
 "Excellent New Student Award": h1,2017-03,2d
@@ -96,7 +97,6 @@ Awarded as an "Excellent Reader" by the main library of Huazhong University of S
         <td>Remain as a research intern in Data Science and Computer Vision Lab, National Anti-counterfeit Engineering Research Center, working on some new problems.</td>
     </tr>
 </table>
-
 ---
 
 <b><a href="index.html">BACK TO THE HOMEPAGE</a></b>
