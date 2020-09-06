@@ -5,7 +5,9 @@
 <hr>
 <a href="resume.html"><font size="5">RESUME</font></a>
 <font size="5">·</font>
-<a href='subpages/researchProject.html'><font size="5">RESEARCH&PROJECTS</font></a>
+<a href='' title="Not implemented yet"><font size="5">RESEARCH&PROJECTS</font></a>
+<font size="5">·</font>
+<a href='dataMine.html'><font size="5">DATAMINE</font></a>
 <font size="5">·</font>
 <a href='timeline.html'><font size="5">TIMELINE</font></a>
 <!--
@@ -14,7 +16,7 @@
 <a><font color='gray'>------MISC------</font></a>
 <br>-->
 <hr>
-Welcome to Haoyang Li's world !<br>
+Welcome to Haoyang Li's History.<br>
     You may reach me at <b><a href="mailto:lihaoyangjingzhou@outlook.com">lihaoyangjingzhou@outlook.com</a></b>
 <hr>
 </center>
