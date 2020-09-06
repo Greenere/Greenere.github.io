@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
-<title>resume</title><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
+<title>resume</title><link href='https://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic,700italic' rel='stylesheet' type='text/css' /><link href='https://fonts.googleapis.com/css?family=Raleway:600,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
 html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
 body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
 iframe { margin: auto; }
@@ -147,75 +147,383 @@ table tr th { border-bottom: 0px; }
 video { max-width: 100%; display: block; margin: 0px auto; }
 iframe { max-width: 100%; width: 100%; border: none; }
 .highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
 
 
-:root { --window-border: none; --typora-center-window-title: true; --active-file-bg-color: #f3f3f3; --bg-color: #fcfcfc; --control-text-color: #777; }
-.mac-seamless-mode #typora-sidebar { top: var(--mac-title-bar-height); padding-top: 0px; height: auto; }
-html, body, #write { background: rgb(252, 252, 252); font-family: TeXGyreAdventor, "Century Gothic", "Yu Gothic", Raleway, STHeiti, sans-serif; font-weight: 300; }
-h1, h2, h3, h4, h5, h6 { color: rgb(17, 17, 17); font-family: TeXGyreAdventor, "Century Gothic", "Yu Gothic", Ubuntu, STHeiti, sans-serif; }
-html { font-size: 16px; }
-#write { max-width: 914px; text-align: justify; }
-#write > h1:first-child { margin-top: 2.75rem; }
-#write > h2:first-child { margin-top: 1.75rem; }
-#write > h3:first-child { margin-top: 1rem; }
-#write > h4:first-child { margin-top: 0.5rem; }
-h1 { font-weight: normal; line-height: 4rem; margin: 4rem 0px 1.75rem; padding: 20px 30px; text-align: center; text-transform: uppercase; }
-h2 { font-weight: normal; line-height: 3rem; margin: 3rem 0px 1.9375rem; padding: 0px 30px; text-align: center; text-transform: uppercase; }
-h3 { font-weight: normal; }
-h4 { font-weight: normal; }
-h5 { font-size: 1.125rem; font-weight: normal; }
-h6 { font-size: 1rem; font-weight: bold; }
-p { color: rgb(17, 17, 17); font-size: 1rem; line-height: 1.75rem; margin: 0px 0px 1.25rem; }
-#write > h3.md-focus::before { left: -1.875rem; top: 0.5rem; padding: 2px; }
-#write > h4.md-focus::before { left: -1.875rem; top: 0.3125rem; padding: 2px; }
-#write > h5.md-focus::before { left: -1.875rem; top: 0.25rem; padding: 2px; }
-#write > h6.md-focus::before { left: -1.875rem; top: 0.125rem; padding: 2px; }
+@include-when-export url(https://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic,700italic);
+@include-when-export url(https://fonts.googleapis.com/css?family=Raleway:600,400&subset=latin,latin-ext);
+
+;
+:root {
+	--window-border: none;
+	--typora-center-window-title: true;
+	--active-file-bg-color: #f3f3f3;
+	--bg-color: #fcfcfc;
+	--control-text-color: #777;
+}
+
+.mac-seamless-mode #typora-sidebar {
+	top: var(--mac-title-bar-height);
+	padding-top: 0;
+	height: auto;
+}
+
+html,
+body,
+#write{
+	background: #fcfcfc;
+	font-family: 'TeXGyreAdventor', "Century Gothic", 'Yu Gothic', 'Raleway', "STHeiti", sans-serif;
+	font-weight: 300;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: #111;
+	font-family: 'TeXGyreAdventor', "Century Gothic", 'Yu Gothic', 'Ubuntu', "STHeiti", sans-serif;
+}
+
+html {
+	font-size:16px;
+}
+
+#write {
+	max-width: 914px;
+	text-align: justify;
+}
+
+#write>h1:first-child {
+	margin-top: 2.75rem;
+}
+#write>h2:first-child {
+	margin-top: 1.75rem;
+}
+#write>h3:first-child {
+	margin-top: 1rem;
+}
+#write>h4:first-child {
+	margin-top: 0.5rem;
+}
+h1 {
+	font-weight: normal;
+	line-height: 4rem;
+	margin: 0 0 1.75rem;
+	padding: 20px 30px;
+	text-align: center;
+	text-transform: uppercase;
+	margin-top: 4rem;
+}
+h2 {
+	font-weight: normal;
+	line-height: 3rem;
+	margin: 0 0 1.9375rem;
+	padding: 0 30px;
+	text-align: center;
+	text-transform: uppercase;
+	margin-top: 3rem
+}
+h3 {
+	font-weight: normal;
+}
+h4 {
+	font-weight: normal;
+}
+h5 {
+	font-size: 1.125rem;
+	font-weight: normal;
+}
+h6 {
+	font-size: 1rem;
+	font-weight: bold;
+}
+p {
+	color: #111;
+	font-size: 1rem;
+	line-height: 1.75rem;
+	margin: 0 0 1.25rem;
+}
+#write>h3.md-focus:before {
+	left: -1.875rem;
+	top: 0.5rem;
+	padding: 2px;
+}
+#write>h4.md-focus:before {
+	left: -1.875rem;
+	top: 0.3125rem;
+	padding: 2px;
+}
+#write>h5.md-focus:before {
+	left: -1.875rem;
+	top: 0.25rem;
+	padding: 2px;
+}
+#write>h6.md-focus:before {
+	left: -1.875rem;
+	top: .125rem;
+	padding: 2px;
+}
+/*@media screen and (min-width: 48em) {
+	.h1,
+	h1 {
+		font-size: 3.250rem;
+	}
+	.h2,
+	h2 {
+		font-size: 2.298rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.625rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.250rem;
+	}
+	.h5,
+	h5 {
+		font-size: 1.150rem;
+	}
+	.h6,
+	h6 {
+		font-size: 1rem;
+	}
+	#write>h4.md-focus:before,
+	#write>h5.md-focus:before,
+	#write>h6.md-focus:before {
+		top: 1px;
+	}
+	p {
+		font-size: 1.25rem;
+		line-height: 1.8;
+	}
+	table {
+		font-size: 1.25rem;
+	}
+}*/
 @media screen and (max-width: 48em) {
-  blockquote { margin-left: 1rem; margin-right: 0px; padding: 0.5em; }
-  .h1, h1 { font-size: 2.827rem; }
-  .h2, h2 { font-size: 1.999rem; }
-  .h3, h3 { font-size: 1.413rem; }
-  .h4, h4 { font-size: 1.25rem; }
-  .h5, h5 { font-size: 1.15rem; }
-  .h6, h6 { font-size: 1rem; }
+	blockquote {
+		margin-left: 1rem;
+		margin-right: 0;
+		padding: 0.5em;
+	}
+	.h1,
+	h1 {
+		font-size: 2.827rem;
+	}
+	.h2,
+	h2 {
+		font-size: 1.999rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.413rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.250rem;
+	}
+	.h5,
+	h5 {
+		font-size: 1.150rem;
+	}
+	.h6,
+	h6 {
+		font-size: 1rem;
+	}
 }
-a, .md-def-url { color: rgb(153, 0, 0); text-decoration: none; }
-a:hover { text-decoration: underline; }
-table { margin-bottom: 20px; }
-table th, table td { padding: 8px; line-height: 1.25rem; vertical-align: top; border-top: 1px solid rgb(221, 221, 221); }
-table th { font-weight: bold; }
-table thead th { vertical-align: bottom; }
-table caption + thead tr:first-child th, table caption + thead tr:first-child td, table colgroup + thead tr:first-child th, table colgroup + thead tr:first-child td, table thead:first-child tr:first-child th, table thead:first-child tr:first-child td { border-top: 0px; }
-table tbody + tbody { border-top: 2px solid rgb(221, 221, 221); }
-code, .md-fences { border: 1px solid rgb(204, 204, 204); padding: 0.1em; font-size: 0.9em; margin-left: 0.2em; margin-right: 0.2em; }
-.md-fences { margin: 0px 0px 20px; font-size: 1em; padding: 0.4em 1em 0.3em; }
-.task-list { padding-left: 0px; }
-.task-list-item { padding-left: 2.125rem; }
-.task-list-item input { top: 3px; }
-.task-list-item input::before { content: ""; display: inline-block; width: 1rem; height: 1rem; vertical-align: middle; text-align: center; border: 1px solid gray; background-color: rgb(253, 253, 253); margin-left: 0px; margin-top: -0.8rem; }
-.task-list-item input:checked::before, .task-list-item input[checked]::before { content: "◼"; font-size: 0.8125rem; line-height: 0.9375rem; margin-top: -1rem; }
-@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-  .task-list-item input::before { margin-top: -0.2rem; }
-  .task-list-item input:checked::before, .task-list-item input[checked]::before { margin-top: -0.2rem; }
+a,
+.md-def-url {
+	color: #990000;
+	text-decoration: none;
 }
-blockquote { margin: 0px 0px 1.11111rem; padding: 0.5rem 1.11111rem 0px 1.05556rem; border-left: 1px solid gray; }
-blockquote, blockquote p { line-height: 1.6; color: rgb(111, 111, 111); }
-#write pre.md-meta-block { min-height: 30px; background: rgb(248, 248, 248); padding: 3em 1.5em 1.5em; font-weight: 300; font-size: 1em; margin-top: -1.5em; color: rgb(153, 153, 153); width: 100vw; max-width: calc(100% + 60px); margin-left: -30px; border-left: 30px solid rgb(248, 248, 248); border-right: 30px solid rgb(248, 248, 248); }
-.MathJax_Display { font-size: 0.9em; margin-top: 0.5em; margin-bottom: 0px; }
-p.mathjax-block, .mathjax-block { padding-bottom: 0px; }
-.mathjax-block > .code-tooltip { bottom: 5px; box-shadow: none; }
-.md-image > .md-meta { padding-left: 0.5em; padding-right: 0.5em; }
-.md-image > img { margin-top: 2px; }
-.md-image > .md-meta:first-of-type::before { padding-left: 4px; }
-#typora-source { color: rgb(85, 85, 85); }
-#md-searchpanel { border-bottom: 1px solid rgb(204, 204, 204); }
-#md-searchpanel .btn { border: 1px solid rgb(204, 204, 204); }
-#md-notification::before { top: 14px; }
-#md-notification { background: rgb(238, 238, 238); }
-.megamenu-menu-panel .btn { border: 1px solid rgb(204, 204, 204); }
-#typora-sidebar { box-shadow: none; }
-.file-list-item, .show-folder-name .file-list-item { padding-top: 20px; padding-bottom: 20px; line-height: 20px; }
-.file-list-item-summary { height: 40px; line-height: 20px; }
+a:hover {
+	text-decoration: underline;
+}
+table {
+	margin-bottom: 20px
+}
+table th,
+table td {
+	padding: 8px;
+	line-height: 1.25rem;
+	vertical-align: top;
+	border-top: 1px solid #ddd
+}
+table th {
+	font-weight: bold
+}
+table thead th {
+	vertical-align: bottom
+}
+table caption+thead tr:first-child th,
+table caption+thead tr:first-child td,
+table colgroup+thead tr:first-child th,
+table colgroup+thead tr:first-child td,
+table thead:first-child tr:first-child th,
+table thead:first-child tr:first-child td {
+	border-top: 0
+}
+table tbody+tbody {
+	border-top: 2px solid #ddd
+}
+code, .md-fences {
+	padding: .5em;
+	/*background: #f0f0f0;*/
+	border: 1px solid #ccc;
+	padding: .1em;
+	font-size: 0.9em;
+	margin-left: 0.2em;
+	margin-right: 0.2em;
+}
+.md-fences {
+	margin: 0 0 20px;
+	font-size: 1em;
+	padding: 0.3em 1em;
+  	padding-top: 0.4em;
+}
+.task-list{
+	padding-left: 0;
+}
+
+.task-list-item {
+	padding-left:2.125rem;
+}
+
+.task-list-item input {
+	top: 3px;
+
+}
+
+.task-list-item input:before {
+	content: "";
+	display: inline-block;
+	width: 1rem;
+	height: 1rem;
+	vertical-align: middle;
+	text-align: center;
+	border: 1px solid gray;
+	background-color: #fdfdfd;
+	margin-left: 0;
+	margin-top: -0.8rem;
+}
+.task-list-item input:checked:before,
+.task-list-item input[checked]:before{
+	content: '\25FC';
+	/*◘*/
+	font-size: 0.8125rem;
+	line-height: 0.9375rem;
+	margin-top: -1rem;
+}
+
+/* Chrome 29+ */
+@media screen and (-webkit-min-device-pixel-ratio:0)
+  and (min-resolution:.001dpcm) {
+    .task-list-item input:before {
+    	margin-top: -0.2rem;
+    }
+
+    .task-list-item input:checked:before,
+	.task-list-item input[checked]:before {
+		margin-top: -0.2rem;
+	}
+}
+
+blockquote {
+	margin: 0 0 1.11111rem;
+	padding: 0.5rem 1.11111rem 0 1.05556rem;
+	border-left: 1px solid gray;
+}
+blockquote,
+blockquote p {
+	line-height: 1.6;
+	color: #6f6f6f;
+}
+#write pre.md-meta-block {
+	min-height: 30px;
+	background: #f8f8f8;
+	padding: 1.5em;
+	font-weight: 300;
+	font-size: 1em;
+	padding-bottom: 1.5em;
+	padding-top: 3em;
+    margin-top: -1.5em;
+	color: #999;
+	
+	width: 100vw;
+	max-width: calc(100% + 60px);
+	margin-left: -30px;
+	border-left: 30px #f8f8f8 solid;
+	border-right: 30px #f8f8f8 solid;
+}
+.MathJax_Display {
+	font-size: 0.9em;
+	margin-top: 0.5em;
+	margin-bottom: 0;
+}
+p.mathjax-block,
+.mathjax-block {
+	padding-bottom: 0;
+}
+.mathjax-block>.code-tooltip {
+	bottom: 5px;
+	box-shadow: none;
+}
+.md-image>.md-meta {
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+.md-image>img {
+	margin-top: 2px;
+}
+.md-image>.md-meta:first-of-type:before {
+	padding-left: 4px;
+}
+
+#typora-source {
+	color: #555;
+}
+
+/** ui for windows **/
+#md-searchpanel {
+    border-bottom: 1px solid #ccc;
+}
+
+#md-searchpanel .btn {
+    border: 1px solid #ccc;
+}
+
+#md-notification:before {
+	top: 14px;
+}
+
+#md-notification {
+	background: #eee;
+}
+
+.megamenu-menu-panel .btn {
+	border: 1px solid #ccc;
+}
+
+#typora-sidebar {
+	box-shadow: none;
+}
+
+.file-list-item ,
+.show-folder-name .file-list-item {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	line-height: 20px;
+}
+
+.file-list-item-summary {
+	height: 40px;
+	line-height: 20px;
+}
 
  .typora-export li, .typora-export p, .typora-export,  .footnote-line {white-space: normal;} 
 </style>
@@ -224,102 +532,102 @@ p.mathjax-block, .mathjax-block { padding-bottom: 0px; }
 <div  id='write'  class = 'is-node'><title>Haoyang Li</title><p><span>This is a resume/CV originally set up for application. </span><code>You can click the red text for detials.</code></p><hr /><h1><a name="haoyang-li" class="md-header-anchor"></a><span>Haoyang Li</span></h1><center>Huazhong University of Science and Technology (HUST), Wuhan, China</center>
 <center>lihaoyangjingzhou@outlook.com</center><p><strong><span>EDUCATION</span></strong></p><table align="center" border="0">
     <tbody><tr>
-        <td align="left">Sep. 2016 -June 2020 (expected)</td>
-        <td align="left">Bachelor’s Degree, Electronic and Information Engineering,<br>
+        <td align="left">Sep. 2016 -June 2020</td>
+        <td align="left">Bachelor’s Degree, Electronic and Information Engineering, 3.9/4.0 (Top 7%)<br>
             Huazhong University of Science and Technology,<br> Wuhan, Hubei, China</td>
     </tr>
     <tr>
         <td align="left">Aug. 2018</td>
-        <td align="left"><a href="subpages/summerSchool.html">Summer School, Artificial Intelligence, <br>
-            Oriel College, Oxford University, Oxford, United Kingdom</a></td>
+        <td align="left">
+        <a href="subpages/summerSchool.html">Summer School, Artificial Intelligence, <br>
+        Oriel College, Oxford University, Oxford, United Kingdom</a>
+        </td>
     </tr>
-</tbody></table><p><strong><span>GPA,TOEFL &amp; GRE</span></strong></p><table width="400" align="center" border="0">
+</tbody></table><p><strong><span>WORK&amp;INTERNSHIPS</span></strong></p><table align="center" border="0">
     <tbody><tr>
-        <td align="left" width="200">GPA</td>
+        <td align="left">July 2020 - Sep. 2020</td>
         <td align="left">
-            <div title="Cumulative Average Grade: 88.90, Ranking: 10/140">
-                3.90 (Top 7%)
-            </div>
+            <b>Software engineer</b>
+               <font size="1">(Exited in internship for personal reason)</font>, <br>
+               IPC (Internet Protocol Camera), Video Product Line, <br>
+               TP-Link, Shenzhen, Guangdong, China
         </td>
     </tr>
     <tr>
-        <td align="left">TOEFL</td>
+        <td align="left">July 2019 - May 2020</td>
         <td align="left">
-            <div title="Reading: 30, Listening: 29, Speaking: 23, Writing: 26"> 
-                108
-            </div>
+            <b>Research intern</b>, <br>
+               Data Science and Computer Vision Lab, <br>
+               National Anti-counterfeit Engineering Research Center,<br>
+               Huazhong University of Science and Technology, Wuhan, Hubei, China
         </td>
     </tr>
-    <tr>
-        <td align="left">GRE</td>
-        <td align="left">
-            <div title="Verbal: 157, Quantitative: 169, Analytical Writing: 3.5">
-                326+3.5
-            </div>
-        </td>
-    </tr>
-</tbody></table><p><b><a href='subpages/researchProject.html' title="Click for details"><span>RESEARCH &amp; PROJECT</span></a></b></p><table align="center" border="0">
+</tbody></table><p><b><a href='' title="Click for details (not implemented yet)"><span>RESEARCH &amp; PROJECT</span></a></b></p><table align="center" border="0">
     <tbody><tr>
-        <td align="left">Nov.2018 <br>-<br>Dec.2018</td>
+        <td align="left">Dec.2019<br>–<br>May.2020</td>
         <td align="left">
-        <b>Software project:</b>“WELLMAIL” e-mail client. <br>
-        <b>Project description:</b> A fully functional e-mail client with graphic interface, being compatible to all e-mail addresses. It was developed with Python, using SMTP and IMAP4 protocols.<br>
-         <b>My role:</b> Group leader and major programmer.<br>
-         <b>My contribution:</b> While in charge of the project management, I designed the user-interface, implemented the Inbox module and integrated the modules.
+        <b>Graduate Design:</b>The generation and detection of deepfakes. <br>
+        <b>My role:</b>Auther. <br>
+        <b>Tech involved:</b>Human Face Detection, Human Face Alignment, Convolutional Auto-encoder, Image Color Transfer, Image Fusion. <br>
+        <b>Project description:</b>
+        <br>
+        I explored the existing generation and detection methods for deepfake, designed and implemented a deepfake generation method with minor improvements.
+        <br>
         </td>
     </tr>
     <tr>
-        <td align="left">Mar.2019<br>–<br>Apr.2019</td>
-        <td align="left"><b>Image processing coursework:</b> Characters recognition for passport.<br>
-<b>Project description:</b> An image of a passport was given, required to recognize the information on the passport by recognizing the characters within a limited time. We broke it into two steps: character segmentation and character recognition. It was implemented with MATLAB.<br>
-<b>My role:</b> Group leader and major programmer.<br>
-<b>My contribution:</b> While in charge of the project management, I evaluated the proposed methods and implemented the better ones.
-        </td>
-    </tr>
-    <tr>
-        <td align="left">May.2019<br> –<br>June.2019</td>
+        <td align="left">Nov.2019<br>–<br>Dec.2019</td>
         <td align="left">
-        <b>Hardware project:</b> 3-D displayer (with 2-D LED array) .<br>
-<b>Project description:</b> A holographic displayer of 3-D objects. It exploited the persistence of vision to display a 3-D object. For the hardware, we adopted Arduino. A software simulator was developed to aid the design and display of 3-D object, programed with Python and JavaScript.<br>
-<b>My role:</b> Group leader, system designer and software programmer.<br>
-<b>My contribution:</b> While in charge of the project management, I designed the whole system, implemented the simulator and presented the whole project for defense.
+        <b>Big Data Course Design:</b>"WEIBE" weibo emotion analysis system. <br>
+        <b>My role:</b>Group leader and major programmer. <br>
+        <b>Tech involved:</b>Web Crawler, Design and Implementation of Frontend and Backend, NoSQL Database (Mongodb). <br>
+        <b>Project description:</b>
+        <br>We built a system to watch the trending topics in Weibo (the Chinese Twitter) and analyze related posts for their emotional tendencies, and then displayed them in the form of word cloud and scattered dots of emotion for further analysis.<br>
+        <b>My contribution:</b><br>
+         1. The design and implementation of major system. <br>
+         2. The composition of frontend page (using HTML+CSS+JAVASCRIPT and Echarts.js for charts). <br>
+         3. The composition of backend server (using Flask for development and Gevent for deployment). <br>
+         4. The composition of web crawler (using forged request or Selenium simulation). <br>
+         5. The test and improvement of system. <br>
         </td>
     </tr>
     <tr>
         <td align="left">July.2019<br>–<br>Sep.2019</td>
         <td align="left">
         <b>Summer research:</b> Black-box adversarial attack against signature verification system.<br>
-            <b>Research description:</b> We developed a method for the black-box adversarial attack against offline handwritten signature verification system. A region-restricted perturbation was applied to the original signature to generate an adversarial example. We fooled the state-of-art signature verification system with a high success rate. A paper was drafted and it is on submission currently.<br>
-<b>My role:</b> First author.<br>
-<b>My contribution:</b> I developed the attack method, implemented it with Python and designed experiments to evaluate its performance. I also wrote the majority of the paper.
-        </td>
-    </tr>
-</tbody></table><p><strong><span>INTERNSHIPS</span></strong></p><table align="center" border="0">
-    <tbody><tr>
-        <td align="left">July 2019 - Present</td>
-        <td align="left">
-            <b>Research intern</b>, <br>
-Data Science and Computer Vision Lab, <br>
-            National Anti-counterfeit Engineering Research Center,<br>
-            Huazhong University of Science and Technology, Wuhan, Hubei, China
+        <b>My role:</b> First author.<br>
+        <b>Tech involved:</b> Image Classification based on CNN, Adversarial Attack<br>
+        <b>Research description:</b>
+        <br>We developed a method for the black-box adversarial attack against offline handwritten signature verification system. We fooled the state-of-art signature verification system with a high success rate. We composed a piece of paper and it's currently under minor revision (Sep. 2020,<i>Pattern Recognition</i>).<br>
+        <b>My contribution:</b><br>
+         1. The implementation and evaluation of SOTA signature verification algorithm (SigNet).<br>
+         2. The evaluation of existing adversarial attack methods (FGSM, MIM, IGS, etc.).<br>
+         3. The design and implementation of adversarial attack method proposed (using Python with Keras/Tensorflow).<br>
+         4. The composition and modification of paper drafted.<br>
         </td>
     </tr>
     <tr>
-        <td align="left">Aug. 2019</td>
+        <td align="left">Nov.2018 <br>-<br>Dec.2018</td>
         <td align="left">
-                <b title="About optical network and its optimization.">Engineer intern</b>,<br>
-Wuhan Research Institute of Post and Technology (FiberHome),<br>
-            Wuhan, Hubei, China
+        <b>Software project:</b>“WELLMAIL” e-mail client. <br>
+        <b>My role:</b> Group leader and major programmer.<br>
+        <b>Tech involved:</b> Email Processing, Internet Programming in Python, GUI Programming with PyQt<br>
+        <b>Project description:</b>
+        <br>We designed and implemented a fully functional e-mail client with graphic interface. It was developed with Python, using SMTP and IMAP4 protocols.<br>
+         <b>My contribution:</b><br>
+         1. The setting of project agenda. <br>
+         2. The programming of low-level email processing module. <br>
+         3. The design and composition of major page, inbox page and setting page of GUIs.<br>
         </td>
     </tr>
-</tbody></table><p><b><span>PROGRAMMING SKILLS</span></b></p><table width="400" align="center" border="0">
+</tbody></table><p><strong><span>PROGRAMMING&amp;TOOL SKILLS</span></strong></p><table width="400" align="center" border="0">
     <tbody><tr>
         <td align="left">
             <div title="Being able to create large project or implement complicated algorithms with it.">
-                Proficient
+                Very Familiar
             </div>
         </td>
-        <td align="left">Python</td>
+        <td align="left">Python, C</td>
     </tr>
     <tr>
         <td align="left">
@@ -327,17 +635,17 @@ Wuhan Research Institute of Post and Technology (FiberHome),<br>
                 Familiar
             </div>
         </td>
-        <td align="left">MATLAB, JavaScript, C, C++, SQL, TeX*, HTML *</td>
+        <td align="left"> Git, Shell, MATLAB, JavaScript, C++, SQL, LaTeX*, HTML*</td>
     </tr>
     <tr>
         <td align="left">
             <div title="Being able to understand it.">
-                Comprehensible
+                Basic
             </div>
         </td>
-        <td align="left">Java, Go,Verilog</td>
+        <td align="left">Java, Go</td>
     </tr>
-</tbody></table><p>&nbsp;</p><p><font size='1'><span>*Technically these are markup languages</span></font></p><p><b><span>SELECTED </span><a href="subpages/selectedCoursesAndGrades.html" title="Click for the transcript" ><span>COURSES</span></a><span> AND GRADES</span></b></p><table align="center" border="0">
+</tbody></table><p><font size='1'><span>*Technically these are markup languages</span></font></p><p><b><span>SELECTED </span><a href="subpages/selectedCoursesAndGrades.html" title="Click for the transcript" ><span>COURSES</span></a><span> AND GRADES</span></b></p><table align="center" border="0">
     <tbody><tr>
         <td align="left">Advanced Programming Language (C++)</td>
         <td align="left">90</td>
@@ -376,28 +684,32 @@ Wuhan Research Institute of Post and Technology (FiberHome),<br>
     </tr>
 </tbody></table><p><b><a href="subpages/honorsAndAwards.html" title="Click for details"><span>HONORS AND AWARDS</span></a></b></p><table width="400" align="center" border="0">
     <tbody><tr>
-        <td align="left" width="100">Mar. 2017</td>
-        <td align="left">“Excellent New Student Award”, Huazhong University of Science and Technology </td>
+        <td align="left" width="100">May 2020</td>
+        <td align="left">“Excellent Graduate”, Huazhong University of Science and Technology </td>
     </tr>
     <tr>
-        <td align="left">Oct. 2017</td>
+        <td align="left">Oct. 2019</td>
         <td align="left">“Merit Student Award”, Huazhong University of Science and Technology</td>
-    </tr>
-    <tr>
-        <td align="left">May 2018</td>
-        <td align="left">“The Third Prize”, the 11th Central China Mathematic Modelling Contest of University Students</td>
-    </tr>
-    <tr>
-        <td align="left">Apr. 2019</td>
-        <td align="left">“Honorable Mention”, the Interdisciplinary Contest in Modeling (ICM), 2019</td>
     </tr>
     <tr>
         <td align="left">Apr. 2019</td>
         <td align="left">“Excellent Reader”, the main library of Huazhong University of Science and Technology</td>
     </tr>
     <tr>
-        <td align="left">Oct. 2019</td>
+        <td align="left">Apr. 2019</td>
+        <td align="left">“Honorable Mention”, the Interdisciplinary Contest in Modeling (ICM), 2019</td>
+    </tr>
+    <tr>
+        <td align="left">May 2018</td>
+        <td align="left">“The Third Prize”, the 11th Central China Mathematic Modelling Contest of University Students</td>
+    </tr>
+    <tr>
+        <td align="left">Oct. 2017</td>
         <td align="left">“Merit Student Award”, Huazhong University of Science and Technology</td>
+    </tr>
+    <tr>
+        <td align="left" width="100">Mar. 2017</td>
+        <td align="left">“Excellent New Student Award”, Huazhong University of Science and Technology </td>
     </tr>
 </tbody></table><p><b><span>EXTRACURRICULAR ACTIVITIES</span></b></p><table width="400" align="center" border="0">
     <tbody><tr>
@@ -416,7 +728,7 @@ Wuhan Research Institute of Post and Technology (FiberHome),<br>
 </tbody></table><p><strong><span>INTERESTS</span></strong></p><table width="400" align="center" border="0">
     <tbody><tr>
         <td align="left">Research</td>
-        <td align="left">Image processing, Computer vision, Big data, Data mining, Artificial intelligence</td>
+        <td align="left">Computer vision, Image processing, Adversarial Example</td>
     </tr>
     <tr>
         <td align="left">Extracurricular</td>
