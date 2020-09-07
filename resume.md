@@ -136,15 +136,6 @@ This is a resume/CV originally set up for application. `You can click the red te
          1. The setting of project agenda. <br>
          2. The programming of low-level email processing module. <br>
          3. The design and composition of major page, inbox page and setting page of GUIs.<br>
-        <b>Software project:</b>“WELLMAIL” e-mail client. <br>
-        <b>My role:</b> Group leader and major programmer.<br>
-        <b>Tech involved:</b> Email Processing, Internet Programming in Python, GUI Programming with PyQt<br>
-        <b>Project description:</b>
-        <br>We designed and implemented a fully functional e-mail client with graphic interface. It was developed with Python, using SMTP and IMAP4 protocols.<br>
-         <b>My contribution:</b><br>
-         1. The setting of project agenda. <br>
-         2. The programming of low-level email processing module. <br>
-         3. The design and composition of major page, inbox page and setting page of GUIs.<br>
         </td>
     </tr>
 </table>
