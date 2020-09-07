@@ -158,7 +158,6 @@ This is a resume/CV originally set up for application. `You can click the red te
         </td>
         <td align="left">
          <i>Haoyang Li, Heng Li, Hansong Zhang, Wei Yuan, Black-box Attack against Handwritten Signature Verification with Region-restricted Adversarial Perturbations, Pattern Recognition.</i>
->>>>>>> master
         </td>
     </tr>
 </table>
