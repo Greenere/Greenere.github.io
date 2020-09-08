@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
-<title>researchProject</title><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
+<title>researchProject</title><link href='https://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic,700italic' rel='stylesheet' type='text/css' /><link href='https://fonts.googleapis.com/css?family=Raleway:600,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
 html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
 body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
 iframe { margin: auto; }
@@ -16,6 +16,7 @@ a:active, a:hover { outline: 0px; }
 .for-image #write { padding-left: 8px; padding-right: 8px; }
 body.typora-export { padding-left: 30px; padding-right: 30px; }
 .typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
 @media screen and (max-width: 500px) {
   body.typora-export { padding-left: 0px; padding-right: 0px; }
   #write { padding-left: 20px; padding-right: 20px; }
@@ -24,14 +25,14 @@ body.typora-export { padding-left: 30px; padding-right: 30px; }
 }
 #write li > figure:last-child { margin-bottom: 0.5rem; }
 #write ol, #write ul { position: relative; }
-img { max-width: 100%; vertical-align: middle; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
 button, input, select, textarea { color: inherit; font: inherit; }
 input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
 *, ::after, ::before { box-sizing: border-box; }
 #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
 #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
 p { line-height: inherit; }
-h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 2; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
 p { orphans: 4; }
 h1 { font-size: 2rem; }
 h2 { font-size: 1.8rem; }
@@ -47,7 +48,7 @@ sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); 
 sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
 #write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
 figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
-figure > table { margin: 0px !important; }
+figure > table { margin: 0px; }
 tr { break-inside: avoid; break-after: auto; }
 thead { display: table-header-group; }
 table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
@@ -82,22 +83,24 @@ blockquote > :first-child, li > :first-child { margin-top: 0px; }
 .footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
 #write .footnote-line { white-space: pre-wrap; }
 @media print {
-  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; }
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
   #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
   .typora-export * { -webkit-print-color-adjust: exact; }
   html.blink-to-pdf { font-size: 13px; }
-  .typora-export #write { padding-left: 32px; padding-right: 32px; padding-bottom: 0px; break-after: avoid; }
+  .typora-export #write { break-after: avoid; }
   .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
 }
 .footnote-line { margin-top: 0.714em; font-size: 0.7em; }
 a img, img a { cursor: pointer; }
 pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
 p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
 p > .md-image:only-child { display: inline-block; width: 100%; }
 #write .MathJax_Display { margin: 0.8em 0px 0px; }
 .md-math-block { width: 100%; }
 .md-math-block:not(:empty)::after { display: none; }
-[contenteditable="true"]:active, [contenteditable="true"]:focus { outline: 0px; box-shadow: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
 .md-task-list-item { position: relative; list-style-type: none; }
 .task-list-item.md-task-list-item { padding-left: 0px; }
 .md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
@@ -141,87 +144,402 @@ a.md-print-anchor { white-space: pre !important; border-width: initial !importan
 .MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
 .os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
 .md-diagram-panel > svg { max-width: 100%; }
-[lang="mermaid"] svg, [lang="flow"] svg { max-width: 100%; height: auto; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
 [lang="mermaid"] .node text { font-size: 1rem; }
 table tr th { border-bottom: 0px; }
 video { max-width: 100%; display: block; margin: 0px auto; }
 iframe { max-width: 100%; width: 100%; border: none; }
 .highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+  .typora-export h1::after, .typora-export h2::after, .typora-export h3::after, .typora-export h4::after, .typora-export h5::after, .typora-export h6::after { content: ""; display: block; height: 100px; margin-bottom: -100px; }
+}
 
 
-:root { --window-border: none; --typora-center-window-title: true; --active-file-bg-color: #f3f3f3; --bg-color: #fcfcfc; --control-text-color: #777; }
-.mac-seamless-mode #typora-sidebar { top: var(--mac-title-bar-height); padding-top: 0px; height: auto; }
-html, body, #write { background: rgb(252, 252, 252); font-family: TeXGyreAdventor, "Century Gothic", "Yu Gothic", Raleway, STHeiti, sans-serif; font-weight: 300; }
-h1, h2, h3, h4, h5, h6 { color: rgb(17, 17, 17); font-family: TeXGyreAdventor, "Century Gothic", "Yu Gothic", Ubuntu, STHeiti, sans-serif; }
-html { font-size: 16px; }
-#write { max-width: 914px; text-align: justify; }
-#write > h1:first-child { margin-top: 2.75rem; }
-#write > h2:first-child { margin-top: 1.75rem; }
-#write > h3:first-child { margin-top: 1rem; }
-#write > h4:first-child { margin-top: 0.5rem; }
-h1 { font-weight: normal; line-height: 4rem; margin: 4rem 0px 1.75rem; padding: 20px 30px; text-align: center; text-transform: uppercase; }
-h2 { font-weight: normal; line-height: 3rem; margin: 3rem 0px 1.9375rem; padding: 0px 30px; text-align: center; text-transform: uppercase; }
-h3 { font-weight: normal; }
-h4 { font-weight: normal; }
-h5 { font-size: 1.125rem; font-weight: normal; }
-h6 { font-size: 1rem; font-weight: bold; }
-p { color: rgb(17, 17, 17); font-size: 1rem; line-height: 1.75rem; margin: 0px 0px 1.25rem; }
-#write > h3.md-focus::before { left: -1.875rem; top: 0.5rem; padding: 2px; }
-#write > h4.md-focus::before { left: -1.875rem; top: 0.3125rem; padding: 2px; }
-#write > h5.md-focus::before { left: -1.875rem; top: 0.25rem; padding: 2px; }
-#write > h6.md-focus::before { left: -1.875rem; top: 0.125rem; padding: 2px; }
+@include-when-export url(https://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic,700italic);
+@include-when-export url(https://fonts.googleapis.com/css?family=Raleway:600,400&subset=latin,latin-ext);
+
+
+:root {
+	--window-border: none;
+	--typora-center-window-title: true;
+	--active-file-bg-color: #f3f3f3;
+	--bg-color: #fcfcfc;
+	--control-text-color: #777;
+}
+
+.mac-seamless-mode #typora-sidebar {
+	top: var(--mac-title-bar-height);
+	padding-top: 0;
+	height: auto;
+}
+
+html,
+body,
+#write{
+	background: #fcfcfc;
+	font-family: 'TeXGyreAdventor', "Century Gothic", 'Yu Gothic', 'Raleway', "STHeiti", sans-serif;
+	font-weight: 300;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: #111;
+	font-family: 'TeXGyreAdventor', "Century Gothic", 'Yu Gothic', 'Ubuntu', "STHeiti", sans-serif;
+}
+
+html {
+	font-size:16px;
+}
+
+#write {
+	max-width: 914px;
+	text-align: justify;
+}
+
+#write>h1:first-child {
+	margin-top: 2.75rem;
+}
+#write>h2:first-child {
+	margin-top: 1.75rem;
+}
+#write>h3:first-child {
+	margin-top: 1rem;
+}
+#write>h4:first-child {
+	margin-top: 0.5rem;
+}
+h1 {
+	font-weight: normal;
+	line-height: 4rem;
+	margin: 0 0 1.75rem;
+	padding: 20px 30px;
+	text-align: center;
+	text-transform: uppercase;
+	margin-top: 4rem;
+}
+h2 {
+	font-weight: normal;
+	line-height: 3rem;
+	margin: 0 0 1.9375rem;
+	padding: 0 30px;
+	text-align: center;
+	text-transform: uppercase;
+	margin-top: 3rem
+}
+h3 {
+	font-weight: normal;
+}
+h4 {
+	font-weight: normal;
+}
+h5 {
+	font-size: 1.125rem;
+	font-weight: normal;
+}
+h6 {
+	font-size: 1rem;
+	font-weight: bold;
+}
+p {
+	color: #111;
+	font-size: 1rem;
+	line-height: 1.75rem;
+	margin: 0 0 1.25rem;
+}
+#write>h3.md-focus:before {
+	left: -1.875rem;
+	top: 0.5rem;
+	padding: 2px;
+}
+#write>h4.md-focus:before {
+	left: -1.875rem;
+	top: 0.3125rem;
+	padding: 2px;
+}
+#write>h5.md-focus:before {
+	left: -1.875rem;
+	top: 0.25rem;
+	padding: 2px;
+}
+#write>h6.md-focus:before {
+	left: -1.875rem;
+	top: .125rem;
+	padding: 2px;
+}
+/*@media screen and (min-width: 48em) {
+	.h1,
+	h1 {
+		font-size: 3.250rem;
+	}
+	.h2,
+	h2 {
+		font-size: 2.298rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.625rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.250rem;
+	}
+	.h5,
+	h5 {
+		font-size: 1.150rem;
+	}
+	.h6,
+	h6 {
+		font-size: 1rem;
+	}
+	#write>h4.md-focus:before,
+	#write>h5.md-focus:before,
+	#write>h6.md-focus:before {
+		top: 1px;
+	}
+	p {
+		font-size: 1.25rem;
+		line-height: 1.8;
+	}
+	table {
+		font-size: 1.25rem;
+	}
+}*/
 @media screen and (max-width: 48em) {
-  blockquote { margin-left: 1rem; margin-right: 0px; padding: 0.5em; }
-  .h1, h1 { font-size: 2.827rem; }
-  .h2, h2 { font-size: 1.999rem; }
-  .h3, h3 { font-size: 1.413rem; }
-  .h4, h4 { font-size: 1.25rem; }
-  .h5, h5 { font-size: 1.15rem; }
-  .h6, h6 { font-size: 1rem; }
+	blockquote {
+		margin-left: 1rem;
+		margin-right: 0;
+		padding: 0.5em;
+	}
+	.h1,
+	h1 {
+		font-size: 2.827rem;
+	}
+	.h2,
+	h2 {
+		font-size: 1.999rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.413rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.250rem;
+	}
+	.h5,
+	h5 {
+		font-size: 1.150rem;
+	}
+	.h6,
+	h6 {
+		font-size: 1rem;
+	}
 }
-a, .md-def-url { color: rgb(153, 0, 0); text-decoration: none; }
-a:hover { text-decoration: underline; }
-table { margin-bottom: 20px; }
-table th, table td { padding: 8px; line-height: 1.25rem; vertical-align: top; border-top: 1px solid rgb(221, 221, 221); }
-table th { font-weight: bold; }
-table thead th { vertical-align: bottom; }
-table caption + thead tr:first-child th, table caption + thead tr:first-child td, table colgroup + thead tr:first-child th, table colgroup + thead tr:first-child td, table thead:first-child tr:first-child th, table thead:first-child tr:first-child td { border-top: 0px; }
-table tbody + tbody { border-top: 2px solid rgb(221, 221, 221); }
-code, .md-fences { border: 1px solid rgb(204, 204, 204); padding: 0.1em; font-size: 0.9em; margin-left: 0.2em; margin-right: 0.2em; }
-.md-fences { margin: 0px 0px 20px; font-size: 1em; padding: 0.4em 1em 0.3em; }
-.task-list { padding-left: 0px; }
-.task-list-item { padding-left: 2.125rem; }
-.task-list-item input { top: 3px; }
-.task-list-item input::before { content: ""; display: inline-block; width: 1rem; height: 1rem; vertical-align: middle; text-align: center; border: 1px solid gray; background-color: rgb(253, 253, 253); margin-left: 0px; margin-top: -0.8rem; }
-.task-list-item input:checked::before, .task-list-item input[checked]::before { content: "◼"; font-size: 0.8125rem; line-height: 0.9375rem; margin-top: -1rem; }
-@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-  .task-list-item input::before { margin-top: -0.2rem; }
-  .task-list-item input:checked::before, .task-list-item input[checked]::before { margin-top: -0.2rem; }
+a,
+.md-def-url {
+	color: #990000;
+	text-decoration: none;
 }
-blockquote { margin: 0px 0px 1.11111rem; padding: 0.5rem 1.11111rem 0px 1.05556rem; border-left: 1px solid gray; }
-blockquote, blockquote p { line-height: 1.6; color: rgb(111, 111, 111); }
-#write pre.md-meta-block { min-height: 30px; background: rgb(248, 248, 248); padding: 3em 1.5em 1.5em; font-weight: 300; font-size: 1em; margin-top: -1.5em; color: rgb(153, 153, 153); width: 100vw; max-width: calc(100% + 60px); margin-left: -30px; border-left: 30px solid rgb(248, 248, 248); border-right: 30px solid rgb(248, 248, 248); }
-.MathJax_Display { font-size: 0.9em; margin-top: 0.5em; margin-bottom: 0px; }
-p.mathjax-block, .mathjax-block { padding-bottom: 0px; }
-.mathjax-block > .code-tooltip { bottom: 5px; box-shadow: none; }
-.md-image > .md-meta { padding-left: 0.5em; padding-right: 0.5em; }
-.md-image > img { margin-top: 2px; }
-.md-image > .md-meta:first-of-type::before { padding-left: 4px; }
-#typora-source { color: rgb(85, 85, 85); }
-#md-searchpanel { border-bottom: 1px solid rgb(204, 204, 204); }
-#md-searchpanel .btn { border: 1px solid rgb(204, 204, 204); }
-#md-notification::before { top: 14px; }
-#md-notification { background: rgb(238, 238, 238); }
-.megamenu-menu-panel .btn { border: 1px solid rgb(204, 204, 204); }
-#typora-sidebar { box-shadow: none; }
-.file-list-item, .show-folder-name .file-list-item { padding-top: 20px; padding-bottom: 20px; line-height: 20px; }
-.file-list-item-summary { height: 40px; line-height: 20px; }
+a:hover {
+	text-decoration: underline;
+}
+table {
+	margin-bottom: 20px
+}
+table th,
+table td {
+	padding: 8px;
+	line-height: 1.25rem;
+	vertical-align: top;
+	border-top: 1px solid #ddd
+}
+table th {
+	font-weight: bold
+}
+table thead th {
+	vertical-align: bottom
+}
+table caption+thead tr:first-child th,
+table caption+thead tr:first-child td,
+table colgroup+thead tr:first-child th,
+table colgroup+thead tr:first-child td,
+table thead:first-child tr:first-child th,
+table thead:first-child tr:first-child td {
+	border-top: 0
+}
+table tbody+tbody {
+	border-top: 2px solid #ddd
+}
+code, .md-fences {
+	padding: .5em;
+	/*background: #f0f0f0;*/
+	border: 1px solid #ccc;
+	padding: .1em;
+	font-size: 0.9em;
+	margin-left: 0.2em;
+	margin-right: 0.2em;
+}
+.md-fences {
+	margin: 0 0 20px;
+	font-size: 1em;
+	padding: 0.3em 1em;
+  	padding-top: 0.4em;
+}
+.task-list{
+	padding-left: 0;
+}
+
+.task-list-item {
+	padding-left:2.125rem;
+}
+
+.task-list-item input {
+	top: 3px;
+
+}
+
+.task-list-item input:before {
+	content: "";
+	display: inline-block;
+	width: 1rem;
+	height: 1rem;
+	vertical-align: middle;
+	text-align: center;
+	border: 1px solid gray;
+	background-color: #fdfdfd;
+	margin-left: 0;
+	margin-top: -0.8rem;
+}
+.task-list-item input:checked:before,
+.task-list-item input[checked]:before{
+	content: '\25FC';
+	/*◘*/
+	font-size: 0.8125rem;
+	line-height: 0.9375rem;
+	margin-top: -1rem;
+}
+
+/* Chrome 29+ */
+@media screen and (-webkit-min-device-pixel-ratio:0)
+  and (min-resolution:.001dpcm) {
+    .task-list-item input:before {
+    	margin-top: -0.2rem;
+    }
+
+    .task-list-item input:checked:before,
+	.task-list-item input[checked]:before {
+		margin-top: -0.2rem;
+	}
+}
+
+blockquote {
+	margin: 0 0 1.11111rem;
+	padding: 0.5rem 1.11111rem 0 1.05556rem;
+	border-left: 1px solid gray;
+}
+blockquote,
+blockquote p {
+	line-height: 1.6;
+	color: #6f6f6f;
+}
+#write pre.md-meta-block {
+	min-height: 30px;
+	background: #f8f8f8;
+	padding: 1.5em;
+	font-weight: 300;
+	font-size: 1em;
+	padding-bottom: 1.5em;
+	padding-top: 3em;
+    margin-top: -1.5em;
+	color: #999;
+	
+	width: 100vw;
+	max-width: calc(100% + 60px);
+	margin-left: -30px;
+	border-left: 30px #f8f8f8 solid;
+	border-right: 30px #f8f8f8 solid;
+}
+.MathJax_Display {
+	font-size: 0.9em;
+	margin-top: 0.5em;
+	margin-bottom: 0;
+}
+p.mathjax-block,
+.mathjax-block {
+	padding-bottom: 0;
+}
+.mathjax-block>.code-tooltip {
+	bottom: 5px;
+	box-shadow: none;
+}
+.md-image>.md-meta {
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+.md-image>img {
+	margin-top: 2px;
+}
+.md-image>.md-meta:first-of-type:before {
+	padding-left: 4px;
+}
+
+#typora-source {
+	color: #555;
+}
+
+/** ui for windows **/
+#md-searchpanel {
+    border-bottom: 1px solid #ccc;
+}
+
+#md-searchpanel .btn {
+    border: 1px solid #ccc;
+}
+
+#md-notification:before {
+	top: 14px;
+}
+
+#md-notification {
+	background: #eee;
+}
+
+.megamenu-menu-panel .btn {
+	border: 1px solid #ccc;
+}
+
+#typora-sidebar {
+	box-shadow: none;
+}
+
+.file-list-item ,
+.show-folder-name .file-list-item {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	line-height: 20px;
+}
+
+.file-list-item-summary {
+	height: 40px;
+	line-height: 20px;
+}
 
  .typora-export li, .typora-export p, .typora-export,  .footnote-line {white-space: normal;} 
 </style>
 </head>
-<body class='typora-export os-windows' >
-<div  id='write'  class = 'is-node'><h1><a name="researchproject" class="md-header-anchor"></a><span>Research&amp;project</span></h1><p><span>These are selected experiences of research and project, which I think are memorizable and valuable to me.</span></p><h3><a name="wellmail-e-mail-client-nov-2018-dec-2018" class="md-header-anchor"></a><span>&quot;WELLMAIL&quot; e-mail client, Nov. 2018-Dec. 2018</span></h3><p><span>This was the very first project I ever participated that could be referred as a project. For the course, Software Project, an e-mail client was required to be designed and  implemented. We were splitted into groups of three, and we had literally zero experience about how to begin. Most of the other groups chose Java to programmed it, while we chose Python after a few consideration. Python is light, new and all three members wanted to proceed into relevant areas that requires Python&#39;s help.</span></p><p><img src="imgs/wellmail0.png"></p><p><span>It took one week for us to familiarize with Python. I first divided the whole project into three parts: network module, management module and graphic user interface module. Each of us was then in charge of one of the modules. But later we discovered that most of our work would be related to graphic interface, which was quite different from those programs with consoles we coded before.  Therefore, I redivided the project according to the lagical relationship of graphic user interfaces. I was in charge of the Recieve Box module and the Main Module. A user firstly logged in through the Log Module, and then the Main Module communicated with the service, fetching the information. Then it was the Recieve Box Module that appeared in front of the user. Switches for the Writing Module, Setting Module, Contact Module, etc. could be made through the buttons on the left of the Main Module. A search bar was placed above, and the user could fetch the relevant e-mails with key words. </span></p><p><span>We named this client as &quot;WELLMAIL&quot;, in the &quot;WELL&quot; of which, &quot;W&quot; stands for Yun Wang, &quot;L&quot; and &quot;L&quot; stand for Xin Liu and Haoyang Li, and &quot;E&quot; stands for e-mail. This project was designated as one of the best among our peers, although it was clear to us that as a maiden work, there were many parts that could be modified and improved in it. Anyway, the most important skill I got from this experience was that I learned Python and I learned how to develop a software with graphic user interface.</span></p><h3><a name="characters-recognition-for-passport-mar-2019--apr-2019" class="md-header-anchor"></a><span>Characters recognition for passport, Mar. 2019- Apr. 2019</span></h3><p><span>The course, Digital Image Processing, was organized with multiple projects. A final test and a final coursework will contribute to most of the grade. We, four other classmates and me, chose the characters recognition for passport as our final coursework. We thought that characters recognition would be a useful and interesting process. This process was presumed to be a part of the verification system in customs, therefore, it required to be both fast and accurate.</span></p><p><img width=300 src="imgs/passport.png"></p><p><span>An example of passport, published by the authority to show the appearance of passport, was given to us, and we are required to program to recognize the characters in it. It is an image scanned by special equipment. We solved this problem with a two-phase algorithm. For the first phase, the characters were located and cut off  and then for the second, each separate image of characters was classified and recognized. </span></p><p><img width=500 src="imgs/cuts.png"></p><p><span>The first phase was achieved with statistical method as shown above. We tested a bunch of methods, and we found out that a simple statistical one would be sufficient and satisfactory under such a limited dataset. The second phase was done with template match, but we did investigated a series of methods, including SVM, CNN-based classifiers. It was the limited dataset that made us admit that the template match was the relatively superior method.</span></p><p><img width=500 src="imgs/template.png"></p><p><span>To this point, this problem was basically solved. We compared the recognition result with Tesseract OCR (It was unfit to compare with those methods with training ), which revealt that our method was not inferior than it. But we had to agree that there were some intrinsic problems unsolved. In a word, we couldn&#39;t have the program distinguish &quot;0&quot; and &quot;o&quot; correctly, neither did most of the commercial ones. The &quot;0&quot; and &quot;o&quot; appeared on the passport without clear pattern, which made it even difficult for the contextual methods to work. I got familiar with multiple methods to process a image from this experience, and practiced the use of MATLAB from the beginning to the end.</span></p><h3><a name="3-d-displayer-with-2-d-led-array-may-2019--june-2019" class="md-header-anchor"></a><span>3-D displayer (with 2-D LED array), May 2019- June 2019</span></h3><p><span>This title is weird somehow. Well, it was a hardware project, in which we were required to craft a 3-D dsiplayer using a 2-D LED array, based on the persistence of vision. In plain text, we would rotate a plate planted with LEDs to create a hovering hologram of object that looked like a three dimensional one.  I was a part of a group of three, and majorly in responsible for the algorithm and software.</span></p><p><span>This problem seemed to be easy at first. We were thinking that if we could control the LEDs and motor simultaneously and synchronize them, we would be able to display any objects that were dismantled into arrays, prestored in the memory. But, there were nothing but troubles. First, we couldn&#39;t control the LEDs and motor synchronically, because they need to be powered separately and our resources were limited that we had no wireless communication module. Second, the memory was very small that it was impossible to store a series of arrays for an object. We had to generate it on the fly. Third, the 2-D LED array itself worked based on the persistence of vision, therefore the frequency of the rotation was limited in case that the 2-D array became separate dots.</span></p><p><img width=500 src="imgs/3design.png"></p><p><span>Given those limitations, I devised a mechanism that moved most of the hard work to the software, where the memory was abundant as shown above. To implement it, I developped a simulator with a structure of frontend and backend, with Python and JavaScript ( of course there was HTML).  The designed object and displayed object are shown below.</span></p><center>
+<body class='typora-export os-windows'>
+<div id='write'  class=''><h1><a name="researchproject" class="md-header-anchor"></a><span>Research&amp;project</span></h1><p><span>These are selected experiences of research and project, which I think are memorizable and valuable to me.</span></p><h2><a name="content" class="md-header-anchor"></a><span>Content</span></h2><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" href="#researchproject">Research&amp;project</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n158"><a class="md-toc-inner" href="#content">Content</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n138"><a class="md-toc-inner" href="#major-ones">Major Ones</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n23"><a class="md-toc-inner" href="#the-generation-and-detection-of-deepfakes-dec-2019---may-2020">The generation and detection of deepfakes, Dec. 2019 - May 2020</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n148"><a class="md-toc-inner" href="#weibe-weibo-emotion-analysis-system-nov-2019---dec-2019">"WEIBE" weibo emotion analysis system, Nov. 2019 - Dec. 2019</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n144"><a class="md-toc-inner" href="#black-box-adversarial-attack-july-2019---sep-2019">Black-box adversarial attack, July 2019 - Sep. 2019</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n132"><a class="md-toc-inner" href="#wellmail-e-mail-client-nov-2018-dec-2018">"WELLMAIL" e-mail client, Nov. 2018-Dec. 2018</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n42"><a class="md-toc-inner" href="#minor-ones">Minor Ones</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n85"><a class="md-toc-inner" href="#3-d-displayer-with-2-d-led-array-may-2019--june-2019">3-D displayer (with 2-D LED array), May 2019- June 2019</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n111"><a class="md-toc-inner" href="#characters-recognition-for-passport-mar-2019--apr-2019">Characters recognition for passport, Mar. 2019- Apr. 2019</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n30"><a class="md-toc-inner" href="#extra-ones">Extra Ones</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n31"><a class="md-toc-inner" href="#louvre-evacuation-strategy-icm-2019-jan-2019">Louvre Evacuation Strategy (ICM 2019), Jan. 2019</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n38"><a class="md-toc-inner" href="#more-to-come">More to come...</a></span></p></div><h2><a name="major-ones" class="md-header-anchor"></a><span>Major Ones</span></h2><h3><a name="the-generation-and-detection-of-deepfakes-dec-2019---may-2020" class="md-header-anchor"></a><span>The generation and detection of deepfakes, Dec. 2019 - May 2020</span></h3><p><span>This was my graduate design for bachelor degree. The major focus of it is the generation of deepfakes, more specificly, face swapped videos, for which I adjusted the existing method and made some minor improvements. The detection of deepfakes appeared as a survey in the final paper.</span></p><p><span>Details are pending</span></p><h3><a name="weibe-weibo-emotion-analysis-system-nov-2019---dec-2019" class="md-header-anchor"></a><span>&quot;WEIBE&quot; weibo emotion analysis system, Nov. 2019 - Dec. 2019</span></h3><p><span>This was a course project for the course, Capstone Project in Big Data Processing System. </span></p><p><span>Details are pending.....</span></p><h3><a name="black-box-adversarial-attack-july-2019---sep-2019" class="md-header-anchor"></a><span>Black-box adversarial attack, July 2019 - Sep. 2019</span></h3><p><span>In the course, Security of Network and Information, the professor introduced the problem of adversarial examples. I was intrigued by this abnormal phenomenon. I review a few paper and finished my course paper on it, and there was a question occuring to me. I had tested a few adversarial attack methods on MNIST and the adversarial examples generated were not that imperceptible. It seemed inevitabla that noises would cover the whole background of the images of digits, which made it easier to defend by some simple background cleanings with threshold.</span></p><p><span>Besides, there is a clear difference in performance between white-box and black-box attack that the former is generally superior than the latter. It is rational since the former adopts much more information, but it is also obvious that the scenario of white-box attack is very ideal and in reality, it is basically impossible for an attacker to acquire the whole information of the target. With these questions and a feeling that I should try some research, I joined in the Data Science and Computer Vision Lab in National Anti-counterfeit Engineering Research Center in my university as a research intern, working with the same professor who taught my the course, Security of Network and Information. </span></p><p><span>The MNIST dataset is simple and ideal. We would like to find something more realistic and we found the signature, which is a very useful symbol in real life and shares similar features with digits. The clear and separate foreground and background made the real samples resistant to background cleaning and the adversarial ones sensitive to it, which was proved by the experiments.  To craft a &quot;clean&quot; adversarial example, our idea was direct. That was to restrict the perturbations in the stroke region, which was the foreground. I  promoted an iterative framework to optimize the intensity and positions of perturbations separately and reached a satisfactory result, which were &quot;clean&quot; adversarial examples. One of them is shown below on the left.</span></p><center>
+    <img width="300" height="200" src="imgs/advsig.png">
+    <img width="400" height="200" src="imgs/advback.png">
+</center><p><span>The generated adversarial examples were also proved to be resistant to the background cleaning. A comparison of the effects on the predicted probabilities by cleaning the background with different thresholds on adversarial examples generated with different methods is shown above on the right. It is very clear that the genuine signature is hardly effected as shown by the red dash dot line and our method sustains a good performance as shown by the blue solid line.</span></p><p><span>We drafted a paper detailing the whole process and the evaluation of this method and it is on submission currently. I designed and implemented the algorithm and wrote the majority of the paper. This experience of research is really refreshing to me. I walked through a whole process from literature review and algorithm design and implementation to paper writing and learned a lot, including Tensorflow, Latex and how to organize a paper.</span></p><h3><a name="wellmail-e-mail-client-nov-2018-dec-2018" class="md-header-anchor"></a><span>&quot;WELLMAIL&quot; e-mail client, Nov. 2018-Dec. 2018</span></h3><p><span>This was the very first project I ever participated that could be referred as a project. For the course, Software Project, an e-mail client was required to be designed and  implemented. We were splitted into groups of three, and we had literally zero experience about how to begin. Most of the other groups chose Java to programmed it, while we chose Python after a few consideration. Python is light, new and all three members wanted to proceed into relevant areas that requires Python&#39;s help.</span></p><p><img src="imgs/wellmail0.png"></p><p><span>It took one week for us to familiarize with Python. I first divided the whole project into three parts: network module, management module and graphic user interface module. Each of us was then in charge of one of the modules. But later we discovered that most of our work would be related to graphic interface, which was quite different from those programs with consoles we coded before.  Therefore, I redivided the project according to the lagical relationship of graphic user interfaces. I was in charge of the Recieve Box module and the Main Module. A user firstly logged in through the Log Module, and then the Main Module communicated with the service, fetching the information. Then it was the Recieve Box Module that appeared in front of the user. Switches for the Writing Module, Setting Module, Contact Module, etc. could be made through the buttons on the left of the Main Module. A search bar was placed above, and the user could fetch the relevant e-mails with key words. </span></p><p><span>We named this client as &quot;WELLMAIL&quot;, in the &quot;WELL&quot; of which, &quot;W&quot; stands for Yun Wang, &quot;L&quot; and &quot;L&quot; stand for Xin Liu and Haoyang Li, and &quot;E&quot; stands for e-mail. This project was designated as one of the best among our peers, although it was clear to us that as a maiden work, there were many parts that could be modified and improved in it. Anyway, the most important skill I got from this experience was that I learned Python and I learned how to develop a software with graphic user interface.</span></p><h2><a name="minor-ones" class="md-header-anchor"></a><span>Minor Ones</span></h2><h3><a name="3-d-displayer-with-2-d-led-array-may-2019--june-2019" class="md-header-anchor"></a><span>3-D displayer (with 2-D LED array), May 2019- June 2019</span></h3><p><span>This title is weird somehow. Well, it was a hardware project, in which we were required to craft a 3-D dsiplayer using a 2-D LED array, based on the persistence of vision. In plain text, we would rotate a plate planted with LEDs to create a hovering hologram of object that looked like a three dimensional one.  I was a part of a group of three, and majorly in responsible for the algorithm and software.</span></p><p><span>This problem seemed to be easy at first. We were thinking that if we could control the LEDs and motor simultaneously and synchronize them, we would be able to display any objects that were dismantled into arrays, prestored in the memory. But, there were nothing but troubles. First, we couldn&#39;t control the LEDs and motor synchronically, because they need to be powered separately and our resources were limited that we had no wireless communication module. Second, the memory was very small that it was impossible to store a series of arrays for an object. We had to generate it on the fly. Third, the 2-D LED array itself worked based on the persistence of vision, therefore the frequency of the rotation was limited in case that the 2-D array became separate dots.</span></p><p><img width=500 src="imgs/3design.png"></p><p><span>Given those limitations, I devised a mechanism that moved most of the hard work to the software, where the memory was abundant as shown above. To implement it, I developped a simulator with a structure of frontend and backend, with Python and JavaScript ( of course there was HTML).  The designed object and displayed object are shown below.</span></p><center>
     <table width="300" border="0">
     <tbody><tr>
         <td align="center"><img width="200" src="imgs/3dsimcube.png"><img width="200" src="imgs/3dcube.png"></td>
@@ -230,10 +548,7 @@ p.mathjax-block, .mathjax-block { padding-bottom: 0px; }
         <td align="center"><img width="200" src="imgs/3dsimstair.png"><img width="200" src="imgs/3dstair.png"></td>
     </tr>
 </tbody></table>
-</center><p><span>We were finally able to display cube, which was a three-dimensional element. Theoretically, with a more stable and more powerful device, it should be able to display anything. This was an interesting project. </span></p><h3><a name="black-box-adversarial-attack-july-2019---sep-2019" class="md-header-anchor"></a><span>Black-box Adversarial Attack, July 2019 - Sep. 2019</span></h3><p><span>In the course, Security of Network and Information, the professor introduced the problem of adversarial examples. I was intrigued by this abnormal phenomenon. I review a few paper and finished my course paper on it, and there was a question occuring to me. I had tested a few adversarial attack methods on MNIST and the adversarial examples generated were not that imperceptible. It seemed inevitabla that noises would cover the whole background of the images of digits, which made it easier to defend by some simple background cleanings with threshold.</span></p><p><span>Besides, there is a clear difference in performance between white-box and black-box attack that the former is generally superior than the latter. It is rational since the former adopts much more information, but it is also obvious that the scenario of white-box attack is very ideal and in reality, it is basically impossible for an attacker to acquire the whole information of the target. With these questions and a feeling that I should try some research, I joined in the Data Science and Computer Vision Lab in National Anti-counterfeit Engineering Research Center in my university as a research intern, working with the same professor who taught my the course, Security of Network and Information. </span></p><p><span>The MNIST dataset is simple and ideal. We would like to find something more realistic and we found the signature, which is a very useful symbol in real life and shares similar features with digits. The clear and separate foreground and background made the real samples resistant to background cleaning and the adversarial ones sensitive to it, which was proved by the experiments.  To craft a &quot;clean&quot; adversarial example, our idea was direct. That was to restrict the perturbations in the stroke region, which was the foreground. I  promoted an iterative framework to optimize the intensity and positions of perturbations separately and reached a satisfactory result, which were &quot;clean&quot; adversarial examples. One of them is shown below on the left.</span></p><center>
-    <img width="300" height="200" src="imgs/advsig.png">
-    <img width="400" height="200" src="imgs/advback.png">
-</center><p><span>The generated adversarial examples were also proved to be resistant to the background cleaning. A comparison of the effects on the predicted probabilities by cleaning the background with different thresholds on adversarial examples generated with different methods is shown above on the right. It is very clear that the genuine signature is hardly effected as shown by the red dash dot line and our method sustains a good performance as shown by the blue solid line.</span></p><p><span>We drafted a paper detailing the whole process and the evaluation of this method and it is on submission currently. I designed and implemented the algorithm and wrote the majority of the paper. This experience of research is really refreshing to me. I walked through a whole process from literature review and algorithm design and implementation to paper writing and learned a lot, including Tensorflow, Latex and how to organize a paper.</span></p><h2><a name="extra-ones" class="md-header-anchor"></a><span>Extra ones</span></h2><h3><a name="louvre-evacuation-strategy-icm-2019-jan-2019" class="md-header-anchor"></a><span>Louvre Evacuation Strategy (ICM 2019), Jan. 2019</span></h3><p><span>In Janurary. 2019,  I led a group of three competed in the Interdisciplinary Contest in Modeling (ICM). We chose the problem designated as &quot;D&quot; that required us to build a model for the Louvre Museum and design an evacuation  strategy for it.  It took us one day to discuss and decide an appropriate model and finally I proposed a cellular automata model for the Louvre. You may thought that we represented each person to be evacuated as a cell, but actually we chose several representative exhibition halls to be the cells in our model.</span></p><p><img width=400 src="imgs/louvre.png"></p><p><span>This model of Louvre is presented above. For each cell, there was a state that represented the number of people stuck inside when the evacuation began. The neighbors were linked according to the structure of the building. For each iteration, the people in each cell would be evacuated to the neighbors following the strategy.  The baseline strategy we considered was &quot;random wandering&quot;, which meant that no instructions were given and people just walked randomly. The evacuation process of the five levels of the Louvre is presented below on the left. Our solution was called &quot;dynamic plan &quot;</span></p><center>
+</center><p><span>We were finally able to display cube, which was a three-dimensional element. Theoretically, with a more stable and more powerful device, it should be able to display anything. This was an interesting project. </span></p><h3><a name="characters-recognition-for-passport-mar-2019--apr-2019" class="md-header-anchor"></a><span>Characters recognition for passport, Mar. 2019- Apr. 2019</span></h3><p><span>The course, Digital Image Processing, was organized with multiple projects. A final test and a final coursework will contribute to most of the grade. We, four other classmates and me, chose the characters recognition for passport as our final coursework. We thought that characters recognition would be a useful and interesting process. This process was presumed to be a part of the verification system in customs, therefore, it required to be both fast and accurate.</span></p><p><img width=300 src="imgs/passport.png"></p><p><span>An example of passport, published by the authority to show the appearance of passport, was given to us, and we are required to program to recognize the characters in it. It is an image scanned by special equipment. We solved this problem with a two-phase algorithm. For the first phase, the characters were located and cut off  and then for the second, each separate image of characters was classified and recognized. </span></p><p><img width=500 src="imgs/cuts.png"></p><p><span>The first phase was achieved with statistical method as shown above. We tested a bunch of methods, and we found out that a simple statistical one would be sufficient and satisfactory under such a limited dataset. The second phase was done with template match, but we did investigated a series of methods, including SVM, CNN-based classifiers. It was the limited dataset that made us admit that the template match was the relatively superior method.</span></p><p><img width=500 src="imgs/template.png"></p><p><span>To this point, this problem was basically solved. We compared the recognition result with Tesseract OCR (It was unfit to compare with those methods with training ), which revealt that our method was not inferior than it. But we had to agree that there were some intrinsic problems unsolved. In a word, we couldn&#39;t have the program distinguish &quot;0&quot; and &quot;o&quot; correctly, neither did most of the commercial ones. The &quot;0&quot; and &quot;o&quot; appeared on the passport without clear pattern, which made it even difficult for the contextual methods to work. I got familiar with multiple methods to process a image from this experience, and practiced the use of MATLAB from the beginning to the end.</span></p><h2><a name="extra-ones" class="md-header-anchor"></a><span>Extra Ones</span></h2><h3><a name="louvre-evacuation-strategy-icm-2019-jan-2019" class="md-header-anchor"></a><span>Louvre Evacuation Strategy (ICM 2019), Jan. 2019</span></h3><p><span>In Janurary. 2019,  I led a group of three competed in the Interdisciplinary Contest in Modeling (ICM). We chose the problem designated as &quot;D&quot; that required us to build a model for the Louvre Museum and design an evacuation  strategy for it.  It took us one day to discuss and decide an appropriate model and finally I proposed a cellular automata model for the Louvre. You may thought that we represented each person to be evacuated as a cell, but actually we chose several representative exhibition halls to be the cells in our model.</span></p><p><img width=400 src="imgs/louvre.png"></p><p><span>This model of Louvre is presented above. For each cell, there was a state that represented the number of people stuck inside when the evacuation began. The neighbors were linked according to the structure of the building. For each iteration, the people in each cell would be evacuated to the neighbors following the strategy.  The baseline strategy we considered was &quot;random wandering&quot;, which meant that no instructions were given and people just walked randomly. The evacuation process of the five levels of the Louvre is presented below on the left. Our solution was called &quot;dynamic plan &quot;</span></p><center>
 <img width="400" src="imgs/randomwandering.png">
 <img width="400" src="imgs/dynamicplan.png">
 </center><p><span>It is very clear that under our simulation, our strategy reduces the overall evacuation time from 3000s to 600s. This so called &quot;dynamic plan&quot; was very simple. The core idea of it was to make sure that no congestion would occur during the whole process, for which people would be welcomed by relatively empty exhibition halls and rejected by nearly congested ones. Our simulation showed that no matter what the original strategy was, all people would be evacuated quickly with a dynamic control of congestion.</span></p><p><span>This model was implemented in MATLAB. The paper we drafted was done in a rash, which is not ideal if I give a score now. Therefore, I think a &quot;Honorable Mention&quot; is good enough for us in this time.  </span></p><h3><a name="more-to-come" class="md-header-anchor"></a><span>More to come...</span></h3><p><span>There were a lot of small projects and courseworks that I didn&#39;t mention. In Fall 2019, I am working on a Weibo emotion analysis system, it may be included in the future. I believe that there will be more projects detailed here.</span></p><hr /><p><span>BACK TO </span><b><a href="../resume.html"><span>RESUME</span></a></b><span> OR </span><b><a href="../index.html"><span>HOME</span></a></b></p></div>

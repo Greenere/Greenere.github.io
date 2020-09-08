@@ -23,8 +23,7 @@ This is a resume/CV originally set up for application. `You can click the red te
         </td>
     </tr>
 </table>
-
-**WORK&INTERNSHIPS**
+**WORK & INTERNSHIPS**
 
 <table align="center" border="0">
     <tr>
@@ -46,8 +45,7 @@ This is a resume/CV originally set up for application. `You can click the red te
         </td>
     </tr>
 </table>
-
-<b><a href='' title="Click for details (not implemented yet)">RESEARCH & PROJECT</a></b>
+<b><a href='subpages/researchProject.html' title="Click for details">RESEARCH & PROJECT</a></b>
 
 <table align="center" border="0">
     <tr>
@@ -79,38 +77,7 @@ This is a resume/CV originally set up for application. `You can click the red te
         </td>
     </tr>
     <tr>
-        <td align="left">Nov.2019<br>–<br>Dec.2019</td>
-        <td align="left">
-        <b>Big Data Course Design:</b>"WEIBE" weibo emotion analysis system. <br>
-        <b>My role:</b>Group leader and major programmer. <br>
-        <b>Tech involved:</b>Web Crawler, Design and Implementation of Frontend and Backend, NoSQL Database (Mongodb). <br>
-        <b>Project description:</b>
-        <br>We built a system to watch the trending topics in Weibo (the Chinese Twitter) and analyze related posts for their emotional tendencies, and then displayed them in the form of word cloud and scattered dots of emotion for further analysis.<br>
-        <b>My contribution:</b><br>
-         1. The design and implementation of major system. <br>
-         2. The composition of frontend page (using HTML+CSS+JAVASCRIPT and Echarts.js for charts). <br>
-         3. The composition of backend server (using Flask for development and Gevent for deployment). <br>
-         4. The composition of web crawler (using forged request or Selenium simulation). <br>
-         5. The test and improvement of system. <br>
-        </td>
-    </tr>
-    <tr>
         <td align="left">July.2019<br>–<br>Sep.2019</td>
-        <td align="left">
-        <b>Summer research:</b> Black-box adversarial attack against signature verification system.<br>
-        <b>My role:</b> First author.<br>
-        <b>Tech involved:</b> Image Classification based on CNN, Adversarial Attack<br>
-        <b>Research description:</b>
-        <br>We developed a method for the black-box adversarial attack against offline handwritten signature verification system. We fooled the state-of-art signature verification system with a high success rate. We composed a piece of paper and it's currently under minor revision (Sep. 2020,<i>Pattern Recognition</i>).<br>
-        <b>My contribution:</b><br>
-         1. The implementation and evaluation of SOTA signature verification algorithm (SigNet).<br>
-         2. The evaluation of existing adversarial attack methods (FGSM, MIM, IGS, etc.).<br>
-         3. The design and implementation of adversarial attack method proposed (using Python with Keras/Tensorflow).<br>
-         4. The composition and modification of paper drafted.<br>
-        </td>
-    </tr>
-    <tr>
-        <td align="left">Nov.2018 <br>-<br>Dec.2018</td>
         <td align="left">
         <b>Summer research:</b> Black-box adversarial attack against signature verification system.<br>
         <b>My role:</b> First author.<br>
@@ -152,8 +119,7 @@ This is a resume/CV originally set up for application. `You can click the red te
         </td>
     </tr>
 </table>
-
-**PROGRAMMING&TOOL SKILLS**
+**PROGRAMMING & TOOL SKILLS**
 
 <table width=400 align="center" border="0">
     <tr>

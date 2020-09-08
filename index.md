@@ -5,7 +5,7 @@
 <hr>
 <a href="resume.html"><font size="5">RESUME</font></a>
 <font size="5">·</font>
-<a href='' title="Not implemented yet"><font size="5">RESEARCH&PROJECTS</font></a>
+<a href='subpahes/researchProject.html'><font size="5">RESEARCH&PROJECTS</font></a>
 <font size="5">·</font>
 <a href='dataMine.html'><font size="5">DATAMINE</font></a>
 <font size="5">·</font>
@@ -21,6 +21,7 @@ Welcome to Haoyang Li's History.<br>
 <hr>
 </center>
 </div>
+
 
 
 
