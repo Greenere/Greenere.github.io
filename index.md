@@ -5,7 +5,7 @@
 <hr>
 <a href="resume.html"><font size="5">RESUME</font></a>
 <font size="5">·</font>
-<a href='subpahes/researchProject.html'><font size="5">RESEARCH&PROJECTS</font></a>
+<a href='subpages/researchProject.html'><font size="5">RESEARCH&PROJECTS</font></a>
 <font size="5">·</font>
 <a href='dataMine.html'><font size="5">DATAMINE</font></a>
 <font size="5">·</font>
