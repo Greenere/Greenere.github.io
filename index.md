@@ -10,6 +10,8 @@
 <a href='dataMine.html'><font size="5">DATAMINE</font></a>
 <font size="5">·</font>
 <a href='timeline.html'><font size="5">TIMELINE</font></a>
+<font size="5">·</font>
+<a href='blogs.html'><font size="5">BLOGS</font></a>
 <!--
 <a><font color='gray'>--PUBLICATIONS--</font></a>
 <br><br>
@@ -21,7 +23,6 @@ Welcome to Haoyang Li's History.<br>
 <hr>
 </center>
 </div>
-
 
 
 
