@@ -1,6 +1,6 @@
 # Courses
 
-The transcript of my first three years in university is shown below.
+The transcript of my undergraduate study in university is shown below.
 
 <img width=800 src="imgs/transcript.jpg">
 
