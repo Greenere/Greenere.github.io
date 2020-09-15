@@ -1,5 +1,7 @@
 # 《编码》杂记
 
+<a href='code-note-en.html'>ENGLISH</a>
+
 [TOC]
 
 ## 构建一台计算机
