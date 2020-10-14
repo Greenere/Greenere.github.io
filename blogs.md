@@ -11,6 +11,10 @@
 
 - <a href="blogs/pages/Note-ObjectDetection.html" target="_blank">A Simple Survey for Object Detection</a>
 
+### FEW-SHOT LEARNING
+
+- <a href="blogs/pages/Note-FewShotLearningSurvey.html" target="_blank">Summarized Survey of Few-Shot Learning</a>
+
 ### READING NOTES
 
 - <a href="blogs/pages/code-note-en.html" target="_blank">How to Build a Computer</a>
