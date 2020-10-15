@@ -106,19 +106,19 @@ This is a resume/CV originally set up for application. `You can click the red te
         </td>
     </tr>
 </table>
-
 **PUBLICATIONS**
 
 <table width=400 align="center" border="0">
     <tr>
         <td align="left">
-         Sep.2020 <br> Minor Revision
+         Oct.2020 <br> Published
         </td>
         <td align="left">
-         <i>Haoyang Li, Heng Li, Hansong Zhang, Wei Yuan, Black-box Attack against Handwritten Signature Verification with Region-restricted Adversarial Perturbations, Pattern Recognition.</i>
+         <i>Haoyang Li, Heng Li, Hansong Zhang, Wei Yuan, <a href="http://www.sciencedirect.com/science/article/pii/S0031320320304921">Black-box attack against handwritten signature verification with region-restricted adversarial perturbations</a>, Pattern Recognition, Volume 111,2021,107689,ISSN 0031-3203</i>
         </td>
     </tr>
 </table>
+
 **PROGRAMMING & TOOL SKILLS**
 
 <table width=400 align="center" border="0">

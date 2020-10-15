@@ -183,24 +183,24 @@ More details can be found in my github repository.
 
 ### Black-box adversarial attack, July 2019 - Sep. 2019
 
-In the course, Security of Network and Information, the professor introduced the problem of adversarial examples. I was intrigued by this abnormal phenomenon. I review a few paper and finished my course paper on it, and there was a question occuring to me. I had tested a few adversarial attack methods on MNIST and the adversarial examples generated were not that imperceptible. It seemed inevitabla that noises would cover the whole background of the images of digits, which made it easier to defend by some simple background cleanings with threshold.
+*Haoyang Li, Heng Li, Hansong Zhang, Wei Yuan, [Black-box attack against handwritten signature verification with region-restricted adversarial perturbations](http://www.sciencedirect.com/science/article/pii/S0031320320304921), Pattern Recognition, Volume 111, 2021,107689, ISSN 0031-3203*
+
+In the course, Security of Network and Information, the professor introduced the problem of adversarial examples to us. I was intrigued by this abnormal phenomenon. I finished my course paper based on this topic, and it occurred to me a question. I had tested a few adversarial attack methods on MNIST and the adversarial examples generated were not that imperceptible. It seemed inevitable that noises would cover the whole background of the images of digits, which made it easier to defend even by some simple background cleanings with threshold.
 
 Besides, there is a clear difference in performance between white-box and black-box attack that the former is generally superior than the latter. It is rational since the former adopts much more information, but it is also obvious that the scenario of white-box attack is very ideal and in reality, it is basically impossible for an attacker to acquire the whole information of the target. 
 
 With these questions and a feeling that I should try some research, I joined in the Data Science and Computer Vision Lab in National Anti-counterfeit Engineering Research Center in my university as a research intern, working with the same professor who taught the course, Security of Network and Information. 
 
-The MNIST dataset is simple and ideal. We would like to target something more realistic and we found the signature, which is a very useful symbol in real life and shares similar features with digits. The clear and separate foreground and background made the real samples resistant to background cleaning and the adversarial ones sensitive to it, which was proved by the experiments.  
+The MNIST dataset is simple and ideal. We would like to target something more realistic and we found the signature, which is a very useful symbol in real life and shares similar features with digits, besides, another students were working on the verification of signatures, which made it more handy. The clear and separate foreground and background made the real samples resistant to background cleaning and the adversarial ones sensitive to it, which was proved by the experiments.  
 
-To craft a "clean" adversarial example, our idea was direct. That was to restrict the perturbations in the stroke region (e.g. the foreground). I  promoted an iterative framework to optimize the intensity and positions of perturbations separately and reached a satisfactory result. One of them is shown below on the left.
+To craft a "clean" adversarial example, our idea was direct. That was to restrict the perturbations in the stroke region (i.e. the foreground). I  proposed an iterative framework to optimize the intensity and positions of perturbations separately and reached a satisfactory result. One of them is shown below on the left.
 
 <center>
     <img width=35% src="imgs/advsig.png"/>
     <img width=50% src="imgs/advback.png"/>
 </center>
 
-The generated adversarial examples were also proved to be resistant to the background cleaning. A comparison of the effects on the predicted probabilities by cleaning the background with different thresholds on adversarial examples generated with different methods is shown above on the right. It is very clear that the genuine signature is hardly effected as shown by the red dash dot line and our method sustains a good performance as shown by the blue solid line.
-
-We composed a piece of paper detailing the whole process and the evaluation of this method.  It was submitted to *Pattern Recognition* in the winter of 2019, and it's currently under minor revision (Sep. 2020).
+The generated adversarial examples were also proved to be resistant to the background cleaning. A comparison of the effects on the predicted probabilities by cleaning the background with different thresholds on adversarial examples generated with different methods is shown above on the right. It is very clear that the genuine signature is hardly effected as shown by the red dash dot line and our method sustains a good performance as shown by the blue solid line. 
 
 This experience of research is really exciting to me. I walked through a whole process of research from literature review and algorithm design and implementation to paper writing and learned a lot, including the use of Tensorflow, LaTex and the method to organize a paper.
 
@@ -275,10 +275,6 @@ This model of Louvre is presented above. For each cell, there was a state that r
 It is very clear that under our simulation, our strategy reduces the overall evacuation time from 3000s to 600s. This so called "dynamic plan" was very simple. The core idea of it was to make sure that no congestion would occur during the whole process, for which people would be welcomed by relatively empty exhibition halls and rejected by nearly congested ones. Our simulation showed that no matter what the original strategy was, all people would be evacuated quickly with a dynamic control of congestion.
 
 This model was implemented in MATLAB. The paper we drafted was done in a rash, which is not ideal if I give a score now. Therefore, I think a "Honorable Mention" is good enough for us in this time.  
-
-### More to come...
-
-There were a lot of small projects and courseworks that I didn't mention and a lot more to come. I will update this page with my progress.
 
 ---
 
