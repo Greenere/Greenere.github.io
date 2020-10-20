@@ -20,6 +20,10 @@
 - <a href="blogs/pages/code-note-en.html" target="_blank">How to Build a Computer</a>
 - <a href="blogs/pages/encrypto-note-en.html" target="_blank">The Evolution of Cryptography</a>
 
+### HISTORY
+
+- <a href="blogs/pages/History-WarRipples.html" target="_blank">The Ripples of War</a>
+
 ---
 
 <b><a href="index.html">BACK TO THE HOMEPAGE</a></b>

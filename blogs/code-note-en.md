@@ -1,6 +1,8 @@
-# Note For "*Code: The Hidden Language of Computer Hardware and Software*"
+# How to Build a Computer?
 
 <a href='code-note.html'>中文</a>
+
+This is a graph note for the book "*Code: The Hidden Language of Computer Hardware and Software*".
 
 [TOC]
 

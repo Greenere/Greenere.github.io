@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
-<title>encrypto-note-en</title><link href='https://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic,700italic' rel='stylesheet' type='text/css' /><link href='https://fonts.googleapis.com/css?family=Raleway:600,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --node-fill: #ECECFF; --node-border: #CCCCFF; --cluster-fill: #ffffde; --cluster-border: #aaaa33; --note-fill: #fff5ad; --note-border: #aaaa33; --mermaid-color: var(--text-color); }
+<title>encrypto-note-en</title><link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --node-fill: #ECECFF; --node-border: #CCCCFF; --cluster-fill: #ffffde; --cluster-border: #aaaa33; --note-fill: #fff5ad; --note-border: #aaaa33; --mermaid-color: var(--text-color); }
 .label { font-family: var(--mermaid-font-family); color: rgb(51, 51, 51); }
 .label text { fill: rgb(51, 51, 51); }
 .node rect, .node circle, .node ellipse, .node polygon { fill: var(--node-fill); stroke: rgb(147, 112, 219); stroke-width: 1px; }
@@ -351,30 +351,53 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
 }
 
 
-@include-when-export url(https://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic,700italic);
-@include-when-export url(https://fonts.googleapis.com/css?family=Raleway:600,400&subset=latin,latin-ext);
-
-
 :root {
-	--window-border: none;
-	--typora-center-window-title: true;
-	--active-file-bg-color: #f3f3f3;
-	--bg-color: #fcfcfc;
-	--control-text-color: #777;
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
 }
 
-.mac-seamless-mode #typora-sidebar {
-	top: var(--mac-title-bar-height);
-	padding-top: 0;
-	height: auto;
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
 }
 
-html,
-body,
-#write{
-	background: #fcfcfc;
-	font-family: 'TeXGyreAdventor', "Century Gothic", 'Yu Gothic', 'Raleway', "STHeiti", sans-serif;
-	font-weight: 300;
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
 }
 h1,
 h2,
@@ -382,357 +405,339 @@ h3,
 h4,
 h5,
 h6 {
-	color: #111;
-	font-family: 'TeXGyreAdventor', "Century Gothic", 'Yu Gothic', 'Ubuntu', "STHeiti", sans-serif;
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
 }
-
-html {
-	font-size:16px;
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
 }
-
-#write {
-	max-width: 914px;
-	text-align: justify;
+h1 tt,
+h1 code {
+    font-size: inherit;
 }
-
-#write>h1:first-child {
-	margin-top: 2.75rem;
+h2 tt,
+h2 code {
+    font-size: inherit;
 }
-#write>h2:first-child {
-	margin-top: 1.75rem;
+h3 tt,
+h3 code {
+    font-size: inherit;
 }
-#write>h3:first-child {
-	margin-top: 1rem;
+h4 tt,
+h4 code {
+    font-size: inherit;
 }
-#write>h4:first-child {
-	margin-top: 0.5rem;
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
 }
 h1 {
-	font-weight: normal;
-	line-height: 4rem;
-	margin: 0 0 1.75rem;
-	padding: 20px 30px;
-	text-align: center;
-	text-transform: uppercase;
-	margin-top: 4rem;
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
 }
 h2 {
-	font-weight: normal;
-	line-height: 3rem;
-	margin: 0 0 1.9375rem;
-	padding: 0 30px;
-	text-align: center;
-	text-transform: uppercase;
-	margin-top: 3rem
-}
-h3 {
-	font-weight: normal;
-}
-h4 {
-	font-weight: normal;
-}
-h5 {
-	font-size: 1.125rem;
-	font-weight: normal;
-}
-h6 {
-	font-size: 1rem;
-	font-weight: bold;
-}
-p {
-	color: #111;
-	font-size: 1rem;
-	line-height: 1.75rem;
-	margin: 0 0 1.25rem;
-}
-#write>h3.md-focus:before {
-	left: -1.875rem;
-	top: 0.5rem;
-	padding: 2px;
-}
-#write>h4.md-focus:before {
-	left: -1.875rem;
-	top: 0.3125rem;
-	padding: 2px;
-}
-#write>h5.md-focus:before {
-	left: -1.875rem;
-	top: 0.25rem;
-	padding: 2px;
-}
-#write>h6.md-focus:before {
-	left: -1.875rem;
-	top: .125rem;
-	padding: 2px;
-}
-/*@media screen and (min-width: 48em) {
-	.h1,
-	h1 {
-		font-size: 3.250rem;
-	}
-	.h2,
-	h2 {
-		font-size: 2.298rem;
-	}
-	.h3,
-	h3 {
-		font-size: 1.625rem;
-	}
-	.h4,
-	h4 {
-		font-size: 1.250rem;
-	}
-	.h5,
-	h5 {
-		font-size: 1.150rem;
-	}
-	.h6,
-	h6 {
-		font-size: 1rem;
-	}
-	#write>h4.md-focus:before,
-	#write>h5.md-focus:before,
-	#write>h6.md-focus:before {
-		top: 1px;
-	}
-	p {
-		font-size: 1.25rem;
-		line-height: 1.8;
-	}
-	table {
-		font-size: 1.25rem;
-	}
-}*/
-@media screen and (max-width: 48em) {
-	blockquote {
-		margin-left: 1rem;
-		margin-right: 0;
-		padding: 0.5em;
-	}
-	.h1,
-	h1 {
-		font-size: 2.827rem;
-	}
-	.h2,
-	h2 {
-		font-size: 1.999rem;
-	}
-	.h3,
-	h3 {
-		font-size: 1.413rem;
-	}
-	.h4,
-	h4 {
-		font-size: 1.250rem;
-	}
-	.h5,
-	h5 {
-		font-size: 1.150rem;
-	}
-	.h6,
-	h6 {
-		font-size: 1rem;
-	}
-}
-a,
-.md-def-url {
-	color: #990000;
-	text-decoration: none;
-}
-a:hover {
-	text-decoration: underline;
-}
-table {
-	margin-bottom: 20px
-}
-table th,
-table td {
-	padding: 8px;
-	line-height: 1.25rem;
-	vertical-align: top;
-	border-top: 1px solid #ddd
-}
-table th {
-	font-weight: bold
-}
-table thead th {
-	vertical-align: bottom
-}
-table caption+thead tr:first-child th,
-table caption+thead tr:first-child td,
-table colgroup+thead tr:first-child th,
-table colgroup+thead tr:first-child td,
-table thead:first-child tr:first-child th,
-table thead:first-child tr:first-child td {
-	border-top: 0
-}
-table tbody+tbody {
-	border-top: 2px solid #ddd
-}
-code, .md-fences {
-	padding: .5em;
-	/*background: #f0f0f0;*/
-	border: 1px solid #ccc;
-	padding: .1em;
-	font-size: 0.9em;
-	margin-left: 0.2em;
-	margin-right: 0.2em;
-}
-.md-fences {
-	margin: 0 0 20px;
-	font-size: 1em;
-	padding: 0.3em 1em;
-  	padding-top: 0.4em;
-}
-.task-list{
-	padding-left: 0;
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
 }
 
-.task-list-item {
-	padding-left:2.125rem;
-}
-
-.task-list-item input {
-	top: 3px;
-
-}
-
-.task-list-item input:before {
-	content: "";
-	display: inline-block;
-	width: 1rem;
-	height: 1rem;
-	vertical-align: middle;
-	text-align: center;
-	border: 1px solid gray;
-	background-color: #fdfdfd;
-	margin-left: 0;
-	margin-top: -0.8rem;
-}
-.task-list-item input:checked:before,
-.task-list-item input[checked]:before{
-	content: '\25FC';
-	/*◘*/
-	font-size: 0.8125rem;
-	line-height: 0.9375rem;
-	margin-top: -1rem;
-}
-
-/* Chrome 29+ */
-@media screen and (-webkit-min-device-pixel-ratio:0)
-  and (min-resolution:.001dpcm) {
-    .task-list-item input:before {
-    	margin-top: -0.2rem;
+@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
     }
 
-    .task-list-item input:checked:before,
-	.task-list-item input[checked]:before {
-		margin-top: -0.2rem;
-	}
+    .typora-export h1::after,
+    .typora-export h2::after {
+        border-top: 1px solid #eee;
+        margin-top: .3em;
+    }
 }
 
-blockquote {
-	margin: 0 0 1.11111rem;
-	padding: 0.5rem 1.11111rem 0 1.05556rem;
-	border-left: 1px solid gray;
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
 }
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
 blockquote,
-blockquote p {
-	line-height: 1.6;
-	color: #6f6f6f;
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table tr th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
 }
 #write pre.md-meta-block {
-	min-height: 30px;
-	background: #f8f8f8;
-	padding: 1.5em;
-	font-weight: 300;
-	font-size: 1em;
-	padding-bottom: 1.5em;
-	padding-top: 3em;
-    margin-top: -1.5em;
-	color: #999;
-	
-	width: 100vw;
-	max-width: calc(100% + 60px);
-	margin-left: -30px;
-	border-left: 30px #f8f8f8 solid;
-	border-right: 30px #f8f8f8 solid;
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
 }
-.MathJax_Display {
-	font-size: 0.9em;
-	margin-top: 0.5em;
-	margin-bottom: 0;
-}
-p.mathjax-block,
-.mathjax-block {
-	padding-bottom: 0;
-}
+
 .mathjax-block>.code-tooltip {
-	bottom: 5px;
-	box-shadow: none;
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
 }
 .md-image>.md-meta {
-	padding-left: 0.5em;
-	padding-right: 0.5em;
-}
-.md-image>img {
-	margin-top: 2px;
-}
-.md-image>.md-meta:first-of-type:before {
-	padding-left: 4px;
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
 }
 
-#typora-source {
-	color: #555;
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
 }
 
-/** ui for windows **/
-#md-searchpanel {
-    border-bottom: 1px solid #ccc;
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
 }
 
-#md-searchpanel .btn {
-    border: 1px solid #ccc;
+.sidebar-tabs {
+    border-bottom: none;
 }
 
-#md-notification:before {
-	top: 14px;
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
 }
 
-#md-notification {
-	background: #eee;
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
 }
 
-.megamenu-menu-panel .btn {
-	border: 1px solid #ccc;
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
 }
 
-#typora-sidebar {
-	box-shadow: none;
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
 }
 
-.file-list-item ,
-.show-folder-name .file-list-item {
-	padding-top: 20px;
-	padding-bottom: 20px;
-	line-height: 20px;
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
 }
 
-.file-list-item-summary {
-	height: 40px;
-	line-height: 20px;
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
 }
 
  .typora-export li, .typora-export p, .typora-export,  .footnote-line {white-space: normal;} 
 </style>
 </head>
 <body class='typora-export os-windows'>
-<div id='write'  class=''><h1><a name="note-for-cryptography" class="md-header-anchor"></a><span>Note for </span><em><span>Cryptography</span></em></h1><p><a href='encrypto-note.html'><span>中文</span></a></p><h2><a name="encryptions-driven-by-demand-and-threats" class="md-header-anchor"></a><span>ENCRYPTIONs DRIVEN BY DEMAND AND THREATS</span></h2><div class="md-diagram-panel"><svg id="mermaidChart713" width="100%" xmlns="http://www.w3.org/2000/svg" style="max-width: 883.953125px;" viewBox="0 0 883.953125 1132.984375"><style>
+<div id='write'  class=''><h1><a name="note-for-cryptography" class="md-header-anchor"></a><span>Note for </span><em><span>Cryptography</span></em></h1><p><a href='encrypto-note.html'><span>中文</span></a></p><h2><a name="encryptions-driven-by-demand-and-threats" class="md-header-anchor"></a><span>ENCRYPTIONs DRIVEN BY DEMAND AND THREATS</span></h2><div class="md-diagram-panel"><svg id="mermaidChart1" width="100%" xmlns="http://www.w3.org/2000/svg" style="max-width: 857.6640625px;" viewBox="0 0 857.6640625 1092.40625"><style>
 :root { --mermaid-font-family: sans-serif}
 :root { --mermaid-alt-font-family: sans-serif}
-#mermaidChart713 .encrypto &gt; * { fill:#555555 !important; color:white !important; stroke-width:0px !important; }
-#mermaidChart713 .encrypto tspan { fill:white !important; }
-#mermaidChart713 .sys &gt; * { fill:#0101 !important; stroke-width:0px !important; }
-#mermaidChart713 .sys tspan {  !important; }</style><style></style><g><g class="output"><g class="clusters"></g><g class="edgePaths"><g class="edgePath" style="opacity: 1;"><path class="path" d="M466.3984375,53L466.3984375,90.5L466.3984375,128" marker-end="url(#arrowhead19044)" style="fill:none"></path><defs><marker id="arrowhead19044" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M466.3984375,173L466.3984375,210.5L466.3984375,248" marker-end="url(#arrowhead19045)" style="fill:none"></path><defs><marker id="arrowhead19045" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M366.1474609375,293L199.0625,330.5L199.0625,447.9296875" marker-end="url(#arrowhead19046)" style="fill:none"></path><defs><marker id="arrowhead19046" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M199.0625,492.9296875L199.0625,610.359375L199.0625,647.859375" marker-end="url(#arrowhead19047)" style="fill:none"></path><defs><marker id="arrowhead19047" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M199.0625,692.859375L199.0625,730.359375L199.0625,863.921875" marker-end="url(#arrowhead19048)" style="fill:none"></path><defs><marker id="arrowhead19048" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M199.0625,908.921875L199.0625,1042.484375L540.078125,1093.0344618558192" marker-end="url(#arrowhead19049)" style="fill:none;stroke-width:2px;stroke-dasharray:3;"></path><defs><marker id="arrowhead19049" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M517.9345703125,293L603.828125,330.5L603.828125,470.4296875L603.828125,610.359375L603.828125,670.359375L603.828125,730.359375L603.828125,886.421875L603.828125,1042.484375L603.828125,1079.984375" marker-end="url(#arrowhead19050)" style="fill:none"></path><defs><marker id="arrowhead19050" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M466.3984375,293L466.3984375,330.5L466.3984375,368" marker-end="url(#arrowhead19051)" style="fill:none;stroke-width:2px;stroke-dasharray:3;"></path><defs><marker id="arrowhead19051" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M757.390625,1004.984375L757.390625,1042.484375L661.4140625,1079.984375" marker-end="url(#arrowhead19052)" style="fill:none;stroke-width:2px;stroke-dasharray:3;"></path><defs><marker id="arrowhead19052" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 0 0 L 0 0 z" style="fill: #333"></path></marker></defs></g></g><g class="edgeLabels"><g class="edgeLabel" transform="translate(466.3984375,90.5)" style="opacity: 1;"><g transform="translate(-100.2734375,-12.5)" class="label"><rect rx="0" ry="0" width="200.546875" height="25" style="fill:#e8e8e8;"></rect><foreignObject width="200.546875" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>How to keep it secret?</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(466.3984375,210.5)" style="opacity: 1;"><g transform="translate(-114.8515625,-12.5)" class="label"><rect rx="0" ry="0" width="229.703125" height="25" style="fill:#e8e8e8;"></rect><foreignObject width="229.70703125" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>How to diliver secret key?</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(199.0625,330.5)" style="opacity: 1;"><g transform="translate(-191.0625,-12.5)" class="label"><rect rx="0" ry="0" width="382.125" height="25" style="fill:#e8e8e8;"></rect><foreignObject width="382.12890625" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>How to defend man-in-the-middle attack?</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(199.0625,610.359375)" style="opacity: 1;"><g transform="translate(-114.625,-12.5)" class="label"><rect rx="0" ry="0" width="229.25" height="25" style="fill:#e8e8e8;"></rect><foreignObject width="229.2578125" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>How to defend spoofing?</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(199.0625,730.359375)" style="opacity: 1;"><g transform="translate(-104.2421875,-12.5)" class="label"><rect rx="0" ry="0" width="208.484375" height="25" style="fill:#e8e8e8;"></rect><foreignObject width="208.49609375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>How to avoid denying?</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(199.0625,1042.484375)" style="opacity: 1;"><g transform="translate(-34.921875,-12.5)" class="label"><rect rx="0" ry="0" width="69.84375" height="25" style="fill:#e8e8e8;"></rect><foreignObject width="69.84375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>Used to</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(603.828125,670.359375)" style="opacity: 1;"><g transform="translate(-144.234375,-12.5)" class="label"><rect rx="0" ry="0" width="288.46875" height="25" style="fill:#e8e8e8;"></rect><foreignObject width="288.4765625" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>How to authenticate public key?</span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0" style="fill:#e8e8e8;"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0" style="fill:#e8e8e8;"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g></g><g class="nodes"><g class="node encrypto" id="A" transform="translate(466.3984375,30.5)" style="opacity: 1;"><rect rx="5" ry="5" x="-50.796875" y="-22.5" width="101.59375" height="45" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-40.796875,-12.5)"><foreignObject width="81.6015625" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Plain text</div></foreignObject></g></g></g><g class="node encrypto" id="B" transform="translate(466.3984375,150.5)" style="opacity: 1;"><rect rx="5" ry="5" x="-120.453125" y="-22.5" width="240.90625" height="45" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-110.453125,-12.5)"><foreignObject width="220.91796875" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Symmetric cryptography</div></foreignObject></g></g></g><g class="node encrypto" id="C" transform="translate(466.3984375,270.5)" style="opacity: 1;"><rect rx="5" ry="5" x="-126.0703125" y="-22.5" width="252.140625" height="45" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-116.0703125,-12.5)"><foreignObject width="232.1484375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Asymmetric cryptography</div></foreignObject></g></g></g><g class="node encrypto" id="D" transform="translate(199.0625,470.4296875)" style="opacity: 1;"><rect rx="5" ry="5" x="-114.90625" y="-22.5" width="229.8125" height="45" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-104.90625,-12.5)"><foreignObject width="209.82421875" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">One-way hash function</div></foreignObject></g></g></g><g class="node encrypto" id="E" transform="translate(199.0625,670.359375)" style="opacity: 1;"><rect rx="5" ry="5" x="-142.1171875" y="-22.5" width="284.234375" height="45" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-132.1171875,-12.5)"><foreignObject width="264.23828125" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Message authentication code</div></foreignObject></g></g></g><g class="node encrypto" id="F" transform="translate(199.0625,886.421875)" style="opacity: 1;"><rect rx="5" ry="5" x="-83.0625" y="-22.5" width="166.125" height="45" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-73.0625,-12.5)"><foreignObject width="146.1328125" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Digital signature</div></foreignObject></g></g></g><g class="node encrypto" id="G" transform="translate(603.828125,1102.484375)" style="opacity: 1;"><rect rx="5" ry="5" x="-63.75" y="-22.5" width="127.5" height="45" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-53.75,-12.5)"><foreignObject width="107.5" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Certification</div></foreignObject></g></g></g><g class="node sys" id="s1" transform="translate(466.3984375,470.4296875)" style="opacity: 1;"><circle x="-102.4296875" y="-22.5" r="102.4296875" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-92.4296875,-12.5)"><foreignObject width="184.86328125" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Hybrid cryptosystem</div></foreignObject></g></g></g><g class="node sys" id="s2" transform="translate(757.390625,886.421875)" style="opacity: 1;"><circle x="-118.5625" y="-22.5" r="118.5625" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-108.5625,-12.5)"><foreignObject width="217.12890625" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Public Key Infrastructure</div></foreignObject></g></g></g></g></g></g></svg></div><p>&nbsp;</p></div>
+#mermaidChart1 .encrypto &gt; * { fill:#555555 !important; color:white !important; stroke-width:0px !important; }
+#mermaidChart1 .encrypto tspan { fill:white !important; }
+#mermaidChart1 .sys &gt; * { fill:#0101 !important; stroke-width:0px !important; }
+#mermaidChart1 .sys tspan {  !important; }</style><style></style><g><g class="output"><g class="clusters"></g><g class="edgePaths"><g class="edgePath" style="opacity: 1;"><path class="path" d="M450.015625,50.5L450.015625,86.75L450.015625,123" marker-end="url(#arrowhead104)" style="fill:none"></path><defs><marker id="arrowhead104" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M450.015625,165.5L450.015625,201.75L450.015625,238" marker-end="url(#arrowhead105)" style="fill:none"></path><defs><marker id="arrowhead105" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M354.19718070652175,280.5L190.7421875,316.75L190.7421875,431.0078125" marker-end="url(#arrowhead106)" style="fill:none"></path><defs><marker id="arrowhead106" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M190.7421875,473.5078125L190.7421875,587.765625L190.7421875,624.015625" marker-end="url(#arrowhead107)" style="fill:none"></path><defs><marker id="arrowhead107" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M190.7421875,666.515625L190.7421875,702.765625L190.7421875,832.9609375" marker-end="url(#arrowhead108)" style="fill:none"></path><defs><marker id="arrowhead108" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M190.7421875,875.4609375L190.7421875,1005.65625L521.9453125,1054.049305665846" marker-end="url(#arrowhead109)" style="fill:none;stroke-width:2px;stroke-dasharray:3;"></path><defs><marker id="arrowhead109" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M499.6326426630435,280.5L584.2734375,316.75L584.2734375,452.2578125L584.2734375,587.765625L584.2734375,645.265625L584.2734375,702.765625L584.2734375,854.2109375L584.2734375,1005.65625L584.2734375,1041.90625" marker-end="url(#arrowhead110)" style="fill:none"></path><defs><marker id="arrowhead110" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M450.015625,280.5L450.015625,316.75L450.015625,353" marker-end="url(#arrowhead111)" style="fill:none;stroke-width:2px;stroke-dasharray:3;"></path><defs><marker id="arrowhead111" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M734.46875,969.40625L734.46875,1005.65625L639.7804008152174,1041.90625" marker-end="url(#arrowhead112)" style="fill:none;stroke-width:2px;stroke-dasharray:3;"></path><defs><marker id="arrowhead112" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 0 0 L 0 0 z" style="fill: #333"></path></marker></defs></g></g><g class="edgeLabels"><g class="edgeLabel" transform="translate(450.015625,86.75)" style="opacity: 1;"><g transform="translate(-96.1484375,-11.25)" class="label"><rect rx="0" ry="0" width="192.296875" height="22.5" style="fill:#e8e8e8;"></rect><foreignObject width="192.3046875" height="22.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>How to keep it secret?</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(450.015625,201.75)" style="opacity: 1;"><g transform="translate(-110.5234375,-11.25)" class="label"><rect rx="0" ry="0" width="221.046875" height="22.5" style="fill:#e8e8e8;"></rect><foreignObject width="221.0546875" height="22.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>How to diliver secret key?</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(190.7421875,316.75)" style="opacity: 1;"><g transform="translate(-182.7421875,-11.25)" class="label"><rect rx="0" ry="0" width="365.484375" height="22.5" style="fill:#e8e8e8;"></rect><foreignObject width="365.48828125" height="22.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>How to defend man-in-the-middle attack?</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(190.7421875,587.765625)" style="opacity: 1;"><g transform="translate(-109.7734375,-11.25)" class="label"><rect rx="0" ry="0" width="219.546875" height="22.5" style="fill:#e8e8e8;"></rect><foreignObject width="219.55078125" height="22.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>How to defend spoofing?</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(190.7421875,702.765625)" style="opacity: 1;"><g transform="translate(-99.6484375,-11.25)" class="label"><rect rx="0" ry="0" width="199.296875" height="22.5" style="fill:#e8e8e8;"></rect><foreignObject width="199.296875" height="22.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>How to avoid denying?</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(190.7421875,1005.65625)" style="opacity: 1;"><g transform="translate(-33.484375,-11.25)" class="label"><rect rx="0" ry="0" width="66.96875" height="22.5" style="fill:#e8e8e8;"></rect><foreignObject width="66.97265625" height="22.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>Used to</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(584.2734375,645.265625)" style="opacity: 1;"><g transform="translate(-138.734375,-11.25)" class="label"><rect rx="0" ry="0" width="277.46875" height="22.5" style="fill:#e8e8e8;"></rect><foreignObject width="277.48046875" height="22.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>How to authenticate public key?</span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0" style="fill:#e8e8e8;"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0" style="fill:#e8e8e8;"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g></g><g class="nodes"><g class="node encrypto" id="A" transform="translate(450.015625,29.25)" style="opacity: 1;"><rect rx="5" ry="5" x="-49.859375" y="-21.25" width="99.71875" height="42.5" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-39.859375,-11.25)"><foreignObject width="79.7265625" height="22.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Plain text</div></foreignObject></g></g></g><g class="node encrypto" id="B" transform="translate(450.015625,144.25)" style="opacity: 1;"><rect rx="5" ry="5" x="-116.0546875" y="-21.25" width="232.109375" height="42.5" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-106.0546875,-11.25)"><foreignObject width="212.109375" height="22.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Symmetric cryptography</div></foreignObject></g></g></g><g class="node encrypto" id="C" transform="translate(450.015625,259.25)" style="opacity: 1;"><rect rx="5" ry="5" x="-121.3515625" y="-21.25" width="242.703125" height="42.5" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-111.3515625,-11.25)"><foreignObject width="222.71484375" height="22.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Asymmetric cryptography</div></foreignObject></g></g></g><g class="node encrypto" id="D" transform="translate(190.7421875,452.2578125)" style="opacity: 1;"><rect rx="5" ry="5" x="-110.015625" y="-21.25" width="220.03125" height="42.5" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-100.015625,-11.25)"><foreignObject width="200.0390625" height="22.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">One-way hash function</div></foreignObject></g></g></g><g class="node encrypto" id="E" transform="translate(190.7421875,645.265625)" style="opacity: 1;"><rect rx="5" ry="5" x="-136.8125" y="-21.25" width="273.625" height="42.5" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-126.8125,-11.25)"><foreignObject width="253.6328125" height="22.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Message authentication code</div></foreignObject></g></g></g><g class="node encrypto" id="F" transform="translate(190.7421875,854.2109375)" style="opacity: 1;"><rect rx="5" ry="5" x="-81.0703125" y="-21.25" width="162.140625" height="42.5" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-71.0703125,-11.25)"><foreignObject width="142.1484375" height="22.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Digital signature</div></foreignObject></g></g></g><g class="node encrypto" id="G" transform="translate(584.2734375,1063.15625)" style="opacity: 1;"><rect rx="5" ry="5" x="-62.328125" y="-21.25" width="124.65625" height="42.5" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-52.328125,-11.25)"><foreignObject width="104.66796875" height="22.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Certification</div></foreignObject></g></g></g><g class="node sys" id="s1" transform="translate(450.015625,452.2578125)" style="opacity: 1;"><circle x="-99.2578125" y="-21.25" r="99.2578125" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-89.2578125,-11.25)"><foreignObject width="178.515625" height="22.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Hybrid cryptosystem</div></foreignObject></g></g></g><g class="node sys" id="s2" transform="translate(734.46875,854.2109375)" style="opacity: 1;"><circle x="-115.1953125" y="-21.25" r="115.1953125" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-105.1953125,-11.25)"><foreignObject width="210.390625" height="22.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Public Key Infrastructure</div></foreignObject></g></g></g></g></g></g></svg></div><p>&nbsp;</p></div>
 </body>
 </html>
