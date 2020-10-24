@@ -3,9 +3,11 @@
 ### ADVERSARIAL EXAMPLE
 
 - <a href="blogs/pages/Map-AdversarialExample.html" target="_blank">A Map of Adversarial Example</a>
-- <a href="blogs/pages/Note-TransferabilityAdversarialExample.html"  target="_blank">About the Transferability of Adversarial Example</a>
 - <a href="blogs/pages/Landscape-AdversarialExample.html" target="_blank">The Landscape of Adversarial Example</a>
+- <a href="blogs/pages/Note-TransferabilityAdversarialExample.html"  target="_blank">About the Transferability of Adversarial Example</a>
 - <a href="blogs/pages/Note-AdversarialExampleOD.html" target="_blank">Adversarial Example in Object Detection</a>
+- <a href="blogs/pages/Note-AdversarialExplanation.html" target="_blank">Explanation for Robustness and Adversarial Example</a>
+- <a href="blogs/pages/Note-AdversarialDefense.html" target="_blank">About the Defenses against Adversarial Attacks</a>
 
 ### OBJECT DETECTION
 
