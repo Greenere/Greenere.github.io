@@ -1,8 +1,8 @@
-# Note for *Cryptography*
+# Striving for Secrecy
 
 <a href='encrypto-note.html'>中文</a>
 
-## ENCRYPTIONs DRIVEN BY DEMAND AND THREATS
+## Encryptions Driving by Demands and Threats
 
 ```mermaid
 graph TD

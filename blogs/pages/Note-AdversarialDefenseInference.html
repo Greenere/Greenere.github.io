@@ -1,0 +1,848 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>论文笔记-AdversarialDefenseInference-李皓阳</title><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+
+
+/**
+ * NexT for Typora
+ * Brought to you by Bill Chen || https://github.com/BillChen2K/typora-theme-next
+ *
+ * - Want code ligatures for JetBrains Mono?
+ * - Search for `font-variant-ligatures: none;` and comment that line.
+ *
+ * - Want to change the font size in exported pdf?
+ * - Change the variable `--export-font-size` below.
+ **/
+
+:root {
+    --base-font-size: 16px;
+    --highlight-color: rgb(0, 160, 160);
+    --text-color: #333;
+    --headings-color: #262a30;
+    --export-font-size: 13px;
+    --select-text-bg-color: #262a30;
+    --select-text-font-color: #eee;
+}
+
+* {
+    /* Disable ligatures */
+    font-variant-ligatures: none;
+}
+
+
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
+
+html,
+body,
+#write {
+    color: var(--text-color);
+    font-size: var(--base-font-size);
+    background: #fcfcfc;
+    font-family: Overpass, "GlowSansSC", "Helvetica Neue", "pingfang sc", "microsoft yahei", sans-serif;
+    font-weight: 400;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    /* letter-spacing: -0.5px; */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--headings-color);
+    font-weight: 700;
+    line-height: 1.5;
+    margin: 20px 0 15px
+}
+
+.CodeMirror pre {
+    font-family: 'JetBrains Mono';
+    font-size: 0.95em;
+    line-height: 1.65em;
+}
+
+#write {
+    max-width: 914px;
+    text-align: justify;
+}
+
+#write>h1:first-child {
+    margin-top: 1.75rem;
+}
+
+#write>h2:first-child {
+    margin-top: 1.5rem;
+}
+
+#write>h3:first-child {
+    margin-top: 1rem;
+}
+
+#write>h4:first-child {
+    margin-top: 0.5rem;
+}
+
+h1 {
+    font-size: 2.5em
+}
+
+h2 {
+    font-size: 1.75 em
+}
+
+h3 {
+    font-size: 1.45em
+}
+
+h4 {
+    font-size: 1.25em
+}
+
+h5 {
+    font-size: 1.1em
+}
+
+h6 {
+    font-size: 1em;
+    font-weight: bold
+}
+
+#write code {
+    color: var(--highlight-color);
+}
+
+p {
+    color: var(--text-color);
+    line-height: 1.7rem;
+    margin: 0 0 8px;
+}
+
+#write ul {
+    line-height: 1.75rem;
+    margin-block-start: 0.6em;
+    margin-block-end: 0.6em;
+}
+
+#write ol li {
+    line-height: 1.75rem;
+    margin-block-start: 0.6em;
+    margin-block-end: 0.6em;
+}
+
+u {
+    text-decoration: none;
+    border-bottom: 1px solid #999;
+}
+
+#write>h3.md-focus:before {
+    left: -1.875rem;
+    top: 0.5rem;
+    padding: 2px;
+}
+
+#write>h4.md-focus:before {
+    left: -1.875rem;
+    top: 0.3125rem;
+    padding: 2px;
+}
+
+#write>h5.md-focus:before {
+    left: -1.875rem;
+    top: 0.25rem;
+    padding: 2px;
+}
+
+#write>h6.md-focus:before {
+    left: -1.875rem;
+    top: .125rem;
+    padding: 2px;
+}
+
+@media screen and (max-width: 48em) {
+    blockquote {
+        margin-left: 1rem;
+        margin-right: 0;
+        padding: 0.5em;
+    }
+    /* .h1,
+    h1 {
+        font-size: 2.827rem;
+    }
+    .h2,
+    h2 {
+        font-size: 1.999rem;
+    }
+    .h3,
+    h3 {
+        font-size: 1.413rem;
+    }
+    .h4,
+    h4 {
+        font-size: 1.250rem;
+    }
+    .h5,
+    h5 {
+        font-size: 1.150rem;
+    }
+    .h6,
+    h6 {
+        font-size: 1rem;
+    } */
+}
+
+a .md-def-url {
+    color: #262a30;
+}
+
+a {
+    color: var(--highlight-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition-duration: 0.5s;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 1em;
+    margin: 0 0 20px;
+    width: 100%;
+}
+
+table tr:nth-child(2n),
+thead {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background: #f5f5f5
+}
+
+caption,
+td,
+th {
+    font-weight: 400;
+    padding: 8px;
+    text-align: left;
+    vertical-align: middle
+}
+
+table tr th {
+    border-bottom: 3px solid #ddd;
+    font-weight: 700;
+    padding-bottom: 10px;
+    background-color: var(--bg-color);
+}
+
+td,
+th {
+    border: 1px solid #ddd;
+}
+
+th {
+    font-weight: 700;
+    padding-bottom: 10px
+}
+
+td {
+    border-bottom-width: 1px
+}
+
+
+/* Inline Code */
+
+code,
+.md-fences {
+    background: #eee;
+    border-radius: 3px;
+    color: #555;
+    padding: 2px 4px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    font-family: 'JetBrains Mono';
+    font-size: 0.935em;
+}
+
+
+/* Code Blocks */
+
+.md-fences {
+    margin: 0 0 20px;
+    font-size: 0.9em;
+    line-height: 1.5em;
+    padding: 0.4em 1em;
+    padding-top: 0.4em;
+}
+
+.task-list {
+    padding-left: 0;
+}
+
+.task-list-item {
+    padding-left: 2rem;
+}
+
+.task-list-item input {
+    top: 3px;
+}
+
+.task-list-item input {
+    outline: none;
+    margin-bottom: 0.5em;
+}
+
+.task-list-item input::before {
+    content: "";
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    vertical-align: middle;
+    text-align: center;
+    border: 1px solid gray;
+    background-color: #fdfdfd;
+    margin-left: -0.1rem;
+    margin-right: 0.1rem;
+    margin-top: -0.9rem;
+}
+
+.task-list-item input:checked::before {
+    padding-left: 0.125em;
+    content: '✔';
+    /*◘*/
+    font-size: 0.8125rem;
+    line-height: 0.9375rem;
+    margin-top: -0.9rem;
+}
+
+
+/* Chrome 29+ */
+
+@media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
+    .task-list-item input:before {
+        margin-top: -0.2rem;
+    }
+    .task-list-item input:checked:before,
+    .task-list-item input[checked]:before {
+        margin-top: -0.2rem;
+    }
+}
+
+blockquote {
+    border-left: 4px solid #ddd;
+    color: #666;
+    margin: 0;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 0 15px
+}
+
+blockquote p {
+    color: #666
+}
+
+blockquote cite::before {
+    content: '-';
+    padding: 0 5px
+}
+
+
+/* #write pre.md-meta-block {
+    min-height: 30px;
+    background: #f8f8f8;
+    padding: 1.5em;
+    font-weight: 300;
+    font-size: 1em;
+    padding-bottom: 1.5em;
+    padding-top: 3em;
+    margin-top: -1.5em;
+    color: #999;
+    border-left: 1000px #f8f8f8 solid;
+    margin-left: -1000px;
+    border-right: 1000px #f8f8f8 solid;
+    margin-right: -1000px;
+    margin-bottom: 2em;
+    font-size: 0.8em;
+    line-height: 1.5em;
+    font-family: 'JetBrains Mono';
+} */
+
+#write pre.md-meta-block {
+    padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f1f1f1;
+    border: 0;
+    border-radius: 3px;
+    color: hsl(0, 0%, 53%);
+    margin-top: 0 !important;
+    margin-bottom: 2em;
+    font-size: 0.8em;
+    line-height: 1.5em;
+    font-family: 'JetBrains Mono';
+}
+
+.MathJax_Display {
+    font-size: 0.9em;
+    margin-top: 0.5em;
+    margin-bottom: 0;
+}
+
+p.mathjax-block,
+.mathjax-block {
+    padding-bottom: 0;
+}
+
+.mathjax-block>.code-tooltip {
+    bottom: 5px;
+    box-shadow: none;
+}
+
+.md-image>.md-meta {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.md-image>img {
+    margin-top: 2px;
+}
+
+.md-image>.md-meta:first-of-type:before {
+    padding-left: 4px;
+}
+
+#typora-source {
+    color: #555;
+}
+
+
+/** ui for windows **/
+
+#md-searchpanel {
+    border-bottom: 1px solid #ccc;
+}
+
+#md-searchpanel .btn {
+    border: 1px solid #ccc;
+}
+
+#md-notification:before {
+    top: 14px;
+}
+
+#md-notification {
+    background: #eee;
+}
+
+.megamenu-menu-panel .btn {
+    border: 1px solid #ccc;
+}
+
+#write>h3.md-focus:before {
+    left: -1.5625rem;
+    top: .375rem;
+}
+
+#write>h4.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write>h5.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write>h6.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+.md-image>.md-meta {
+    border-radius: 3px;
+    padding: 2px 0 0 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: inherit;
+}
+
+.md-toc {
+    margin-top: 20px;
+    padding-bottom: 5px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #efefef;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#md-notification:before {
+    top: 10px;
+}
+
+
+/** focus mode */
+
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state {
+    visibility: visible;
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+.file-tree-node {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.file-node-title {
+    padding-top: 2px;
+}
+
+.outline-item {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+
+/* 
+.modal-footer .btn-default,
+.modal-footer .btn-primary {
+    border: 2px solid #222;
+}
+
+
+
+#md-searchpanel .btn:not(.close-btn):hover {
+    background: #fff;
+    border-color: #222;
+    color: #222;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#md-searchpanel .btn:not(.close-btn) {
+    background: #222;
+    border-color: #222;
+    color: #fff;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    transition-duration: .2s;
+}
+
+.searchpanel-search-option-btn {
+    border-radius: 0px;
+    border: 1px solid #222;
+} */
+
+/* Search panel & UI */
+
+#md-searchpanel .btn {
+    border: none;
+}
+
+#md-searchpanel input {
+    box-shadow: none;
+}
+
+.searchpanel-search-option-btn {
+    border-color: #aaa;
+    border-radius: 0;
+}
+
+.modal-dialog .btn {
+    background: #222;
+    border-width: 2px;
+    border-color: #222;
+    border-radius: 0;
+    color: #fff;
+    display: inline-block;
+    font-size: .875em;
+    line-height: 2rem;
+    padding: 0 20px;
+    margin: 5px;
+    text-decoration: none;
+    transition-delay: 0s;
+    transition-duration: .2s;
+    transition-timing-function: ease-in-out
+}
+
+.modal-dialog .btn:hover {
+    background: #eee;
+    border-color: #222;
+    color: #222;
+}
+
+
+/* Printing issue */
+
+.typora-export * {
+    -webkit-print-color-adjust: exact;
+}
+
+.typora-export p {
+    font-size: var(--export-font-size) !important;
+}
+
+.typora-export li {
+    font-size: var(--export-font-size);
+    line-height: 2rem;
+}
+
+.typora-export #write {
+    font-size: var(--export-font-size) !important;
+}
+
+table,
+pre {
+    page-break-inside: avoid;
+}
+
+pre {
+    word-wrap: break-word;
+}
+
+hr {
+    background-image: repeating-linear-gradient(-45deg, #ddd, #ddd 4px, transparent 4px, transparent 8px);
+    border: 0;
+    height: 3px;
+    margin: 40px 0
+}
+
+ .typora-export li, .typora-export p, .typora-export,  .footnote-line {white-space: normal;} 
+</style>
+</head>
+<body class='typora-export os-windows'>
+<div id='write'  class=''><h1><a name="adversarial-defense-at-inference" class="md-header-anchor"></a><span>Adversarial Defense at Inference</span></h1><p><span>By LI Haoyang 2020.11.12</span></p><h2><a name="content" class="md-header-anchor"></a><span>Content</span></h2><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n173"><a class="md-toc-inner" href="#adversarial-defense-at-inference">Adversarial Defense at Inference</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n176"><a class="md-toc-inner" href="#content">Content</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n178"><a class="md-toc-inner" href="#purification">Purification</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n179"><a class="md-toc-inner" href="#pixeldefend---iclr-2018">PixelDefend - ICLR 2018</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n188"><a class="md-toc-inner" href="#pixel-cnn">Pixel CNN</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n197"><a class="md-toc-inner" href="#distribution-of-adversarial-examples">Distribution of adversarial examples</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n210"><a class="md-toc-inner" href="#purifying-images-with-pixeldefend">Purifying images with PixelDefend</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n222"><a class="md-toc-inner" href="#experiments">Experiments</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n225"><a class="md-toc-inner" href="#inspirations">Inspirations</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n228"><a class="md-toc-inner" href="#mixup-inference">Mixup Inference</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n229"><a class="md-toc-inner" href="#mixup-inference---iclr-2020">Mixup Inference - ICLR 2020</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n241"><a class="md-toc-inner" href="#mixup-inference-defense">Mixup Inference defense</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n254"><a class="md-toc-inner" href="#theoretical-analysis">Theoretical analysis</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n294"><a class="md-toc-inner" href="#mi-with-predicted-label-mi-pl">MI with predicted label (MI-PL)</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n302"><a class="md-toc-inner" href="#mi-with-other-labels-mi-ol">MI with other labels (MI-OL)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n312"><a class="md-toc-inner" href="#experiments-n312">Experiments</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n342"><a class="md-toc-inner" href="#inspirations-n342">Inspirations</a></span></p></div><h2><a name="purification" class="md-header-anchor"></a><span>Purification</span></h2><h3><a name="pixeldefend---iclr-2018" class="md-header-anchor"></a><span>PixelDefend - ICLR 2018</span></h3><p><span>This defense is breached in </span><a href='#Obfuscated Gradients Give a False Sense of Security - ICML 2018'><span>Obfuscated Gradients Give a False Sense of Security - ICML 2018</span></a><span>.</span></p><blockquote><p><em><span>Yang Song, Taesup Kim, Sebastian Nowozin, Stefano Ermon, Nate Kushman. PixelDefend: Leveraging Generative Models to Understand and Defend against Adversarial Examples. ICLR 2018. </span><strong><a href='https://arxiv.org/abs/1710.10766'><span> arXiv:1710.10766</span></a></strong></em></p></blockquote><blockquote><p><span>In this paper, we show empirically that adversarial examples mainly lie in the low probability regions of the training distribution, regardless of attack types and targeted models.</span></p></blockquote><p><span>They argue that adversarial examples lie in the low probability region of the generating distribution of datasets, therefore they fool the classifiers mainly due to covariate shift.</span></p><blockquote><p><span>This is analogous to training models on MNIST (LeCun et al., 1998) but testing them on Street View House Numbers (Netzer et al., 2011).</span></p></blockquote><h4><a name="pixel-cnn" class="md-header-anchor"></a><span>Pixel CNN</span></h4><blockquote><p><span>The PixelCNN (van den Oord et al., 2016b; Salimans et al., 2017) is a generative model with tractable likelihood especially designed for images.</span></p></blockquote><p><span>It defines the joint distribution over all pixels by factorizing it into a product of conditional distributions, i.e.</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n192" cid="n192" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processed" style="text-align: center;"><span class="MathJax_SVG" id="MathJax-Element-3-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="32.861ex" height="5.386ex" viewBox="-39 -1054.3 14148.5 2319" role="img" focusable="false" style="vertical-align: -2.937ex; margin-left: -0.091ex; max-width: 100%;"><defs><path stroke-width="0" id="E1219-MJMATHI-70" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path><path stroke-width="0" id="E1219-MJMATHI-43" d="M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q484 659 454 652T382 628T299 572T226 479Q194 422 175 346T156 222Q156 108 232 58Q280 24 350 24Q441 24 512 92T606 240Q610 253 612 255T628 257Q648 257 648 248Q648 243 647 239Q618 132 523 55T319 -22Q206 -22 128 53T50 252Z"></path><path stroke-width="0" id="E1219-MJMATHI-4E" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path><path stroke-width="0" id="E1219-MJMAIN-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path stroke-width="0" id="E1219-MJMAINB-58" d="M327 0Q306 3 174 3Q52 3 43 0H33V62H98L162 63L360 333L157 624H48V686H59Q80 683 217 683Q368 683 395 686H408V624H335L393 540L452 458L573 623Q573 624 528 624H483V686H494Q515 683 646 683Q769 683 778 686H787V624H658L575 511Q493 398 493 397L508 376Q522 356 553 312T611 229L727 62H835V0H824Q803 3 667 3Q516 3 489 0H476V62H513L549 63L401 274L247 63Q247 62 292 62H338V0H327Z"></path><path stroke-width="0" id="E1219-MJMAIN-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path stroke-width="0" id="E1219-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E1219-MJSZ2-220F" d="M220 812Q220 813 218 819T214 829T208 840T199 853T185 866T166 878T140 887T107 893T66 896H56V950H1221V896H1211Q1080 896 1058 812V-311Q1076 -396 1211 -396H1221V-450H725V-396H735Q864 -396 888 -314Q889 -312 889 -311V896H388V292L389 -311Q405 -396 542 -396H552V-450H56V-396H66Q195 -396 219 -314Q220 -312 220 -311V812Z"></path><path stroke-width="0" id="E1219-MJMATHI-69" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E1219-MJMATHI-78" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path><path stroke-width="0" id="E1219-MJMAIN-7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path><path stroke-width="0" id="E1219-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E1219-MJMAIN-3A" d="M78 370Q78 394 95 412T138 430Q162 430 180 414T199 371Q199 346 182 328T139 310T96 327T78 370ZM78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60Z"></path><path stroke-width="0" id="E1219-MJMAIN-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E1219-MJMATHI-70" x="0" y="0"></use><g transform="translate(503,-155)"><use transform="scale(0.707)" xlink:href="#E1219-MJMATHI-43" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E1219-MJMATHI-4E" x="760" y="0"></use><use transform="scale(0.707)" xlink:href="#E1219-MJMATHI-4E" x="1648" y="0"></use></g><use xlink:href="#E1219-MJMAIN-28" x="2396" y="0"></use><use xlink:href="#E1219-MJMAINB-58" x="2785" y="0"></use><use xlink:href="#E1219-MJMAIN-29" x="3654" y="0"></use><use xlink:href="#E1219-MJMAIN-3D" x="4321" y="0"></use><g transform="translate(5376,0)"><use xlink:href="#E1219-MJSZ2-220F" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E1219-MJMATHI-69" x="731" y="-1534"></use></g><g transform="translate(6821,0)"><use xlink:href="#E1219-MJMATHI-70" x="0" y="0"></use><g transform="translate(503,-155)"><use transform="scale(0.707)" xlink:href="#E1219-MJMATHI-43" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E1219-MJMATHI-4E" x="760" y="0"></use><use transform="scale(0.707)" xlink:href="#E1219-MJMATHI-4E" x="1648" y="0"></use></g></g><use xlink:href="#E1219-MJMAIN-28" x="9217" y="0"></use><g transform="translate(9606,0)"><use xlink:href="#E1219-MJMATHI-78" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E1219-MJMATHI-69" x="808" y="-213"></use></g><use xlink:href="#E1219-MJMAIN-7C" x="10522" y="0"></use><g transform="translate(10800,0)"><use xlink:href="#E1219-MJMATHI-78" x="0" y="0"></use><g transform="translate(572,-186)"><use transform="scale(0.707)" xlink:href="#E1219-MJMAIN-31" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E1219-MJMAIN-3A" x="500" y="0"></use><use transform="scale(0.707)" xlink:href="#E1219-MJMAIN-28" x="778" y="0"></use><use transform="scale(0.707)" xlink:href="#E1219-MJMATHI-69" x="1166" y="0"></use><use transform="scale(0.707)" xlink:href="#E1219-MJMAIN-2212" x="1512" y="0"></use><use transform="scale(0.707)" xlink:href="#E1219-MJMAIN-31" x="2290" y="0"></use><use transform="scale(0.707)" xlink:href="#E1219-MJMAIN-29" x="2790" y="0"></use></g></g><use xlink:href="#E1219-MJMAIN-29" x="13720" y="0"></use></g></svg></span></div><script type="math/tex; mode=display" id="MathJax-Element-3">p_{CNN}(\bold{X})=\prod_{i}p_{CNN}(x_i|x_{1:(i-1)})</script></div></div><p><span>The pixel dependencies are in raster scan order (i.e. row by row and column by column with each row).</span></p><p><mark><span>It views an image as a vector of pixels and predicts the next pixel with the previous pixel sequentially.</span></mark></p><p><span>For an image of resolution </span><span class='math-in-toc'>$I\times J$</span><span> and </span><span class='math-in-toc'>$K$</span><span> channels, its </span><em><span>bits per dimension</span></em><span> is defined as</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n196" cid="n196" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-6-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-6">BPD(\bold{X})\stackrel{\Delta}{=}-\text{log}p_{CNN}(\bold{X})/(I\times J\times K\times log2)</script></div></div><h4><a name="distribution-of-adversarial-examples" class="md-header-anchor"></a><span>Distribution of adversarial examples</span></h4><p><span>The transferability of adversarial examples indicate that there are some intrinsic properties of adversarial examples which are classfier-agnostic.</span></p><blockquote><p><span>One possibility is that, compared to normal training and test images, adversarial examples have much lower probability densities under the image distribution. </span></p></blockquote><blockquote><p><span>As a result, classifiers do not have enough training instances to get familiarized with this part of the input space.</span></p></blockquote><p><img src="imgs/pixeldefend_visualization.jpg"></img></p><p><span>They train a PixelCNN on CIFAR-10 and use its log-likelihood as an approximation to the true underlying probability density. They also generate a bunch of adversarial examples respect to ResNet.</span></p><p><span>As shown in Figure 2, </span><em><span>the distribution of log-likelihoods show considerable difference between perturbed images and clean images</span></em><span>. As for the random noise that also shift the distribution of original data (but not adversarial), they explain that</span></p><blockquote><p><span>We believe this is due to an inductive bias that is shared by many neural network models but not inherent to all models, as discussed further in Appendix A</span></p></blockquote><p><img src="imgs/pixeldefend_visualization2.jpg"></img></p><p><span>The </span><span class='math-in-toc'>$p$</span><span>-value is a statistical indicator calculated from PixelCNN model, for clean images, it should follow a uniform distribution. As shown in Figure 3, there are clear differences between the uniform distribution and the distributions of adversarial examples.</span></p><h4><a name="purifying-images-with-pixeldefend" class="md-header-anchor"></a><span>Purifying images with PixelDefend</span></h4><p><img src="imgs/pixeldefend_algo.jpg"></img></p><p><span>The purification is intended to move the adversarial examples back towards the training distribution. </span></p><p><span>The problem is to find an image </span><span class='math-in-toc'>$\bold{X}^*$</span><span> that maximizes the probability that it comes from the training distribution </span><span class='math-in-toc'>$p(\bold{X})$</span><span> subject to the constraint that </span><span class='math-in-toc'>$\bold{X}^*$</span><span> is within the </span><span class='math-in-toc'>$\epsilon_{defend}$</span><span>-ball of adversarial example </span><span class='math-in-toc'>$\bold{X}$</span><span>, i.e.</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n214" cid="n214" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-13-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-13">\max_{\bold{X^*}}p(\bold{X}^*)\\
+s.t.\ ||\bold{X}^*-\bold{X}||_{\infty}<\epsilon_{defend}</script></div></div><p><span>The </span><span class='math-in-toc'>$\epsilon_{defend}$</span><span>-ball is designed to ensure the process does not change the semantic meaning. In practice, </span><span class='math-in-toc'>$p(\bold{X})$</span><span> is approximated using the </span><span class='math-in-toc'>$p_{CNN}(\bold{X})$</span><span> from the trained PixelCNN.</span></p><p><span>They test L-BFGS-B and a greedy technique (as in </span><strong><span>Algorithm 1</span></strong><span>) to solve this problem.</span></p><p><img src="imgs/pixeldefend_visualization3.jpg"></img></p><p><img src="imgs/pixeldefend_illustration1.jpg" width=50%></img><img src="imgs/pixeldefend_illustration4.jpg" width=50%></img></p><p><span>As shown above, PixelDefend can effectively purify the adversarial examples.</span></p><p><span>As for the effects of PixelDefend on clean images, they adopt an adaptive threshold </span><span class='math-in-toc'>$\epsilon_{defend}$</span><span> to deal with this problem.</span></p><p><span>They argue that the ability to attack end-to-end with PixelDefend is limited (although disputable).</span></p><h4><a name="experiments" class="md-header-anchor"></a><span>Experiments</span></h4><p><img src="imgs/pixeldefend_performance2.jpg"></img></p><p><img src="imgs/pixeldefend_performance1.jpg"></img></p><h4><a name="inspirations" class="md-header-anchor"></a><span>Inspirations</span></h4><p><span>The idea of purifying adversarial example is very ideal and if it was not breached and classified as </span><em><span>gradient masking</span></em><span>.</span></p><p><span>I think this road is still possible, perhaps combining adversarial training with purification of adversarial examples.</span></p><h2><a name="mixup-inference" class="md-header-anchor"></a><span>Mixup Inference</span></h2><h3><a name="mixup-inference---iclr-2020" class="md-header-anchor"></a><span>Mixup Inference - ICLR 2020</span></h3><p><span>Code: </span><a href='https://github.com/P2333/Mixup-Inference' target='_blank' class='url'>https://github.com/P2333/Mixup-Inference</a></p><p><span>Paper: </span><a href='https://openreview.net/forum?id=ByxtC2VtPB' target='_blank' class='url'>https://openreview.net/forum?id=ByxtC2VtPB</a></p><blockquote><p><em><span>Tianyu Pang, Kun Xu, Jun Zhu.  Mixup Inference: Better Exploiting Mixup to Defend Adversarial Attacks. ICLR 2020.</span></em></p></blockquote><blockquote><p><span>Namely, since the locality of the adversarial perturbations, it would be more efficient to actively break the locality via the globality of the model predictions.</span></p></blockquote><blockquote><p><span>MI mixups the input with other random clean samples, which can shrink and transfer the equivalent perturbation if the input is adversarial.</span></p></blockquote><p><img src="imgs/mi_illustration.jpg"></img></p><p><span>As shown in Figure 1(c), mixup inference introduces </span><em><span>pertubation shrinkage</span></em><span> and </span><em><span>input transfer</span></em><span> to the potentially perturbed examples.</span></p><p><span>The basic idea of mixup inference (MI) is very simple, the final input of the model is a mixup of the provided (potentially adversarial) input </span><span class='math-in-toc'>$x$</span><span> and a sampled clean example </span><span class='math-in-toc'>$x_s$</span><span>, i.e. </span><span class='math-in-toc'>$\tilde{x}=\lambda x+(1-\lambda)x_s$</span><span>.</span></p><h4><a name="mixup-inference-defense" class="md-header-anchor"></a><span>Mixup Inference defense</span></h4><p><img src="imgs/mi_algo.jpg"></img></p><p><span>An iteration of MI operations is as follows:</span></p><ol start='' ><li><span>Sample a label </span><span class='math-in-toc'>$y_s\sim p_s(y)$</span><span>.</span></li><li><span>Sample </span><span class='math-in-toc'>$x_s$</span><span> from </span><span class='math-in-toc'>$p_s(x|y_s)$</span><span>.</span></li><li><span>Mix it up with </span><span class='math-in-toc'>$x$</span><span>, i.e. </span><span class='math-in-toc'>$\tilde{x}=\lambda x+(1-\lambda)x_s$</span><span>.</span></li><li><span>Update </span><span class='math-in-toc'>$F_{MI}(x)$</span><span>.</span></li></ol><p><mark><span>They actually construct a new statistical model based on the original model.</span></mark></p><h4><a name="theoretical-analysis" class="md-header-anchor"></a><span>Theoretical analysis</span></h4><p><span>Given </span><span class='math-in-toc'>$z$</span><span> defined as</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n256" cid="n256" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-28-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-28">z=\begin{cases}
+1,&\text{ if }x\text{ is adversarial}\\
+0,&\text{ if }x\text{ is clean}
+\end{cases}</script></div></div><p><span>and a clean example </span><span class='math-in-toc'>$x_0$</span><span> from the data manifold </span><span class='math-in-toc'>$p(x)$</span><span>. A general example can be denoted as</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n258" cid="n258" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-31-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-31">x=x_0+\delta\cdot \bold{1}_{z=1}</script></div></div><p><span>Based on the assumption that adversarial examples are off the data manifolds, they assume </span><span class='math-in-toc'>$x_0+\delta\notin \text{supp}(p(x))$</span><span>.</span></p><p><span>Suppose </span><span class='math-in-toc'>$H(x_i)$</span><span> predict the one-hot vector of label </span><span class='math-in-toc'>$y_i$</span><span>, i.e. </span><span class='math-in-toc'>$H_y(x_i)=\bold{1}_{y=y_i}$</span><span>.</span></p><p><span>If the input </span><span class='math-in-toc'>$x_0+\delta$</span><span> is adversarial, then there should be an extra non-linear part </span><span class='math-in-toc'>$G(\delta;x_0)$</span><span> of </span><span class='math-in-toc'>$F$</span><span>, assuming that </span><span class='math-in-toc'>$x$</span><span> is off the data manifolds.</span></p><p><span>Thus for a general input </span><span class='math-in-toc'>$x$</span><span>, the prediction vector is</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n263" cid="n263" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-41-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-41">F(x)=F(x_0+\delta\cdot\bold{1}_{z=1})=H(x_0)+G(\delta;x_0)\cdot\bold{1}_{z=1}</script></div></div><p><span>The output of the mixup </span><span class='math-in-toc'>$\tilde{x}$</span><span> in MI is then</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n265" cid="n265" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-43-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-43">\begin{array}{rl}
+F(\tilde{x})&=H(\tilde{x}_0)+G(\lambda\delta;\tilde{x}_0)\cdot\bold{1}_{z=1}\\
+&=\lambda H(x_0)+(1-\lambda)H(x_s)+G(\lambda \delta;\tilde{x}_0)\cdot\bold{1}_{z=1}
+\end{array}</script></div></div><p><strong><em><span>assuming that </span><span class='math-in-toc'>$H$</span><span> is a linear function on the combination of clean images.</span></em></strong></p><p><span>The output </span><span class='math-in-toc'>$F_{MI}(x)$</span><span> in Algorithm 1 is a Monte Carlo approximation of </span><span class='math-in-toc'>$\Bbb{E}_{p_s}[F(\tilde{x})]$</span><span>, i.e.</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n268" cid="n268" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-47-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-47">F_{MI}(x)=\frac{1}{N}\sum_{i=1}^N F(\tilde{x}_i)\stackrel{\infty}{\to}\Bbb{E}_{p_s}[F(\tilde{x})]</script></div></div><p><span>To statistically make sure that the clean inputs will be correctly classified after MI-OL, there should be </span><span class='math-in-toc'>$\forall k\in[L]\backslash \{y\}$</span><span>.</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n270" cid="n270" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-49-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-49">\Bbb{E}_{y_s\sim\mathcal{U}_{\hat{y}}(y)}\Bbb{E}_{x_s\sim p_s(x|y_s)}[F_y-F_k]>0\implies \lambda> L^{-1}</script></div></div><p><span>The </span><span class='math-in-toc'>$y$</span><span>-th components of </span><span class='math-in-toc'>$F(\cdot)$</span><span> are</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n272" cid="n272" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-52-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-52">\begin{array}{rl}
+F_y(x)&=1+G_y(\delta;x_0)\cdot\bold{1}_{z=1}\\
+F_y(\tilde{x})&=\lambda+(1-\lambda)\cdot\bold{1}_{y=y_s}+G_y(\lambda\delta;x_0)\cdot\bold{1}_{z=1}
+\end{array}</script></div></div><p><span>Given </span><span class='math-in-toc'>$\hat{y}=F(x)$</span><span>, the </span><span class='math-in-toc'>$\hat{y}$</span><span>-th components of </span><span class='math-in-toc'>$F(\cdot)$</span><span> are</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n274" cid="n274" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-56-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-56">\begin{array}{rl}
+F_{\hat{y}}(x)&=\bold{1}_{z=0}+G_{\hat{y}}(\delta;x_0)\cdot\bold{1}_{z=1}\\
+F_{\hat{y}}(\tilde{x})&=\lambda\cdot\bold{1}_{z=0}+(1-\lambda)\cdot\bold{1}_{\hat{y}=y_s}+G_{\hat{y}}(\lambda\delta;\tilde{x}_0)\cdot\bold{1}_{z=1}
+\end{array}</script></div></div><p><span>since </span><span class='math-in-toc'>$\bold{1}_{y=\hat{y}}=\bold{1}_{z=0}$</span><span>.</span></p><p><span>Consider the following scenarios:</span></p><ul><li><p><strong><span>MI with predicted label (MI-PL)</span></strong></p><p><span>The sampling label </span><span class='math-in-toc'>$y_s$</span><span> is the same as predicted label </span><span class='math-in-toc'>$\hat{y}$</span><span>, i.e. </span><span class='math-in-toc'>$p_s(y)=\bold{1}_{y=y_s}$</span><span>.</span></p></li><li><p><strong><span>MI with other labels (MI-OL)</span></strong></p><p><span>The  sampling label </span><span class='math-in-toc'>$y_s$</span><span> is uniformly sampled from the labels other than </span><span class='math-in-toc'>$\tilde{y}$</span><span>, i.e. </span><span class='math-in-toc'>$p_s(y)=\mathcal{U}_{\tilde{y}}(y)$</span><span>, a discrete uniform distribution on the set </span><span class='math-in-toc'>$\{y\in[L]|y\neq \hat{y}\}$</span><span>.</span></p></li></ul><p><span>The resulting output is shown  below.</span></p><p><img src="imgs/mi_illustration2.jpg"></img></p><p><span>Consider the difference:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n287" cid="n287" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-65-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-65">\Delta F(x;p_s)=F_{MI}(x)-F(x)\stackrel{\infty}{\to}\Bbb{E}_{p_s}[F(\tilde{x})]-F(x)</script></div></div><p><span>They claim that the MI method improves the robustness if the prediction value on the true label </span><span class='math-in-toc'>$y$</span><span> increases while it on the adversarial label </span><span class='math-in-toc'>$\hat{y}$</span><span> decreases after performing MI when the input is adversarial (i.e. </span><span class='math-in-toc'>$z=1$</span><span>).</span></p><p><span>Named as </span><strong><span>robustness improving condition (RIC)</span></strong><span> and formally denoted as</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n290" cid="n290" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-69-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-69">\Delta F_y(x;p_s)|_{z=1}>0;\Delta F_{\hat{y}}(x;p_s)|_{z=1}<0</script></div></div><p><span>They also define a </span><strong><span>detection gap (DG)</span></strong><span>, denoted as</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n292" cid="n292" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-70-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-70">\Bbb{DG}=\Delta F_{\hat{y}}(x;p_s)|_{z=1}-\Delta F_{\hat{y}}(x;p_s)|_{z=0}</script></div></div><p><span>A higher value of DG indicates that </span><span class='math-in-toc'>$\Delta F_{\hat{y}}(x;p_s)$</span><span> is better as a detection metric.</span></p><h5><a name="mi-with-predicted-label-mi-pl" class="md-header-anchor"></a><span>MI with predicted label (MI-PL)</span></h5><p><span>If MI-PL can improve the general-purpose robustness, it should satisfy RIC, according to Table 1, it means that</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n296" cid="n296" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-72-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-72">\Bbb{E}_{x_s\sim p_s(x|\hat{y})}[G_k(\delta;x_0)-G_k(\lambda\delta;\tilde{x}_0)]=\begin{cases}
+>1-\lambda,&\text{ if }k=\hat{y}\\
+<\lambda- 1, &\text{ if }k=y
+\end{cases}</script></div></div><p><span>The upper notion can be decomposed into</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n298" cid="n298" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-73-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-73">\underbrace{\Bbb{E}_{x_s\sim p_s(x|\hat{y})}[G_k(\delta;x_0)-G_k(\delta;\tilde{x}_0)]}_{\text{input transfer}}+\underbrace{\Bbb{E}_{x_s\sim p_s(x|\hat{y})}[G_k(\delta;\tilde{x_0})-G_k(\lambda\delta;\tilde{x}_0)]}_{\text{perturbation shrinkage}}</script></div></div><p><span>Indicating the two mechanisms of MI.</span></p><p><span>And the detection gap is</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n301" cid="n301" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-74-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-74">\Bbb{DG}_{MI-PL}=\Bbb{E}_{x_s\sim p_s(x|\hat{y})}[G_{\hat{y}}(\delta;x_0)-G_{\hat{y}}(\lambda\delta;\tilde{x}_0)]-(1-\lambda)</script></div></div><h5><a name="mi-with-other-labels-mi-ol" class="md-header-anchor"></a><span>MI with other labels (MI-OL)</span></h5><p><span>Since </span><span class='math-in-toc'>$\Bbb{E}(\bold{1}_{y=y_s})=\frac{1}{L-1}$</span><span>, similarly, there should exist</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n304" cid="n304" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-76-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-76">\Bbb{E}_{y_s\sim\mathcal{U}_{\hat{y}}(y)}\Bbb{E}_{x_s\sim p_s(x|y_s)}[G_k(\delta;x_0)-G_k(\lambda\delta;\tilde{x}_0)]=\begin{cases}
+>0,&\text{ if }k=\hat{y}\\
+<\frac{(\lambda-1)(L-2)}{L-1}, &\text{ if }k=y
+\end{cases}</script></div></div><p><span>And the detection gap is</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n306" cid="n306" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-77-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-77">\Bbb{DG}_{MI-OL}=\Bbb{E}_{y_s\sim\mathcal{U}_{\hat{y}}(y)}\Bbb{E}_{x_s\sim p_s(x|y_s)}[G_{\hat{y}}(\delta;x_0)-G_{\hat{y}}(\lambda\delta;\tilde{x}_0)]-(1-\lambda)</script></div></div><p><span>And there exists </span><span class='math-in-toc'>$\Bbb{DG}_{MI-PL}=\Bbb{DG}_{MI-OL}$</span><span>. </span></p><blockquote><p><span>However, in practice we find that MI-PL performs better than MI-OL in detection, since empirically mixup-trained models cannot induce ideal global linearity.</span></p></blockquote><p><span>They verified the conditions that should be satisfied as shown in Figure 2.</span></p><p><img src="imgs/mi_illustration3.jpg"></img></p><h4><a name="experiments-n312" class="md-header-anchor"></a><span>Experiments</span></h4><blockquote><p><span>In training, we use ResNet-50 (He et al., 2016) and apply the momentum SGD optimizer (Qian, 1999) on both CIFAR-10 and CIFAR-100</span></p></blockquote><blockquote><p><span>The attack method for AT and interpolated AT is untargeted PGD-10 with </span><span class='math-in-toc'>$\epsilon=8/255$</span><span> and step size 2/255 (Madry et al., 2018), and the ratio of the clean examples and the adversarial ones in each mini-batch is 1 : 1 (Lamb et al., 2019).</span></p></blockquote><p><span>Notations:</span></p><ul><li><p><span>ERM</span></p><p><span>Empirical Risk Minimization, the standard training</span></p></li><li><p><span>Mixup (Mixup training)</span></p><p><span>It minimizes</span><span class='math-in-toc'>$\frac{1}{m}\sum_{j=1}^m\mathcal{L}(F(\tilde{x}_j),\tilde{y}_j)$</span><span>, where </span><span class='math-in-toc'>$\tilde{x}_j=\lambda x_{j0}+(1-\lambda)x_{j1}$</span><span>, </span><span class='math-in-toc'>$\tilde{y}_{j}=\lambda y_{j0}+(1-\lambda)y_{j1}$</span><span>.</span></p></li><li><p><span>Interpolated AT</span></p><p><span>Interpolated Adversarial Training</span></p></li></ul><blockquote><p><span>As a practical strategy, we also evaluate a variant of MI, called MI-Combined, which applies MI-OL if the input is detected as adversarial by MI-PL with a default detection threshold; otherwise returns the prediction on the original input. </span></p></blockquote><p><img src="imgs/mi_performance1.jpg"></img></p><p><img src="imgs/mi_performance3.jpg"></img></p><p><img src="imgs/mi_performance2.jpg"></img></p><blockquote><p><span>The results show that applying MI-PL in inference can better detect adversarial attacks, while directly detecting by the returned confidence without MI-PL performs even worse than a random guess.</span></p></blockquote><blockquote><p><span>As shown in these results, our MI method can significantly improve the robustness for the trained models with induced global linearity, and is compatible with training-phase defenses like the interpolated AT method.</span></p></blockquote><p><mark><span>It cannot work effectively independently.</span></mark></p><p><span>They also evaluate on a customized adaptive attack.</span></p><p><img src="imgs/mi_performance4.jpg"></img></p><blockquote><p><span>We can see that even under a strong adaptive attack, equipped with MI can still improve the robustness for the classification models.</span></p></blockquote><h4><a name="inspirations-n342" class="md-header-anchor"></a><span>Inspirations</span></h4><p><span>This paper instantiates one of my ideas, and give a very comprehensive theoretical analysis. If the model follow the assumption that it works linearly on the combination of clean images, MI should work quite well, as demonstrated with Mixup Training and Interpolate AT.</span></p><p><span>The assumption is too strong, since most of the common classifiers do not function linearly between instances.</span></p><p><span>But it gives another inspiration, if the </span><span class='math-in-toc'>$x_s$</span><span> is very close to the clean image itself, the </span><em><span>perturbation shrinkage</span></em><span> will be very large, potentially fix the misclassification.</span></p></div>
+</body>
+</html>

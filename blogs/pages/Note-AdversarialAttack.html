@@ -1,0 +1,854 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>论文笔记-AdversarialAttacks-李皓阳</title><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+
+
+/**
+ * NexT for Typora
+ * Brought to you by Bill Chen || https://github.com/BillChen2K/typora-theme-next
+ *
+ * - Want code ligatures for JetBrains Mono?
+ * - Search for `font-variant-ligatures: none;` and comment that line.
+ *
+ * - Want to change the font size in exported pdf?
+ * - Change the variable `--export-font-size` below.
+ **/
+
+:root {
+    --base-font-size: 16px;
+    --highlight-color: rgb(0, 160, 160);
+    --text-color: #333;
+    --headings-color: #262a30;
+    --export-font-size: 13px;
+    --select-text-bg-color: #262a30;
+    --select-text-font-color: #eee;
+}
+
+* {
+    /* Disable ligatures */
+    font-variant-ligatures: none;
+}
+
+
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
+
+html,
+body,
+#write {
+    color: var(--text-color);
+    font-size: var(--base-font-size);
+    background: #fcfcfc;
+    font-family: Overpass, "GlowSansSC", "Helvetica Neue", "pingfang sc", "microsoft yahei", sans-serif;
+    font-weight: 400;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    /* letter-spacing: -0.5px; */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--headings-color);
+    font-weight: 700;
+    line-height: 1.5;
+    margin: 20px 0 15px
+}
+
+.CodeMirror pre {
+    font-family: 'JetBrains Mono';
+    font-size: 0.95em;
+    line-height: 1.65em;
+}
+
+#write {
+    max-width: 914px;
+    text-align: justify;
+}
+
+#write>h1:first-child {
+    margin-top: 1.75rem;
+}
+
+#write>h2:first-child {
+    margin-top: 1.5rem;
+}
+
+#write>h3:first-child {
+    margin-top: 1rem;
+}
+
+#write>h4:first-child {
+    margin-top: 0.5rem;
+}
+
+h1 {
+    font-size: 2.5em
+}
+
+h2 {
+    font-size: 1.75 em
+}
+
+h3 {
+    font-size: 1.45em
+}
+
+h4 {
+    font-size: 1.25em
+}
+
+h5 {
+    font-size: 1.1em
+}
+
+h6 {
+    font-size: 1em;
+    font-weight: bold
+}
+
+#write code {
+    color: var(--highlight-color);
+}
+
+p {
+    color: var(--text-color);
+    line-height: 1.7rem;
+    margin: 0 0 8px;
+}
+
+#write ul {
+    line-height: 1.75rem;
+    margin-block-start: 0.6em;
+    margin-block-end: 0.6em;
+}
+
+#write ol li {
+    line-height: 1.75rem;
+    margin-block-start: 0.6em;
+    margin-block-end: 0.6em;
+}
+
+u {
+    text-decoration: none;
+    border-bottom: 1px solid #999;
+}
+
+#write>h3.md-focus:before {
+    left: -1.875rem;
+    top: 0.5rem;
+    padding: 2px;
+}
+
+#write>h4.md-focus:before {
+    left: -1.875rem;
+    top: 0.3125rem;
+    padding: 2px;
+}
+
+#write>h5.md-focus:before {
+    left: -1.875rem;
+    top: 0.25rem;
+    padding: 2px;
+}
+
+#write>h6.md-focus:before {
+    left: -1.875rem;
+    top: .125rem;
+    padding: 2px;
+}
+
+@media screen and (max-width: 48em) {
+    blockquote {
+        margin-left: 1rem;
+        margin-right: 0;
+        padding: 0.5em;
+    }
+    /* .h1,
+    h1 {
+        font-size: 2.827rem;
+    }
+    .h2,
+    h2 {
+        font-size: 1.999rem;
+    }
+    .h3,
+    h3 {
+        font-size: 1.413rem;
+    }
+    .h4,
+    h4 {
+        font-size: 1.250rem;
+    }
+    .h5,
+    h5 {
+        font-size: 1.150rem;
+    }
+    .h6,
+    h6 {
+        font-size: 1rem;
+    } */
+}
+
+a .md-def-url {
+    color: #262a30;
+}
+
+a {
+    color: var(--highlight-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition-duration: 0.5s;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 1em;
+    margin: 0 0 20px;
+    width: 100%;
+}
+
+table tr:nth-child(2n),
+thead {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background: #f5f5f5
+}
+
+caption,
+td,
+th {
+    font-weight: 400;
+    padding: 8px;
+    text-align: left;
+    vertical-align: middle
+}
+
+table tr th {
+    border-bottom: 3px solid #ddd;
+    font-weight: 700;
+    padding-bottom: 10px;
+    background-color: var(--bg-color);
+}
+
+td,
+th {
+    border: 1px solid #ddd;
+}
+
+th {
+    font-weight: 700;
+    padding-bottom: 10px
+}
+
+td {
+    border-bottom-width: 1px
+}
+
+
+/* Inline Code */
+
+code,
+.md-fences {
+    background: #eee;
+    border-radius: 3px;
+    color: #555;
+    padding: 2px 4px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    font-family: 'JetBrains Mono';
+    font-size: 0.935em;
+}
+
+
+/* Code Blocks */
+
+.md-fences {
+    margin: 0 0 20px;
+    font-size: 0.9em;
+    line-height: 1.5em;
+    padding: 0.4em 1em;
+    padding-top: 0.4em;
+}
+
+.task-list {
+    padding-left: 0;
+}
+
+.task-list-item {
+    padding-left: 2rem;
+}
+
+.task-list-item input {
+    top: 3px;
+}
+
+.task-list-item input {
+    outline: none;
+    margin-bottom: 0.5em;
+}
+
+.task-list-item input::before {
+    content: "";
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    vertical-align: middle;
+    text-align: center;
+    border: 1px solid gray;
+    background-color: #fdfdfd;
+    margin-left: -0.1rem;
+    margin-right: 0.1rem;
+    margin-top: -0.9rem;
+}
+
+.task-list-item input:checked::before {
+    padding-left: 0.125em;
+    content: '✔';
+    /*◘*/
+    font-size: 0.8125rem;
+    line-height: 0.9375rem;
+    margin-top: -0.9rem;
+}
+
+
+/* Chrome 29+ */
+
+@media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
+    .task-list-item input:before {
+        margin-top: -0.2rem;
+    }
+    .task-list-item input:checked:before,
+    .task-list-item input[checked]:before {
+        margin-top: -0.2rem;
+    }
+}
+
+blockquote {
+    border-left: 4px solid #ddd;
+    color: #666;
+    margin: 0;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 0 15px
+}
+
+blockquote p {
+    color: #666
+}
+
+blockquote cite::before {
+    content: '-';
+    padding: 0 5px
+}
+
+
+/* #write pre.md-meta-block {
+    min-height: 30px;
+    background: #f8f8f8;
+    padding: 1.5em;
+    font-weight: 300;
+    font-size: 1em;
+    padding-bottom: 1.5em;
+    padding-top: 3em;
+    margin-top: -1.5em;
+    color: #999;
+    border-left: 1000px #f8f8f8 solid;
+    margin-left: -1000px;
+    border-right: 1000px #f8f8f8 solid;
+    margin-right: -1000px;
+    margin-bottom: 2em;
+    font-size: 0.8em;
+    line-height: 1.5em;
+    font-family: 'JetBrains Mono';
+} */
+
+#write pre.md-meta-block {
+    padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f1f1f1;
+    border: 0;
+    border-radius: 3px;
+    color: hsl(0, 0%, 53%);
+    margin-top: 0 !important;
+    margin-bottom: 2em;
+    font-size: 0.8em;
+    line-height: 1.5em;
+    font-family: 'JetBrains Mono';
+}
+
+.MathJax_Display {
+    font-size: 0.9em;
+    margin-top: 0.5em;
+    margin-bottom: 0;
+}
+
+p.mathjax-block,
+.mathjax-block {
+    padding-bottom: 0;
+}
+
+.mathjax-block>.code-tooltip {
+    bottom: 5px;
+    box-shadow: none;
+}
+
+.md-image>.md-meta {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.md-image>img {
+    margin-top: 2px;
+}
+
+.md-image>.md-meta:first-of-type:before {
+    padding-left: 4px;
+}
+
+#typora-source {
+    color: #555;
+}
+
+
+/** ui for windows **/
+
+#md-searchpanel {
+    border-bottom: 1px solid #ccc;
+}
+
+#md-searchpanel .btn {
+    border: 1px solid #ccc;
+}
+
+#md-notification:before {
+    top: 14px;
+}
+
+#md-notification {
+    background: #eee;
+}
+
+.megamenu-menu-panel .btn {
+    border: 1px solid #ccc;
+}
+
+#write>h3.md-focus:before {
+    left: -1.5625rem;
+    top: .375rem;
+}
+
+#write>h4.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write>h5.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write>h6.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+.md-image>.md-meta {
+    border-radius: 3px;
+    padding: 2px 0 0 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: inherit;
+}
+
+.md-toc {
+    margin-top: 20px;
+    padding-bottom: 5px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #efefef;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#md-notification:before {
+    top: 10px;
+}
+
+
+/** focus mode */
+
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state {
+    visibility: visible;
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+.file-tree-node {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.file-node-title {
+    padding-top: 2px;
+}
+
+.outline-item {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+
+/* 
+.modal-footer .btn-default,
+.modal-footer .btn-primary {
+    border: 2px solid #222;
+}
+
+
+
+#md-searchpanel .btn:not(.close-btn):hover {
+    background: #fff;
+    border-color: #222;
+    color: #222;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#md-searchpanel .btn:not(.close-btn) {
+    background: #222;
+    border-color: #222;
+    color: #fff;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    transition-duration: .2s;
+}
+
+.searchpanel-search-option-btn {
+    border-radius: 0px;
+    border: 1px solid #222;
+} */
+
+/* Search panel & UI */
+
+#md-searchpanel .btn {
+    border: none;
+}
+
+#md-searchpanel input {
+    box-shadow: none;
+}
+
+.searchpanel-search-option-btn {
+    border-color: #aaa;
+    border-radius: 0;
+}
+
+.modal-dialog .btn {
+    background: #222;
+    border-width: 2px;
+    border-color: #222;
+    border-radius: 0;
+    color: #fff;
+    display: inline-block;
+    font-size: .875em;
+    line-height: 2rem;
+    padding: 0 20px;
+    margin: 5px;
+    text-decoration: none;
+    transition-delay: 0s;
+    transition-duration: .2s;
+    transition-timing-function: ease-in-out
+}
+
+.modal-dialog .btn:hover {
+    background: #eee;
+    border-color: #222;
+    color: #222;
+}
+
+
+/* Printing issue */
+
+.typora-export * {
+    -webkit-print-color-adjust: exact;
+}
+
+.typora-export p {
+    font-size: var(--export-font-size) !important;
+}
+
+.typora-export li {
+    font-size: var(--export-font-size);
+    line-height: 2rem;
+}
+
+.typora-export #write {
+    font-size: var(--export-font-size) !important;
+}
+
+table,
+pre {
+    page-break-inside: avoid;
+}
+
+pre {
+    word-wrap: break-word;
+}
+
+hr {
+    background-image: repeating-linear-gradient(-45deg, #ddd, #ddd 4px, transparent 4px, transparent 8px);
+    border: 0;
+    height: 3px;
+    margin: 40px 0
+}
+
+ .typora-export li, .typora-export p, .typora-export,  .footnote-line {white-space: normal;} 
+</style>
+</head>
+<body class='typora-export os-windows'>
+<div id='write'  class=''><h1><a name="adversarial-attacks" class="md-header-anchor"></a><span>Adversarial Attacks</span></h1><p><span>By LI Haoyang 2020.11.6 (branched)</span></p><h2><a name="content" class="md-header-anchor"></a><span>Content</span></h2><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n412"><a class="md-toc-inner" href="#adversarial-attacks">Adversarial Attacks</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n415"><a class="md-toc-inner" href="#content">Content</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n417"><a class="md-toc-inner" href="#white-box-attack">White-box attack</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n418"><a class="md-toc-inner" href="#adversarial-example---iclr-2014">Adversarial example - ICLR 2014</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n422"><a class="md-toc-inner" href="#concerns">Concerns</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n429"><a class="md-toc-inner" href="#discoveries">Discoveries</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n438"><a class="md-toc-inner" href="#problem-formulation">Problem formulation</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n465"><a class="md-toc-inner" href="#performance">Performance</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n468"><a class="md-toc-inner" href="#analysis-of-unstability">Analysis of unstability</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n488"><a class="md-toc-inner" href="#fgsm---iclr-2015">FGSM - ICLR 2015</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n491"><a class="md-toc-inner" href="#fast-gradient-sign">Fast Gradient Sign</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n496"><a class="md-toc-inner" href="#adversarial-training">Adversarial training</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n507"><a class="md-toc-inner" href="#observation">Observation</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n520"><a class="md-toc-inner" href="#deepfool---cvpr-2016">DeepFool - CVPR 2016</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n526"><a class="md-toc-inner" href="#definition-of-robustness">Definition of robustness</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n533"><a class="md-toc-inner" href="#deepfool-for-binary-classifiers">DeepFool for binary classifiers</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n542"><a class="md-toc-inner" href="#deepfool-for-multiple-classifiers">DeepFool for multiple classifiers</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n557"><a class="md-toc-inner" href="#performance-n557">Performance</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n563"><a class="md-toc-inner" href="#inspirations">Inspirations</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n566"><a class="md-toc-inner" href="#formulated-attacks-by-optimizations---sp-2017">Formulated attacks by optimizations - SP 2017</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n574"><a class="md-toc-inner" href="#target">Target</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n578"><a class="md-toc-inner" href="#lp-distance">L<sub>p</sub> distance</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n592"><a class="md-toc-inner" href="#previous-methods">Previous methods</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n604"><a class="md-toc-inner" href="#carlini-and-wagner-attack">Carlini and Wagner attack</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n651"><a class="md-toc-inner" href="#performance-n651">Performance</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n658"><a class="md-toc-inner" href="#breach-defensive-distillation">Breach defensive distillation</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n682"><a class="md-toc-inner" href="#inspirations-n682">Inspirations</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n684"><a class="md-toc-inner" href="#universal-adversarial-perturbation---cvpr-2017">Universal adversarial perturbation - CVPR 2017</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n691"><a class="md-toc-inner" href="#problem-formulation-n691">Problem formulation</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n694"><a class="md-toc-inner" href="#algorithm">Algorithm</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n703"><a class="md-toc-inner" href="#performance-n703">Performance</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n707"><a class="md-toc-inner" href="#observation-n707">Observation</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n718"><a class="md-toc-inner" href="#explanation">Explanation</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n730"><a class="md-toc-inner" href="#black-box-attack">Black-box attack</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n731"><a class="md-toc-inner" href="#practical-black-box-attacks---ccs-2017">Practical black-box attacks - CCS 2017</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n741"><a class="md-toc-inner" href="#threat-model">Threat model</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n745"><a class="md-toc-inner" href="#attack-strategy">Attack strategy</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n756"><a class="md-toc-inner" href="#substitute-training">Substitute training</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n776"><a class="md-toc-inner" href="#performance-n776">Performance</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n780"><a class="md-toc-inner" href="#inspirations-n780">Inspirations</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n782"><a class="md-toc-inner" href="#adversarial-example-in-the-physical-world---iclr-workshop-2017">Adversarial example in the physical world - ICLR workshop 2017</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n787"><a class="md-toc-inner" href="#methods">Methods</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n808"><a class="md-toc-inner" href="#printed-adversarial-example">Printed adversarial example</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n819"><a class="md-toc-inner" href="#artificial-image-transformations">Artificial image transformations</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n822"><a class="md-toc-inner" href="#domain-attack">Domain attack</a></span></p></div><h2><a name="white-box-attack" class="md-header-anchor"></a><span>White-box attack</span></h2><h3><a name="adversarial-example---iclr-2014" class="md-header-anchor"></a><span>Adversarial example - ICLR 2014</span></h3><blockquote><p><em><span>C. Szegedy, W. Zaremba, I. Sutskever, J. Bruna, D. Erhan, I. J. Goodfellow, and R. Fergus. Intriguing properties of neural networks. In International Conference on Learning Representations (ICLR), 2014.</span></em><span> </span><strong><a href='https://arxiv.org/abs/1312.6199'><span> arXiv:1312.6199</span></a></strong></p></blockquote><p><span>This was the paper proposing the problem of adversarial example.</span></p><h4><a name="concerns" class="md-header-anchor"></a><span>Concerns</span></h4><p><span>The motivations are several concerns of deep neural networks:</span></p><ol start='' ><li><span>The semantic meaning of individual units. (DNN was found to be activated by configured noise as well as by normal inputs)</span></li><li><span>The stability of neural networks to small perturbations to inputs (the problem of adversarial example)</span></li></ol><h4><a name="discoveries" class="md-header-anchor"></a><span>Discoveries</span></h4><p><strong><span>Random vector also encodes semantic information?</span></strong></p><p><img src="imgs/itnn_stim1.jpg" width=50%></img><img src="imgs/itnn_stim2.jpg" width=50%></img></p><p><span>For the activation of some layer </span><span class='math-in-toc'>$\phi(x)$</span><span>, and natural bias vector </span><span class='math-in-toc'>$e_i$</span><span> associated with </span><span class='math-in-toc'>$i$</span><span>-th units in this hidden layer, if we group a set of images </span><span class='math-in-toc'>$x^{&#39;}$</span><span> from a set of unseen images </span><span class='math-in-toc'>$\mathcal{I}$</span><span> as follows:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n433" cid="n433" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">x^{'}=\mathop{\arg\max}_{x\in\mathcal{I}}\left<\phi(x),e_i\right></script></div></div><p><span>It&#39;s natural to predict that semantically similar images will be grouped together. The problem is that replacing </span><span class='math-in-toc'>$e_i$</span><span> with a random vector </span><span class='math-in-toc'>$v$</span><span> also groups images into semantically similar subsets.</span></p><p><strong><span>Smoothness prior may not hold</span></strong></p><blockquote><p><span>Our main result is that for deep neural networks, the smoothness assumption that underlies many kernel methods does not hold. Specifically, we show that by using a simple optimization procedure, we are able to find adversarial examples, which are obtained by imperceptibly small perturbations to a correctly classified input image, so that it is no longer classified correctly</span></p></blockquote><h4><a name="problem-formulation" class="md-header-anchor"></a><span>Problem formulation</span></h4><p><span>The aim is to solve the following box-constrained optimization problem:</span></p><ul><li><p><span class='math-in-toc'>$f:\Bbb{R}^m\rightarrow \{1,\cdots,k\}$</span><span>, a classifier mapping image into discrete label set</span></p></li><li><p><span class='math-in-toc'>$x\in \Bbb{R}^m$</span><span>, a given image</span></p></li><li><p><span class='math-in-toc'>$l\in\{1,\cdots,k\}$</span><span>, a target label</span></p></li><li><p><span>Minimize </span><span class='math-in-toc'>$||r||_2$</span><span> subject to:</span></p><ol start='' ><li><span class='math-in-toc'>$f(x+r)=l$</span></li><li><span class='math-in-toc'>$x+r \in [0,1]^m$</span></li></ol></li></ul><p><span>In practice, an approximate of </span><span class='math-in-toc'>$r$</span><span> is obtained using a box-constrained L-BFGS. The problem is rewritten as:</span></p><ul><li><p><span class='math-in-toc'>$loss_f:\Bbb{R}^m\times\{1,\cdots,k\}\rightarrow\Bbb{R}^+$</span><span>, the loss function for </span><span class='math-in-toc'>$f$</span></p></li><li><p><span>Minimize </span><span class='math-in-toc'>$c|r|+loss_f(x+r,l)$</span><span> subject to:</span></p><ol start='' ><li><span class='math-in-toc'>$f(x+r)=l$</span></li><li><span class='math-in-toc'>$x+r\in[0,1]^m$</span></li></ol></li></ul><h4><a name="performance" class="md-header-anchor"></a><span>Performance</span></h4><p><img src="imgs/itnn_performance.jpg" width=80%></img></p><p><span>The same adversarial example is often misclassified by a variety of classifiers with different architectures or trained on different subsets of the training data.</span></p><h4><a name="analysis-of-unstability" class="md-header-anchor"></a><span>Analysis of unstability</span></h4><p><span>They also discuss the sensitivity of output respect to input (i.e. </span><span class='math-in-toc'>$|f(x+r)-f(x)|$</span><span> respect to </span><span class='math-in-toc'>$|r|$</span><span>) by analyzing the upper Lipschitz bound. (</span><strong><span>why not use the gradient?</span></strong><span>)</span></p><p><span>First, check a series of </span><span class='math-in-toc'>$K$</span><span> full connection layers </span><span class='math-in-toc'>$\phi(x)$</span><span>:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n471" cid="n471" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">\phi(x)=\phi_K(\phi_{K-1}(\dots\phi_1(x;W_1);W_2)\dots;W_K)</script></div></div><p><span>Inspect a single layer </span><span class='math-in-toc'>$\phi_k$</span><span>, and assume it satisfies Lipschitz condition that:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n473" cid="n473" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">\forall x,r,||\phi_k(x;W_k)-\phi_k(x+r;W_k)||\le L_k||r||</script></div></div><p><span>The resulting network </span><span class='math-in-toc'>$\phi$</span><span> then satisfies:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n475" cid="n475" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">\forall x,r,||\phi(x)-\phi(x+r)||\le L||r||,\\
+L=\prod_{k=1}^KL_k</script></div></div><p><span>For a half-rectified layer </span><span class='math-in-toc'>$\phi_k(x;W_k,b_k)=max(0,W_kx+b_k)$</span><span>:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n477" cid="n477" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">\forall x,r,||\phi_k(x;W_k,b_k)-\phi_k(x+r;W_k,b_k)||=\\
+||max(0,W_kx+b_k)-max(0,W_k(x+r)+b_k)||\le ||W_kr||\le ||W_k||||r||</script></div></div><p><span>In which, </span><span class='math-in-toc'>$||W_k||$</span><span> denotes the largest singular value (i.e. operator norm) in </span><span class='math-in-toc'>$W_k$</span><span>.</span></p><p><span>For a max-pooling layer </span><span class='math-in-toc'>$\phi_k$</span><span> :</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n480" cid="n480" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">\forall x,r, ||\phi_k(x)-\phi_k(x+r)||\le ||r||</script></div></div><p><span>It&#39;s obvious that the maximum change </span><span class='math-in-toc'>$r$</span><span> can introduce is </span><span class='math-in-toc'>$||r||$</span><span> when applied to the maximums pooled out by this layer.</span></p><p><span>For a contrast-normalization layer </span><span class='math-in-toc'>$\phi_k=x/(\epsilon+||x||^2)^\gamma$</span><span>: (</span><strong><span>why?</span></strong><span>)</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n483" cid="n483" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">\forall x,r,||\phi_k(x)-\phi_k(x+r)||\le\epsilon^{-\gamma}||r||</script></div></div><blockquote><p><span>It results that a conservative measure of the unstability of the network can be obtained by simply</span>
+<span>computing the operator norm of each fully connected and convolutional layer.</span></p></blockquote><blockquote><p><strong><span>This suggests a simple regularization of the parameters, consisting in penalizing each upper Lipschitz bound, which might help improve the generalisation error of the networks.</span></strong></p></blockquote><h3><a name="fgsm---iclr-2015" class="md-header-anchor"></a><span>FGSM - ICLR 2015</span></h3><blockquote><p><em><span>Ian J Goodfellow, Jonathon Shlens, and Christian Szegedy. Explaining and harnessing adversarial examples. In International Conference on Learning Representations (ICLR), 2015.</span></em></p></blockquote><h4><a name="fast-gradient-sign" class="md-header-anchor"></a><span>Fast Gradient Sign</span></h4><p><span>The idea of FGSM is very simple, perturb the image along the direction against the gradient for a certain distance. The perturbation </span><span class='math-in-toc'>$\eta$</span><span> is calculated by:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n493" cid="n493" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">\eta=\epsilon \mathop{sign}(\nabla_xJ(\theta,x,y))</script></div></div><p><span>In which, </span><span class='math-in-toc'>$x$</span><span> is the original image,  </span><span class='math-in-toc'>$y$</span><span> is the corresponding label and </span><span class='math-in-toc'>$\theta$</span><span> is the parameters of model. The distance is controlled by </span><span class='math-in-toc'>$\epsilon$</span><span>.</span></p><p><img src="imgs/fgsm_performance.jpg" width=80%></img></p><h4><a name="adversarial-training" class="md-header-anchor"></a><span>Adversarial training</span></h4><p><span>The idea is to train the model on worst-case perturbed examples to gain robustness.</span></p><p><span>In a logistic regression, the formulated adversarial training is</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n499" cid="n499" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">\min_{w,b}\Bbb{E}_{x,y\sim p_{data}}\zeta(y(\epsilon||w||_1-w^Tx-b)),\\
+\zeta(z)=log(1+exp(z))</script></div></div><p><span>Since </span><span class='math-in-toc'>$\eta=-\epsilon sign(w)\Rightarrow w^T\eta=\epsilon||w||_1$</span><span>. It works as an adaptive regularization term. By adding similar regularization term into the deep neural network, it&#39;s observed to be more robust.</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n501" cid="n501" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">\tilde{J}(\theta,x,y)=\alpha J(\theta,x,y)+(1-\alpha)J(\theta,x+\epsilon sign(\nabla_xJ(\theta,x,y)))</script></div></div><blockquote><p><span>We can think of adversarial training as doing hard example mining among the set of noisy inputs, in order to train more efficiently by considering only those noisy points that strongly resist classification.</span></p></blockquote><p><img src="imgs/fgsm_observation1.jpg" width=80%></img></p><blockquote><p><span>Our view of adversarial training is that it is only clearly useful when the model has the capacity to learn to resist adversarial examples.</span></p></blockquote><h4><a name="observation" class="md-header-anchor"></a><span>Observation</span></h4><p><span>A RPF networks with </span><span class='math-in-toc'>$p(y=1|x)=exp((x-\mu^T)\beta(x-\mu))$</span><span> is resistant to adversarial examples naturally, since it&#39;s designed to only confidently predict the positive class present in the vicinity of </span><span class='math-in-toc'>$\mu$</span><span>.</span></p><blockquote><p><span>We can’t expect a model with such low capacity to get the right answer at all points of space, but it does correctly respond by reducing its confidence considerably on points it does not “understand.”</span></p></blockquote><p><span>The adversarial examples are generalizable because different models trained on the same dataset resemble the same function.</span></p><blockquote><p><span>We hypothesize that neural networks trained with current methodologies all resemble the linear classifier learned on the same training set.</span></p></blockquote><p><span>Ensemble defense works poorly if the adversarial example is tuned against the ensemble.</span></p><blockquote><p><span>Ensembling provides only limited resistance to adversarial perturbation</span></p></blockquote><p><span>Models trained to model the input distribution are not resistant to adversarial examples.</span></p><blockquote><p><span>It remains possible that some other form of generative training could confer resistance, but clearly the mere fact of being generative is not alone sufficient.</span></p></blockquote><h3><a name="deepfool---cvpr-2016" class="md-header-anchor"></a><span>DeepFool - CVPR 2016</span></h3><p><span>Code: </span><a href='http://github.com/lts4/deepfool' target='_blank' class='url'>http://github.com/lts4/deepfool</a></p><blockquote><p><em><span>Moosavidezfooli S, Fawzi A, Frossard P, et al. DeepFool: A Simple and Accurate Method to Fool Deep Neural Networks. computer vision and pattern recognition, 2016: 2574-2582.</span></em><span> </span><strong><a href='https://arxiv.org/abs/1511.04599'><span> arXiv:1511.04599</span></a></strong></p></blockquote><blockquote><p><span>In this paper, we fill this gap and propose the DeepFool algorithm to efficiently compute perturbations that fool deep networks, and thus reliably quantify the robustness of these classifiers.</span></p></blockquote><h4><a name="definition-of-robustness" class="md-header-anchor"></a><span>Definition of robustness</span></h4><p><span>For a given classifier, an adversarial perturbation is the minimal perturbation </span><span class='math-in-toc'>$\bold{r}$</span><span>  applied to an image </span><span class='math-in-toc'>$\bold{x}$</span><span> that is sufficient to change the estimated label </span><span class='math-in-toc'>$\hat{k}(\bold{x})$</span><span>:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n528" cid="n528" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">\Delta(\bold{x};\hat{k}):=\min_{\bold{r}}||\bold{r}||_2,\\
+s.t.\ \hat{k}(\bold{x}+\bold{r})\neq \hat{k}(\bold{x})</script></div></div><p><span>In which, </span><span class='math-in-toc'>$\Delta(\bold{x};\hat{k})$</span><span> is the proposed robustness of </span><span class='math-in-toc'>$\hat{k}$</span><span> at point </span><span class='math-in-toc'>$\bold{x}$</span><span>. The robustness of classifier </span><span class='math-in-toc'>$\hat{k}$</span><span> is defined as:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n530" cid="n530" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">\rho_{adv}(\hat{k})=\Bbb{E}_x\frac{\Delta(\bold{x};\hat{k})}{||\bold{x}||_2}</script></div></div><p><span>It the expectation of normalized robustness over the distribution of data.</span></p><p><mark><span>In short, define the ratio between the norm of minimal adversarial perturbation respect to the norm of input for each input as its robustness and the expectation of robustness over the whole space as the robustness of model.</span></mark></p><h4><a name="deepfool-for-binary-classifiers" class="md-header-anchor"></a><span>DeepFool for binary classifiers</span></h4><p><span>Assume an affine algorithm </span><span class='math-in-toc'>$f(x)=w^Tx+b : \Bbb{R}^n\rightarrow\Bbb{R}$</span><span>, and a binary classifier </span><span class='math-in-toc'>$\hat{k}(x)=sign(f(x))$</span><span> . </span></p><p><img src="imgs/deepfool_bc.jpg" width=50%></img><img src="imgs/deepfool_bc_algo.jpg" width=50%></img></p><p><span>As shown in Figure 2, the robustness of </span><span class='math-in-toc'>$f$</span><span> at point </span><span class='math-in-toc'>$x_0$</span><span>, </span><span class='math-in-toc'>$\Delta(x_0;f)$</span><span>, is equal to the distance from </span><span class='math-in-toc'>$x_0$</span><span> to the separating affine hyperplane </span><span class='math-in-toc'>$\mathscr{F}=\{x:w^Tx+b=0\}$</span><span>. The minimal perturbation is given by the following closed-form formula:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n537" cid="n537" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">r_{*}(x_0):=\arg\min||r||_2, s.t.\ sign(f(x_0+r))\neq sign(f(x_0))=-\frac{f(x_0)}{||w||_2^2}w</script></div></div><p><span>If </span><span class='math-in-toc'>$f$</span><span> is a general binary differentiable classifier, an iterative procedure can be adopted to estimate the robustness at point </span><span class='math-in-toc'>$x_0$</span><span>. For each iteration, </span><span class='math-in-toc'>$f$</span><span> is linearized around the current current point </span><span class='math-in-toc'>$x_i$</span><span> and the local minimized perturbation is computed as (</span><strong><span>Algorithm 1</span></strong><span>):</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n539" cid="n539" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">\mathop{\arg\min}_{r_i}||r_i||_2, s.t.\ f(x_i)+\nabla f(x_i)^Tr_i=0,\\
+x_i=x_{i-1}+r_{i-1},i\ge1</script></div></div><p><span>Once the separating hyperplane </span><span class='math-in-toc'>$\mathscr{F}$</span><span> is reached, the iteration is stopped. To perturb across the plane, the final perturbation </span><span class='math-in-toc'>$\hat{r}$</span><span> is multiplied by a constant </span><span class='math-in-toc'>$1+\eta$</span><span>, where </span><span class='math-in-toc'>$\eta\ll 1$</span><span>. </span></p><p><mark><span>In short,  the perturbation is optimized by greedily driving the target image towards the separating hyperplane using gradients. It a variant of gradient descent algorithm</span></mark></p><h4><a name="deepfool-for-multiple-classifiers" class="md-header-anchor"></a><span>DeepFool for multiple classifiers</span></h4><p><span>Assuming a multiple classifier of </span><span class='math-in-toc'>$c$</span><span> classes,  </span><span class='math-in-toc'>$f:\Bbb{R}^n\rightarrow\Bbb{R}^c$</span><span>, and the label is acquired using </span><span class='math-in-toc'>$\hat{k}(x)=\mathop{\arg\max}_kf_k(x)$</span><span>, where </span><span class='math-in-toc'>$f_k(x)$</span><span> is the output of </span><span class='math-in-toc'>$f(x)$</span><span> corresponding to </span><span class='math-in-toc'>$k^{th}$</span><span> class.</span></p><p><span>Again, start from an affine classifier </span><span class='math-in-toc'>$f(x)=W^Tx+b$</span><span>, and the minimal perturbation </span><span class='math-in-toc'>$r$</span><span> to fool it at point </span><span class='math-in-toc'>$x_0$</span><span> can be rewritten as:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n545" cid="n545" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">\mathop{\arg\min}_r||r||_2,\\
+s.t.\ \exist k:w_k^T(x_0+r)+b_k\ge w_{\hat{k}(x_0)}^T(x_0+r)+b_{\hat{k}(x_0)}</script></div></div><p><span>In which, </span><span class='math-in-toc'>$w_k$</span><span> is the </span><span class='math-in-toc'>$k^{th}$</span><span> column of </span><span class='math-in-toc'>$W$</span><span>. </span></p><p><img src="imgs/deepfool_mc.jpg" width=50%></img><img src="imgs/deepfool_mc_algo.jpg" width=50%></img></p><p><span>The region of the space where </span><span class='math-in-toc'>$f$</span><span> outputs the label </span><span class='math-in-toc'>$\hat{k}(x_0)$</span><span> can be denoted as a polyhedron </span><span class='math-in-toc'>$P$</span><span>:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n549" cid="n549" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">P=\mathop{\cap}\limits_{k=1}^c\{x:f_{\hat{k}(x_0)}(x)\ge f_k(x)\}</script></div></div><p><span>To find the minimal perturbation, first find the closest hyperplane of the boundary of </span><span class='math-in-toc'>$P$</span><span> indexed by </span><span class='math-in-toc'>$\hat{l}(x_0)$</span><span> by:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n551" cid="n551" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">\hat{l}(x_0)=\mathop{\arg\min}_{k\neq \hat{k}(x_0)}
+\frac{|f_k(x_0)-f_{\hat{k}(x_0)}(x_0)|}{||w_k-w_{\hat{k}(x_0)}||_2}</script></div></div><p><span>The minimal perturbation is the vector projecting </span><span class='math-in-toc'>$x_0$</span><span> on the closest hyperplane indexed by </span><span class='math-in-toc'>$\hat{l}(x_0)$</span><span>:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n553" cid="n553" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">r_*(x_0)=\frac{|f_{\hat{l}(x_0)}(x_0)-f_{\hat{k}(x_0)}(x_0)|}{||w_{\hat{l}(x_0)}-w_{\hat{k}(x_0)}||_2}(w_{\hat{l}(x_0)}-w_{\hat{k}(x_0)})</script></div></div><p><span>For a general classifier, the space where </span><span class='math-in-toc'>$f$</span><span> outputs </span><span class='math-in-toc'>$k$</span><span> is not a polyhedron anymore, but like that in binary classifier, for iteration </span><span class='math-in-toc'>$i$</span><span>, this space can be estimated by a polyhedron </span><span class='math-in-toc'>$\tilde{P}_i$</span><span>:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n555" cid="n555" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">\tilde{P}_i=\mathop{\cap}_{k=1}^c\{x:f_k(x_i)-f_{\hat{k}(x_0)}(x_i)+\nabla f_k(x_i)^Tx-\nabla f_{\hat{k}(x_0)}(x_i)^Tx\le 0\}</script></div></div><p><span>Similar to the case of binary classifier, the algorithm is depicted as </span><strong><span>Algorithm 2</span></strong><span>.</span></p><h4><a name="performance-n557" class="md-header-anchor"></a><span>Performance</span></h4><p><img src="imgs/deepfool_performance.jpg" width=80%></img></p><p><img src="imgs/deepfool_exp.jpg" width=80%></img></p><p><span>The robustness is evaluated using average robustness for each image </span><span class='math-in-toc'>$x$</span><span> in dataset </span><span class='math-in-toc'>$\mathscr{D}$</span><span>:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n561" cid="n561" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">\hat{\rho}_{adv}(f)=\frac{1}{|\mathscr{D}|}\sum_{x\in \mathscr{D}}\frac{||\hat{r}(x)||_2}{||x||_2}</script></div></div><p><span>DeepFool is faster and more imperceptible than FGSM, and their experiments show that fine-tuning the model on adversarial examples generated by DeepFool increases the robustness of the model.</span></p><h4><a name="inspirations" class="md-header-anchor"></a><span>Inspirations</span></h4><p><span>They expand the FGSM into an iterative version, reversely using the gradient descent algorithm to generate adversarial examples and propose a robustness metric based on the </span><span class='math-in-toc'>$p$</span><span>-norm of adversarial perturbations.</span></p><p><span>This paper should have more impact. I think its influence is hurt by the abundance of mathematical equations.</span></p><h3><a name="formulated-attacks-by-optimizations---sp-2017" class="md-header-anchor"></a><span>Formulated attacks by optimizations - SP 2017</span></h3><p><span>Code: </span><a href='http://nicholas.carlini.com/code/nn_robust_attacks' target='_blank' class='url'>http://nicholas.carlini.com/code/nn_robust_attacks</a></p><blockquote><p><em><span>Nicholas Carlini, David Wagner. Towards Evaluating the Robustness of Neural Networks. SP 2017. </span><strong><a href='https://arxiv.org/abs/1608.04644'><span> arXiv:1608.04644</span></a></strong></em></p></blockquote><blockquote><p><span>We consider how to measure the robustness of a neural network against adversarial examples.</span></p></blockquote><blockquote><p><span>Our attacks succeed with probability 200 higher than previous attacks against defensive distillation and effectively break defensive distillation, showing that it provides little added security.</span></p></blockquote><h4><a name="target" class="md-header-anchor"></a><span>Target</span></h4><p><span>They focus on neural networks used as a (</span><span class='math-in-toc'>$m$</span><span>-class) classifier, which maps input </span><span class='math-in-toc'>$x\in\R^n$</span><span> to outputs </span><span class='math-in-toc'>$y\in\R^m$</span><span>, and the label is then acquired by </span><span class='math-in-toc'>$C^*(x)=\arg\max_iF(x)$</span><span>, noted as:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n576" cid="n576" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">F(x)=\text{softmax}(Z(x))=y,\\
+F=\text{softmax}\circ F_n\circ F_{n-1}\circ\cdots\circ F_1,\\
+F_i(x)=\sigma(\theta_i\cdot x)+\hat{\theta_i}</script></div></div><p><span>They consider images scaled to </span><span class='math-in-toc'>$[0,1]$</span><span>, e.g., gray-scale image </span><span class='math-in-toc'>$x\in\R^{hw}$</span><span> and color RGB image </span><span class='math-in-toc'>$x\in\R^{3hw}$</span><span>.</span></p><h4><a name="lp-distance" class="md-header-anchor"></a><span>L</span><sub><span>p</span></sub><span> distance</span></h4><p><span>The </span><span class='math-in-toc'>$L_p$</span><span> distance of </span><span class='math-in-toc'>$x$</span><span> and </span><span class='math-in-toc'>$x^{&#39;}$</span><span> is defined as:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n580" cid="n580" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">||x-x^{'}||_p=||v||_p=\left(\sum_{i=1}^n|v_i|^p\right)^{\frac{1}{p}}</script></div></div><ul><li><span class='math-in-toc'>$L_0$</span><span> distance - measures the number of coordinates </span><span class='math-in-toc'>$i$</span><span> such that </span><span class='math-in-toc'>$x_i\neq x_i^{&#39;}$</span><span>.</span></li><li><span class='math-in-toc'>$L_2$</span><span> distance - measures the standard Euclidean (root-mean-square) distance between </span><span class='math-in-toc'>$x$</span><span> and </span><span class='math-in-toc'>$x^{&#39;}$</span><span>.</span></li><li><span class='math-in-toc'>$L_{\infin}$</span><span> distance - measures the maximum change to any of the coordinates </span><span class='math-in-toc'>$||x-x^{&#39;}||_{\infin}=max(|x_1-x_1^{&#39;}|,\dots,|x_n-x_n^{&#39;}|)$</span><span>.</span></li></ul><blockquote><p><span>When the distance between two images is sufficiently small under any of these metrics, the two images will be perceptually similar or even indistinguishable.</span></p></blockquote><blockquote><p><span>Therefore, any defense that claims to be secure must, at minimum, demonstrate that it can resist attacks under each of these three distance metrics (and possibly others).</span></p></blockquote><h4><a name="previous-methods" class="md-header-anchor"></a><span>Previous methods</span></h4><p><strong><span>L-BFGS</span></strong></p><p><span>Find an adversarial example </span><span class='math-in-toc'>$x^{&#39;}$</span><span> by minimizing the </span><span class='math-in-toc'>$L_2$</span><span> distance between it and original example </span><span class='math-in-toc'>$x$</span><span> while successfully attacking the model:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n595" cid="n595" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">\min||x-x^{'}||_2^2,\\
+s.t.\ C(x^{'})=l,x^{'}\in[0,1]^n</script></div></div><p><span>To be solvable, it&#39;s reformed as:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n597" cid="n597" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">\min c\cdot||x-x^{'}||_2^2+loss_{F,l}(x^{'}),\\
+s.t.x^{'}\in[0,1]^n</script></div></div><p><strong><span>FGSM</span></strong></p><p><span>Find an adversarial example </span><span class='math-in-toc'>$x^{&#39;}$</span><span> under a constrained </span><span class='math-in-toc'>$L_{\infin}$</span><span> distance between the original example </span><span class='math-in-toc'>$x$</span><span> by one gradient step:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n600" cid="n600" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">x^{'}=x+\epsilon\cdot\text{sign}(\nabla loss_{F,l}(x))</script></div></div><p><span>It&#39;s designed to be fast rather than optimal.</span></p><p><strong><span>Papernot&#39;s attack</span></strong></p><p><span>It&#39;s a greedy algorithm picking pixels to modify one at a time, increasing the target classification on each iteration.</span></p><h4><a name="carlini-and-wagner-attack" class="md-header-anchor"></a><span>Carlini and Wagner attack</span></h4><p><span>The problem of finding an adversarial instance </span><span class='math-in-toc'>$x+\delta$</span><span> for an image </span><span class='math-in-toc'>$x$</span><span> is defined as follows:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n606" cid="n606" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">\min \mathcal{D}(x,x+\delta),\\
+s.t.\ C(x+\delta)\neq C^*(x),x+\delta\in[0,1]^n</script></div></div><p><span>In which, </span><span class='math-in-toc'>$\mathcal{D}$</span><span> is some distance metric, either </span><span class='math-in-toc'>$L_0$</span><span>, </span><span class='math-in-toc'>$L_2$</span><span>, or </span><span class='math-in-toc'>$L_{\infin}$</span><span>. </span></p><p><span>This problem is solved by approximate optimization. Adding an objective function </span><span class='math-in-toc'>$f$</span><span> such that </span><span class='math-in-toc'>$C(x+\delta)\neq C^*(x)$</span><span> whenever </span><span class='math-in-toc'>$f(x+\delta)\le 0$</span><span> and otherwise </span><span class='math-in-toc'>$f(x+\delta)&gt;0$</span><span>, the problem is formulated as:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n609" cid="n609" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">\min \mathcal{D}(x,x+\delta)+c\cdot f(x+\delta),
+s.t. x+\delta\in[0,1]^n\\
+\mathop{\longrightarrow}^{L_p-norm}\min||\delta||_p+c\cdot f(x+\delta),s.t. x+\delta\in[0,1]^n</script></div></div><blockquote><p><span>Empirically, we have found that often the best way to choose </span><span class='math-in-toc'>$c$</span><span> is to use the smallest value of </span><span class='math-in-toc'>$c$</span><span> for which the resulting solution </span><span class='math-in-toc'>$x^*$</span><span> has </span><span class='math-in-toc'>$f(x^*)\le 0$</span></p></blockquote><p><span>The constraint </span><span class='math-in-toc'>$x+\delta\in[0,1]^n$</span><span> is known as &quot;box constraint&quot; in optimization literature. They investigate three different methods to cope with this problem:</span></p><ul><li><p><strong><span>Projected gradient descent</span></strong></p><p><span>Perform one step of standard gradient descent and then clip all the coordinates to be within the box (project them back to constraint).</span></p></li><li><p><strong><span>Clipped gradient descent</span></strong></p><p><span>Clip the input to the minimization problem </span><span class='math-in-toc'>$f$</span><span> at each iteration:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n620" cid="n620" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">f=f(min(max(x,0),1))</script></div></div></li><li><p><strong><span>Change of variables</span></strong></p><p><span>Introduce a new variable to smooth the clipped gradient descent. Optimize </span><span class='math-in-toc'>$w$</span><span> instead by setting:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n624" cid="n624" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">\delta_i=\frac{1}{2}(tanh(w_i)+1)-x_i</script></div></div></li></ul><p><img src="imgs/cw_comparison.jpg" width=80%></img></p><p><span>They conducted a grid search for the best combinations of objective function and method to cope with box constraint. </span></p><blockquote><p><span>The choice of method for handling box constraints does not impact the quality of results as significantly for the best minimization functions.</span></p></blockquote><p><strong><span class='math-in-toc'>$L_2$</span><span> attack</span></strong></p><p><span>Given </span><span class='math-in-toc'>$x$</span><span>, choose a traget class </span><span class='math-in-toc'>$t$</span><span> (such that </span><span class='math-in-toc'>$t\neq C^*(x)$</span><span>), and search for </span><span class='math-in-toc'>$w$</span><span> by solving</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n631" cid="n631" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">\min||\frac{1}{2}(tanh(w)+1)-x||_2^2+c\cdot f(\frac{1}{2}(tanh(w)+1)),\\
+f(x)=\max(\max\{Z(x)_i:i\neq t\}-Z(x)_t,-\kappa)</script></div></div><blockquote><p><span>We randomly sample points uniformly from the ball of radius r, where r is the closest adversarial example found so far.</span></p></blockquote><p><strong><span class='math-in-toc'>$L_{0}$</span><span> attack</span></strong></p><p><span>They adopt an iterative approach for the non-differentiable </span><span class='math-in-toc'>$L_0$</span><span> attack. </span></p><p><span>For each iteration:</span></p><ol start='' ><li><span>Generate an adversarial example </span><span class='math-in-toc'>$x+\delta$</span><span> using </span><span class='math-in-toc'>$L_2$</span><span> adversary</span></li><li><span>Compute </span><span class='math-in-toc'>$g=\nabla f(x+\delta)$</span></li><li><span>Select the pixel </span><span class='math-in-toc'>$i=\arg\min_i g_i\cdot \delta$</span><span> and fix </span><span class='math-in-toc'>$i$</span><span> (freeze the most insensitive pixel)</span></li></ol><p><strong><span class='math-in-toc'>$L_{\infin}$</span><span> attack</span></strong></p><p><span>Direct optimization on the naive </span><span class='math-in-toc'>$L_{\infin}$</span><span> formulation causes gradient descent oscillates between suboptimal solutions. They also adopt an iterative approach to solve this problem. </span></p><p><span>For each iteration, they solve:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n647" cid="n647" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">\min c\cdot f(x+\delta)+\sum_i[(\delta_i-\tau)^{+}]</script></div></div><p><span>It penalizes any pixel of perturbation exceeding the threshold </span><span class='math-in-toc'>$\tau$</span><span>, thus insures the </span><span class='math-in-toc'>$L_{\infin}$</span><span>-norm.</span></p><blockquote><p><span>After each iteration, if </span><span class='math-in-toc'>$\delta_i &lt; \tau$</span><span> for all </span><span class='math-in-toc'>$i$</span><span>, we reduce </span><span class='math-in-toc'>$\tau$</span><span> by a factor of 0.9 and repeat; otherwise, we terminate the search.</span></p></blockquote><h4><a name="performance-n651" class="md-header-anchor"></a><span>Performance</span></h4><p><span>They train two customized models using SOTA architectures on MNIST and CIFAR-10, and adopt the pretrained Inception v3 network on ImageNet.</span></p><blockquote><p><span>To minimize this effect, we always consider targeted attacks: given an image </span><span class='math-in-toc'>$x$</span><span> and a randomly chosen target label </span><span class='math-in-toc'>$t$</span><span> (chosen uniformly at random from all labels other than the correct label), the attack goal is to find </span><span class='math-in-toc'>$x^{&#39;}$</span><span> that will be classified as </span><span class='math-in-toc'>$t$</span><span>.</span></p></blockquote><p><img src="imgs/cw_performance.png" width=100%></img><img src="imgs/cw_performance2.png" width=50%></img><img src="imgs/cw_performance3.png" width=50%></img></p><p><span>No doubt, these are very powerful attacks since they are engineered by grid search.</span></p><p><span>It also successfully breached defensive distillation.</span></p><h4><a name="breach-defensive-distillation" class="md-header-anchor"></a><span>Breach defensive distillation</span></h4><p><span>Defensive distillation is proposed in </span></p><blockquote><p><em><span>PAPERNOT, N., MCDANIEL, P., WU, X., JHA, S., AND SWAMI, A. Distillation as a defense to adversarial perturbations against deep neural networks. IEEE Symposium on Security and Privacy (2016).</span></em></p></blockquote><p><span>Distillation is initially propose to compress a large model into a smaller model, by using the soft labels predicted by the large teacher model (predicted probabilities) to train the smaller student model.</span></p><p><span>Defensive distillation uses a student model identical in size with the teacher model and a large distillation temperature to force the distilled model to become more confident in its predictions. The softmax layer is modified with a temperature constant </span><span class='math-in-toc'>$T$</span><span>:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n664" cid="n664" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">\text{softmax}(x,T)_i=\frac{e^{x_i/T}}{\sum_je^{x_j/T}}</script></div></div><p><span>A larger </span><span class='math-in-toc'>$T$</span><span> offers a &quot;softer&quot; maimum, intuitively </span><span class='math-in-toc'>$\text{softmax}(x,T)=\text{softmax}(x/T,1)$</span><span>.</span></p><blockquote><p><span>Defensive distillation proceeds in four steps:</span></p><ol start='' ><li><span>Train a network, the teacher network, by setting the temperature of the softmax to </span><span class='math-in-toc'>$T$</span><span> during the training phase.</span></li><li><span>Compute soft labels by apply the teacher network to each instance in the training set, again evaluating the softmax at temperature </span><span class='math-in-toc'>$T$</span><span>.</span></li><li><span>Train the distilled network (a network with the same shape as the teacher network) on the soft labels, using softmax at temperature </span><span class='math-in-toc'>$T$</span><span>.</span></li><li><span>Finally, when running the distilled network at test time (to classify new inputs), use temperature </span><span class='math-in-toc'>$1$</span><span>.</span></li></ol></blockquote><blockquote><p><span>Positive values are forced to become about T times larger; negative values are multiplied by a factor of about T and thus become even more negative.</span></p></blockquote><p><span>L-BFGS fails because defensive distillation destructs the gradient it utilizes since its loss is a cross entropy.</span></p><p><span>Papenot&#39;s attack fails because defensive distillation magnifies the sub-optimality, making its optimization  process void.</span></p><p><span>FGSM fails because of the flat landscape the defensive distillation created.</span></p><h4><a name="inspirations-n682" class="md-header-anchor"></a><span>Inspirations</span></h4><p><span>This paper demonstrates that with proper choice of optimization techniques, the problem of generating adversarial examples is easily solved and shows that the defensive distillation is useless in face of this well-designed optimization process.</span></p><h3><a name="universal-adversarial-perturbation---cvpr-2017" class="md-header-anchor"></a><span>Universal adversarial perturbation - CVPR 2017</span></h3><p><span>Code: </span><a href='https://github.com/LTS4/universal' target='_blank' class='url'>https://github.com/LTS4/universal</a></p><p><span>Demo: </span><a href='https://youtu.be/jhOu5yhe0rc' target='_blank' class='url'>https://youtu.be/jhOu5yhe0rc</a></p><blockquote><p><em><span>Seyed-Mohsen Moosavi-Dezfooli, Alhussein Fawzi, Omar Fawzi, Pascal Frossard. Universal adversarial perturbations. CVPR 2017. </span><strong><a href='https://arxiv.org/abs/1610.08401'><span> arXiv:1610.08401</span></a></strong></em></p></blockquote><blockquote><p><span>Can we find a single small image perturbation that fools a state-of-the-art deep neural network classifier on all natural images?</span></p></blockquote><h4><a name="problem-formulation-n691" class="md-header-anchor"></a><span>Problem formulation</span></h4><p><span>The problem of generating universal adversarial perturbations is to seek perturbation vectors </span><span class='math-in-toc'>$v\in \R^d$</span><span> for classification function </span><span class='math-in-toc'>$\hat{k}(\cdot)$</span><span> over a distribution of images </span><span class='math-in-toc'>$\mu\sub \R^d$</span><span>, such that:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n693" cid="n693" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">\mathop{\Bbb{P}}\limits_{x\sim\mu}(\hat{k}(x+v)\neq\hat{k}(x))\ge1-\delta,||v||_p\le\xi</script></div></div><h4><a name="algorithm" class="md-header-anchor"></a><span>Algorithm</span></h4><p><img src="imgs/uap_demo.png" width=24%></img><img src="imgs/uap_explanation.png" width=38%></img><img src="imgs/uap_algo.png" width=38%></img></p><p><span>In practice they adopt an iterative approach to solve thise problem. For each datapoint </span><span class='math-in-toc'>$x_i$</span><span> from a set of images </span><span class='math-in-toc'>$X=\{x_1,\dots,x_m\}$</span><span>, they compute a local minimal perturbation </span><span class='math-in-toc'>$\Delta v_i$</span><span>:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n697" cid="n697" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">\Delta v_i\gets\arg\min_r||r||_2,s.t.\hat{k}(x_i+v+r)\neq\hat{k}(x_i)</script></div></div><p><span>And then accumulate this local perturbation </span><span class='math-in-toc'>$\Delta v_i$</span><span> to the overall perturbation </span><span class='math-in-toc'>$v$</span><span> and project the sum to follow the constraint </span><span class='math-in-toc'>$||v||_p\le\xi$</span><span> for the next overall perturbation </span><span class='math-in-toc'>$v$</span><span>:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n699" cid="n699" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">v\gets \mathcal{P}_{p,\xi}(v+\Delta v_i),\\
+\mathcal{P}_{p,\xi}(v)=\arg\min_{v^{'}}||v-v^{'}||_2,s.t.||v^{'}||_p\le\xi</script></div></div><p><span>The iteration is terminated when the overall error exceeds the threshold:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n701" cid="n701" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">Err(X_v):=\frac{1}{m}\sum_{i=1}^m\Bbb{1}_{\hat{k}(x_i+v)\neq\hat{k}(x_i)}\ge1-\delta</script></div></div><p><span>In which, </span><span class='math-in-toc'>$X_v:=\{x_1+v,\dots,x_m+v\}$</span><span> is the set of perturbed images. </span></p><h4><a name="performance-n703" class="md-header-anchor"></a><span>Performance</span></h4><p><img src="imgs/uap_performance1.png" width=80%></img></p><p><img src="imgs/uap_performance2.png" width=80%></img></p><p><span>The results in  Table 1 is acquired over ILSVRC 2012 dataset. The results in Table 2 is acquired over ImageNet dataset.</span></p><h4><a name="observation-n707" class="md-header-anchor"></a><span>Observation</span></h4><p><img src="imgs/uap_observation1.png" width=80%></img></p><p><img src="imgs/uap_observation2.png" width=80%></img></p><p><span>The universal perturbation for different models show different patterns. It&#39;s possible to find variants of universal perturbations over the same model, although they share similar visual textures.</span></p><p><img src="imgs/uap_observation3.png" width=80%></img></p><p><span>There exists several dominant labels where images from dominated labels tend to be perturbed into dominant labels.</span></p><blockquote><p><span>We hypothesize that these dominant labels occupy large regions in the image space, and therefore represent good candidate labels for fooling most natural images.</span></p></blockquote><p><span>Fine-tuning the model on perturbed samples leads to limited improvement of robustness.</span></p><blockquote><p><span>Hence, while fine-tuning the network leads to a mild improvement in the robustness, we observed that this simple solution does not fully immune against small universal perturbations.</span></p></blockquote><h4><a name="explanation" class="md-header-anchor"></a><span>Explanation</span></h4><blockquote><p><span>The large difference between universal and random perturbations suggests that the universal perturbation exploits some geometric correlations between different parts of the decision boundary of the classifier.</span></p></blockquote><p><img src="imgs/uap_explanation3.png" width=50%></img><img src="imgs/uap_explanation2.png" width=50%></img></p><p><span>Follow the explanation in </span><a href='DeepFool - CVPR 2016'><span>DeepFool</span></a><span>, the perturbation vector </span><span class='math-in-toc'>$r(x)$</span><span> is normal (法线) to the decision boundary of the classifier. The correlation of decision boundaries around </span><span class='math-in-toc'>$n$</span><span> data points can be then evaluated through the singular value of following matrix:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n723" cid="n723" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">N=\left[\frac{r(x_1)}{||r(x_1)||_2}\cdots\frac{r(x_n)}{||r(x_n)||_2}\right],\\
+r(x)=\arg\min_r||r||_2,s.t. \hat{k}(x+r)\neq\hat{k}(x)</script></div></div><p><span>It appears that the singular values of </span><span class='math-in-toc'>$N$</span><span> decay quickly, </span><em><span>which confirms the existence of large correlations and redundancies in the decision boundary of deep networks</span></em><span>.</span></p><blockquote><p><span>More precisely, this suggests the existence of a subspace </span><span class='math-in-toc'>$\cal{S}$</span><span> of low dimension </span><span class='math-in-toc'>$d^{&#39;}$</span><span> (with </span><span class='math-in-toc'>$d^{&#39;}\ll d$</span><span> ), that contains most normal vectors to the decision boundary in regions surrounding natural images</span></p></blockquote><blockquote><p><span>We hypothesize that the existence of universal perturbations fooling most natural images is partly due to the existence of such a low-dimensional subspace that captures the correlations among different regions of the decision boundary.</span></p></blockquote><p><mark><span>In short, this process is like doing a PCA for the matrix of boundary normals. If the distribution of singular values are highly biases among normal vectors, it&#39;s likely to represent most of these vectors with a few vectors of high singular values, which means that most vectors are quasi-parallel, i.e. most local linear approximate of boundaries are correlated.</span></mark><span> </span></p><h2><a name="black-box-attack" class="md-header-anchor"></a><span>Black-box attack</span></h2><h3><a name="practical-black-box-attacks---ccs-2017" class="md-header-anchor"></a><span>Practical black-box attacks - CCS 2017</span></h3><blockquote><p><em><span>Nicolas Papernot, Patrick McDaniel, Ian Goodfellow, Somesh Jha, Z. Berkay Celik, Ananthram Swami. Practical Black-Box Attacks against Machine Learning. CCS 2017. </span><strong><a href='https://arxiv.org/abs/1602.02697'><span> arXiv:1602.02697</span></a></strong></em></p></blockquote><p><span>The idea is to attack a customized white-box substitute model and use the transferability of adversarial examples to attack black-box model.</span></p><blockquote><p><span>We assume the adversary (a) has no information about the structure or parameters of the DNN, and (b) does not have access to any large training dataset.</span></p></blockquote><blockquote><p><span>We release assumption (a) by learning a substitute: it gives us the benefit of having full access to the model and apply previous adversarial example crafting methods.</span></p></blockquote><blockquote><p><span>We release assumption (b) by replacing the independently collected training set with a synthetic dataset constructed by the adversary with synthetic inputs and labeled by observing the target DNN’s output.</span></p></blockquote><h4><a name="threat-model" class="md-header-anchor"></a><span>Threat model</span></h4><p><span>The targte model is a multi-class classifier based on DNN. The adversary is only capable of accessing labels </span><span class='math-in-toc'>$\tilde{O}$</span><span> produced by the oracle DNN </span><span class='math-in-toc'>$O$</span><span> , </span><span class='math-in-toc'>$\tilde{O}(\vec{x})=\arg\max_{j\in0\dots N-1}O_j(\vec{x})$</span><span>. </span></p><p><span>The adversarial goal is to produce a minimally altered version </span><span class='math-in-toc'>$\vec{x}^*$</span><span> of any input </span><span class='math-in-toc'>$\vec{x}$</span><span> such that </span><span class='math-in-toc'>$\tilde{O}(\vec{x}^*)\neq \tilde{O}(\vec{x})$</span><span>. The formulated problem is to solve the following optimization problem:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n744" cid="n744" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">\vec{x}^*=\vec{x}+\arg\min\{\vec{z}:\tilde{O}(\vec{x}+\vec{z})\neq \tilde{O}(\vec{x})\}=\vec{x}+\delta_{\vec{x}}</script></div></div><h4><a name="attack-strategy" class="md-header-anchor"></a><span>Attack strategy</span></h4><p><span>The strategy is train a substitute model with synthetic dataset and observed outputs of the target model.</span></p><ol start='' ><li><p><span>Substitute model training</span></p><blockquote><p><span>the attacker queries the oracle with synthetic inputs selected by a Jacobian-based heuristic to build a model </span><span class='math-in-toc'>$F$</span><span> approximating the oracle model </span><span class='math-in-toc'>$O$</span><span>’s decision boundaries.</span></p></blockquote></li><li><p><span>Adversarial sample crafting</span></p><blockquote><p><span>the attacker uses substitute network </span><span class='math-in-toc'>$F$</span><span> to craft adversarial samples, which are then misclassified by oracle </span><span class='math-in-toc'>$O$</span><span> due to the transferability of adversarial samples</span></p></blockquote></li></ol><h4><a name="substitute-training" class="md-header-anchor"></a><span>Substitute training</span></h4><p><img src="imgs/pba_strategy.png" width=60%></img><img src="imgs/pba_algo.png" width=40%></img></p><p><span>The training strategy is explicit:</span></p><ol start='' ><li><p><span>Collect a very small set </span><span class='math-in-toc'>$S_0$</span><span> of inputs representative of the input domain.</span></p></li><li><p><span>Select an architecture to be trained as the substitute </span><span class='math-in-toc'>$F$</span><span>.</span></p></li><li><p><span>Train the substitute iteratively as follows:</span></p><ol start='' ><li><span>Label the training set </span><span class='math-in-toc'>$S_\rho$</span><span> by querying the black-box model.</span></li><li><span>Train the substitute with labelled dataset.</span></li><li><span>Run a </span><em><span>Jacobian-based Dataset Augmentation</span></em><span> to get a larger dataset </span><span class='math-in-toc'>$S_{\rho+1}$</span></li></ol></li></ol><p><span>The so-called </span><em><span>Jacobian-based Dataset Augmentation</span></em><span> is calculated as:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n774" cid="n774" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">S_{\rho+1}=\{\vec{x}+\lambda\cdot sgn(J_F[\tilde{O}(\vec{x})]):\vec{x}\in S_{\rho}\}\cup S_{\rho}</script></div></div><p><mark><span>It augments the substitute training data with adversarial examples generated against substitute model using FGSM.</span></mark></p><h4><a name="performance-n776" class="md-header-anchor"></a><span>Performance</span></h4><p><img src="imgs/pba_performance1.png" width=60%></img><img src="imgs/pba_performance2.png" width=40%></img></p><p><span>The MetaMind Oracle is the target black-box model. The initial dataset of MNIST-based substitute is a subset of 150 samples from MNIST test set. The initial dataset of handcrafted substitute is a set of 100 samples written by the author groups (digits 0 to 9).</span></p><p><span>They also conducted experiments on defensive distillation and some other defense methods, breaking all of them.</span></p><h4><a name="inspirations-n780" class="md-header-anchor"></a><span>Inspirations</span></h4><p><span>The substitute training actually indicates that adversarial examples can be used as a method to augment the training data. </span></p><h3><a name="adversarial-example-in-the-physical-world---iclr-workshop-2017" class="md-header-anchor"></a><span>Adversarial example in the physical world - ICLR workshop 2017</span></h3><p><span>Demo: </span><a href='https://youtu.be/zQ_uMenoBCk' target='_blank' class='url'>https://youtu.be/zQ_uMenoBCk</a></p><blockquote><p><em><span>Alexey Kurakin, Ian Goodfellow, Samy Bengio. Adversarial example in the physical world. ICLR 2017. </span><strong><a href='https://arxiv.org/abs/1607.02533'><span> arXiv:1607.02533</span></a></strong></em></p></blockquote><p><span>This paper demonstrates that the physical attack is feasible.</span></p><h4><a name="methods" class="md-header-anchor"></a><span>Methods</span></h4><p><img src="imgs/advphy_comparison.jpg" width=80%></img></p><p><img src="C:/works/reading/note/imgs/advphy_comparison2.jpg" width=80%></img></p><p><span>Notations:</span></p><ul><li><p><span class='math-in-toc'>$X\in[0,255]^{width\times height\times depth}$</span><span> - an image, typically a 3-D tensor (width,height,depth)</span></p></li><li><p><span class='math-in-toc'>$y_{true}$</span><span> - true class for the image </span><span class='math-in-toc'>$X$</span></p></li><li><p><span class='math-in-toc'>$J(X,y)$</span><span> - cross-entropy cost function of the neural network</span></p></li><li><p><span class='math-in-toc'>$Clip_{X,\epsilon}\{X^{&#39;}\}$</span><span> - function which performs per-pixel clipping of the image </span><span class='math-in-toc'>$X^{&#39;}$</span><span>, the result will be in </span><span class='math-in-toc'>$L_{\infin}$</span><span> </span><span class='math-in-toc'>$\epsilon$</span><span>-neighborhood of the source image </span><span class='math-in-toc'>$X$</span><span>. The exact form is as follows:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n800" cid="n800" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">Clip_{X,\epsilon}\{X^{'}\}(x,y,z)=\min\left\{255, X(x,y,z)+\epsilon,max\left\{0,X(x,y,z)-\epsilon,X^{'}(x,y,z)\right\}\right\}</script></div></div></li></ul><p><strong><span>Fast Method</span></strong></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n802" cid="n802" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">X^{adv}=X+\epsilon\mathop{sign}(\nabla_{X}J(X,y_{true}))</script></div></div><p><strong><span>Basic Iterative Method</span></strong></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n804" cid="n804" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">X^{adv}_0=X,\\
+X^{adv}_{N+1}=Clip_{X,\epsilon}\left\{X^{adv}_N+\alpha \mathop{sign}(\nabla_{X}J(X^{adv}_N,y_{true}))\right\}</script></div></div><p><span>This is actually a projected gradient descent method.</span></p><p><strong><span>Iterative Least-likely Class Method</span></strong></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n807" cid="n807" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">y_{LL}=\arg\min_{y}\{p(y|X)\},\\
+X^{adv}_0=X,\\
+X^{adv}_{N+1}=Clip_{X,\epsilon}\left\{X^{adv}_N+\alpha \mathop{sign}(\nabla_{X}J(X^{adv}_N,y_{LL}))\right\}</script></div></div><h4><a name="printed-adversarial-example" class="md-header-anchor"></a><span>Printed adversarial example</span></h4><p><img src="imgs/advphy_performance1.jpg" width=40%></img><img src="imgs/advphy_performance2.jpg" width=40%></img><img src="imgs/advphy_performance3.jpg" width=20%></img></p><p><span>They designed a metric to study the influence of arbitrary transformations on adversarial images, named as destruction rate:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n811" cid="n811" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><script type="math/tex; mode=display">d=\frac{\sum_{k=1}^nC(X^k,y_{true}^k)\overline{C(X_{adv}^k,y_{true}^k)}C(T(X_{adv}^k),y_{true}^k)}{\sum_{k=1}^{n}C(X^k,y_{true}^k)\overline{C(X_{adv}^k,y_{true}^k)}},\\
+C(X,y)=\begin{cases}
+1,\text{if image }X\text{ is classified as } y;\\
+0,\text{otherwise}
+\end{cases}</script></div></div><p><span>In which, </span><span class='math-in-toc'>$T(\cdot)$</span><span> is an arbitrary transformation. The destruction rate calculates the ratio of adversarial images destructed by transformation.</span></p><blockquote><p><span>We printed clean and adversarial images, took photos of the printed pages, and cropped the printed images from the photos of the full page. We can think of this as a black box transformation that we refer to as “photo transformation”</span></p></blockquote><p><span>They have demonstrated that it&#39;s possible to conduct a physical adversarial attack through printed adversarial examples. </span></p><p><span>They also demonstrated a successful transfer attack:</span></p><blockquote><p><span>Video with the demo available at </span><a href='https://youtu.be/zQ_uMenoBCk' target='_blank' class='url'>https://youtu.be/zQ_uMenoBCk</a><span>.</span></p></blockquote><h4><a name="artificial-image-transformations" class="md-header-anchor"></a><span>Artificial image transformations</span></h4><p><img src="imgs/advphy_comparison3.jpg" width=80%></img></p><p><span>The change of brightness and contrast does not affect adversarial example much, while the blur, noise and  JPEG encoding seriously destructed the adversarial example. Adversarial example generated by FGSM is mostly robust to transformations. </span></p><h2><a name="domain-attack" class="md-header-anchor"></a><span>Domain attack</span></h2><p><a><span>Adversarial Attack in Object Detection</span></a></p></div>
+</body>
+</html>
