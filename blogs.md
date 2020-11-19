@@ -51,7 +51,7 @@
 - <a href="blogs/pages/Note-FewShotLearningSurvey.html" target="_blank">Summarized Survey of Few-Shot Learning</a>
 - <a href="blogs/pages/Note-FewShotLearning.html" target="_blank">Approaches of Few-shot Learning</a>
 
-## Convolutional Neural Networks
+## Neural Networks
 
 - <a href="blogs/pages/Note-OrthogonalConvolution.html" target="_blank">Orthogonal Convolution</a>
 
@@ -59,6 +59,15 @@
 
 - <a href="blogs/pages/code-note-en.html" target="_blank">How to Build a Computer</a>
 - <a href="blogs/pages/encrypto-note-en.html" target="_blank">The Evolution of Cryptography</a>
+
+## Machine Learning
+
+- <a href="blogs/pages/Concept-SVM.html">Basic Concepts of Support Vector Machine (SVM)</a>
+
+## Zhihu Articles
+
+- <a href="https://zhuanlan.zhihu.com/p/269203978">什么是对抗样本？——稳健性和泛化性的交集</a>
+- <a href="https://zhuanlan.zhihu.com/p/268154711">对抗样本是什么？——数据的一小步，模型的一大步</a>
 
 ## History
 
