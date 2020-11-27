@@ -1,0 +1,830 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>Single-ShortcutLearning-李皓阳</title><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+
+
+/**
+ * NexT for Typora
+ * Brought to you by Bill Chen || https://github.com/BillChen2K/typora-theme-next
+ *
+ * - Want code ligatures for JetBrains Mono?
+ * - Search for `font-variant-ligatures: none;` and comment that line.
+ *
+ * - Want to change the font size in exported pdf?
+ * - Change the variable `--export-font-size` below.
+ **/
+
+:root {
+    --base-font-size: 16px;
+    --highlight-color: rgb(0, 160, 160);
+    --text-color: #333;
+    --headings-color: #262a30;
+    --export-font-size: 13px;
+    --select-text-bg-color: #262a30;
+    --select-text-font-color: #eee;
+}
+
+* {
+    /* Disable ligatures */
+    font-variant-ligatures: none;
+}
+
+
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
+
+html,
+body,
+#write {
+    color: var(--text-color);
+    font-size: var(--base-font-size);
+    background: #fcfcfc;
+    font-family: Overpass, "GlowSansSC", "Helvetica Neue", "pingfang sc", "microsoft yahei", sans-serif;
+    font-weight: 400;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    /* letter-spacing: -0.5px; */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--headings-color);
+    font-weight: 700;
+    line-height: 1.5;
+    margin: 20px 0 15px
+}
+
+.CodeMirror pre {
+    font-family: 'JetBrains Mono';
+    font-size: 0.95em;
+    line-height: 1.65em;
+}
+
+#write {
+    max-width: 914px;
+    text-align: justify;
+}
+
+#write>h1:first-child {
+    margin-top: 1.75rem;
+}
+
+#write>h2:first-child {
+    margin-top: 1.5rem;
+}
+
+#write>h3:first-child {
+    margin-top: 1rem;
+}
+
+#write>h4:first-child {
+    margin-top: 0.5rem;
+}
+
+h1 {
+    font-size: 2.5em
+}
+
+h2 {
+    font-size: 1.75 em
+}
+
+h3 {
+    font-size: 1.45em
+}
+
+h4 {
+    font-size: 1.25em
+}
+
+h5 {
+    font-size: 1.1em
+}
+
+h6 {
+    font-size: 1em;
+    font-weight: bold
+}
+
+#write code {
+    color: var(--highlight-color);
+}
+
+p {
+    color: var(--text-color);
+    line-height: 1.7rem;
+    margin: 0 0 8px;
+}
+
+#write ul {
+    line-height: 1.75rem;
+    margin-block-start: 0.6em;
+    margin-block-end: 0.6em;
+}
+
+#write ol li {
+    line-height: 1.75rem;
+    margin-block-start: 0.6em;
+    margin-block-end: 0.6em;
+}
+
+u {
+    text-decoration: none;
+    border-bottom: 1px solid #999;
+}
+
+#write>h3.md-focus:before {
+    left: -1.875rem;
+    top: 0.5rem;
+    padding: 2px;
+}
+
+#write>h4.md-focus:before {
+    left: -1.875rem;
+    top: 0.3125rem;
+    padding: 2px;
+}
+
+#write>h5.md-focus:before {
+    left: -1.875rem;
+    top: 0.25rem;
+    padding: 2px;
+}
+
+#write>h6.md-focus:before {
+    left: -1.875rem;
+    top: .125rem;
+    padding: 2px;
+}
+
+@media screen and (max-width: 48em) {
+    blockquote {
+        margin-left: 1rem;
+        margin-right: 0;
+        padding: 0.5em;
+    }
+    /* .h1,
+    h1 {
+        font-size: 2.827rem;
+    }
+    .h2,
+    h2 {
+        font-size: 1.999rem;
+    }
+    .h3,
+    h3 {
+        font-size: 1.413rem;
+    }
+    .h4,
+    h4 {
+        font-size: 1.250rem;
+    }
+    .h5,
+    h5 {
+        font-size: 1.150rem;
+    }
+    .h6,
+    h6 {
+        font-size: 1rem;
+    } */
+}
+
+a .md-def-url {
+    color: #262a30;
+}
+
+a {
+    color: var(--highlight-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition-duration: 0.5s;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 1em;
+    margin: 0 0 20px;
+    width: 100%;
+}
+
+table tr:nth-child(2n),
+thead {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background: #f5f5f5
+}
+
+caption,
+td,
+th {
+    font-weight: 400;
+    padding: 8px;
+    text-align: left;
+    vertical-align: middle
+}
+
+table tr th {
+    border-bottom: 3px solid #ddd;
+    font-weight: 700;
+    padding-bottom: 10px;
+    background-color: var(--bg-color);
+}
+
+td,
+th {
+    border: 1px solid #ddd;
+}
+
+th {
+    font-weight: 700;
+    padding-bottom: 10px
+}
+
+td {
+    border-bottom-width: 1px
+}
+
+
+/* Inline Code */
+
+code,
+.md-fences {
+    background: #eee;
+    border-radius: 3px;
+    color: #555;
+    padding: 2px 4px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    font-family: 'JetBrains Mono';
+    font-size: 0.935em;
+}
+
+
+/* Code Blocks */
+
+.md-fences {
+    margin: 0 0 20px;
+    font-size: 0.9em;
+    line-height: 1.5em;
+    padding: 0.4em 1em;
+    padding-top: 0.4em;
+}
+
+.task-list {
+    padding-left: 0;
+}
+
+.task-list-item {
+    padding-left: 2rem;
+}
+
+.task-list-item input {
+    top: 3px;
+}
+
+.task-list-item input {
+    outline: none;
+    margin-bottom: 0.5em;
+}
+
+.task-list-item input::before {
+    content: "";
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    vertical-align: middle;
+    text-align: center;
+    border: 1px solid gray;
+    background-color: #fdfdfd;
+    margin-left: -0.1rem;
+    margin-right: 0.1rem;
+    margin-top: -0.9rem;
+}
+
+.task-list-item input:checked::before {
+    padding-left: 0.125em;
+    content: '✔';
+    /*◘*/
+    font-size: 0.8125rem;
+    line-height: 0.9375rem;
+    margin-top: -0.9rem;
+}
+
+
+/* Chrome 29+ */
+
+@media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
+    .task-list-item input:before {
+        margin-top: -0.2rem;
+    }
+    .task-list-item input:checked:before,
+    .task-list-item input[checked]:before {
+        margin-top: -0.2rem;
+    }
+}
+
+blockquote {
+    border-left: 4px solid #ddd;
+    color: #666;
+    margin: 0;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 0 15px
+}
+
+blockquote p {
+    color: #666
+}
+
+blockquote cite::before {
+    content: '-';
+    padding: 0 5px
+}
+
+
+/* #write pre.md-meta-block {
+    min-height: 30px;
+    background: #f8f8f8;
+    padding: 1.5em;
+    font-weight: 300;
+    font-size: 1em;
+    padding-bottom: 1.5em;
+    padding-top: 3em;
+    margin-top: -1.5em;
+    color: #999;
+    border-left: 1000px #f8f8f8 solid;
+    margin-left: -1000px;
+    border-right: 1000px #f8f8f8 solid;
+    margin-right: -1000px;
+    margin-bottom: 2em;
+    font-size: 0.8em;
+    line-height: 1.5em;
+    font-family: 'JetBrains Mono';
+} */
+
+#write pre.md-meta-block {
+    padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f1f1f1;
+    border: 0;
+    border-radius: 3px;
+    color: hsl(0, 0%, 53%);
+    margin-top: 0 !important;
+    margin-bottom: 2em;
+    font-size: 0.8em;
+    line-height: 1.5em;
+    font-family: 'JetBrains Mono';
+}
+
+.MathJax_Display {
+    font-size: 0.9em;
+    margin-top: 0.5em;
+    margin-bottom: 0;
+}
+
+p.mathjax-block,
+.mathjax-block {
+    padding-bottom: 0;
+}
+
+.mathjax-block>.code-tooltip {
+    bottom: 5px;
+    box-shadow: none;
+}
+
+.md-image>.md-meta {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.md-image>img {
+    margin-top: 2px;
+}
+
+.md-image>.md-meta:first-of-type:before {
+    padding-left: 4px;
+}
+
+#typora-source {
+    color: #555;
+}
+
+
+/** ui for windows **/
+
+#md-searchpanel {
+    border-bottom: 1px solid #ccc;
+}
+
+#md-searchpanel .btn {
+    border: 1px solid #ccc;
+}
+
+#md-notification:before {
+    top: 14px;
+}
+
+#md-notification {
+    background: #eee;
+}
+
+.megamenu-menu-panel .btn {
+    border: 1px solid #ccc;
+}
+
+#write>h3.md-focus:before {
+    left: -1.5625rem;
+    top: .375rem;
+}
+
+#write>h4.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write>h5.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write>h6.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+.md-image>.md-meta {
+    border-radius: 3px;
+    padding: 2px 0 0 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: inherit;
+}
+
+.md-toc {
+    margin-top: 20px;
+    padding-bottom: 5px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #efefef;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#md-notification:before {
+    top: 10px;
+}
+
+
+/** focus mode */
+
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state {
+    visibility: visible;
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+.file-tree-node {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.file-node-title {
+    padding-top: 2px;
+}
+
+.outline-item {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+
+/* 
+.modal-footer .btn-default,
+.modal-footer .btn-primary {
+    border: 2px solid #222;
+}
+
+
+
+#md-searchpanel .btn:not(.close-btn):hover {
+    background: #fff;
+    border-color: #222;
+    color: #222;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#md-searchpanel .btn:not(.close-btn) {
+    background: #222;
+    border-color: #222;
+    color: #fff;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    transition-duration: .2s;
+}
+
+.searchpanel-search-option-btn {
+    border-radius: 0px;
+    border: 1px solid #222;
+} */
+
+/* Search panel & UI */
+
+#md-searchpanel .btn {
+    border: none;
+}
+
+#md-searchpanel input {
+    box-shadow: none;
+}
+
+.searchpanel-search-option-btn {
+    border-color: #aaa;
+    border-radius: 0;
+}
+
+.modal-dialog .btn {
+    background: #222;
+    border-width: 2px;
+    border-color: #222;
+    border-radius: 0;
+    color: #fff;
+    display: inline-block;
+    font-size: .875em;
+    line-height: 2rem;
+    padding: 0 20px;
+    margin: 5px;
+    text-decoration: none;
+    transition-delay: 0s;
+    transition-duration: .2s;
+    transition-timing-function: ease-in-out
+}
+
+.modal-dialog .btn:hover {
+    background: #eee;
+    border-color: #222;
+    color: #222;
+}
+
+
+/* Printing issue */
+
+.typora-export * {
+    -webkit-print-color-adjust: exact;
+}
+
+.typora-export p {
+    font-size: var(--export-font-size) !important;
+}
+
+.typora-export li {
+    font-size: var(--export-font-size);
+    line-height: 2rem;
+}
+
+.typora-export #write {
+    font-size: var(--export-font-size) !important;
+}
+
+table,
+pre {
+    page-break-inside: avoid;
+}
+
+pre {
+    word-wrap: break-word;
+}
+
+hr {
+    background-image: repeating-linear-gradient(-45deg, #ddd, #ddd 4px, transparent 4px, transparent 8px);
+    border: 0;
+    height: 3px;
+    margin: 40px 0
+}
+
+ .typora-export li, .typora-export p, .typora-export,  .footnote-line {white-space: normal;} 
+</style>
+</head>
+<body class='typora-export os-windows'>
+<div id='write'  class=''><h1><a name="shortcut-learning-as-a-concept" class="md-header-anchor"></a><span>Shortcut Learning as a Concept</span></h1><p><span>By LI Haoyang 2020.11.24</span></p><h2><a name="content" class="md-header-anchor"></a><span>Content</span></h2><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n237"><a class="md-toc-inner" href="#shortcut-learning-as-a-concept">Shortcut Learning as a Concept</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n240"><a class="md-toc-inner" href="#content">Content</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n242"><a class="md-toc-inner" href="#shortcut-learning-in-deep-neural-networks---2020">Shortcut Learning in Deep Neural Networks - 2020</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n271"><a class="md-toc-inner" href="#shortcut-learning-in-biological-neural-networks">Shortcut learning in biological neural networks</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n273"><a class="md-toc-inner" href="#shortcut-learning-in-comparative-psychology">Shortcut learning in Comparative Psychology</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n278"><a class="md-toc-inner" href="#shortcut-learning-in-education">Shortcut learning in Education</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n284"><a class="md-toc-inner" href="#shortcuts-defined">Shortcuts defined</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n309"><a class="md-toc-inner" href="#shortcuts-where-do-they-come-from">Shortcuts: where do they come from?</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n313"><a class="md-toc-inner" href="#dataset-shortcut-opportunities">Dataset: shortcut opportunities</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n320"><a class="md-toc-inner" href="#decision-rule-shortcuts-from-discriminative-learning">Decision rule: shortcuts from discriminative learning</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n327"><a class="md-toc-inner" href="#generalisation-how-shortcuts-can-be-revealed">Generalisation: how shortcuts can be revealed</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n335"><a class="md-toc-inner" href="#shortcut-learning-across-deep-learning">Shortcut learning across deep learning</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n375"><a class="md-toc-inner" href="#diagnosing-and-understanding-shortcut-learning">Diagnosing and understanding shortcut learning</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n376"><a class="md-toc-inner" href="#interpreting-results-carefully">Interpreting results carefully</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n405"><a class="md-toc-inner" href="#detecting-shortcuts-towards-ood-generalisation-tests">Detecting shortcuts: towards o.o.d. generalisation tests</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n421"><a class="md-toc-inner" href="#shortcuts-why-are-they-learned">Shortcuts: why are they learned?</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n429"><a class="md-toc-inner" href="#beyond-shortcut-learning">Beyond shortcut learning</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n452"><a class="md-toc-inner" href="#conclusion">Conclusion</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n467"><a class="md-toc-inner" href="#inspirations">Inspirations</a></span></p></div><h2><a name="shortcut-learning-in-deep-neural-networks---2020" class="md-header-anchor"></a><span>Shortcut Learning in Deep Neural Networks - 2020</span></h2><p><span>Code: </span><a href='https://github.com/rgeirhos/shortcut-perspective' target='_blank' class='url'>https://github.com/rgeirhos/shortcut-perspective</a></p><blockquote><p><em><span>Robert Geirhos, Jörn-Henrik Jacobsen, Claudio Michaelis, Richard Zemel, Wieland Brendel, Matthias Bethge, Felix A. Wichmann. Shortcut Learning in Deep Neural Networks. arXiv preprint 2020. </span><strong><a href='https://arxiv.org/abs/2004.07780'><span> arXiv:2004.07780</span></a></strong></em></p></blockquote><blockquote><p><span>In this perspective we seek to distil how many of deep learning’s problem can be seen as different symptoms of the same underlying problem: shortcut learning.</span></p></blockquote><blockquote><p><span>Related issues are known in Comparative Psychology, Education and Linguistics, suggesting that shortcut learning may be a common characteristic of learning systems, biological and artificial alike.</span></p></blockquote><p><span>They point out that deep neural networks tend to learn by shortcut, i.e. learn the features that are less generalizable.</span></p><p><img src="imgs/shortcut_demo.png" width=80%></img></p><blockquote><p><span>Different from the past, tackling this lack of understanding is not a purely scientific endeavour anymore but has become an urgent necessity due to the growing societal impact of machine learning applications.</span></p></blockquote><blockquote><p><span>One central observation is that many failure cases are not independent phenomena, but are instead connected in the sense that DNNs follow unintended “shortcut” strategies.</span></p></blockquote><blockquote><p><span>The field of machine learning with its strong mathematical underpinnings has long aspired to develop a formal understanding of shortcut learning which has led to a variety of mathematical concepts and an increasing amount of work under different terms such as</span></p><ul><li><strong><em><span>learning under covariate shift [16]</span></em></strong></li><li><strong><em><span>anti-causal learning [17]</span></em></strong></li><li><strong><em><span>dataset bias [18]</span></em></strong></li><li><strong><em><span>the tank legend [19]</span></em></strong></li><li><strong><em><span>the Clever Hans effect [20]</span></em></strong></li></ul></blockquote><blockquote><p><span>We hope that this perspective facilitates the awareness for shortcut learning and motivates new research to tackle this fundamental challenge we currently face in machine learning.</span></p></blockquote><h3><a name="shortcut-learning-in-biological-neural-networks" class="md-header-anchor"></a><span>Shortcut learning in biological neural networks</span></h3><p><span>Shortcut learning is also common for biological neural networks as shown by behavior studies.</span></p><h4><a name="shortcut-learning-in-comparative-psychology" class="md-header-anchor"></a><span>Shortcut learning in Comparative Psychology</span></h4><blockquote><p><span>Rats learned to navigate a complex maze apparently based on subtle colour differences— very surprising given that the rat retina has only rudimentary machinery to support at best somewhat crude colour vision. Intensive investigation into this curious finding revealed that the rats had tricked the researchers: </span><strong><em><span>They did not use their visual system at all in the experiment and instead simply discriminated the colours by the odour of the colour paint used on the walls of the maze.</span></em></strong><span> Once smell was controlled for, the remarkable colour discrimination ability disappeared ..</span></p></blockquote><p><em><span>They are prone to </span><strong><span>unintended cue learning</span></strong><span>, as shortcut learning is called in Comparative Psychology and the Behavioural Neurosciences</span></em></p><p><mark><span>It seems to indicate that the definition of problem is crucial.</span></mark></p><h4><a name="shortcut-learning-in-education" class="md-header-anchor"></a><span>Shortcut learning in Education</span></h4><blockquote><p><span>Alice loves history. Always has, probably always will. At this very moment, however, she is cursing the subject: After spending weeks immersing herself in the world of Hannibal and his exploits in the Roman Empire, she is now faced with a number of exam questions that are (in her opinion) to equal parts dull and difficult. “How many elephants did Hannibal employ in his army—19, 34 or 40?” ... </span><strong><em><span>Alice notices that Bob, sitting in front of her, seems to be doing very well. Bob of all people, who had just boasted how he had learned the whole book chapter by rote last night ...</span></em></strong></p></blockquote><p><em><span>In educational research, Bob’s reproductive learning strategy would be considered </span><strong><span>surface learning</span></strong><span>, an approach that relies on narrow testing conditions where simple discriminative generalisation strategies can be highly successful.</span></em></p><p><mark><span>It seems to indicate that the definition of &quot;good&quot; is crucial, if one network outperform the other on evaluation, it may be the case that the evaluation is ill-posed.</span></mark></p><p><span>Similarly in machine learning, there is a striking discrepancy between intended as actual learning outcome.</span></p><h3><a name="shortcuts-defined" class="md-header-anchor"></a><span>Shortcuts defined</span></h3><p><img src="imgs/shortcut_demo1.png" width=80%></img></p><p><span>As shown in Figure 2, the model trained on the training set to classify stars from moons may exploit the location information for classification, which is evaluated as proper if tested on an i.i.d. test set, where the location is indeed somehow correlated with the shape, but performs worse when the location and shape are misaligned, as shown in the bottom row.</span></p><p><img src="imgs/shortcut_illustration.png" width=80%></img></p><p><span>They give a taxonomy of decision rules:</span></p><ol start='' ><li><p><strong><span>all possible decision rules, including non-solutions</span></strong></p><p><span>Non-solutions correspond to the case that the model may utilize an </span><em><span>uniformative feature</span></em><span>, i.e. non-discriminative feature.</span></p><p><em><span>Typically, interesting problems have an abundant amount of non-solutions.</span></em></p></li><li><p><strong><span>training solutions, including overfitting solutions</span></strong></p><p><em><span>If a function is learned that yields the correct output on the training images but not on the i.i.d. test images, the learning machine uses overfitting features (the blue area in Figure 3).</span></em></p><p><mark><span>Solutions that perform well on training set.</span></mark></p></li><li><p><strong><span>i.i.d. test solutions, including shortcuts</span></strong></p><p><em><span>Decision rules that solve both the training and i.i.d. test set typically score high on standard benchmark leaderboards.</span></em></p><p><em><span>However, one can instead test models on datasets that are systematically different from the i.i.d. training and test data (also called out-ofdistribution or o.o.d. data).</span></em></p><p><mark><span>Shortcut features are defined as those features that help to perform well on i.i.d. test data but fail in o.o.d. generalization tests.</span></mark></p><p><mark><span>Once the test set is a little deviated with the training set, some model will perform much more worse.</span></mark></p></li><li><p><strong><span>intended solution</span></strong></p><p><em><span>Decision rules that use the intended features (the red area in Figure 3) work well not only on an i.i.d. test set but also perform as intended on o.o.d. tests, where shortcut solutions fail.</span></em></p><p><em><span>Yet, for complex problems, intended solutions are mostly impossible to formalise, so machine learning is needed to estimate these solutions from examples.</span></em></p><p><mark><span>This is the desired solution from human perspective.</span></mark></p></li></ol><h3><a name="shortcuts-where-do-they-come-from" class="md-header-anchor"></a><span>Shortcuts: where do they come from?</span></h3><p><span>Shortcut reveals a mismatch between intended and learned solution.</span></p><p><em><span>It is clear that shortcut learning is to be avoided, but where do shortcuts come from, and what are the defining real-world characteristics of shortcuts that one needs to look out for when assessing a model or task through the lens of shortcut learning?</span></em></p><p><span>They address this question from two perspectives: </span><strong><span>shortcut opportunities</span></strong><span> and </span><strong><span>feature combination</span></strong><span>.</span></p><h4><a name="dataset-shortcut-opportunities" class="md-header-anchor"></a><span>Dataset: shortcut opportunities</span></h4><p><span>As observed by literature, for DNNs, a cow at an unexpected location is not classified correctly as the background itself may be a factor for the recognition of object, conversely, a lush hilly landscape without any animal might be labelled as a &quot;herd of grrazing sheep&quot;.</span></p><p><em><span>This example highlights how a systematic relationship between object and background or context can easily create a shortcut opportunity.</span></em></p><p><mark><span>The network may use unexpected features from the dataset for recognition, which is quite similar to the idea of non-robust features.</span></mark></p><p><em><span>These so-called </span><strong><span>dataset biases</span></strong><span> have long been known to be problematic for machine learning algorithms [18].</span></em></p><p><em><span>Humans, too, are influenced by contextual biases (as evident from faster reaction times when objects appear in the expected context), but their predictions are much less affected when context is missing [28, 29, 30, 31].</span></em></p><p><em><span>Systematic biases are still present even in “Big Data” with large volume and variety, and consequently even large real-world datasets usually contain numerous shortcut opportunities</span></em></p><h4><a name="decision-rule-shortcuts-from-discriminative-learning" class="md-header-anchor"></a><span>Decision rule: shortcuts from discriminative learning</span></h4><p><span>Also as observed in literature,</span></p><p><em><span>Object textures and other local structures in images are highly useful for object classification in standard datasets [36], and DNNs strongly rely on texture cues for object classification, largely ignoring global object shape [37, 38].</span></em></p><p><span>The discriminative learning picks any feature that is sufficient to reliably discriminate on a given dataset without other constraints, i.e. the model does not what feature defines an object.</span></p><p><em><span>This exemplifies the importance of feature combination: the definition of an object relies on a (potentially highly non-linear) combination of information from different sources or attributes that influence a decision rule.</span></em></p><p><em><span>Inferring human-interpretable object attributes like shape or texture from an image</span>
+<span>requires specific nonlinear computations. In typical end-to-end discriminative learning, this again may be prone to shortcut learning.</span></em></p><p><mark><span>The discriminative learning itself does not restricts the features that should be used by the model.</span></mark></p><h4><a name="generalisation-how-shortcuts-can-be-revealed" class="md-header-anchor"></a><span>Generalisation: how shortcuts can be revealed</span></h4><p><img src="imgs/shortcut_illustration2.png" width=80%></img></p><p><span>As revealed by the research of adversarial examples,</span></p><p><em><span>Exposed by the generalisation test, it seems that DNNs learned to detect certain patterns (curved guitar body? strings?) instead of guitars: a successful strategy on training and i.i.d. test data that leads to unintended generalisation on o.o.d. data.</span></em></p><p><em><span>Interestingly, DNNs do not suffer from a general lack of o.o.d. generalisation (Figure 4) [45, 36, 46, 41].</span></em></p><p><em><span>Conversely, to the human eye an image’s category is not altered by </span><strong><span>innocuous distribution shifts</span></strong><span> like rotating objects or adding a bit of noise, but if these changes interact with the shortcut features that DNNs are sensitive to, they completely derail neural network predictions [8, 47, 9, 48, 49, 50, 38].</span></em></p><p><mark><span>DNNs tend to over generalize sometimes, e.g. recognizing the string pattern as a guitar, but it also fails to generalize to some innocuous distribution shifts, e.g. rotation or some noise.</span></mark></p><p><strong><em><span>This highlights that generalisation failures are neither a failure to learn nor a failure to generalise at all, but instead a failure to generalise in the intended direction—generalisation and robustness can be considered the flip side of shortcut learning.</span></em></strong></p><h3><a name="shortcut-learning-across-deep-learning" class="md-header-anchor"></a><span>Shortcut learning across deep learning</span></h3><p><span>There have been revealed traits of shortcut learning in the following domains:</span></p><ul><li><p><strong><span>Computer Vision</span></strong></p><ul><li><span>Innocuous transformations can completely change predictions. (e.g. shifting, rotation, blur, bit noise, background change or texture change)</span></li><li><span>Transferring model performance across datasets (</span><strong><span>domain transfer</span></strong><span>) is challenging because models often use </span><strong><span>domain-specific shortcut features</span></strong><span>, and shortcuts limit the usefulness of unsupervised representations.</span></li><li><strong><span>Adversarial examples</span></strong><span> are particularly tiny changes to an input image that completely derail model predictions (an example is shown in Figure 4). Invisible to the human eye, those changes modify highly predictive patterns that DNNs use to classify objects.</span></li></ul></li><li><p><strong><span>Natural Language Processing</span></strong></p><ul><li><span>The widely used language model BERT has been found to rely on superficial cue words.</span></li><li><span>Shortcut learning starts from various dataset biases such as </span><strong><span>annotation artefacts</span></strong><span>.</span></li><li><strong><span>Feature combination</span></strong><span> crucially depends on shortcut features like word length, and consequently leads to a severe lack of robustness such as an inability to generalise to more challenging test conditions.</span></li></ul></li><li><p><strong><span>Agent-based (Reinforcement) Learning</span></strong></p><ul><li><span>Instead of learning how to play Tetris, an algorithm simply learned to pause the game to evade losing.</span></li><li><span>The crucial reward functions designed are too often contain unexpected shortcuts that all for so-called </span><strong><span>reward hacking</span></strong><span>.</span></li><li><span>In Robotics, there is a commonly observed </span><strong><span>generalization or reality gap</span></strong><span> between simulated training environment and real-world use case. </span><em><span>Introducing additional variation in colour, size, texture, lighting, etc. helps a lot in closing this gap.[70, 71]</span></em></li></ul></li><li><p><strong><span>Fairness &amp; algorithmic decision-making</span></strong></p><ul><li><span>Tasked to predict strong candidates on the basis of their resumes, a hiring tool developed by Amazon was found to be biased towards preferring men.</span></li><li><span>Once a predictive feature is found by a model, even if it is just an artifact of the dataset, the model’s decision rule may depend entirely on the shortcut feature. When human biases are not only replicated, but worsened by a machine, this is referred to as </span><strong><span>bias amplification</span></strong><span>.</span></li><li><span>In the dynamical setting a related problem is called </span><strong><span>disparity amplification</span></strong><span> [74], where sequential feedback loops may amplify a model’s reliance on a majority group.</span></li></ul></li></ul><p><mark><span>There is an unwanted gap between the real and experimental settings, leaving space for the existence of shortcut features, that can be exploited by the model to perform well in experimental environments, but not so promising in reality.</span></mark></p><h3><a name="diagnosing-and-understanding-shortcut-learning" class="md-header-anchor"></a><span>Diagnosing and understanding shortcut learning</span></h3><h4><a name="interpreting-results-carefully" class="md-header-anchor"></a><span>Interpreting results carefully</span></h4><ul><li><p><strong><span>Distinguishing datasets and underlying abilities</span></strong></p><p><em><span>The most popular benchmarks in machine learning still rely on i.i.d. testing which drags attention away from the need to verify how closely this test performance measures the </span><strong><span>underlying ability</span></strong><span> one is actually interested in.</span></em></p><p><em><span>It is important to bear in mind that a dataset is useful only for as long as it is a good proxy for the ability one is actually interested in.</span></em></p><p><mark><span>The benchmark should align with the expectation.</span></mark></p></li><li><p><strong><span>Morgan’s Canon for machine learning</span></strong></p><p><span>Due to </span><em><span>anthropomorphism</span></em><span>, i.e. the tendency of humans to attribute human-like pyschological characteristics to nonhumans on the basis of insufficient empirical evidence, when DNNs successfully recognise objects, people seems to naturally assume that they are using object shape like humans do.</span></p><p><mark><span>People tend to assume others to work out the problem like themselves.</span></mark></p><p><em><span>It later became known as Morgan’s Canon: “</span><strong><span>In no case is an animal activity to be interpreted in terms of higher psychological processes if it can be fairly interpreted in terms of processes which stand lower on the scale of psychological evolution and development</span></strong><span>”</span></em></p><p><span>They propose an adapted saying:</span></p><p><strong><em><span>Never attribute to high-level abilities that which can be adequately explained by shortcut learning.</span></em></strong></p><p><mark><span>If the ability of the model can be explained in low-level, do not interpret it with high level ability.</span></mark></p></li><li><p><strong><span>Testing (surprisingly) strong baselines</span></strong></p><p><em><span>In order to find out whether a result may also be explained by shortcut learning, it can be helpful to test whether a baseline model exceeds expectations even though it does not use intended features.</span></em><span> e.g.</span></p><ul><li><span>using nearest neighbours for scene completion and estimating geolocation</span></li><li><span>object recognition with local features only</span></li><li><span>reasoning based on single cue words</span></li><li><span>answering questions about a movie without ever showing the movie</span></li></ul><p><mark><span>Rule out the intended features to see if the model still works. If it still works, it&#39;s possible that the model has utilized some unexpected features.</span></mark></p><p><strong><em><span>We must not confuse performance on a dataset with the acquisition of an underlying ability.</span></em></strong></p></li></ul><h4><a name="detecting-shortcuts-towards-ood-generalisation-tests" class="md-header-anchor"></a><span>Detecting shortcuts: towards o.o.d. generalisation tests</span></h4><p><img src="imgs/shortcut_box1.png" width=80%></img></p><p><strong><span>Making o.o.d. generalisation tests a standard practice</span></strong></p><p><em><span>Currently, measuring model performance by assessing validation performance on an i.i.d. test set is at the very heart of the vast majority of machine learning benchmarks.</span></em></p><p><span>But the i.i.d. assumption is not very strong, even called as &quot;the big lie in machine learning&quot;.</span></p><p><span>They propose to benchmark models using o.o.d tests.</span></p><p><mark><span>This is not always the best choice, since somtimes the i.i.d. assumption holds, especially for those artificial data.</span></mark></p><p><strong><span>Designing good o.o.d. tests</span></strong></p><p><span>They believe that good o.o.d. tests should fullfill at least the following three conditions:</span></p><ul><li><em><span>A clear distribution shift</span></em><span>, a shift that may or may not be distinguished by humans</span></li><li><em><span>A well-defined intended solution</span></em><span>, nobody wants the model to be good at any distributions</span></li><li><em><span>The majority of current models struggle</span></em><span>, such that the test becomes interesting</span></li></ul><h3><a name="shortcuts-why-are-they-learned" class="md-header-anchor"></a><span>Shortcuts: why are they learned?</span></h3><p><img src="imgs/shortcut_box2.png" width=80%></img></p><p><strong><span>The “Principle of Least Effort”</span></strong></p><p><em><span>In Linguistics, a related phenomenon is called the “Principle of Least Effort” [119], the observation that language speakers generally try to minimise the amount of effort involved in communication.</span></em></p><p><span>People tend to shorten the phrases.</span></p><p><strong><span>Understanding the influence of inductive biases</span></strong></p><p><em><span>In a similar vein, whether a solution is easy to learn for machines does not simply depend on the data but on all of the four components of a machine learning algorithm: architecture, training data, loss function, and optimisation.</span></em></p><p><span>As provided in Box II.</span></p><h3><a name="beyond-shortcut-learning" class="md-header-anchor"></a><span>Beyond shortcut learning</span></h3><p><em><span>Consequently, a significant fraction of machine learning research is concerned with overcoming shortcut learning, albeit not necessarily as a concerted effort.</span></em></p><p><span>They list some domains related with shortcut learning:</span></p><ul><li><p><strong><span>Domain-specific prior knowledge</span></strong></p><p><em><span>Avoiding reliance on unintended cues can be achieved by designing architectures and data-augmentation strategies that discourage learning shortcut features.</span></em></p></li><li><p><strong><span>Adversarial examples and robustness</span></strong></p><p><em><span>Adversarial attacks are a powerful analysis tool for worst-case generalisation [8]. Adversarial examples can be understood as counterfactual explanations, since they are the smallest change to an input that produces a certain output.</span></em></p></li><li><p><strong><span>Domain adaptation, -generalisation and -randomisation</span></strong></p><p><em><span>These areas are explicitly concerned with out-of-distribution generalisation. Usually, multiple distributions are observed during training time and the model is supposed to generalise to a new distribution at test time.</span></em></p></li><li><p><strong><span>Fairness</span></strong></p><p><em><span>Fairness research aims at making machine decisions “fair” according to a certain definition [132]. Individual fairness aims at treating similar individuals similarly while group fairness aims at treating subgroups no different than the rest of the population [133, 134].</span></em></p></li><li><p><strong><span>Meta-learning</span></strong></p><p><em><span>Meta-learning seeks to learn how to learn. An intermediate goal is to learn representations that can adapt quickly to new conditions [136, 137, 138].</span></em></p></li><li><p><strong><span>Generative modelling and disentanglement</span></strong></p><p><em><span>Learning to generate the observed data forces a neural network to model every variation in the training data. By itself, however, this does not necessarily lead to representations useful for downstream tasks [140], let alone outof-distribution generalisation.</span></em></p><p><em><span>Research on disentanglement addresses this shortcoming by learning generative models with well-structured latent representations [141].</span></em></p></li></ul><h3><a name="conclusion" class="md-header-anchor"></a><span>Conclusion</span></h3><p><strong><em><span>Science aims for understanding.</span></em></strong></p><p><em><span>A deeper understanding of how to overcome shortcut learning is of relevance beyond the current application domains of machine learning and there might be interesting future opportunities for cross-fertilisation with other disciplines such as Economics (designing management incentives that do not jeopardise long-term success by rewarding unintended “shortcut” behaviour) or Law (creating laws without “loophole” shortcut opportunities).</span></em></p><p><span>They offer four recommendations:</span></p><ol start='' ><li><strong><span>Connecting the dots: shortcut learning is ubiquitous</span></strong></li><li><strong><span>Interpreting results carefully</span></strong></li><li><strong><span>Testing o.o.d. generalisation</span></strong></li><li><strong><span>Understanding what makes a solution easy to learn</span></strong></li></ol><p><em><span>While overcoming shortcut learning in its entirety may potentially be impossible, any progress towards mitigating it will lead to a better alignment between learned and intended solutions.</span></em></p><p><strong><em><span>With this perspective we hope to fuel discussions across these different communities and to initiate a movement that pushes for a new standard paradigm of generalisation that is able to replace the current i.i.d. tests.</span></em></strong></p><h2><a name="inspirations" class="md-header-anchor"></a><span>Inspirations</span></h2><p><span>This perspective article propose a new concept called </span><strong><span>shortcut learning</span></strong><span>, i.e. the model tends to utilize the most easy (shortcut) features that are sufficient to do the work, while these features may be unaligned with human intention, making the model fail in some situations. </span></p><p><span>They point out that the prevailing paradigm to evaluate model on i.i.d. test set fails to reveal the problem of shortcut learning, and propose to benchmark model using proper o.o.d. test sets. </span></p><p><span>Using the concept of shortcut learning, they connect the research domain of </span><strong><span>domain-specific prior knowledge</span></strong><span>, </span><strong><span>adversarial examples and robustness</span></strong><span>, </span><strong><span>domain adaptation</span></strong><span>, </span><strong><span>fairness</span></strong><span>, </span><strong><span>meta-learning</span></strong><span> and </span><strong><span>generative modelling and disentanglement</span></strong><span>, advocating these communities to work together.</span></p><p><mark><span>This is surely a nice idea that may help explain those striking failures of DNNs, but it&#39;s not proper to use when the reality is actually i.i.d. with respect to the training set.</span></mark></p><p><mark><span>The part of recomendations gives a paragraph of useful nonsense, since these parts are all of the aspects that the communities work on.</span></mark></p><p>&nbsp;</p></div>
+</body>
+</html>

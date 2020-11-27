@@ -1,0 +1,829 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>Single-AdversarialTrainingTricks-李皓阳</title><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+
+
+/**
+ * NexT for Typora
+ * Brought to you by Bill Chen || https://github.com/BillChen2K/typora-theme-next
+ *
+ * - Want code ligatures for JetBrains Mono?
+ * - Search for `font-variant-ligatures: none;` and comment that line.
+ *
+ * - Want to change the font size in exported pdf?
+ * - Change the variable `--export-font-size` below.
+ **/
+
+:root {
+    --base-font-size: 16px;
+    --highlight-color: rgb(0, 160, 160);
+    --text-color: #333;
+    --headings-color: #262a30;
+    --export-font-size: 13px;
+    --select-text-bg-color: #262a30;
+    --select-text-font-color: #eee;
+}
+
+* {
+    /* Disable ligatures */
+    font-variant-ligatures: none;
+}
+
+
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
+
+html,
+body,
+#write {
+    color: var(--text-color);
+    font-size: var(--base-font-size);
+    background: #fcfcfc;
+    font-family: Overpass, "GlowSansSC", "Helvetica Neue", "pingfang sc", "microsoft yahei", sans-serif;
+    font-weight: 400;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    /* letter-spacing: -0.5px; */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--headings-color);
+    font-weight: 700;
+    line-height: 1.5;
+    margin: 20px 0 15px
+}
+
+.CodeMirror pre {
+    font-family: 'JetBrains Mono';
+    font-size: 0.95em;
+    line-height: 1.65em;
+}
+
+#write {
+    max-width: 914px;
+    text-align: justify;
+}
+
+#write>h1:first-child {
+    margin-top: 1.75rem;
+}
+
+#write>h2:first-child {
+    margin-top: 1.5rem;
+}
+
+#write>h3:first-child {
+    margin-top: 1rem;
+}
+
+#write>h4:first-child {
+    margin-top: 0.5rem;
+}
+
+h1 {
+    font-size: 2.5em
+}
+
+h2 {
+    font-size: 1.75 em
+}
+
+h3 {
+    font-size: 1.45em
+}
+
+h4 {
+    font-size: 1.25em
+}
+
+h5 {
+    font-size: 1.1em
+}
+
+h6 {
+    font-size: 1em;
+    font-weight: bold
+}
+
+#write code {
+    color: var(--highlight-color);
+}
+
+p {
+    color: var(--text-color);
+    line-height: 1.7rem;
+    margin: 0 0 8px;
+}
+
+#write ul {
+    line-height: 1.75rem;
+    margin-block-start: 0.6em;
+    margin-block-end: 0.6em;
+}
+
+#write ol li {
+    line-height: 1.75rem;
+    margin-block-start: 0.6em;
+    margin-block-end: 0.6em;
+}
+
+u {
+    text-decoration: none;
+    border-bottom: 1px solid #999;
+}
+
+#write>h3.md-focus:before {
+    left: -1.875rem;
+    top: 0.5rem;
+    padding: 2px;
+}
+
+#write>h4.md-focus:before {
+    left: -1.875rem;
+    top: 0.3125rem;
+    padding: 2px;
+}
+
+#write>h5.md-focus:before {
+    left: -1.875rem;
+    top: 0.25rem;
+    padding: 2px;
+}
+
+#write>h6.md-focus:before {
+    left: -1.875rem;
+    top: .125rem;
+    padding: 2px;
+}
+
+@media screen and (max-width: 48em) {
+    blockquote {
+        margin-left: 1rem;
+        margin-right: 0;
+        padding: 0.5em;
+    }
+    /* .h1,
+    h1 {
+        font-size: 2.827rem;
+    }
+    .h2,
+    h2 {
+        font-size: 1.999rem;
+    }
+    .h3,
+    h3 {
+        font-size: 1.413rem;
+    }
+    .h4,
+    h4 {
+        font-size: 1.250rem;
+    }
+    .h5,
+    h5 {
+        font-size: 1.150rem;
+    }
+    .h6,
+    h6 {
+        font-size: 1rem;
+    } */
+}
+
+a .md-def-url {
+    color: #262a30;
+}
+
+a {
+    color: var(--highlight-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition-duration: 0.5s;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 1em;
+    margin: 0 0 20px;
+    width: 100%;
+}
+
+table tr:nth-child(2n),
+thead {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background: #f5f5f5
+}
+
+caption,
+td,
+th {
+    font-weight: 400;
+    padding: 8px;
+    text-align: left;
+    vertical-align: middle
+}
+
+table tr th {
+    border-bottom: 3px solid #ddd;
+    font-weight: 700;
+    padding-bottom: 10px;
+    background-color: var(--bg-color);
+}
+
+td,
+th {
+    border: 1px solid #ddd;
+}
+
+th {
+    font-weight: 700;
+    padding-bottom: 10px
+}
+
+td {
+    border-bottom-width: 1px
+}
+
+
+/* Inline Code */
+
+code,
+.md-fences {
+    background: #eee;
+    border-radius: 3px;
+    color: #555;
+    padding: 2px 4px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    font-family: 'JetBrains Mono';
+    font-size: 0.935em;
+}
+
+
+/* Code Blocks */
+
+.md-fences {
+    margin: 0 0 20px;
+    font-size: 0.9em;
+    line-height: 1.5em;
+    padding: 0.4em 1em;
+    padding-top: 0.4em;
+}
+
+.task-list {
+    padding-left: 0;
+}
+
+.task-list-item {
+    padding-left: 2rem;
+}
+
+.task-list-item input {
+    top: 3px;
+}
+
+.task-list-item input {
+    outline: none;
+    margin-bottom: 0.5em;
+}
+
+.task-list-item input::before {
+    content: "";
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    vertical-align: middle;
+    text-align: center;
+    border: 1px solid gray;
+    background-color: #fdfdfd;
+    margin-left: -0.1rem;
+    margin-right: 0.1rem;
+    margin-top: -0.9rem;
+}
+
+.task-list-item input:checked::before {
+    padding-left: 0.125em;
+    content: '✔';
+    /*◘*/
+    font-size: 0.8125rem;
+    line-height: 0.9375rem;
+    margin-top: -0.9rem;
+}
+
+
+/* Chrome 29+ */
+
+@media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
+    .task-list-item input:before {
+        margin-top: -0.2rem;
+    }
+    .task-list-item input:checked:before,
+    .task-list-item input[checked]:before {
+        margin-top: -0.2rem;
+    }
+}
+
+blockquote {
+    border-left: 4px solid #ddd;
+    color: #666;
+    margin: 0;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 0 15px
+}
+
+blockquote p {
+    color: #666
+}
+
+blockquote cite::before {
+    content: '-';
+    padding: 0 5px
+}
+
+
+/* #write pre.md-meta-block {
+    min-height: 30px;
+    background: #f8f8f8;
+    padding: 1.5em;
+    font-weight: 300;
+    font-size: 1em;
+    padding-bottom: 1.5em;
+    padding-top: 3em;
+    margin-top: -1.5em;
+    color: #999;
+    border-left: 1000px #f8f8f8 solid;
+    margin-left: -1000px;
+    border-right: 1000px #f8f8f8 solid;
+    margin-right: -1000px;
+    margin-bottom: 2em;
+    font-size: 0.8em;
+    line-height: 1.5em;
+    font-family: 'JetBrains Mono';
+} */
+
+#write pre.md-meta-block {
+    padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f1f1f1;
+    border: 0;
+    border-radius: 3px;
+    color: hsl(0, 0%, 53%);
+    margin-top: 0 !important;
+    margin-bottom: 2em;
+    font-size: 0.8em;
+    line-height: 1.5em;
+    font-family: 'JetBrains Mono';
+}
+
+.MathJax_Display {
+    font-size: 0.9em;
+    margin-top: 0.5em;
+    margin-bottom: 0;
+}
+
+p.mathjax-block,
+.mathjax-block {
+    padding-bottom: 0;
+}
+
+.mathjax-block>.code-tooltip {
+    bottom: 5px;
+    box-shadow: none;
+}
+
+.md-image>.md-meta {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.md-image>img {
+    margin-top: 2px;
+}
+
+.md-image>.md-meta:first-of-type:before {
+    padding-left: 4px;
+}
+
+#typora-source {
+    color: #555;
+}
+
+
+/** ui for windows **/
+
+#md-searchpanel {
+    border-bottom: 1px solid #ccc;
+}
+
+#md-searchpanel .btn {
+    border: 1px solid #ccc;
+}
+
+#md-notification:before {
+    top: 14px;
+}
+
+#md-notification {
+    background: #eee;
+}
+
+.megamenu-menu-panel .btn {
+    border: 1px solid #ccc;
+}
+
+#write>h3.md-focus:before {
+    left: -1.5625rem;
+    top: .375rem;
+}
+
+#write>h4.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write>h5.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write>h6.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+.md-image>.md-meta {
+    border-radius: 3px;
+    padding: 2px 0 0 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: inherit;
+}
+
+.md-toc {
+    margin-top: 20px;
+    padding-bottom: 5px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #efefef;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#md-notification:before {
+    top: 10px;
+}
+
+
+/** focus mode */
+
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state {
+    visibility: visible;
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+.file-tree-node {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.file-node-title {
+    padding-top: 2px;
+}
+
+.outline-item {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+
+/* 
+.modal-footer .btn-default,
+.modal-footer .btn-primary {
+    border: 2px solid #222;
+}
+
+
+
+#md-searchpanel .btn:not(.close-btn):hover {
+    background: #fff;
+    border-color: #222;
+    color: #222;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#md-searchpanel .btn:not(.close-btn) {
+    background: #222;
+    border-color: #222;
+    color: #fff;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    transition-duration: .2s;
+}
+
+.searchpanel-search-option-btn {
+    border-radius: 0px;
+    border: 1px solid #222;
+} */
+
+/* Search panel & UI */
+
+#md-searchpanel .btn {
+    border: none;
+}
+
+#md-searchpanel input {
+    box-shadow: none;
+}
+
+.searchpanel-search-option-btn {
+    border-color: #aaa;
+    border-radius: 0;
+}
+
+.modal-dialog .btn {
+    background: #222;
+    border-width: 2px;
+    border-color: #222;
+    border-radius: 0;
+    color: #fff;
+    display: inline-block;
+    font-size: .875em;
+    line-height: 2rem;
+    padding: 0 20px;
+    margin: 5px;
+    text-decoration: none;
+    transition-delay: 0s;
+    transition-duration: .2s;
+    transition-timing-function: ease-in-out
+}
+
+.modal-dialog .btn:hover {
+    background: #eee;
+    border-color: #222;
+    color: #222;
+}
+
+
+/* Printing issue */
+
+.typora-export * {
+    -webkit-print-color-adjust: exact;
+}
+
+.typora-export p {
+    font-size: var(--export-font-size) !important;
+}
+
+.typora-export li {
+    font-size: var(--export-font-size);
+    line-height: 2rem;
+}
+
+.typora-export #write {
+    font-size: var(--export-font-size) !important;
+}
+
+table,
+pre {
+    page-break-inside: avoid;
+}
+
+pre {
+    word-wrap: break-word;
+}
+
+hr {
+    background-image: repeating-linear-gradient(-45deg, #ddd, #ddd 4px, transparent 4px, transparent 8px);
+    border: 0;
+    height: 3px;
+    margin: 40px 0
+}
+
+ .typora-export li, .typora-export p, .typora-export,  .footnote-line {white-space: normal;} 
+</style>
+</head>
+<body class='typora-export os-windows'>
+<div id='write'  class=''><h1><a name="bag-of-tricks-for-adversarial-training" class="md-header-anchor"></a><span>Bag of Tricks for Adversarial Training</span></h1><p><span>By LI Haoyang 2020.11.21 | 2020.11.22</span></p><h2><a name="content" class="md-header-anchor"></a><span>Content</span></h2><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" href="#bag-of-tricks-for-adversarial-training">Bag of Tricks for Adversarial Training</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n3"><a class="md-toc-inner" href="#content">Content</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n5"><a class="md-toc-inner" href="#bag-of-tricks-for-adversarial-training---2020">Bag of Tricks for Adversarial Training - 2020</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n11"><a class="md-toc-inner" href="#motivation">Motivation</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n21"><a class="md-toc-inner" href="#bag-of-tricks">Bag of tricks</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n22"><a class="md-toc-inner" href="#settings">Settings</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n67"><a class="md-toc-inner" href="#early-stopping--warmup">Early stopping | Warmup</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n76"><a class="md-toc-inner" href="#batch-size--label-smoothing--optimizers">Batch size | Label Smoothing | Optimizers</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n95"><a class="md-toc-inner" href="#weight-decay--activation-function">Weight decay | Activation function</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n111"><a class="md-toc-inner" href="#model-architecture--batch-normalization-mode">Model architecture | Batch normalization mode</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n131"><a class="md-toc-inner" href="#takeaways">Takeaways</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n148"><a class="md-toc-inner" href="#combination-of-tricks">Combination of tricks</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n173"><a class="md-toc-inner" href="#re-implementation-of-trades">Re-implementation of TRADES</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n181"><a class="md-toc-inner" href="#reference-codes">Reference codes</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n255"><a class="md-toc-inner" href="#trick-candidates-provided">Trick candidates provided</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n279"><a class="md-toc-inner" href="#inspirations">Inspirations</a></span></p></div><h2><a name="bag-of-tricks-for-adversarial-training---2020" class="md-header-anchor"></a><span>Bag of Tricks for Adversarial Training - 2020</span></h2><p><span>Code: </span><a href='https://github.com/P2333/Bag-of-Tricks-for-AT' target='_blank' class='url'>https://github.com/P2333/Bag-of-Tricks-for-AT</a></p><blockquote><p><em><span>Tianyu Pang, Xiao Yang, Yinpeng Dong, Hang Su, Jun Zhu. Bag of Tricks for Adversarial Training. arXiv preprint 2020. </span><strong><a href='https://arxiv.org/abs/2010.00467'><span> arXiv:2010.00467</span></a></strong></em></p></blockquote><p><span>They notice that the basic settings of the variants and improvements of the prevailing adversarial training are inconsistent, making a direct comparison unfair. Therefore, they make a comprehensive evaluations on the effects of basic settings in adversarial training.</span></p><p><mark><span>A trivial but meaningful work.</span></mark><span> </span></p><h3><a name="motivation" class="md-header-anchor"></a><span>Motivation</span></h3><blockquote><p><span>We find that TRADES uses weight decay of 2 × 10</span><sup><span>−4</span></sup><span> and eval mode of batch normalization (BN) when crafting adversarial examples, while Rice et al. (2020) use weight decay of 5 × 10</span><sup><span>−4</span></sup><span> and train mode of BN to generate adversarial examples.</span></p></blockquote><blockquote><p><span>Our empirical results suggest that improper training settings can largely degenerate the model performance, while this degeneration may be mistakenly ascribed to the methods themselves.</span></p></blockquote><p><img src="imgs/attricks_demo.jpg" width=80%></img></p><p><span>As shown in Table 1, the hyperparameter settings of proposed methods are quite different, making a direct comparison unfair.</span></p><p><mark><span>Intuitively from the Table 1, in this domain, a large learning rate is favored, epochs and batch size vary a lot, weight decay is mostly either </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="8.654ex" height="2.458ex" viewBox="0 -951 3726.1 1058.4" role="img" focusable="false" style="vertical-align: -0.25ex;"><defs><path stroke-width="0" id="E13-MJMAIN-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path stroke-width="0" id="E13-MJMAIN-D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"></path><path stroke-width="0" id="E13-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E13-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path stroke-width="0" id="E13-MJMAIN-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path stroke-width="0" id="E13-MJMAIN-34" d="M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E13-MJMAIN-32" x="0" y="0"></use><use xlink:href="#E13-MJMAIN-D7" x="722" y="0"></use><g transform="translate(1722,0)"><use xlink:href="#E13-MJMAIN-31"></use><use xlink:href="#E13-MJMAIN-30" x="500" y="0"></use><g transform="translate(1000,392)"><use transform="scale(0.707)" xlink:href="#E13-MJMAIN-2212" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E13-MJMAIN-34" x="778" y="0"></use></g></g></g></svg></span><script type="math/tex">2\times 10^{-4}</script><span> or </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="8.654ex" height="2.458ex" viewBox="0 -951 3726.1 1058.4" role="img" focusable="false" style="vertical-align: -0.25ex;"><defs><path stroke-width="0" id="E15-MJMAIN-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"></path><path stroke-width="0" id="E15-MJMAIN-D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"></path><path stroke-width="0" id="E15-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E15-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path stroke-width="0" id="E15-MJMAIN-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path stroke-width="0" id="E15-MJMAIN-34" d="M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E15-MJMAIN-35" x="0" y="0"></use><use xlink:href="#E15-MJMAIN-D7" x="722" y="0"></use><g transform="translate(1722,0)"><use xlink:href="#E15-MJMAIN-31"></use><use xlink:href="#E15-MJMAIN-30" x="500" y="0"></use><g transform="translate(1000,392)"><use transform="scale(0.707)" xlink:href="#E15-MJMAIN-2212" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E15-MJMAIN-34" x="778" y="0"></use></g></g></g></svg></span><script type="math/tex">5\times 10^{-4}</script><span>, generally no early stop (because it&#39;s recently highlighted) and generally no warmup.</span></mark></p><p><mark><span>Although these settings are various, I do not think it&#39;s completely unfair to compare them, since setting itself is probably a part of method, the main meaning of restricting setting should be limiting the resources used to be comparable (e.g. in the same computational complexity).</span></mark></p><p><mark><span>Besides, there is another question, i.e. should we compare the best performance, or the fair performance? In practice, the best performance under limited resources is more meaningful, i.e. every engineer tunes the hyperparameters on their own dataset.</span></mark></p><h3><a name="bag-of-tricks" class="md-header-anchor"></a><span>Bag of tricks</span></h3><h4><a name="settings" class="md-header-anchor"></a><span>Settings</span></h4><p><span>The basic evaluation setting they use are as follow</span></p><ul><li><p><strong><span>Dataset</span></strong><span>: CIFAR-10</span></p></li><li><p><strong><span>Threat model</span></strong><span>: </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="2.843ex" height="2.336ex" viewBox="0 -792.8 1224.1 1005.7" role="img" focusable="false" style="vertical-align: -0.494ex;"><defs><path stroke-width="0" id="E3-MJMAIN-2113" d="M345 104T349 104T361 95T369 80T352 59Q268 -20 206 -20Q170 -20 146 3T113 53T99 104L94 129Q94 130 79 116T48 86T28 70Q22 70 15 79T7 94Q7 98 12 103T58 147L91 179V185Q91 186 91 191T92 200Q92 282 128 400T223 612T336 705Q397 705 397 636V627Q397 453 194 233Q185 223 180 218T174 211T171 208T165 201L163 186Q159 142 159 123Q159 17 208 17Q228 17 253 30T293 56T335 94Q345 104 349 104ZM360 634Q360 655 354 661T336 668Q328 668 322 666T302 645T272 592Q252 547 229 467T192 330L179 273Q179 272 186 280T204 300T221 322Q327 453 355 590Q360 612 360 634Z"></path><path stroke-width="0" id="E3-MJMAIN-221E" d="M55 217Q55 305 111 373T254 442Q342 442 419 381Q457 350 493 303L507 284L514 294Q618 442 747 442Q833 442 888 374T944 214Q944 128 889 59T743 -11Q657 -11 580 50Q542 81 506 128L492 147L485 137Q381 -11 252 -11Q166 -11 111 57T55 217ZM907 217Q907 285 869 341T761 397Q740 397 720 392T682 378T648 359T619 335T594 310T574 285T559 263T548 246L543 238L574 198Q605 158 622 138T664 94T714 61T765 51Q827 51 867 100T907 217ZM92 214Q92 145 131 89T239 33Q357 33 456 193L425 233Q364 312 334 337Q285 380 233 380Q171 380 132 331T92 214Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E3-MJMAIN-2113" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E3-MJMAIN-221E" x="589" y="-213"></use></g></svg></span><script type="math/tex">\ell_{\infty}</script><span>-perturbation with </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="9.847ex" height="2.703ex" viewBox="0 -845.5 4239.6 1163.9" role="img" focusable="false" style="vertical-align: -0.739ex;"><defs><path stroke-width="0" id="E4-MJMATHI-3F5" d="M227 -11Q149 -11 95 41T40 174Q40 262 87 322Q121 367 173 396T287 430Q289 431 329 431H367Q382 426 382 411Q382 385 341 385H325H312Q191 385 154 277L150 265H327Q340 256 340 246Q340 228 320 219H138V217Q128 187 128 143Q128 77 160 52T231 26Q258 26 284 36T326 57T343 68Q350 68 354 58T358 39Q358 36 357 35Q354 31 337 21T289 0T227 -11Z"></path><path stroke-width="0" id="E4-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E4-MJMAIN-38" d="M70 417T70 494T124 618T248 666Q319 666 374 624T429 515Q429 485 418 459T392 417T361 389T335 371T324 363L338 354Q352 344 366 334T382 323Q457 264 457 174Q457 95 399 37T249 -22Q159 -22 101 29T43 155Q43 263 172 335L154 348Q133 361 127 368Q70 417 70 494ZM286 386L292 390Q298 394 301 396T311 403T323 413T334 425T345 438T355 454T364 471T369 491T371 513Q371 556 342 586T275 624Q268 625 242 625Q201 625 165 599T128 534Q128 511 141 492T167 463T217 431Q224 426 228 424L286 386ZM250 21Q308 21 350 55T392 137Q392 154 387 169T375 194T353 216T330 234T301 253T274 270Q260 279 244 289T218 306L210 311Q204 311 181 294T133 239T107 157Q107 98 150 60T250 21Z"></path><path stroke-width="0" id="E4-MJMAIN-2F" d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"></path><path stroke-width="0" id="E4-MJMAIN-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path stroke-width="0" id="E4-MJMAIN-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E4-MJMATHI-3F5" x="0" y="0"></use><use xlink:href="#E4-MJMAIN-3D" x="683" y="0"></use><use xlink:href="#E4-MJMAIN-38" x="1739" y="0"></use><use xlink:href="#E4-MJMAIN-2F" x="2239" y="0"></use><g transform="translate(2739,0)"><use xlink:href="#E4-MJMAIN-32"></use><use xlink:href="#E4-MJMAIN-35" x="500" y="0"></use><use xlink:href="#E4-MJMAIN-35" x="1000" y="0"></use></g></g></svg></span><script type="math/tex">\epsilon=8/255</script></p></li><li><p><strong><span>Attack methods</span></strong></p><ul><li><span>10-steps PGD attack (</span><strong><span>PGD-10</span></strong><span>)</span></li><li><span>AutoAttack (</span><strong><span>AA</span></strong><span>)</span></li></ul></li><li><p><strong><span>Default settings</span></strong></p><ul><li><p><span>Primary PGD-AT framework</span></p></li><li><p><span>Batch size: 128</span></p></li><li><p><span>Optimizer</span></p><ul><li><span>SGD with momentum</span></li><li><span>Initial learning rate: 0.1</span></li><li><span>Weight decay </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="8.654ex" height="2.458ex" viewBox="0 -951 3726.1 1058.4" role="img" focusable="false" style="vertical-align: -0.25ex;"><defs><path stroke-width="0" id="E15-MJMAIN-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"></path><path stroke-width="0" id="E15-MJMAIN-D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"></path><path stroke-width="0" id="E15-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E15-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path stroke-width="0" id="E15-MJMAIN-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path stroke-width="0" id="E15-MJMAIN-34" d="M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E15-MJMAIN-35" x="0" y="0"></use><use xlink:href="#E15-MJMAIN-D7" x="722" y="0"></use><g transform="translate(1722,0)"><use xlink:href="#E15-MJMAIN-31"></use><use xlink:href="#E15-MJMAIN-30" x="500" y="0"></use><g transform="translate(1000,392)"><use transform="scale(0.707)" xlink:href="#E15-MJMAIN-2212" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E15-MJMAIN-34" x="778" y="0"></use></g></g></g></svg></span><script type="math/tex">5\times 10^{-4}</script></li></ul></li><li><p><span>Activation function: ReLU</span></p></li><li><p><span>w/o label smoothing</span></p></li><li><p><span>Train mode of batch normalization (in generation of adversarial example)</span></p></li><li><p><span>Epochs: 110 in total</span></p><ul><li><span>Learning rate decays by 0.1 at 100 and 105 epochs</span></li></ul></li></ul></li><li><p><strong><span>Report</span></strong></p><blockquote><p><span>We report the results on the checkpoint with the best PGD-10 accuracy.</span></p></blockquote></li></ul><h4><a name="early-stopping--warmup" class="md-header-anchor"></a><span>Early stopping | Warmup</span></h4><p><img src="imgs/attricks_comparison1.jpg" width=80%></img></p><p><strong><span>Early stopping w.r.t. training epoch</span></strong><span> was first proposed in </span><em><span>TRADES</span></em><span> and further advocated in </span><em><span>Robust Ovefitting</span></em><span>, they adopt it as default for its effectiveness.</span></p><p><strong><span>Early stopping w.r.t. attack iteration</span></strong><span> was first applied in the defense track in NIPS 2018 and later investigated for better trigger rules. As they evaluate in Table 2, this method increase the standard accuracy while remaining a comparable robust accuracy in PGD-10, but in AA, it&#39;s degraded.</span></p><p><mark><span>Early stopping the attack iteration weakens the attack itself.</span></mark></p><p><strong><span>Warmup w.r.t. learning rate</span></strong><span> (gradually increase the learning rate or schedule the learning rate) is a general trick for deep learning models, and emphasized in the success of FastAT (</span><em><span>Fast is better than free</span></em><span>). They linearly increase the learning rate from zero to the preset value in the first 10/15/20 epochs, and find the improvements to be marginal as shown in Table 2.</span></p><p><mark><span>It&#39;s unfair to make this claim, since they emphasize it to be crucial for fast adversarial training, while the adversarial training framework used here completely out resourced the FastAT. This comparison is unfair in computational complexity.</span></mark></p><p><strong><span>Warmup w.r.t. adversarial intensity</span></strong><span> refers to gradually increase the strength of adversary (e.g. the perturbation budget, the step size), it was proposed to monitor the overfitting in </span><em><span>Curriculum adversarial training</span></em><span> and proposed in </span><em><span>Local Linearization</span></em><span>. They linearly increase the maximal perturbation in the first 10/15/20 epochs, and find the effect to be limited as shown in Table 2.</span></p><p><mark><span>Again, this claim is unfair for </span><em><span>Local Linearization</span></em><span>, as it is proposed in order to use a PGD attack with few steps in adversarial training.</span></mark></p><h4><a name="batch-size--label-smoothing--optimizers" class="md-header-anchor"></a><span>Batch size | Label Smoothing | Optimizers</span></h4><p><img src="imgs/attricks_comparison2.jpg" width=80%></img></p><p><strong><span>Batch size</span></strong><span> is found to be an important factor on large-scale datasets like ImageNet. </span></p><blockquote><p><span>In the adversarial setting, Xie et al. (2019) use a batch size of 4096 to train a robust model on ImageNet, which achieves state-of-the-art performance under adversarial attacks.</span></p></blockquote><p><mark><span>A larger batch size shrinks the generalization gap, explodes the computational resource required and decreases the convergence speed.</span></mark></p><p><span>On the CIFAR-10, the mini-batch sizes are usually chosen between 128 and 256. As shown in Table 3, they evaluate four batch sizes on two architectures (ResNet-18 and WRN-34-10). They also test the sacled learning rate according to the scale of batch size (i.e. increase the learning rate by </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.21ex" height="2.091ex" viewBox="0 -792.8 521 900.3" role="img" focusable="false" style="vertical-align: -0.25ex;"><defs><path stroke-width="0" id="E7-MJMATHI-6B" d="M121 647Q121 657 125 670T137 683Q138 683 209 688T282 694Q294 694 294 686Q294 679 244 477Q194 279 194 272Q213 282 223 291Q247 309 292 354T362 415Q402 442 438 442Q468 442 485 423T503 369Q503 344 496 327T477 302T456 291T438 288Q418 288 406 299T394 328Q394 353 410 369T442 390L458 393Q446 405 434 405H430Q398 402 367 380T294 316T228 255Q230 254 243 252T267 246T293 238T320 224T342 206T359 180T365 147Q365 130 360 106T354 66Q354 26 381 26Q429 26 459 145Q461 153 479 153H483Q499 153 499 144Q499 139 496 130Q455 -11 378 -11Q333 -11 305 15T277 90Q277 108 280 121T283 145Q283 167 269 183T234 206T200 217T182 220H180Q168 178 159 139T145 81T136 44T129 20T122 7T111 -2Q98 -11 83 -11Q66 -11 57 -1T48 16Q48 26 85 176T158 471L195 616Q196 629 188 632T149 637H144Q134 637 131 637T124 640T121 647Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E7-MJMATHI-6B" x="0" y="0"></use></g></svg></span><script type="math/tex">k</script><span> if batch size is increased by </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.21ex" height="2.091ex" viewBox="0 -792.8 521 900.3" role="img" focusable="false" style="vertical-align: -0.25ex;"><defs><path stroke-width="0" id="E7-MJMATHI-6B" d="M121 647Q121 657 125 670T137 683Q138 683 209 688T282 694Q294 694 294 686Q294 679 244 477Q194 279 194 272Q213 282 223 291Q247 309 292 354T362 415Q402 442 438 442Q468 442 485 423T503 369Q503 344 496 327T477 302T456 291T438 288Q418 288 406 299T394 328Q394 353 410 369T442 390L458 393Q446 405 434 405H430Q398 402 367 380T294 316T228 255Q230 254 243 252T267 246T293 238T320 224T342 206T359 180T365 147Q365 130 360 106T354 66Q354 26 381 26Q429 26 459 145Q461 153 479 153H483Q499 153 499 144Q499 139 496 130Q455 -11 378 -11Q333 -11 305 15T277 90Q277 108 280 121T283 145Q283 167 269 183T234 206T200 217T182 220H180Q168 178 159 139T145 81T136 44T129 20T122 7T111 -2Q98 -11 83 -11Q66 -11 57 -1T48 16Q48 26 85 176T158 471L195 616Q196 629 188 632T149 637H144Q134 637 131 637T124 640T121 647Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E7-MJMATHI-6B" x="0" y="0"></use></g></svg></span><script type="math/tex">k</script><span>).</span></p><blockquote><p><span>We can observe that the batch size of 128 works well on CIFAR-10, while the linear scaling rule can benefit the cases with other batch sizes.</span></p></blockquote><p><mark><span>Why not test on AA in this experiment?</span></mark></p><p><strong><span>Label smoothing</span></strong><span> (i.e. use a soft label) was proposed to mimic the AT procedure and further found to be useful to promote robustness of ensemble model. As shown in Figure 4, adequate label smoothing can improve </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="5.548ex" height="2.336ex" viewBox="0 -845.5 2388.8 1005.7" role="img" focusable="false" style="vertical-align: -0.372ex;"><defs><path stroke-width="0" id="E8-MJMAIN-223C" d="M55 166Q55 241 101 304T222 367Q260 367 296 349T362 304T421 252T484 208T554 189Q616 189 655 236T694 338Q694 350 698 358T708 367Q722 367 722 334Q722 260 677 197T562 134H554Q517 134 481 152T414 196T355 248T292 293T223 311Q179 311 145 286Q109 257 96 218T80 156T69 133Q55 133 55 166Z"></path><path stroke-width="0" id="E8-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E8-MJMAIN-25" d="M465 605Q428 605 394 614T340 632T319 641Q332 608 332 548Q332 458 293 403T202 347Q145 347 101 402T56 548Q56 637 101 693T202 750Q241 750 272 719Q359 642 464 642Q580 642 650 732Q662 748 668 749Q670 750 673 750Q682 750 688 743T693 726Q178 -47 170 -52Q166 -56 160 -56Q147 -56 142 -45Q137 -36 142 -27Q143 -24 363 304Q469 462 525 546T581 630Q528 605 465 605ZM207 385Q235 385 263 427T292 548Q292 617 267 664T200 712Q193 712 186 709T167 698T147 668T134 615Q132 595 132 548V527Q132 436 165 403Q183 385 203 385H207ZM500 146Q500 234 544 290T647 347Q699 347 737 292T776 146T737 0T646 -56Q590 -56 545 0T500 146ZM651 -18Q679 -18 707 24T736 146Q736 215 711 262T644 309Q637 309 630 306T611 295T591 265T578 212Q577 200 577 146V124Q577 -18 647 -18H651Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E8-MJMAIN-223C" x="0" y="0"></use><use xlink:href="#E8-MJMAIN-31" x="1055" y="0"></use><use xlink:href="#E8-MJMAIN-25" x="1555" y="0"></use></g></svg></span><script type="math/tex">\sim 1\%</script><span> accuracy under PGD-10 and AutoAttack without affecting the clean performance, but excessive label smoothing can degrade the robustness.</span></p><p><mark><span>This improvement is quite marginal...</span></mark></p><p><strong><span>Optimizer.</span></strong><span> </span></p><blockquote><p><span>Most of the AT methods apply SGD with momentum as the optimizer. The momentum factor is usually set to be 0.9 with zero dampening.</span></p></blockquote><p><span>They test some optimizers as shown in Table 5. </span></p><blockquote><p><span>We can find that SGD-based optimizers (e.g., Mom, Nesterov, SGD-GC / SGD-GCC) have similar performance, while Adam / AdamW performs worse for piecewise learning rate schedule.</span></p></blockquote><p><mark><span>Why use piecewise learning rate schedule in this experiment? Why the initial learning rate differs in this experiment?</span></mark></p><h4><a name="weight-decay--activation-function" class="md-header-anchor"></a><span>Weight decay | Activation function</span></h4><p><img src="imgs/attricks_comparison3.jpg" width=80%></img></p><p><strong><span>Weight decay.</span></strong><span> As shown in Table 1, most methods use either </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="8.654ex" height="2.458ex" viewBox="0 -951 3726.1 1058.4" role="img" focusable="false" style="vertical-align: -0.25ex;"><defs><path stroke-width="0" id="E9-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E9-MJMAIN-D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"></path><path stroke-width="0" id="E9-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path stroke-width="0" id="E9-MJMAIN-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path stroke-width="0" id="E9-MJMAIN-34" d="M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E9-MJMAIN-31" x="0" y="0"></use><use xlink:href="#E9-MJMAIN-D7" x="722" y="0"></use><g transform="translate(1722,0)"><use xlink:href="#E9-MJMAIN-31"></use><use xlink:href="#E9-MJMAIN-30" x="500" y="0"></use><g transform="translate(1000,392)"><use transform="scale(0.707)" xlink:href="#E9-MJMAIN-2212" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E9-MJMAIN-34" x="778" y="0"></use></g></g></g></svg></span><script type="math/tex">1\times 10^{-4}</script><span>, </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="8.654ex" height="2.458ex" viewBox="0 -951 3726.1 1058.4" role="img" focusable="false" style="vertical-align: -0.25ex;"><defs><path stroke-width="0" id="E13-MJMAIN-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path stroke-width="0" id="E13-MJMAIN-D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"></path><path stroke-width="0" id="E13-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E13-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path stroke-width="0" id="E13-MJMAIN-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path stroke-width="0" id="E13-MJMAIN-34" d="M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E13-MJMAIN-32" x="0" y="0"></use><use xlink:href="#E13-MJMAIN-D7" x="722" y="0"></use><g transform="translate(1722,0)"><use xlink:href="#E13-MJMAIN-31"></use><use xlink:href="#E13-MJMAIN-30" x="500" y="0"></use><g transform="translate(1000,392)"><use transform="scale(0.707)" xlink:href="#E13-MJMAIN-2212" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E13-MJMAIN-34" x="778" y="0"></use></g></g></g></svg></span><script type="math/tex">2\times 10^{-4}</script><span> or </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="8.654ex" height="2.458ex" viewBox="0 -951 3726.1 1058.4" role="img" focusable="false" style="vertical-align: -0.25ex;"><defs><path stroke-width="0" id="E15-MJMAIN-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"></path><path stroke-width="0" id="E15-MJMAIN-D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"></path><path stroke-width="0" id="E15-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E15-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path stroke-width="0" id="E15-MJMAIN-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path stroke-width="0" id="E15-MJMAIN-34" d="M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E15-MJMAIN-35" x="0" y="0"></use><use xlink:href="#E15-MJMAIN-D7" x="722" y="0"></use><g transform="translate(1722,0)"><use xlink:href="#E15-MJMAIN-31"></use><use xlink:href="#E15-MJMAIN-30" x="500" y="0"></use><g transform="translate(1000,392)"><use transform="scale(0.707)" xlink:href="#E15-MJMAIN-2212" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E15-MJMAIN-34" x="778" y="0"></use></g></g></g></svg></span><script type="math/tex">5\times 10^{-4}</script><span>, among which, </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="8.654ex" height="2.458ex" viewBox="0 -951 3726.1 1058.4" role="img" focusable="false" style="vertical-align: -0.25ex;"><defs><path stroke-width="0" id="E15-MJMAIN-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"></path><path stroke-width="0" id="E15-MJMAIN-D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"></path><path stroke-width="0" id="E15-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E15-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path stroke-width="0" id="E15-MJMAIN-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path stroke-width="0" id="E15-MJMAIN-34" d="M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E15-MJMAIN-35" x="0" y="0"></use><use xlink:href="#E15-MJMAIN-D7" x="722" y="0"></use><g transform="translate(1722,0)"><use xlink:href="#E15-MJMAIN-31"></use><use xlink:href="#E15-MJMAIN-30" x="500" y="0"></use><g transform="translate(1000,392)"><use transform="scale(0.707)" xlink:href="#E15-MJMAIN-2212" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E15-MJMAIN-34" x="778" y="0"></use></g></g></g></svg></span><script type="math/tex">5\times 10^{-4}</script><span> is a fairly widely used value for weight decay in deep learning and </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="8.654ex" height="2.458ex" viewBox="0 -951 3726.1 1058.4" role="img" focusable="false" style="vertical-align: -0.25ex;"><defs><path stroke-width="0" id="E13-MJMAIN-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path stroke-width="0" id="E13-MJMAIN-D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"></path><path stroke-width="0" id="E13-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E13-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path stroke-width="0" id="E13-MJMAIN-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path stroke-width="0" id="E13-MJMAIN-34" d="M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E13-MJMAIN-32" x="0" y="0"></use><use xlink:href="#E13-MJMAIN-D7" x="722" y="0"></use><g transform="translate(1722,0)"><use xlink:href="#E13-MJMAIN-31"></use><use xlink:href="#E13-MJMAIN-30" x="500" y="0"></use><g transform="translate(1000,392)"><use transform="scale(0.707)" xlink:href="#E13-MJMAIN-2212" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E13-MJMAIN-34" x="778" y="0"></use></g></g></g></svg></span><script type="math/tex">2\times 10^{-4}</script><span> stems from the setting used by Madry et al. (2018). </span></p><p><span>In Figure 1(a), they plot the best performance acquired under each weight decay and in Figure 1 (b), they plot the training process under the three prevailing weight decay.</span></p><blockquote><p><span>Note that smaller values of weight decay make the model learn faster in the initial phase, but the overfitting phenomenon also appears earlier.</span></p></blockquote><p><span>The clean accuracy is less sensitive to the weight decay, while the robust accuracy is largely influenced by the weight decay. </span></p><p><mark><span>A larger weight decay is better as their experiment.</span></mark></p><p><strong><span>Activation function.</span></strong><span>  Most methods apply ReLU as the non-linear activation while Xie et al. (2020) empirically demonstrate that smooth activation functions improve robustness on ImageNet.</span></p><p><span>They empirically test several activation functions as shown in Table 6. </span></p><blockquote><p><span>We confirm that smooth activation indeed benefits model robustness for ResNet-18.</span></p></blockquote><p><mark><span>Why it seems to me that the smoothness is not significant....</span></mark></p><blockquote><p><span>However, as shown in Table 8 (for PGD-AT) and Table 9 (for TRADES), this benefit is less significant on larger models like WRN. Thus we deduce that smaller model capacity can benefit more from the smoothness of activation function.</span></p></blockquote><p><span>They also conclude that models trained on CIFAR-10 seem to prefer activation function with zero truncation since those with negative return values like ELU, LeakyReLU, Tanh have worse performance than ReLU as shown in Table 6.</span></p><h4><a name="model-architecture--batch-normalization-mode" class="md-header-anchor"></a><span>Model architecture | Batch normalization mode</span></h4><p><img src="imgs/attricks_detail.jpg" width=80%></img></p><p><img src="imgs/attricks_comparison5.jpg" width=80%></img></p><p><strong><span>Model architecture.</span></strong></p><p><span>Source: </span><a href='https://github.com/kuangliu/pytorch-cifar' target='_blank' class='url'>https://github.com/kuangliu/pytorch-cifar</a></p><blockquote><p><span>For the adversarially trained models, it has been generally recognized that larger model capacity can usually lead to better robustness (Madry et al., 2018).</span></p></blockquote><p><span>They test some hand-crafted model architectures with comparable number of parameters as shown in Figure 2. </span></p><blockquote><p><span>We can observe that DenseNet can achieve both the best clean and robust accuracy, while being memory-efficient (but may require longer inference time).</span></p></blockquote><p><mark><span>This discovery is consistent with the discovery of </span><em><span>When robustness meets NAS</span></em><span>.</span></mark></p><blockquote><p><span>Interestingly, Wu et al. (2020) demonstrate that residual connections allow easier generation of highly transferable adversarial examples, while in our case this weakness for the standardly trained models may turn out to strengthen the adversarially trained models.</span></p></blockquote><p><strong><span>Batch normalization (BN mode).</span></strong></p><blockquote><p><span>When crafting adversarial examples in the training procedure, Zhang et al. (2019b) use eval mode for BN, while Rice et al. (2020) and Madry et al. (2018) use train mode for BN.</span></p></blockquote><blockquote><p><span>As seen, using eval mode for BN can increase clean accuracy, while keeping comparable robustness.</span></p></blockquote><p><span>The eval mode of BN freezes the parameters while generating adversarial examples, but the train mode of BN updates the parameters.</span></p><p><mark><span>As Xie et al. has discovered that the BN used for adversarial examples and clean examples is critical to obtain a well-performed adversarially trained model, this experiment is a confirmation.</span></mark></p><h4><a name="takeaways" class="md-header-anchor"></a><span>Takeaways</span></h4><ol start='' ><li><p><span>Slightly different values of weight decay could largely affect the robustness of trained models.</span></p><p><mark><span>Vary by 5%~7% in robust accuracy by PGD-10.</span></mark></p></li><li><p><span>Moderate label smoothing and linear scaling rule on l.r. for different batch sizes are beneficial.</span></p><p><mark><span>Vary by less than 1% in robust accuracy by AutoAttack.</span></mark></p></li><li><p><span>Applying eval BN mode to craft training adversarial examples can avoid blurring the distribution.</span></p><p><mark><span>Vary by less than 1% in robust accuracy by PGD-10 and AutoAttack.</span></mark></p></li><li><p><span>Early stopping the adversarial steps or perturbation may degenerate worst-case robustness.</span></p><p><mark><span>Vary by less than 1% in robust accuracy by PGD-10 and AutoAttack.</span></mark></p></li><li><p><span>Smooth activation benefits more when the model capacity is not enough for adversarial training.</span></p><p><mark><span>Vary by less than 2% in robust accuracy by PGD-10 among zero truncation functions; vary by 1%~5% in robust accuracy by PGD-10 between zero truncation functions and negative truncation functions.</span></mark></p></li></ol><h3><a name="combination-of-tricks" class="md-header-anchor"></a><span>Combination of tricks</span></h3><blockquote><p><span>Now we investigate combining the selected useful tricks, which involve label smoothing, weight decay, activation function and BN mode.</span></p></blockquote><p><img src="imgs/attricks_comparison4.jpg" width=80%></img></p><blockquote><p><span>As demonstrated in Table 8, the improvements are not ideally additive by combining different tricks, while label smoothing and smooth activation function are helpful, but not significant, especially when we apply model architectures with a larger capacity.</span></p></blockquote><p><mark><span>While the robust accuracies under same weight decay of </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="8.654ex" height="2.458ex" viewBox="0 -951 3726.1 1058.4" role="img" focusable="false" style="vertical-align: -0.25ex;"><defs><path stroke-width="0" id="E15-MJMAIN-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"></path><path stroke-width="0" id="E15-MJMAIN-D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"></path><path stroke-width="0" id="E15-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E15-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path stroke-width="0" id="E15-MJMAIN-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path stroke-width="0" id="E15-MJMAIN-34" d="M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E15-MJMAIN-35" x="0" y="0"></use><use xlink:href="#E15-MJMAIN-D7" x="722" y="0"></use><g transform="translate(1722,0)"><use xlink:href="#E15-MJMAIN-31"></use><use xlink:href="#E15-MJMAIN-30" x="500" y="0"></use><g transform="translate(1000,392)"><use transform="scale(0.707)" xlink:href="#E15-MJMAIN-2212" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E15-MJMAIN-34" x="778" y="0"></use></g></g></g></svg></span><script type="math/tex">5\times 10^{-4}</script><span> vary less than 1% generally by PGD-10 and AutoAttack, the clean performance have a few significant fluctuations under different combinations of tricks.</span></mark></p><p><mark><span>It appears to me that the BN mode is most significant among these tricks.</span></mark></p><p><span>They also provide a baseline setting on CIFAR-10.</span></p><p><strong><span>Baseline setting (CIFAR-10)</span></strong></p><ul><li><span>Batch size 128</span></li><li><span>Initial learning rate 0.1 (decay factor 10 at 100 and 105 epochs, totally 110 epochs)</span></li><li><span>SGD momentum optimizer</span></li><li><span>Weight decay </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="8.654ex" height="2.458ex" viewBox="0 -951 3726.1 1058.4" role="img" focusable="false" style="vertical-align: -0.25ex;"><defs><path stroke-width="0" id="E15-MJMAIN-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"></path><path stroke-width="0" id="E15-MJMAIN-D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"></path><path stroke-width="0" id="E15-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E15-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path stroke-width="0" id="E15-MJMAIN-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path stroke-width="0" id="E15-MJMAIN-34" d="M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E15-MJMAIN-35" x="0" y="0"></use><use xlink:href="#E15-MJMAIN-D7" x="722" y="0"></use><g transform="translate(1722,0)"><use xlink:href="#E15-MJMAIN-31"></use><use xlink:href="#E15-MJMAIN-30" x="500" y="0"></use><g transform="translate(1000,392)"><use transform="scale(0.707)" xlink:href="#E15-MJMAIN-2212" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E15-MJMAIN-34" x="778" y="0"></use></g></g></g></svg></span><script type="math/tex">5\times 10^{-4}</script></li><li><span>Eval mode BN for generating adversarial examples</span></li><li><span>Warmups are not necessary</span></li><li><span>Label smoothing and smooth activation are optional</span></li></ul><h3><a name="re-implementation-of-trades" class="md-header-anchor"></a><span>Re-implementation of TRADES</span></h3><p><img src="imgs/attricks_comparison7.jpg" width=80%></img></p><p><img src="imgs/attricks_comparison6.jpg" width=80%></img></p><p><img src="imgs/attricks_list.jpg" width=80%></img></p><p><span>As shown in Table 9, they re-implement TRADES under different combinations of tricks.</span></p><blockquote><p><span>We can observe that after simply changing the weight decay from 2 × 10</span><sup><span>−4</span></sup><span> to 5 × 10</span><sup><span>−4</span></sup><span>, the clean accuracy of TRADES improves by ∼ 1% and the AA accuracy improves by ∼ 4%, which make the trained model surpass the previously state-of-theart models reported by the AutoAttack benchmark, as listed in Table 13.</span></p></blockquote><p><mark><span>This SOTA has been exceeded as shown in RobustBench. Among those using the same architecture, the best is now proposed by </span><a href='https://arxiv.org/abs/2010.03593'><em><span>Uncovering the Limits of Adversarial Training against Norm-Bounded Adversarial Examples</span></em></a><span>.</span></mark></p><h3><a name="reference-codes" class="md-header-anchor"></a><span>Reference codes</span></h3><ul><li><p><span>Madry et al. (2018)</span></p><p><em><span>Aleksander Madry, Aleksandar Makelov, Ludwig Schmidt, Dimitris Tsipras, and Adrian Vladu. Towards deep learning models resistant to adversarial attacks. In International Conference on Learning Representations (ICLR), 2018.</span></em></p><p><a href='http://www.github.com/MadryLab/cifar10_challenge' target='_blank' class='url'>www.github.com/MadryLab/cifar10_challenge</a></p></li><li><p><span>Cai et al. (2018)</span></p><p><em><span>Qi-Zhi Cai, Chang Liu, and Dawn Song. Curriculum adversarial training. In International Joint Conference on Artificial Intelligence (IJCAI), pp. 3740–3747, 2018.</span></em></p><p><a href='http://www.github.com/sunblaze-ucb/curriculum-adversarial-training-CAT' target='_blank' class='url'>www.github.com/sunblaze-ucb/curriculum-adversarial-training-CAT</a></p></li><li><p><span>Zhang et al. (2019b) (</span><strong><span>TRADES</span></strong><span>)</span></p><p><em><span>Hongyang Zhang, Yaodong Yu, Jiantao Jiao, Eric P Xing, Laurent El Ghaoui, and Michael I Jordan. Theoretically principled trade-off between robustness and accuracy. In International Conference on Machine Learning (ICML), 2019b.</span></em></p><p><a href='http://www.github.com/yaodongyu/TRADES' target='_blank' class='url'>www.github.com/yaodongyu/TRADES</a></p></li><li><p><span>Wang et al. (2019)</span></p><p><em><span>Yisen Wang, Xingjun Ma, James Bailey, Jinfeng Yi, Bowen Zhou, and Quanquan Gu. On the convergence and robustness of adversarial training. In International Conference on Machine Learning (ICML), pp. 6586–6595, 2019</span></em></p><p><a href='http://www.github.com/YisenWang/dynamic_adv_training' target='_blank' class='url'>www.github.com/YisenWang/dynamic_adv_training</a></p></li><li><p><span>Mao et al. (2019)</span></p><p><em><span>Chengzhi Mao, Ziyuan Zhong, Junfeng Yang, Carl Vondrick, and Baishakhi Ray. Metric learning for adversarial robustness. In Advances in Neural Information Processing Systems (NeurIPS), pp. 478–489, 2019.</span></em></p><p><a href='http://www.github.com/columbia/Metric_Learning_Adversarial_Robustness' target='_blank' class='url'>www.github.com/columbia/Metric_Learning_Adversarial_Robustness</a></p></li><li><p><span>Carmon et al. (2019)</span></p><p><em><span>Yair Carmon, Aditi Raghunathan, Ludwig Schmidt, Percy Liang, and John C Duchi. Unlabeled data improves adversarial robustness. In Advances in Neural Information Processing Systems (NeurIPS), 2019.</span></em></p><p><a href='http://www.github.com/yaircarmon/semisup-adv' target='_blank' class='url'>www.github.com/yaircarmon/semisup-adv</a></p></li><li><p><span>Alayrac et al. (2019)</span></p><p><em><span>Jean-Baptiste Alayrac, Jonathan Uesato, Po-Sen Huang, Alhussein Fawzi, Robert Stanforth, and Pushmeet Kohli. Are labels required for improving adversarial robustness? In Advances in Neural Information Processing Systems (NeurIPS), pp. 12192–12202, 2019.</span></em></p><p><a href='http://www.github.com/deepmind/deepmind-research/unsupervised_adversarial_training' target='_blank' class='url'>www.github.com/deepmind/deepmind-research/unsupervised_adversarial_training</a></p></li><li><p><span>Shafahi et al. (2019b)</span></p><p><em><span>Ali Shafahi, Mahyar Najibi, Amin Ghiasi, Zheng Xu, John Dickerson, Christoph Studer, Larry S Davis, Gavin Taylor, and Tom Goldstein. Adversarial training for free! In Advances in Neural Information Processing Systems (NeurIPS), 2019b.</span></em></p><p><a href='http://www.github.com/ashafahi/free_adv_train' target='_blank' class='url'>www.github.com/ashafahi/free_adv_train</a></p></li><li><p><span>Zhang et al. (2019a)</span></p><p><em><span>Dinghuai Zhang, Tianyuan Zhang, Yiping Lu, Zhanxing Zhu, and Bin Dong. You only propagate once: Accelerating adversarial training via maximal principle. In Advances in Neural Information Processing Systems (NeurIPS), 2019a.</span></em></p><p><a href='http://www.github.com/a1600012888/YOPO-You-Only-Propagate-Once' target='_blank' class='url'>www.github.com/a1600012888/YOPO-You-Only-Propagate-Once</a></p></li><li><p><span>Zhang &amp;Wang (2019)</span></p><p><em><span>Haichao Zhang and Jianyu Wang. Defense against adversarial attacks using feature scatteringbased adversarial training. In Advances in Neural Information Processing Systems (NeurIPS), pp. 1829–1839, 2019.</span></em></p><p><a href='http://www.github.com/Haichao-Zhang/FeatureScatter' target='_blank' class='url'>www.github.com/Haichao-Zhang/FeatureScatter</a></p></li><li><p><span>Atzmon et al. (2019)</span></p><p><em><span>Matan Atzmon, Niv Haim, Lior Yariv, Ofer Israelov, Haggai Maron, and Yaron Lipman. Controlling neural level sets. In Advances in Neural Information Processing Systems (NeurIPS), pp. 2034–2043, 2019.</span></em></p><p><a href='http://www.github.com/matanatz/ControllingNeuralLevelsets' target='_blank' class='url'>www.github.com/matanatz/ControllingNeuralLevelsets</a></p></li><li><p><span>Wong et al. (2020)</span></p><p><em><span>Eric Wong, Leslie Rice, and J. Zico Kolter. Fast is better than free: Revisiting adversarial training. In International Conference on Learning Representations (ICLR), 2020.</span></em></p><p><a href='http://www.github.com/locuslab/fast_adversarial' target='_blank' class='url'>www.github.com/locuslab/fast_adversarial</a></p></li><li><p><span>Rice et al. (2020)</span></p><p><em><span>Leslie Rice, Eric Wong, and J Zico Kolter. Overfitting in adversarially robust deep learning. In International Conference on Machine Learning (ICML), 2020.</span></em></p><p><a href='http://www.github.com/locuslab/robust_overfitting' target='_blank' class='url'>www.github.com/locuslab/robust_overfitting</a></p></li><li><p><span>Ding et al. (2020)</span></p><p><em><span>Gavin Weiguang Ding, Yash Sharma, Kry Yik Chau Lui, and Ruitong Huang. Mma training: Direct input space margin maximization through adversarial training. In International Conference on Learning Representations (ICLR), 2020.</span></em></p><p><a href='http://www.github.com/BorealisAI/mma_training' target='_blank' class='url'>www.github.com/BorealisAI/mma_training</a></p></li><li><p><span>Pang et al. (2020a)</span></p><p><em><span>Tianyu Pang, Kun Xu, Yinpeng Dong, Chao Du, Ning Chen, and Jun Zhu. Rethinking softmax crossentropy loss for adversarial robustness. In International Conference on Learning Representations (ICLR), 2020a.</span></em></p><p><a href='http://www.github.com/P2333/Max-Mahalanobis-Training' target='_blank' class='url'>www.github.com/P2333/Max-Mahalanobis-Training</a></p></li><li><p><span>Zhang et al. (2020)</span></p><p><em><span>Jingfeng Zhang, Xilie Xu, Bo Han, Gang Niu, Lizhen Cui, Masashi Sugiyama, and Mohan Kankanhalli. Attacks which do not kill training make adversarial learning stronger. In International Conference on Machine Learning (ICML), 2020.</span></em></p><p><a href='http://www.github.com/zjfheart/Friendly-Adversarial-Training' target='_blank' class='url'>www.github.com/zjfheart/Friendly-Adversarial-Training</a></p></li><li><p><span>Huang et al. (2020)</span></p><p><em><span>Lang Huang, Chao Zhang, and Hongyang Zhang. Self-adaptive training: beyond empirical risk minimization. arXiv preprint arXiv:2002.10319, 2020.</span></em></p><p><a href='http://www.github.com/LayneH/self-adaptive-training' target='_blank' class='url'>www.github.com/LayneH/self-adaptive-training</a></p></li><li><p><span>Lee et al. (2020)</span></p><p><em><span>Saehyung Lee, Hyungyu Lee, and Sungroh Yoon. Adversarial vertex mixup: Toward better adversarially robust generalization. In IEEE Conference on Computer Vision and Pattern Recognition (CVPR), pp. 272–281, 2020.</span></em></p><p><a href='http://www.github.com/Saehyung-Lee/cifar10_challenge' target='_blank' class='url'>www.github.com/Saehyung-Lee/cifar10_challenge</a></p></li></ul><h2><a name="trick-candidates-provided" class="md-header-anchor"></a><span>Trick candidates provided</span></h2><p><span>Directly copied from </span><a href='https://github.com/P2333/Bag-of-Tricks-for-AT' target='_blank' class='url'>https://github.com/P2333/Bag-of-Tricks-for-AT</a></p><p><span>Importance rate: </span><a href='https://camo.githubusercontent.com/00bca6c4f3fe34ff968201db7febd5198e79439d3a99d0070947980a9ebaa9c7/68747470733a2f2f7669612e706c616365686f6c6465722e636f6d2f31352f6630336331352f3030303030303f746578743d2b'><img src="https://camo.githubusercontent.com/00bca6c4f3fe34ff968201db7febd5198e79439d3a99d0070947980a9ebaa9c7/68747470733a2f2f7669612e706c616365686f6c6465722e636f6d2f31352f6630336331352f3030303030303f746578743d2b" referrerpolicy="no-referrer" alt="#f03c15"></a><span> </span><em><span>Critical</span></em><span> </span><a href='https://camo.githubusercontent.com/2e509e3b9a17afb9b8a2f7d9a05a6f0dcdb01b7a528a8f90a9e058a0cb07b869/68747470733a2f2f7669612e706c616365686f6c6465722e636f6d2f31352f3135383946302f3030303030303f746578743d2b'><img src="https://camo.githubusercontent.com/2e509e3b9a17afb9b8a2f7d9a05a6f0dcdb01b7a528a8f90a9e058a0cb07b869/68747470733a2f2f7669612e706c616365686f6c6465722e636f6d2f31352f3135383946302f3030303030303f746578743d2b" referrerpolicy="no-referrer" alt="#1589F0"></a><span> </span><em><span>Useful</span></em><span> </span><a href='https://camo.githubusercontent.com/40210df191bb3ac4560591313897a541945c023c60718caa503e3c40606886e1/68747470733a2f2f7669612e706c616365686f6c6465722e636f6d2f31352f6335663031352f3030303030303f746578743d2b'><img src="https://camo.githubusercontent.com/40210df191bb3ac4560591313897a541945c023c60718caa503e3c40606886e1/68747470733a2f2f7669612e706c616365686f6c6465722e636f6d2f31352f6335663031352f3030303030303f746578743d2b" referrerpolicy="no-referrer" alt="#c5f015"></a><span> </span><em><span>Insignificance</span></em></p><ul><li><strong><span>Early stopping w.r.t. training epochs</span></strong><span> (</span><a href='https://camo.githubusercontent.com/00bca6c4f3fe34ff968201db7febd5198e79439d3a99d0070947980a9ebaa9c7/68747470733a2f2f7669612e706c616365686f6c6465722e636f6d2f31352f6630336331352f3030303030303f746578743d2b'><img src="https://camo.githubusercontent.com/00bca6c4f3fe34ff968201db7febd5198e79439d3a99d0070947980a9ebaa9c7/68747470733a2f2f7669612e706c616365686f6c6465722e636f6d2f31352f6630336331352f3030303030303f746578743d2b" referrerpolicy="no-referrer" alt="#f03c15"></a><span> </span><em><span>Critical</span></em><span>). Early stopping w.r.t. training epochs was first introduced in the </span><a href='https://github.com/yaodongyu/TRADES'><span>code of TRADES</span></a><span>, and was later thoroughly studied by </span><a href='https://arxiv.org/abs/2002.11569'><span>Rice et al., 2020</span></a><span>. Due to its effectiveness, we regard this trick as a default choice.</span></li><li><strong><span>Early stopping w.r.t. attack intensity</span></strong><span> (</span><a href='https://camo.githubusercontent.com/2e509e3b9a17afb9b8a2f7d9a05a6f0dcdb01b7a528a8f90a9e058a0cb07b869/68747470733a2f2f7669612e706c616365686f6c6465722e636f6d2f31352f3135383946302f3030303030303f746578743d2b'><img src="https://camo.githubusercontent.com/2e509e3b9a17afb9b8a2f7d9a05a6f0dcdb01b7a528a8f90a9e058a0cb07b869/68747470733a2f2f7669612e706c616365686f6c6465722e636f6d2f31352f3135383946302f3030303030303f746578743d2b" referrerpolicy="no-referrer" alt="#1589F0"></a><span> </span><em><span>Useful</span></em><span>). Early stopping w.r.t. attack iterations was studied by </span><a href='https://github.com/Greenere/Bag-of-Tricks-for-AT/blob/master/proceedings.mlr.press/v97/wang19i/wang19i.pdf'><span>Wang et al. 2019</span></a><span> and </span><a href='https://arxiv.org/abs/2002.11242'><span>Zhang et al. 2020</span></a><span>. Here we exploit the strategy of the later one, where the authors show that this trick can promote clean accuracy. The relevant flags include </span><code>--earlystopPGD</code><span> indicates whether apply this trick, while &#39;--earlystopPGDepoch1&#39; and &#39;--earlystopPGDepoch2&#39; separately indicate the epoch to increase the tolerence t by one, as detailed in </span><a href='https://arxiv.org/abs/2002.11242'><span>Zhang et al. 2020</span></a><span>. (</span><em><span>Note that early stopping attack intensity may degrade worst-case robustness under strong attacks</span></em><span>)</span></li><li><strong><span>Warmup w.r.t. learning rate</span></strong><span> (</span><a href='https://camo.githubusercontent.com/40210df191bb3ac4560591313897a541945c023c60718caa503e3c40606886e1/68747470733a2f2f7669612e706c616365686f6c6465722e636f6d2f31352f6335663031352f3030303030303f746578743d2b'><img src="https://camo.githubusercontent.com/40210df191bb3ac4560591313897a541945c023c60718caa503e3c40606886e1/68747470733a2f2f7669612e706c616365686f6c6465722e636f6d2f31352f6335663031352f3030303030303f746578743d2b" referrerpolicy="no-referrer" alt="#c5f015"></a><span> </span><em><span>Insignificance</span></em><span>). Warmup w.r.t. learning rate was found useful for </span><a href='https://arxiv.org/abs/2001.03994'><span>FastAT</span></a><span>, while </span><a href='https://arxiv.org/abs/2002.11569'><span>Rice et al., 2020</span></a><span> found that piecewise decay schedule is more compatible with early stop w.r.t. training epochs. The relevant flags include </span><code>--warmup_lr</code><span> indicates whether apply this trick, while </span><code>--warmup_lr_epoch</code><span> indicates the end epoch of the gradually increase of learning rate.</span></li><li><strong><span>Warmup w.r.t. epsilon</span></strong><span> (</span><a href='https://camo.githubusercontent.com/40210df191bb3ac4560591313897a541945c023c60718caa503e3c40606886e1/68747470733a2f2f7669612e706c616365686f6c6465722e636f6d2f31352f6335663031352f3030303030303f746578743d2b'><img src="https://camo.githubusercontent.com/40210df191bb3ac4560591313897a541945c023c60718caa503e3c40606886e1/68747470733a2f2f7669612e706c616365686f6c6465722e636f6d2f31352f6335663031352f3030303030303f746578743d2b" referrerpolicy="no-referrer" alt="#c5f015"></a><span> </span><em><span>Insignificance</span></em><span>). </span><a href='https://arxiv.org/abs/1907.02610'><span>Qin et al. 2019</span></a><span> use warmup w.r.t. epsilon in their implementation, where the epsilon gradually increase from 0 to 8/255 in the first 15 epochs. Similarly, the relevant flags include </span><code>--warmup_eps</code><span> indicates whether apply this trick, while </span><code>--warmup_eps_epoch</code><span> indicates the end epoch of the gradually increase of epsilon.</span></li><li><strong><span>Batch size</span></strong><span> (</span><a href='https://camo.githubusercontent.com/40210df191bb3ac4560591313897a541945c023c60718caa503e3c40606886e1/68747470733a2f2f7669612e706c616365686f6c6465722e636f6d2f31352f6335663031352f3030303030303f746578743d2b'><img src="https://camo.githubusercontent.com/40210df191bb3ac4560591313897a541945c023c60718caa503e3c40606886e1/68747470733a2f2f7669612e706c616365686f6c6465722e636f6d2f31352f6335663031352f3030303030303f746578743d2b" referrerpolicy="no-referrer" alt="#c5f015"></a><span> </span><em><span>Insignificance</span></em><span>). The typical batch size used for CIFAR-10 is 128 in the adversarial setting. In the meanwhile, </span><a href='https://arxiv.org/pdf/1812.03411.pdf'><span>Xie et al. 2019</span></a><span> apply a large batch size of 4096 to perform adversarial training on ImageNet, where the model is distributed on 128 GPUs and has quite robust performance. The relevant flag is </span><code>--batch-size</code><span>. According to </span><a href='https://arxiv.org/abs/1706.02677'><span>Goyal et al. 2017</span></a><span>, we take bs=128 and lr=0.1 as a basis, and scale the lr when we use larger batch size, e.g., bs=256 and lr=0.2.</span></li><li><strong><span>Label smoothing</span></strong><span> (</span><a href='https://camo.githubusercontent.com/2e509e3b9a17afb9b8a2f7d9a05a6f0dcdb01b7a528a8f90a9e058a0cb07b869/68747470733a2f2f7669612e706c616365686f6c6465722e636f6d2f31352f3135383946302f3030303030303f746578743d2b'><img src="https://camo.githubusercontent.com/2e509e3b9a17afb9b8a2f7d9a05a6f0dcdb01b7a528a8f90a9e058a0cb07b869/68747470733a2f2f7669612e706c616365686f6c6465722e636f6d2f31352f3135383946302f3030303030303f746578743d2b" referrerpolicy="no-referrer" alt="#1589F0"></a><span> </span><em><span>Useful</span></em><span>). Label smoothing is advocated by </span><a href='https://arxiv.org/abs/1910.11585'><span>Shafahi et al. 2019</span></a><span> to mimic the adversarial training procedure. The relevant flags include </span><code>--labelsmooth</code><span> indicates whether apply this trick, while </span><code>--labelsmoothvalue</code><span> indicates the degree of smoothing applied on the label vectors. When </span><code>--labelsmoothvalue=0</code><span>, there is no label smoothing applied. (</span><em><span>Note that only moderate label smoothing (~0.2) is helpful, while exccessive label smoothing (&gt;0.3) could be harmful, as observed in </span><a href='https://arxiv.org/abs/2006.13726'><span>Jiang et al. 2020</span></a></em><span>)</span></li><li><strong><span>Optimizer</span></strong><span> (</span><a href='https://camo.githubusercontent.com/40210df191bb3ac4560591313897a541945c023c60718caa503e3c40606886e1/68747470733a2f2f7669612e706c616365686f6c6465722e636f6d2f31352f6335663031352f3030303030303f746578743d2b'><img src="https://camo.githubusercontent.com/40210df191bb3ac4560591313897a541945c023c60718caa503e3c40606886e1/68747470733a2f2f7669612e706c616365686f6c6465722e636f6d2f31352f6335663031352f3030303030303f746578743d2b" referrerpolicy="no-referrer" alt="#c5f015"></a><span> </span><em><span>Insignificance</span></em><span>). Most of the AT methods apply SGD with momentum as the optimizer. In other cases, </span><a href='https://arxiv.org/abs/1905.13736'><span>Carmon et al. 2019</span></a><span> apply SGD with Nesterov, and </span><a href='https://arxiv.org/abs/2002.11569'><span>Rice et al., 2020</span></a><span> apply Adam for cyclic learning rate schedule. The relevant flag is </span><code>--optimizer</code><span>, which include common optimizers implemented by official Pytorch API and recently proposed gradient centralization trick by </span><a href='https://arxiv.org/abs/2004.01461'><span>Yong et al. 2020</span></a><span>.</span></li><li><strong><span>Weight decay</span></strong><span> (</span><a href='https://camo.githubusercontent.com/00bca6c4f3fe34ff968201db7febd5198e79439d3a99d0070947980a9ebaa9c7/68747470733a2f2f7669612e706c616365686f6c6465722e636f6d2f31352f6630336331352f3030303030303f746578743d2b'><img src="https://camo.githubusercontent.com/00bca6c4f3fe34ff968201db7febd5198e79439d3a99d0070947980a9ebaa9c7/68747470733a2f2f7669612e706c616365686f6c6465722e636f6d2f31352f6630336331352f3030303030303f746578743d2b" referrerpolicy="no-referrer" alt="#f03c15"></a><span> </span><em><span>Critical</span></em><span>). The values of weight decay used in previous AT methods mainly fall into </span><code>1e-4</code><span> (e.g., </span><a href='https://github.com/Greenere/Bag-of-Tricks-for-AT/blob/master/proceedings.mlr.press/v97/wang19i/wang19i.pdf'><span>Wang et al. 2019</span></a><span>), </span><code>2e-4</code><span> (e.g., </span><a href='https://arxiv.org/abs/1706.06083'><span>Madry et al. 2018</span></a><span>), and </span><code>5e-4</code><span> (e.g., </span><a href='https://arxiv.org/abs/2002.11569'><span>Rice et al., 2020</span></a><span>). We find that slightly different values of weight decay could largely affect the robustness of the adversarially trained models.</span></li><li><strong><span>Activation function</span></strong><span> (</span><a href='https://camo.githubusercontent.com/2e509e3b9a17afb9b8a2f7d9a05a6f0dcdb01b7a528a8f90a9e058a0cb07b869/68747470733a2f2f7669612e706c616365686f6c6465722e636f6d2f31352f3135383946302f3030303030303f746578743d2b'><img src="https://camo.githubusercontent.com/2e509e3b9a17afb9b8a2f7d9a05a6f0dcdb01b7a528a8f90a9e058a0cb07b869/68747470733a2f2f7669612e706c616365686f6c6465722e636f6d2f31352f3135383946302f3030303030303f746578743d2b" referrerpolicy="no-referrer" alt="#1589F0"></a><span> </span><em><span>Useful</span></em><span>). As shown in </span><a href='https://arxiv.org/pdf/2006.14536.pdf'><span>Xie et al., 2020a</span></a><span>, the smooth alternatives of </span><code>ReLU</code><span>, including </span><code>Softplus</code><span> and </span><code>GELU</code><span> can promote the performance of adversarial training. The relevant flags are </span><code>--activation</code><span> to choose the activation, and </span><code>--softplus_beta</code><span> to set the beta for Softplus. Other hyperparameters are used by default in the code.</span></li><li><strong><span>BN mode</span></strong><span> (</span><a href='https://camo.githubusercontent.com/2e509e3b9a17afb9b8a2f7d9a05a6f0dcdb01b7a528a8f90a9e058a0cb07b869/68747470733a2f2f7669612e706c616365686f6c6465722e636f6d2f31352f3135383946302f3030303030303f746578743d2b'><img src="https://camo.githubusercontent.com/2e509e3b9a17afb9b8a2f7d9a05a6f0dcdb01b7a528a8f90a9e058a0cb07b869/68747470733a2f2f7669612e706c616365686f6c6465722e636f6d2f31352f3135383946302f3030303030303f746578743d2b" referrerpolicy="no-referrer" alt="#1589F0"></a><span> </span><em><span>Useful</span></em><span>). TRADES applies eval mode of BN when crafting adversarial examples during training, while PGD-AT methods implemented by </span><a href='https://arxiv.org/abs/1706.06083'><span>Madry et al. 2018</span></a><span> or </span><a href='https://arxiv.org/abs/2002.11569'><span>Rice et al., 2020</span></a><span> use train mode of BN to craft training adversarial examples. As indicated by </span><a href='https://arxiv.org/pdf/1906.03787.pdf'><span>Xie et al., 2020b</span></a><span>, properly dealing with BN layers is critical to obtain a well-performed adversarially trained model, while train mode of BN during multi-step PGD process may blur the distribution.</span></li></ul><h2><a name="inspirations" class="md-header-anchor"></a><span>Inspirations</span></h2><p><span>Most of the tricks evaluated offer a range of difference in robust accuracy less than 1%, which is not significant. </span></p><p><span>I think there is no doubt that early stopping w.r.t. training epochs and weight decay are critical to adversarial training as well demonstrated by the experiments.</span></p><p><span>Their claim on warmup seems a little unfair, since it was not primarily proposed for adversarial training (actually for fast adversarial training), but other evaluations are relatively sound.</span></p><p><span>It&#39;s a little confusing why batch size is marked as insignificance  and label smoothing is marked as useful. Although they provide an experiment that by increasing the learning rate proportionally the effects brought by batch size can be mitigated, the influence brought by batch size with scaled learning rate still appears to be comparable with that brought by label smoothing. </span><mark><span>Why mark differently?</span></mark></p><p><span>Different optimizers from SGD family bring marginal differences, and it seems that those from Adam family perform worse, well, it&#39;s reasonable to mark this as insignificant.</span></p><p><span>I think the choice of activation functions is similar to that of optimizers, but a smooth one is better by a larger margin than that in the experiment for optimizers; it&#39;s fair to be mark this as useful.</span></p><p><span>The performance gap between eval mode BN and train mode BN used when generating adversarial examples also seems marginal to me, but theoretically it&#39;s quite reasonable to use an eval mode BN given the probably correct assumption that adversarial examples and clean examples should be treated as from different distributions.</span></p><p>&nbsp;</p><p>&nbsp;</p></div>
+</body>
+</html>

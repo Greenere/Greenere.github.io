@@ -14,10 +14,14 @@
 
 - <a href="blogs/pages/Single-AdversarialVulnerability.html" target="_blank">Adversarial Vulnerability for any Classifier</a>
 - <a href="blogs/pages/Single-AdversarialPAC.html" target="_blank">PAC Learning with Adversary</a>
+- <a href="blogs/pages/Single-AdversarialTrainingTricks.html" target="_blank">Bag of Tricks for Adversarial Training</a>
+- <a href="blogs/pages/Single-AdversarialVulnerabilityFirstorder.html" target="_blank">First-order Adversarial Vulnerability</a>
+- <a href="blogs/pages/Single-ShortcutLearning.html" target="_blank">Shortcut Learning as a Concept</a>
 
 ### Explanation/Interpretation
 
-- <a href="blogs/pages/Note-AdversarialExplanation.html" target="_blank">Explanation of Robustness and Adversarial Example</a>
+- <a href="blogs/pages/Note-AdversarialExplanation1.html" target="_blank">Explanation of Robustness and Adversarial Example - 1</a>
+- <a href="blogs/pages/Note-AdversarialExplanation2.html" target="_blank">Explanation of Robustness and Adversarial Example - 2</a>
 - <a href="blogs/pages/Note-AdversarialInterpretation.html" target="_blank">Interprertation for Robustness and Adversarial Example</a>
 
 ### Adversarial Attack
@@ -31,7 +35,8 @@
 - <a href="blogs/pages/Note-AdversarialDefense.html" target="_blank">Defenses against Adversarial Attacks</a>
   - <a href="blogs/pages/Note-AdversarialDefenseEnsemble.html" target="_blank">Adversarial Defense with Ensemble</a>
   - <a href="blogs/pages/Note-AdversarialDefenseInference.html" target="_blank">Adversarial Defense at Inference</a>
-  - <a href="blogs/pages/Note-AdversarialTraining.html" target="_blank">Adversarial Defense by Adversarial Training</a>
+  - <a href="blogs/pages/Note-AdversarialTraining1.html" target="_blank">Adversarial Defense by Adversarial Training - 1</a>
+  - <a href="blogs/pages/Note-AdversarialTraining2.html" target="_blank">Adversarial Defense by Adversarial Training - 2</a>
   - <a href="blogs/pages/Note-AdversarialRegularization.html" target="_blank">Adversarial Defense by Regularization</a>
   - <a href="blogs/pages/Note-AdversarialVerification.html" target="_blank">Provable Defense</a>
   - <a href="blogs/pages/Note-AdversarialDefenseStructure.html" target="_blank">Robust Structure</a>
@@ -52,6 +57,12 @@
 - <a href="blogs/pages/Note-FewShotLearning.html" target="_blank">Approaches of Few-shot Learning</a>
 
 ## Neural Networks
+
+### Interpretation
+
+- <a href="blogs/pages/Note-NeuralNetworkInterpretation.html" target="_blank">Interpretation of Neural Networks</a>
+
+### Structure
 
 - <a href="blogs/pages/Note-OrthogonalConvolution.html" target="_blank">Orthogonal Convolution</a>
 
