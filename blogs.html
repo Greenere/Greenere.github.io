@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
-<title>blogs</title><link href='https://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic,700italic' rel='stylesheet' type='text/css' /><link href='https://fonts.googleapis.com/css?family=Raleway:600,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
+<title>blogs</title><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
 html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
 body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
 iframe { margin: auto; }
@@ -159,342 +159,448 @@ mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
 }
 
 
-@include-when-export url(https://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic,700italic);
-@include-when-export url(https://fonts.googleapis.com/css?family=Raleway:600,400&subset=latin,latin-ext);
-
+/**
+ * NexT for Typora
+ * Brought to you by Bill Chen || https://github.com/BillChen2K/typora-theme-next
+ *
+ * - Want code ligatures for JetBrains Mono?
+ * - Search for `font-variant-ligatures: none;` and comment that line.
+ *
+ * - Want to change the font size in exported pdf?
+ * - Change the variable `--export-font-size` below.
+ **/
 
 :root {
-	--window-border: none;
-	--typora-center-window-title: true;
-	--active-file-bg-color: #f3f3f3;
-	--bg-color: #fcfcfc;
-	--control-text-color: #777;
+    --base-font-size: 16px;
+    --highlight-color: rgb(0, 160, 160);
+    --text-color: #333;
+    --headings-color: #262a30;
+    --export-font-size: 13px;
+    --select-text-bg-color: #262a30;
+    --select-text-font-color: #eee;
 }
 
-.mac-seamless-mode #typora-sidebar {
-	top: var(--mac-title-bar-height);
-	padding-top: 0;
-	height: auto;
+* {
+    /* Disable ligatures */
+    font-variant-ligatures: none;
 }
+
+
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
 
 html,
 body,
-#write{
-	background: #fcfcfc;
-	font-family: 'TeXGyreAdventor', "Century Gothic", 'Yu Gothic', 'Raleway', "STHeiti", sans-serif;
-	font-weight: 300;
+#write {
+    color: var(--text-color);
+    font-size: var(--base-font-size);
+    background: #fcfcfc;
+    font-family: Overpass, "GlowSansSC", "Helvetica Neue", "pingfang sc", "microsoft yahei", sans-serif;
+    font-weight: 400;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    /* letter-spacing: -0.5px; */
 }
+
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-	color: #111;
-	font-family: 'TeXGyreAdventor', "Century Gothic", 'Yu Gothic', 'Ubuntu', "STHeiti", sans-serif;
+    color: var(--headings-color);
+    font-weight: 700;
+    line-height: 1.5;
+    margin: 20px 0 15px
 }
 
-html {
-	font-size:16px;
+.CodeMirror pre {
+    font-family: 'JetBrains Mono';
+    font-size: 0.95em;
+    line-height: 1.65em;
 }
 
 #write {
-	max-width: 914px;
-	text-align: justify;
+    max-width: 914px;
+    text-align: justify;
 }
 
 #write>h1:first-child {
-	margin-top: 2.75rem;
+    margin-top: 1.75rem;
 }
+
 #write>h2:first-child {
-	margin-top: 1.75rem;
+    margin-top: 1.5rem;
 }
+
 #write>h3:first-child {
-	margin-top: 1rem;
+    margin-top: 1rem;
 }
+
 #write>h4:first-child {
-	margin-top: 0.5rem;
+    margin-top: 0.5rem;
 }
+
 h1 {
-	font-weight: normal;
-	line-height: 4rem;
-	margin: 0 0 1.75rem;
-	padding: 20px 30px;
-	text-align: center;
-	text-transform: uppercase;
-	margin-top: 4rem;
+    font-size: 2.5em
 }
+
 h2 {
-	font-weight: normal;
-	line-height: 3rem;
-	margin: 0 0 1.9375rem;
-	padding: 0 30px;
-	text-align: center;
-	text-transform: uppercase;
-	margin-top: 3rem
+    font-size: 1.75 em
 }
+
 h3 {
-	font-weight: normal;
+    font-size: 1.45em
 }
+
 h4 {
-	font-weight: normal;
+    font-size: 1.25em
 }
+
 h5 {
-	font-size: 1.125rem;
-	font-weight: normal;
+    font-size: 1.1em
 }
+
 h6 {
-	font-size: 1rem;
-	font-weight: bold;
+    font-size: 1em;
+    font-weight: bold
 }
+
+#write code {
+    color: var(--highlight-color);
+}
+
 p {
-	color: #111;
-	font-size: 1rem;
-	line-height: 1.75rem;
-	margin: 0 0 1.25rem;
+    color: var(--text-color);
+    line-height: 1.7rem;
+    margin: 0 0 8px;
 }
+
+#write ul {
+    line-height: 1.75rem;
+    margin-block-start: 0.6em;
+    margin-block-end: 0.6em;
+}
+
+#write ol li {
+    line-height: 1.75rem;
+    margin-block-start: 0.6em;
+    margin-block-end: 0.6em;
+}
+
+u {
+    text-decoration: none;
+    border-bottom: 1px solid #999;
+}
+
 #write>h3.md-focus:before {
-	left: -1.875rem;
-	top: 0.5rem;
-	padding: 2px;
+    left: -1.875rem;
+    top: 0.5rem;
+    padding: 2px;
 }
+
 #write>h4.md-focus:before {
-	left: -1.875rem;
-	top: 0.3125rem;
-	padding: 2px;
+    left: -1.875rem;
+    top: 0.3125rem;
+    padding: 2px;
 }
+
 #write>h5.md-focus:before {
-	left: -1.875rem;
-	top: 0.25rem;
-	padding: 2px;
+    left: -1.875rem;
+    top: 0.25rem;
+    padding: 2px;
 }
+
 #write>h6.md-focus:before {
-	left: -1.875rem;
-	top: .125rem;
-	padding: 2px;
+    left: -1.875rem;
+    top: .125rem;
+    padding: 2px;
 }
-/*@media screen and (min-width: 48em) {
-	.h1,
-	h1 {
-		font-size: 3.250rem;
-	}
-	.h2,
-	h2 {
-		font-size: 2.298rem;
-	}
-	.h3,
-	h3 {
-		font-size: 1.625rem;
-	}
-	.h4,
-	h4 {
-		font-size: 1.250rem;
-	}
-	.h5,
-	h5 {
-		font-size: 1.150rem;
-	}
-	.h6,
-	h6 {
-		font-size: 1rem;
-	}
-	#write>h4.md-focus:before,
-	#write>h5.md-focus:before,
-	#write>h6.md-focus:before {
-		top: 1px;
-	}
-	p {
-		font-size: 1.25rem;
-		line-height: 1.8;
-	}
-	table {
-		font-size: 1.25rem;
-	}
-}*/
+
 @media screen and (max-width: 48em) {
-	blockquote {
-		margin-left: 1rem;
-		margin-right: 0;
-		padding: 0.5em;
-	}
-	.h1,
-	h1 {
-		font-size: 2.827rem;
-	}
-	.h2,
-	h2 {
-		font-size: 1.999rem;
-	}
-	.h3,
-	h3 {
-		font-size: 1.413rem;
-	}
-	.h4,
-	h4 {
-		font-size: 1.250rem;
-	}
-	.h5,
-	h5 {
-		font-size: 1.150rem;
-	}
-	.h6,
-	h6 {
-		font-size: 1rem;
-	}
+    blockquote {
+        margin-left: 1rem;
+        margin-right: 0;
+        padding: 0.5em;
+    }
+    /* .h1,
+    h1 {
+        font-size: 2.827rem;
+    }
+    .h2,
+    h2 {
+        font-size: 1.999rem;
+    }
+    .h3,
+    h3 {
+        font-size: 1.413rem;
+    }
+    .h4,
+    h4 {
+        font-size: 1.250rem;
+    }
+    .h5,
+    h5 {
+        font-size: 1.150rem;
+    }
+    .h6,
+    h6 {
+        font-size: 1rem;
+    } */
 }
-a,
-.md-def-url {
-	color: #990000;
-	text-decoration: none;
+
+a .md-def-url {
+    color: #262a30;
 }
+
+a {
+    color: var(--highlight-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition-duration: 0.5s;
+}
+
 a:hover {
-	text-decoration: underline;
+    text-decoration: underline;
 }
+
 table {
-	margin-bottom: 20px
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 1em;
+    margin: 0 0 20px;
+    width: 100%;
 }
-table th,
-table td {
-	padding: 8px;
-	line-height: 1.25rem;
-	vertical-align: top;
-	border-top: 1px solid #ddd
+
+table tr:nth-child(2n),
+thead {
+    background-color: #f9f9f9;
 }
-table th {
-	font-weight: bold
+
+tbody tr:hover {
+    background: #f5f5f5
 }
-table thead th {
-	vertical-align: bottom
+
+caption,
+td,
+th {
+    font-weight: 400;
+    padding: 8px;
+    text-align: left;
+    vertical-align: middle
 }
-table caption+thead tr:first-child th,
-table caption+thead tr:first-child td,
-table colgroup+thead tr:first-child th,
-table colgroup+thead tr:first-child td,
-table thead:first-child tr:first-child th,
-table thead:first-child tr:first-child td {
-	border-top: 0
+
+table tr th {
+    border-bottom: 3px solid #ddd;
+    font-weight: 700;
+    padding-bottom: 10px;
+    background-color: var(--bg-color);
 }
-table tbody+tbody {
-	border-top: 2px solid #ddd
+
+td,
+th {
+    border: 1px solid #ddd;
 }
-code, .md-fences {
-	padding: .5em;
-	/*background: #f0f0f0;*/
-	border: 1px solid #ccc;
-	padding: .1em;
-	font-size: 0.9em;
-	margin-left: 0.2em;
-	margin-right: 0.2em;
+
+th {
+    font-weight: 700;
+    padding-bottom: 10px
 }
+
+td {
+    border-bottom-width: 1px
+}
+
+
+/* Inline Code */
+
+code,
 .md-fences {
-	margin: 0 0 20px;
-	font-size: 1em;
-	padding: 0.3em 1em;
-  	padding-top: 0.4em;
+    background: #eee;
+    border-radius: 3px;
+    color: #555;
+    padding: 2px 4px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    font-family: 'JetBrains Mono';
+    font-size: 0.935em;
 }
-.task-list{
-	padding-left: 0;
+
+
+/* Code Blocks */
+
+.md-fences {
+    margin: 0 0 20px;
+    font-size: 0.9em;
+    line-height: 1.5em;
+    padding: 0.4em 1em;
+    padding-top: 0.4em;
+}
+
+.task-list {
+    padding-left: 0;
 }
 
 .task-list-item {
-	padding-left:2.125rem;
+    padding-left: 2rem;
 }
 
 .task-list-item input {
-	top: 3px;
-
+    top: 3px;
 }
 
-.task-list-item input:before {
-	content: "";
-	display: inline-block;
-	width: 1rem;
-	height: 1rem;
-	vertical-align: middle;
-	text-align: center;
-	border: 1px solid gray;
-	background-color: #fdfdfd;
-	margin-left: 0;
-	margin-top: -0.8rem;
+.task-list-item input {
+    outline: none;
+    margin-bottom: 0.5em;
 }
-.task-list-item input:checked:before,
-.task-list-item input[checked]:before{
-	content: '\25FC';
-	/*◘*/
-	font-size: 0.8125rem;
-	line-height: 0.9375rem;
-	margin-top: -1rem;
+
+.task-list-item input::before {
+    content: "";
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    vertical-align: middle;
+    text-align: center;
+    border: 1px solid gray;
+    background-color: #fdfdfd;
+    margin-left: -0.1rem;
+    margin-right: 0.1rem;
+    margin-top: -0.9rem;
 }
+
+.task-list-item input:checked::before {
+    padding-left: 0.125em;
+    content: '✔';
+    /*◘*/
+    font-size: 0.8125rem;
+    line-height: 0.9375rem;
+    margin-top: -0.9rem;
+}
+
 
 /* Chrome 29+ */
-@media screen and (-webkit-min-device-pixel-ratio:0)
-  and (min-resolution:.001dpcm) {
-    .task-list-item input:before {
-    	margin-top: -0.2rem;
-    }
 
+@media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
+    .task-list-item input:before {
+        margin-top: -0.2rem;
+    }
     .task-list-item input:checked:before,
-	.task-list-item input[checked]:before {
-		margin-top: -0.2rem;
-	}
+    .task-list-item input[checked]:before {
+        margin-top: -0.2rem;
+    }
 }
 
 blockquote {
-	margin: 0 0 1.11111rem;
-	padding: 0.5rem 1.11111rem 0 1.05556rem;
-	border-left: 1px solid gray;
+    border-left: 4px solid #ddd;
+    color: #666;
+    margin: 0;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 0 15px
 }
-blockquote,
+
 blockquote p {
-	line-height: 1.6;
-	color: #6f6f6f;
+    color: #666
 }
-#write pre.md-meta-block {
-	min-height: 30px;
-	background: #f8f8f8;
-	padding: 1.5em;
-	font-weight: 300;
-	font-size: 1em;
-	padding-bottom: 1.5em;
-	padding-top: 3em;
+
+blockquote cite::before {
+    content: '-';
+    padding: 0 5px
+}
+
+
+/* #write pre.md-meta-block {
+    min-height: 30px;
+    background: #f8f8f8;
+    padding: 1.5em;
+    font-weight: 300;
+    font-size: 1em;
+    padding-bottom: 1.5em;
+    padding-top: 3em;
     margin-top: -1.5em;
-	color: #999;
-	
-	width: 100vw;
-	max-width: calc(100% + 60px);
-	margin-left: -30px;
-	border-left: 30px #f8f8f8 solid;
-	border-right: 30px #f8f8f8 solid;
+    color: #999;
+    border-left: 1000px #f8f8f8 solid;
+    margin-left: -1000px;
+    border-right: 1000px #f8f8f8 solid;
+    margin-right: -1000px;
+    margin-bottom: 2em;
+    font-size: 0.8em;
+    line-height: 1.5em;
+    font-family: 'JetBrains Mono';
+} */
+
+#write pre.md-meta-block {
+    padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f1f1f1;
+    border: 0;
+    border-radius: 3px;
+    color: hsl(0, 0%, 53%);
+    margin-top: 0 !important;
+    margin-bottom: 2em;
+    font-size: 0.8em;
+    line-height: 1.5em;
+    font-family: 'JetBrains Mono';
 }
+
 .MathJax_Display {
-	font-size: 0.9em;
-	margin-top: 0.5em;
-	margin-bottom: 0;
+    font-size: 0.9em;
+    margin-top: 0.5em;
+    margin-bottom: 0;
 }
+
 p.mathjax-block,
 .mathjax-block {
-	padding-bottom: 0;
+    padding-bottom: 0;
 }
+
 .mathjax-block>.code-tooltip {
-	bottom: 5px;
-	box-shadow: none;
+    bottom: 5px;
+    box-shadow: none;
 }
+
 .md-image>.md-meta {
-	padding-left: 0.5em;
-	padding-right: 0.5em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
 }
+
 .md-image>img {
-	margin-top: 2px;
+    margin-top: 2px;
 }
+
 .md-image>.md-meta:first-of-type:before {
-	padding-left: 4px;
+    padding-left: 4px;
 }
 
 #typora-source {
-	color: #555;
+    color: #555;
 }
 
+
 /** ui for windows **/
+
 #md-searchpanel {
     border-bottom: 1px solid #ccc;
 }
@@ -504,37 +610,220 @@ p.mathjax-block,
 }
 
 #md-notification:before {
-	top: 14px;
+    top: 14px;
 }
 
 #md-notification {
-	background: #eee;
+    background: #eee;
 }
 
 .megamenu-menu-panel .btn {
-	border: 1px solid #ccc;
+    border: 1px solid #ccc;
 }
 
-#typora-sidebar {
-	box-shadow: none;
+#write>h3.md-focus:before {
+    left: -1.5625rem;
+    top: .375rem;
 }
 
-.file-list-item ,
-.show-folder-name .file-list-item {
-	padding-top: 20px;
-	padding-bottom: 20px;
-	line-height: 20px;
+#write>h4.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
 }
 
-.file-list-item-summary {
-	height: 40px;
-	line-height: 20px;
+#write>h5.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write>h6.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+.md-image>.md-meta {
+    border-radius: 3px;
+    padding: 2px 0 0 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: inherit;
+}
+
+.md-toc {
+    margin-top: 20px;
+    padding-bottom: 5px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #efefef;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#md-notification:before {
+    top: 10px;
+}
+
+
+/** focus mode */
+
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state {
+    visibility: visible;
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+.file-tree-node {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.file-node-title {
+    padding-top: 2px;
+}
+
+.outline-item {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+
+/* 
+.modal-footer .btn-default,
+.modal-footer .btn-primary {
+    border: 2px solid #222;
+}
+
+
+
+#md-searchpanel .btn:not(.close-btn):hover {
+    background: #fff;
+    border-color: #222;
+    color: #222;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#md-searchpanel .btn:not(.close-btn) {
+    background: #222;
+    border-color: #222;
+    color: #fff;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    transition-duration: .2s;
+}
+
+.searchpanel-search-option-btn {
+    border-radius: 0px;
+    border: 1px solid #222;
+} */
+
+/* Search panel & UI */
+
+#md-searchpanel .btn {
+    border: none;
+}
+
+#md-searchpanel input {
+    box-shadow: none;
+}
+
+.searchpanel-search-option-btn {
+    border-color: #aaa;
+    border-radius: 0;
+}
+
+.modal-dialog .btn {
+    background: #222;
+    border-width: 2px;
+    border-color: #222;
+    border-radius: 0;
+    color: #fff;
+    display: inline-block;
+    font-size: .875em;
+    line-height: 2rem;
+    padding: 0 20px;
+    margin: 5px;
+    text-decoration: none;
+    transition-delay: 0s;
+    transition-duration: .2s;
+    transition-timing-function: ease-in-out
+}
+
+.modal-dialog .btn:hover {
+    background: #eee;
+    border-color: #222;
+    color: #222;
+}
+
+
+/* Printing issue */
+
+.typora-export * {
+    -webkit-print-color-adjust: exact;
+}
+
+.typora-export p {
+    font-size: var(--export-font-size) !important;
+}
+
+.typora-export li {
+    font-size: var(--export-font-size);
+    line-height: 2rem;
+}
+
+.typora-export #write {
+    font-size: var(--export-font-size) !important;
+}
+
+table,
+pre {
+    page-break-inside: avoid;
+}
+
+pre {
+    word-wrap: break-word;
+}
+
+hr {
+    background-image: repeating-linear-gradient(-45deg, #ddd, #ddd 4px, transparent 4px, transparent 8px);
+    border: 0;
+    height: 3px;
+    margin: 40px 0
 }
 
  .typora-export li, .typora-export p, .typora-export,  .footnote-line {white-space: normal;} 
 </style>
 </head>
 <body class='typora-export os-windows'>
-<div id='write'  class=''><h1><a name="blogs" class="md-header-anchor"></a><span>BLOGS</span></h1><h3><a name="adversarial-example" class="md-header-anchor"></a><span>ADVERSARIAL EXAMPLE</span></h3><ul><li><a href="blogs/pages/Map-AdversarialExample.html" target="_blank"><span>A Map of Adversarial Example</span></a></li><li><a href="blogs/pages/Landscape-AdversarialExample.html" target="_blank"><span>The Landscape of Adversarial Example</span></a></li><li><a href="blogs/pages/Note-TransferabilityAdversarialExample.html"  target="_blank"><span>About the Transferability of Adversarial Example</span></a></li><li><a href="blogs/pages/Note-AdversarialExampleOD.html" target="_blank"><span>Adversarial Example in Object Detection</span></a></li><li><a href="blogs/pages/Note-AdversarialExplanation.html" target="_blank"><span>Explanation for Robustness and Adversarial Example</span></a></li><li><a href="blogs/pages/Note-AdversarialDefense.html" target="_blank"><span>About the Defenses against Adversarial Attacks</span></a></li><li><a href="blogs/pages/Note-AdversarialTraining.html" target="_blank"><span>Advances along Adversarial Training</span></a></li></ul><h3><a name="object-detection" class="md-header-anchor"></a><span>OBJECT DETECTION</span></h3><ul><li><a href="blogs/pages/Note-ObjectDetection.html" target="_blank"><span>A Simple Survey for Object Detection</span></a></li></ul><h3><a name="few-shot-learning" class="md-header-anchor"></a><span>FEW-SHOT LEARNING</span></h3><ul><li><a href="blogs/pages/Note-FewShotLearningSurvey.html" target="_blank"><span>Summarized Survey of Few-Shot Learning</span></a></li><li><a href="blogs/pages/Note-FewShotLearning.html" target="_blank"><span>Approaches of Few-shot Learning</span></a></li></ul><h3><a name="convolutional-neural-networks" class="md-header-anchor"></a><span>Convolutional Neural Networks</span></h3><ul><li><a href="blogs/pages/Note-OrthogonalConvolution.html" target="_blank"><span>Orthogonal Convolution</span></a></li></ul><h3><a name="reading-notes" class="md-header-anchor"></a><span>READING NOTES</span></h3><ul><li><a href="blogs/pages/code-note-en.html" target="_blank"><span>How to Build a Computer</span></a></li><li><a href="blogs/pages/encrypto-note-en.html" target="_blank"><span>The Evolution of Cryptography</span></a></li></ul><h3><a name="history" class="md-header-anchor"></a><span>HISTORY</span></h3><ul><li><a href="blogs/pages/History-WarRipples.html" target="_blank"><span>The Ripples of War</span></a></li><li><a href="blogs/pages/History-LandFlowChina.html" target="_blank"><span>中国疆域流变</span></a></li></ul><hr /><p><b><a href="index.html"><span>BACK TO THE HOMEPAGE</span></a></b></p><p>&nbsp;</p></div>
+<div id='write'  class=''><h1><a name="blogs" class="md-header-anchor"></a><span>Blogs</span></h1><h2><a name="content" class="md-header-anchor"></a><span>Content</span></h2><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n84"><a class="md-toc-inner" href="#blogs">Blogs</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n86"><a class="md-toc-inner" href="#content">Content</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n88"><a class="md-toc-inner" href="#adversarial-example">Adversarial Example</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n96"><a class="md-toc-inner" href="#single-notes">Single Notes</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n102"><a class="md-toc-inner" href="#explanationinterpretation">Explanation/Interpretation</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n108"><a class="md-toc-inner" href="#adversarial-attack">Adversarial Attack</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n114"><a class="md-toc-inner" href="#adversarial-defense">Adversarial Defense</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n135"><a class="md-toc-inner" href="#re-purpose-adversarial-example">Re-purpose Adversarial Example</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n139"><a class="md-toc-inner" href="#object-detection">Object Detection</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n143"><a class="md-toc-inner" href="#few-shot-learning">Few-shot Learning</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n168"><a class="md-toc-inner" href="#neural-networks">Neural Networks</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n153"><a class="md-toc-inner" href="#reading-notes">Reading Notes</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n159"><a class="md-toc-inner" href="#machine-learning">Machine Learning</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n169"><a class="md-toc-inner" href="#zhihu-articles">Zhihu Articles</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n177"><a class="md-toc-inner" href="#history">History</a></span></p></div><h2><a name="adversarial-example" class="md-header-anchor"></a><span>Adversarial Example</span></h2><ul><li><a href="blogs/pages/Map-AdversarialExample.html" target="_blank"><span>A Map of Adversarial Example Research</span></a></li><li><a href="blogs/pages/Landscape-AdversarialExample.html" target="_blank"><span>The Landscape of Adversarial Example</span></a></li><li><a href="blogs/pages/Note-TransferabilityAdversarialExample.html"  target="_blank"><span>About the Transferability of Adversarial Example</span></a></li></ul><h3><a name="single-notes" class="md-header-anchor"></a><span>Single Notes</span></h3><ul><li><a href="blogs/pages/Single-AdversarialVulnerability.html" target="_blank"><span>Adversarial Vulnerability for any Classifier</span></a></li><li><a href="blogs/pages/Single-AdversarialPAC.html" target="_blank"><span>PAC Learning with Adversary</span></a></li></ul><h3><a name="explanationinterpretation" class="md-header-anchor"></a><span>Explanation/Interpretation</span></h3><ul><li><a href="blogs/pages/Note-AdversarialExplanation.html" target="_blank"><span>Explanation of Robustness and Adversarial Example</span></a></li><li><a href="blogs/pages/Note-AdversarialInterpretation.html" target="_blank"><span>Interprertation for Robustness and Adversarial Example</span></a></li></ul><h3><a name="adversarial-attack" class="md-header-anchor"></a><span>Adversarial Attack</span></h3><ul><li><a href="blogs/pages/Note-AdversarialAttack.html" target="_blank"><span>Adversarial Attacks</span></a></li><li><a href="blogs/pages/Note-AdversarialExampleOD.html" target="_blank"><span>Adversarial Example in Object Detection</span></a></li></ul><h3><a name="adversarial-defense" class="md-header-anchor"></a><span>Adversarial Defense</span></h3><ul><li><p><a href="blogs/pages/Note-AdversarialDefense.html" target="_blank"><span>Defenses against Adversarial Attacks</span></a></p><ul><li><a href="blogs/pages/Note-AdversarialDefenseEnsemble.html" target="_blank"><span>Adversarial Defense with Ensemble</span></a></li><li><a href="blogs/pages/Note-AdversarialDefenseInference.html" target="_blank"><span>Adversarial Defense at Inference</span></a></li><li><a href="blogs/pages/Note-AdversarialTraining.html" target="_blank"><span>Adversarial Defense by Adversarial Training</span></a></li><li><a href="blogs/pages/Note-AdversarialRegularization.html" target="_blank"><span>Adversarial Defense by Regularization</span></a></li><li><a href="blogs/pages/Note-AdversarialVerification.html" target="_blank"><span>Provable Defense</span></a></li><li><a href="blogs/pages/Note-AdversarialDefenseStructure.html" target="_blank"><span>Robust Structure</span></a></li></ul></li><li><p><a href="blogs/pages/Note-AdversarialDefenseBreach.html" target="_blank"><span>Breach Adversarial Defenses</span></a></p></li><li><p><a href="blogs/pages/Note-AdversarialBenchmark.html" target="_blank"><span>Benchmark Adversarial Defenses</span></a></p></li></ul><h3><a name="re-purpose-adversarial-example" class="md-header-anchor"></a><span>Re-purpose Adversarial Example</span></h3><ul><li><a href="blogs/pages/Note-AdversarialAugmentation.html" target="_blank"><span>Adversarial Augmentation</span></a></li></ul><h2><a name="object-detection" class="md-header-anchor"></a><span>Object Detection</span></h2><ul><li><a href="blogs/pages/Note-ObjectDetection.html" target="_blank"><span>A Simple Survey for Object Detection</span></a></li></ul><h2><a name="few-shot-learning" class="md-header-anchor"></a><span>Few-shot Learning</span></h2><ul><li><a href="blogs/pages/Note-FewShotLearningSurvey.html" target="_blank"><span>Summarized Survey of Few-Shot Learning</span></a></li><li><a href="blogs/pages/Note-FewShotLearning.html" target="_blank"><span>Approaches of Few-shot Learning</span></a></li></ul><h2><a name="neural-networks" class="md-header-anchor"></a><span>Neural Networks</span></h2><ul><li><a href="blogs/pages/Note-OrthogonalConvolution.html" target="_blank"><span>Orthogonal Convolution</span></a></li></ul><h2><a name="reading-notes" class="md-header-anchor"></a><span>Reading Notes</span></h2><ul><li><a href="blogs/pages/code-note-en.html" target="_blank"><span>How to Build a Computer</span></a></li><li><a href="blogs/pages/encrypto-note-en.html" target="_blank"><span>The Evolution of Cryptography</span></a></li></ul><h2><a name="machine-learning" class="md-header-anchor"></a><span>Machine Learning</span></h2><ul><li><a href="blogs/pages/Concept-SVM.html"><span>Basic Concepts of Support Vector Machine (SVM)</span></a></li></ul><h2><a name="zhihu-articles" class="md-header-anchor"></a><span>Zhihu Articles</span></h2><ul><li><a href="https://zhuanlan.zhihu.com/p/269203978"><span>什么是对抗样本？——稳健性和泛化性的交集</span></a></li><li><a href="https://zhuanlan.zhihu.com/p/268154711"><span>对抗样本是什么？——数据的一小步，模型的一大步</span></a></li></ul><h2><a name="history" class="md-header-anchor"></a><span>History</span></h2><ul><li><a href="blogs/pages/History-WarRipples.html" target="_blank"><span>The Ripples of War</span></a></li><li><a href="blogs/pages/History-LandFlowChina.html" target="_blank"><span>中国疆域流变</span></a></li></ul><hr /><p><b><a href="index.html"><span>BACK TO THE HOMEPAGE</span></a></b></p><p>&nbsp;</p></div>
 </body>
 </html>

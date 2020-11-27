@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
-<title>encrypto-note</title><link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --node-fill: #ECECFF; --node-border: #CCCCFF; --cluster-fill: #ffffde; --cluster-border: #aaaa33; --note-fill: #fff5ad; --note-border: #aaaa33; --mermaid-color: var(--text-color); }
+<title>encrypto-note</title><style type='text/css'>html {overflow-x: initial !important;}:root { --node-fill: #ECECFF; --node-border: #CCCCFF; --cluster-fill: #ffffde; --cluster-border: #aaaa33; --note-fill: #fff5ad; --note-border: #aaaa33; --mermaid-color: var(--text-color); }
 .label { font-family: var(--mermaid-font-family); color: rgb(51, 51, 51); }
 .label text { fill: rgb(51, 51, 51); }
 .node rect, .node circle, .node ellipse, .node polygon { fill: var(--node-fill); stroke: rgb(147, 112, 219); stroke-width: 1px; }
@@ -274,7 +274,6 @@ mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
 mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
 @media print {
   .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
-  .typora-export h1::after, .typora-export h2::after, .typora-export h3::after, .typora-export h4::after, .typora-export h5::after, .typora-export h6::after { content: ""; display: block; height: 100px; margin-bottom: -100px; }
 }
 
 
@@ -351,325 +350,510 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
 }
 
 
+/**
+ * NexT for Typora
+ * Brought to you by Bill Chen || https://github.com/BillChen2K/typora-theme-next
+ *
+ * - Want code ligatures for JetBrains Mono?
+ * - Search for `font-variant-ligatures: none;` and comment that line.
+ *
+ * - Want to change the font size in exported pdf?
+ * - Change the variable `--export-font-size` below.
+ **/
+
 :root {
-    --side-bar-bg-color: #fafafa;
-    --control-text-color: #777;
+    --base-font-size: 16px;
+    --highlight-color: rgb(0, 160, 160);
+    --text-color: #333;
+    --headings-color: #262a30;
+    --export-font-size: 13px;
+    --select-text-bg-color: #262a30;
+    --select-text-font-color: #eee;
 }
 
-@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
-
-/* open-sans-regular - latin-ext_latin */
-  /* open-sans-italic - latin-ext_latin */
-    /* open-sans-700 - latin-ext_latin */
-    /* open-sans-700italic - latin-ext_latin */
-  html {
-    font-size: 16px;
+* {
+    /* Disable ligatures */
+    font-variant-ligatures: none;
 }
 
-body {
-    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: rgb(51, 51, 51);
-    line-height: 1.6;
-}
 
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
+
+html,
+body,
 #write {
-    max-width: 860px;
-  	margin: 0 auto;
-  	padding: 30px;
-    padding-bottom: 100px;
+    color: var(--text-color);
+    font-size: var(--base-font-size);
+    background: #fcfcfc;
+    font-family: Overpass, "GlowSansSC", "Helvetica Neue", "pingfang sc", "microsoft yahei", sans-serif;
+    font-weight: 400;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    /* letter-spacing: -0.5px; */
 }
 
-@media only screen and (min-width: 1400px) {
-	#write {
-		max-width: 1024px;
-	}
-}
-
-@media only screen and (min-width: 1800px) {
-	#write {
-		max-width: 1200px;
-	}
-}
-
-#write > ul:first-child,
-#write > ol:first-child{
-    margin-top: 30px;
-}
-
-a {
-    color: #4183C4;
-}
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-    position: relative;
+    color: var(--headings-color);
+    font-weight: 700;
+    line-height: 1.5;
+    margin: 20px 0 15px
+}
+
+.CodeMirror pre {
+    font-family: 'JetBrains Mono';
+    font-size: 0.95em;
+    line-height: 1.65em;
+}
+
+#write {
+    max-width: 914px;
+    text-align: justify;
+}
+
+#write>h1:first-child {
+    margin-top: 1.75rem;
+}
+
+#write>h2:first-child {
+    margin-top: 1.5rem;
+}
+
+#write>h3:first-child {
     margin-top: 1rem;
-    margin-bottom: 1rem;
-    font-weight: bold;
-    line-height: 1.4;
-    cursor: text;
 }
-h1:hover a.anchor,
-h2:hover a.anchor,
-h3:hover a.anchor,
-h4:hover a.anchor,
-h5:hover a.anchor,
-h6:hover a.anchor {
-    text-decoration: none;
+
+#write>h4:first-child {
+    margin-top: 0.5rem;
 }
-h1 tt,
-h1 code {
-    font-size: inherit;
-}
-h2 tt,
-h2 code {
-    font-size: inherit;
-}
-h3 tt,
-h3 code {
-    font-size: inherit;
-}
-h4 tt,
-h4 code {
-    font-size: inherit;
-}
-h5 tt,
-h5 code {
-    font-size: inherit;
-}
-h6 tt,
-h6 code {
-    font-size: inherit;
-}
+
 h1 {
-    font-size: 2.25em;
-    line-height: 1.2;
-    border-bottom: 1px solid #eee;
+    font-size: 2.5em
 }
+
 h2 {
-    font-size: 1.75em;
-    line-height: 1.225;
-    border-bottom: 1px solid #eee;
-}
-
-@media print {
-    .typora-export h1,
-    .typora-export h2 {
-        border-bottom: none;
-        padding-bottom: initial;
-    }
-
-    .typora-export h1::after,
-    .typora-export h2::after {
-        border-top: 1px solid #eee;
-        margin-top: .3em;
-    }
+    font-size: 1.75 em
 }
 
 h3 {
-    font-size: 1.5em;
-    line-height: 1.43;
-}
-h4 {
-    font-size: 1.25em;
-}
-h5 {
-    font-size: 1em;
-}
-h6 {
-   font-size: 1em;
-    color: #777;
-}
-p,
-blockquote,
-ul,
-ol,
-dl,
-table{
-    margin: 0.8em 0;
-}
-li>ol,
-li>ul {
-    margin: 0 0;
-}
-hr {
-    height: 2px;
-    padding: 0;
-    margin: 16px 0;
-    background-color: #e7e7e7;
-    border: 0 none;
-    overflow: hidden;
-    box-sizing: content-box;
+    font-size: 1.45em
 }
 
-li p.first {
-    display: inline-block;
+h4 {
+    font-size: 1.25em
 }
-ul,
-ol {
-    padding-left: 30px;
+
+h5 {
+    font-size: 1.1em
 }
-ul:first-child,
-ol:first-child {
-    margin-top: 0;
+
+h6 {
+    font-size: 1em;
+    font-weight: bold
 }
-ul:last-child,
-ol:last-child {
-    margin-bottom: 0;
+
+#write code {
+    color: var(--highlight-color);
 }
-blockquote {
-    border-left: 4px solid #dfe2e5;
-    padding: 0 15px;
-    color: #777777;
+
+p {
+    color: var(--text-color);
+    line-height: 1.7rem;
+    margin: 0 0 8px;
 }
-blockquote blockquote {
-    padding-right: 0;
+
+#write ul {
+    line-height: 1.75rem;
+    margin-block-start: 0.6em;
+    margin-block-end: 0.6em;
 }
+
+#write ol li {
+    line-height: 1.75rem;
+    margin-block-start: 0.6em;
+    margin-block-end: 0.6em;
+}
+
+u {
+    text-decoration: none;
+    border-bottom: 1px solid #999;
+}
+
+#write>h3.md-focus:before {
+    left: -1.875rem;
+    top: 0.5rem;
+    padding: 2px;
+}
+
+#write>h4.md-focus:before {
+    left: -1.875rem;
+    top: 0.3125rem;
+    padding: 2px;
+}
+
+#write>h5.md-focus:before {
+    left: -1.875rem;
+    top: 0.25rem;
+    padding: 2px;
+}
+
+#write>h6.md-focus:before {
+    left: -1.875rem;
+    top: .125rem;
+    padding: 2px;
+}
+
+@media screen and (max-width: 48em) {
+    blockquote {
+        margin-left: 1rem;
+        margin-right: 0;
+        padding: 0.5em;
+    }
+    /* .h1,
+    h1 {
+        font-size: 2.827rem;
+    }
+    .h2,
+    h2 {
+        font-size: 1.999rem;
+    }
+    .h3,
+    h3 {
+        font-size: 1.413rem;
+    }
+    .h4,
+    h4 {
+        font-size: 1.250rem;
+    }
+    .h5,
+    h5 {
+        font-size: 1.150rem;
+    }
+    .h6,
+    h6 {
+        font-size: 1rem;
+    } */
+}
+
+a .md-def-url {
+    color: #262a30;
+}
+
+a {
+    color: var(--highlight-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition-duration: 0.5s;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 table {
-    padding: 0;
-    word-break: initial;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 1em;
+    margin: 0 0 20px;
+    width: 100%;
 }
-table tr {
-    border-top: 1px solid #dfe2e5;
-    margin: 0;
-    padding: 0;
-}
+
 table tr:nth-child(2n),
 thead {
-    background-color: #f8f8f8;
+    background-color: #f9f9f9;
 }
+
+tbody tr:hover {
+    background: #f5f5f5
+}
+
+caption,
+td,
+th {
+    font-weight: 400;
+    padding: 8px;
+    text-align: left;
+    vertical-align: middle
+}
+
 table tr th {
-    font-weight: bold;
-    border: 1px solid #dfe2e5;
-    border-bottom: 0;
+    border-bottom: 3px solid #ddd;
+    font-weight: 700;
+    padding-bottom: 10px;
+    background-color: var(--bg-color);
+}
+
+td,
+th {
+    border: 1px solid #ddd;
+}
+
+th {
+    font-weight: 700;
+    padding-bottom: 10px
+}
+
+td {
+    border-bottom-width: 1px
+}
+
+
+/* Inline Code */
+
+code,
+.md-fences {
+    background: #eee;
+    border-radius: 3px;
+    color: #555;
+    padding: 2px 4px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    font-family: 'JetBrains Mono';
+    font-size: 0.935em;
+}
+
+
+/* Code Blocks */
+
+.md-fences {
+    margin: 0 0 20px;
+    font-size: 0.9em;
+    line-height: 1.5em;
+    padding: 0.4em 1em;
+    padding-top: 0.4em;
+}
+
+.task-list {
+    padding-left: 0;
+}
+
+.task-list-item {
+    padding-left: 2rem;
+}
+
+.task-list-item input {
+    top: 3px;
+}
+
+.task-list-item input {
+    outline: none;
+    margin-bottom: 0.5em;
+}
+
+.task-list-item input::before {
+    content: "";
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    vertical-align: middle;
+    text-align: center;
+    border: 1px solid gray;
+    background-color: #fdfdfd;
+    margin-left: -0.1rem;
+    margin-right: 0.1rem;
+    margin-top: -0.9rem;
+}
+
+.task-list-item input:checked::before {
+    padding-left: 0.125em;
+    content: '✔';
+    /*◘*/
+    font-size: 0.8125rem;
+    line-height: 0.9375rem;
+    margin-top: -0.9rem;
+}
+
+
+/* Chrome 29+ */
+
+@media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
+    .task-list-item input:before {
+        margin-top: -0.2rem;
+    }
+    .task-list-item input:checked:before,
+    .task-list-item input[checked]:before {
+        margin-top: -0.2rem;
+    }
+}
+
+blockquote {
+    border-left: 4px solid #ddd;
+    color: #666;
     margin: 0;
-    padding: 6px 13px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 0 15px
 }
-table tr td {
-    border: 1px solid #dfe2e5;
-    margin: 0;
-    padding: 6px 13px;
+
+blockquote p {
+    color: #666
 }
-table tr th:first-child,
-table tr td:first-child {
-    margin-top: 0;
+
+blockquote cite::before {
+    content: '-';
+    padding: 0 5px
 }
-table tr th:last-child,
-table tr td:last-child {
+
+
+/* #write pre.md-meta-block {
+    min-height: 30px;
+    background: #f8f8f8;
+    padding: 1.5em;
+    font-weight: 300;
+    font-size: 1em;
+    padding-bottom: 1.5em;
+    padding-top: 3em;
+    margin-top: -1.5em;
+    color: #999;
+    border-left: 1000px #f8f8f8 solid;
+    margin-left: -1000px;
+    border-right: 1000px #f8f8f8 solid;
+    margin-right: -1000px;
+    margin-bottom: 2em;
+    font-size: 0.8em;
+    line-height: 1.5em;
+    font-family: 'JetBrains Mono';
+} */
+
+#write pre.md-meta-block {
+    padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f1f1f1;
+    border: 0;
+    border-radius: 3px;
+    color: hsl(0, 0%, 53%);
+    margin-top: 0 !important;
+    margin-bottom: 2em;
+    font-size: 0.8em;
+    line-height: 1.5em;
+    font-family: 'JetBrains Mono';
+}
+
+.MathJax_Display {
+    font-size: 0.9em;
+    margin-top: 0.5em;
     margin-bottom: 0;
 }
 
-.CodeMirror-lines {
-    padding-left: 4px;
-}
-
-.code-tooltip {
-    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
-    border-top: 1px solid #eef2f2;
-}
-
-.md-fences,
-code,
-tt {
-    border: 1px solid #e7eaed;
-    background-color: #f8f8f8;
-    border-radius: 3px;
-    padding: 0;
-    padding: 2px 4px 0px 4px;
-    font-size: 0.9em;
-}
-
-code {
-    background-color: #f3f4f4;
-    padding: 0 2px 0 2px;
-}
-
-.md-fences {
-    margin-bottom: 15px;
-    margin-top: 15px;
-    padding-top: 8px;
-    padding-bottom: 6px;
-}
-
-
-.md-task-list-item > input {
-  margin-left: -1.3em;
-}
-
-@media print {
-    html {
-        font-size: 13px;
-    }
-    table,
-    pre {
-        page-break-inside: avoid;
-    }
-    pre {
-        word-wrap: break-word;
-    }
-}
-
-.md-fences {
-	background-color: #f8f8f8;
-}
-#write pre.md-meta-block {
-	padding: 1rem;
-    font-size: 85%;
-    line-height: 1.45;
-    background-color: #f7f7f7;
-    border: 0;
-    border-radius: 3px;
-    color: #777777;
-    margin-top: 0 !important;
+p.mathjax-block,
+.mathjax-block {
+    padding-bottom: 0;
 }
 
 .mathjax-block>.code-tooltip {
-	bottom: .375rem;
+    bottom: 5px;
+    box-shadow: none;
 }
 
-.md-mathjax-midline {
-    background: #fafafa;
-}
-
-#write>h3.md-focus:before{
-	left: -1.5625rem;
-	top: .375rem;
-}
-#write>h4.md-focus:before{
-	left: -1.5625rem;
-	top: .285714286rem;
-}
-#write>h5.md-focus:before{
-	left: -1.5625rem;
-	top: .285714286rem;
-}
-#write>h6.md-focus:before{
-	left: -1.5625rem;
-	top: .285714286rem;
-}
 .md-image>.md-meta {
-    /*border: 1px solid #ddd;*/
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.md-image>img {
+    margin-top: 2px;
+}
+
+.md-image>.md-meta:first-of-type:before {
+    padding-left: 4px;
+}
+
+#typora-source {
+    color: #555;
+}
+
+
+/** ui for windows **/
+
+#md-searchpanel {
+    border-bottom: 1px solid #ccc;
+}
+
+#md-searchpanel .btn {
+    border: 1px solid #ccc;
+}
+
+#md-notification:before {
+    top: 14px;
+}
+
+#md-notification {
+    background: #eee;
+}
+
+.megamenu-menu-panel .btn {
+    border: 1px solid #ccc;
+}
+
+#write>h3.md-focus:before {
+    left: -1.5625rem;
+    top: .375rem;
+}
+
+#write>h4.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write>h5.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write>h6.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+.md-image>.md-meta {
     border-radius: 3px;
-    padding: 2px 0px 0px 4px;
+    padding: 2px 0 0 4px;
     font-size: 0.9em;
     color: inherit;
 }
 
 .md-tag {
-    color: #a7a7a7;
-    opacity: 1;
+    color: inherit;
 }
 
-.md-toc { 
-    margin-top:20px;
-    padding-bottom:20px;
+.md-toc {
+    margin-top: 20px;
+    padding-bottom: 5px;
 }
 
 .sidebar-tabs {
     border-bottom: none;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #efefef;
 }
 
 #typora-quick-open {
@@ -684,23 +868,20 @@ code {
     border-width: 1px;
 }
 
+#md-notification:before {
+    top: 10px;
+}
+
+
 /** focus mode */
+
 .on-focus-mode blockquote {
     border-left-color: rgba(85, 85, 85, 0.12);
 }
 
-header, .context-menu, .megamenu-content, footer{
-    font-family: "Segoe UI", "Arial", sans-serif;
-}
-
 .file-node-content:hover .file-node-icon,
-.file-node-content:hover .file-node-open-state{
+.file-node-content:hover .file-node-open-state {
     visibility: visible;
-}
-
-.mac-seamless-mode #typora-sidebar {
-    background-color: #fafafa;
-    background-color: var(--side-bar-bg-color);
 }
 
 .md-lang {
@@ -711,33 +892,135 @@ header, .context-menu, .megamenu-content, footer{
     --item-hover-bg-color: #E6F0FE;
 }
 
-#md-notification .btn {
+.file-tree-node {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.file-node-title {
+    padding-top: 2px;
+}
+
+.outline-item {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+
+/* 
+.modal-footer .btn-default,
+.modal-footer .btn-primary {
+    border: 2px solid #222;
+}
+
+
+
+#md-searchpanel .btn:not(.close-btn):hover {
+    background: #fff;
+    border-color: #222;
+    color: #222;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#md-searchpanel .btn:not(.close-btn) {
+    background: #222;
+    border-color: #222;
+    color: #fff;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    transition-duration: .2s;
+}
+
+.searchpanel-search-option-btn {
+    border-radius: 0px;
+    border: 1px solid #222;
+} */
+
+/* Search panel & UI */
+
+#md-searchpanel .btn {
+    border: none;
+}
+
+#md-searchpanel input {
+    box-shadow: none;
+}
+
+.searchpanel-search-option-btn {
+    border-color: #aaa;
+    border-radius: 0;
+}
+
+.modal-dialog .btn {
+    background: #222;
+    border-width: 2px;
+    border-color: #222;
+    border-radius: 0;
+    color: #fff;
+    display: inline-block;
+    font-size: .875em;
+    line-height: 2rem;
+    padding: 0 20px;
+    margin: 5px;
+    text-decoration: none;
+    transition-delay: 0s;
+    transition-duration: .2s;
+    transition-timing-function: ease-in-out
+}
+
+.modal-dialog .btn:hover {
+    background: #eee;
+    border-color: #222;
+    color: #222;
+}
+
+
+/* Printing issue */
+
+.typora-export * {
+    -webkit-print-color-adjust: exact;
+}
+
+.typora-export p {
+    font-size: var(--export-font-size) !important;
+}
+
+.typora-export li {
+    font-size: var(--export-font-size);
+    line-height: 2rem;
+}
+
+.typora-export #write {
+    font-size: var(--export-font-size) !important;
+}
+
+table,
+pre {
+    page-break-inside: avoid;
+}
+
+pre {
+    word-wrap: break-word;
+}
+
+hr {
+    background-image: repeating-linear-gradient(-45deg, #ddd, #ddd 4px, transparent 4px, transparent 8px);
     border: 0;
-}
-
-.dropdown-menu .divider {
-    border-color: #e5e5e5;
-}
-
-.ty-preferences .window-content {
-    background-color: #fafafa;
-}
-
-.ty-preferences .nav-group-item.active {
-    color: white;
-    background: #999;
+    height: 3px;
+    margin: 40px 0
 }
 
  .typora-export li, .typora-export p, .typora-export,  .footnote-line {white-space: normal;} 
 </style>
 </head>
 <body class='typora-export os-windows'>
-<div id='write'  class=''><h1><a name="密码学杂记" class="md-header-anchor"></a><span>密码学杂记</span></h1><p><a href='encrypto-note-en.html'><span>ENGLISH</span></a></p><h2><a name="密码变迁图" class="md-header-anchor"></a><span>密码变迁图</span></h2><div class="md-diagram-panel"><svg id="mermaidChart1" width="100%" xmlns="http://www.w3.org/2000/svg" style="max-width: 564.609375px;" viewBox="0 0 564.609375 952.5625"><style>
+<div id='write'  class=''><h1><a name="密码学杂记" class="md-header-anchor"></a><span>密码学杂记</span></h1><p><a href='encrypto-note-en.html'><span>ENGLISH</span></a></p><h2><a name="密码变迁图" class="md-header-anchor"></a><span>密码变迁图</span></h2><div class="md-diagram-panel"><svg id="mermaidChart1" width="100%" xmlns="http://www.w3.org/2000/svg" style="max-width: 867.53125px;" viewBox="0 0 867.53125 1696.34375"><style>
 :root { --mermaid-font-family: sans-serif}
 :root { --mermaid-alt-font-family: sans-serif}
 #mermaidChart1 .encrypto &gt; * { fill:#555555 !important; color:white !important; stroke-width:0px !important; }
 #mermaidChart1 .encrypto tspan { fill:white !important; }
 #mermaidChart1 .sys &gt; * { fill:#0101 !important; stroke-width:0px !important; }
-#mermaidChart1 .sys tspan {  !important; }</style><style></style><g><g class="output"><g class="clusters"></g><g class="edgePaths"><g class="edgePath" style="opacity: 1;"><path class="path" d="M261.546875,50.5L261.546875,86.75L261.546875,123" marker-end="url(#arrowhead104)" style="fill:none"></path><defs><marker id="arrowhead104" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M261.546875,165.5L261.546875,201.75L261.546875,238" marker-end="url(#arrowhead105)" style="fill:none"></path><defs><marker id="arrowhead105" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M215.546875,274.10955056179773L83.546875,316.75L83.546875,395.75" marker-end="url(#arrowhead106)" style="fill:none"></path><defs><marker id="arrowhead106" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M83.546875,438.25L83.546875,517.25L83.546875,553.5" marker-end="url(#arrowhead107)" style="fill:none"></path><defs><marker id="arrowhead107" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M83.546875,596L83.546875,632.25L83.546875,727.78125" marker-end="url(#arrowhead108)" style="fill:none"></path><defs><marker id="arrowhead108" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M83.546875,770.28125L83.546875,865.8125L332.5390625,917.4986039034296" marker-end="url(#arrowhead109)" style="fill:none;stroke-width:2px;stroke-dasharray:3;"></path><defs><marker id="arrowhead109" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M298.1338315217391,280.5L360.546875,316.75L360.546875,417L360.546875,517.25L360.546875,574.75L360.546875,632.25L360.546875,749.03125L360.546875,865.8125L360.546875,902.0625" marker-end="url(#arrowhead110)" style="fill:none"></path><defs><marker id="arrowhead110" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M261.546875,280.5L261.546875,316.75L261.546875,353" marker-end="url(#arrowhead111)" style="fill:none;stroke-width:2px;stroke-dasharray:3;"></path><defs><marker id="arrowhead111" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M476.078125,829.5625L476.078125,865.8125L388.5546875,909.372988233703" marker-end="url(#arrowhead112)" style="fill:none;stroke-width:2px;stroke-dasharray:3;"></path><defs><marker id="arrowhead112" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 0 0 L 0 0 z" style="fill: #333"></path></marker></defs></g></g><g class="edgeLabels"><g class="edgeLabel" transform="translate(261.546875,86.75)" style="opacity: 1;"><g transform="translate(-22.3515625,-11.25)" class="label"><rect rx="0" ry="0" width="44.703125" height="22.5" style="fill:#e8e8e8;"></rect><foreignObject width="44.70703125" height="22.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>保密?</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(261.546875,201.75)" style="opacity: 1;"><g transform="translate(-40.3515625,-11.25)" class="label"><rect rx="0" ry="0" width="80.703125" height="22.5" style="fill:#e8e8e8;"></rect><foreignObject width="80.703125" height="22.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>密钥配送?</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(83.546875,316.75)" style="opacity: 1;"><g transform="translate(-75.546875,-11.25)" class="label"><rect rx="0" ry="0" width="151.09375" height="22.5" style="fill:#e8e8e8;"></rect><foreignObject width="151.09375" height="22.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>中间人攻击?/篡改?</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(83.546875,517.25)" style="opacity: 1;"><g transform="translate(-22.3515625,-11.25)" class="label"><rect rx="0" ry="0" width="44.703125" height="22.5" style="fill:#e8e8e8;"></rect><foreignObject width="44.70703125" height="22.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>伪装?</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(83.546875,632.25)" style="opacity: 1;"><g transform="translate(-22.3515625,-11.25)" class="label"><rect rx="0" ry="0" width="44.703125" height="22.5" style="fill:#e8e8e8;"></rect><foreignObject width="44.70703125" height="22.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>否认?</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(83.546875,865.8125)" style="opacity: 1;"><g transform="translate(-18.0078125,-11.25)" class="label"><rect rx="0" ry="0" width="36.015625" height="22.5" style="fill:#e8e8e8;"></rect><foreignObject width="36.015625" height="22.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>用于</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(360.546875,574.75)" style="opacity: 1;"><g transform="translate(-40.3515625,-11.25)" class="label"><rect rx="0" ry="0" width="80.703125" height="22.5" style="fill:#e8e8e8;"></rect><foreignObject width="80.703125" height="22.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>公钥认证?</span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0" style="fill:#e8e8e8;"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0" style="fill:#e8e8e8;"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g></g><g class="nodes"><g class="node encrypto" id="A" transform="translate(261.546875,29.25)" style="opacity: 1;"><rect rx="5" ry="5" x="-28.0078125" y="-21.25" width="56.015625" height="42.5" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-18.0078125,-11.25)"><foreignObject width="36.015625" height="22.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">明文</div></foreignObject></g></g></g><g class="node encrypto" id="B" transform="translate(261.546875,144.25)" style="opacity: 1;"><rect rx="5" ry="5" x="-46" y="-21.25" width="92" height="42.5" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-36,-11.25)"><foreignObject width="72.01171875" height="22.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">对称密码</div></foreignObject></g></g></g><g class="node encrypto" id="C" transform="translate(261.546875,259.25)" style="opacity: 1;"><rect rx="5" ry="5" x="-46" y="-21.25" width="92" height="42.5" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-36,-11.25)"><foreignObject width="72.01171875" height="22.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">公钥密码</div></foreignObject></g></g></g><g class="node encrypto" id="D" transform="translate(83.546875,417)" style="opacity: 1;"><rect rx="5" ry="5" x="-64" y="-21.25" width="128" height="42.5" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-54,-11.25)"><foreignObject width="108.0078125" height="22.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">单向散列函数</div></foreignObject></g></g></g><g class="node encrypto" id="E" transform="translate(83.546875,574.75)" style="opacity: 1;"><rect rx="5" ry="5" x="-55" y="-21.25" width="110" height="42.5" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-45,-11.25)"><foreignObject width="90" height="22.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">消息认证码</div></foreignObject></g></g></g><g class="node encrypto" id="F" transform="translate(83.546875,749.03125)" style="opacity: 1;"><rect rx="5" ry="5" x="-46" y="-21.25" width="92" height="42.5" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-36,-11.25)"><foreignObject width="72.01171875" height="22.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">数字签名</div></foreignObject></g></g></g><g class="node encrypto" id="G" transform="translate(360.546875,923.3125)" style="opacity: 1;"><rect rx="5" ry="5" x="-28.0078125" y="-21.25" width="56.015625" height="42.5" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-18.0078125,-11.25)"><foreignObject width="36.015625" height="22.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">证书</div></foreignObject></g></g></g><g class="node sys" id="s1" transform="translate(261.546875,417)" style="opacity: 1;"><circle x="-64" y="-21.25" r="64" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-54,-11.25)"><foreignObject width="108.0078125" height="22.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">混合密码系统</div></foreignObject></g></g></g><g class="node sys" id="s2" transform="translate(476.078125,749.03125)" style="opacity: 1;"><circle x="-80.53125" y="-21.25" r="80.53125" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-70.53125,-11.25)"><foreignObject width="141.07421875" height="22.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">公钥基础设施 PKI</div></foreignObject></g></g></g></g></g></g></svg></div><p>&nbsp;</p></div>
+#mermaidChart1 .sys tspan {  !important; }</style><style></style><g><g class="output"><g class="clusters"></g><g class="edgePaths"><g class="edgePath" style="opacity: 1;"><path class="path" d="M408.390625,100L408.390625,161L408.390625,222" marker-end="url(#arrowhead104)" style="fill:none"></path><defs><marker id="arrowhead104" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M408.390625,314L408.390625,375L408.390625,436" marker-end="url(#arrowhead105)" style="fill:none"></path><defs><marker id="arrowhead105" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M333.578125,512.2751447819406L143.984375,589L143.984375,711.203125" marker-end="url(#arrowhead106)" style="fill:none"></path><defs><marker id="arrowhead106" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M143.984375,803.203125L143.984375,925.40625L143.984375,986.40625" marker-end="url(#arrowhead107)" style="fill:none"></path><defs><marker id="arrowhead107" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M143.984375,1078.40625L143.984375,1139.40625L143.984375,1291.375" marker-end="url(#arrowhead108)" style="fill:none"></path><defs><marker id="arrowhead108" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M143.984375,1383.375L143.984375,1535.34375L508.1796875,1631.1824119528878" marker-end="url(#arrowhead109)" style="fill:none;stroke-width:2px;stroke-dasharray:3;"></path><defs><marker id="arrowhead109" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M469.5246787383178,528L550.59375,589L550.59375,757.203125L550.59375,925.40625L550.59375,1032.40625L550.59375,1139.40625L550.59375,1337.375L550.59375,1535.34375L550.59375,1596.34375" marker-end="url(#arrowhead110)" style="fill:none"></path><defs><marker id="arrowhead110" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M408.390625,528L408.390625,589L408.390625,650" marker-end="url(#arrowhead111)" style="fill:none;stroke-width:2px;stroke-dasharray:3;"></path><defs><marker id="arrowhead111" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M722.5625,1474.34375L722.5625,1535.34375L593.0078125,1615.9534628838815" marker-end="url(#arrowhead112)" style="fill:none;stroke-width:2px;stroke-dasharray:3;"></path><defs><marker id="arrowhead112" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 0 0 L 0 0 z" style="fill: #333"></path></marker></defs></g></g><g class="edgeLabels"><g class="edgeLabel" transform="translate(408.390625,161)" style="opacity: 1;"><g transform="translate(-40.234375,-36)" class="label"><rect rx="0" ry="0" width="80.46875" height="72" style="fill:#e8e8e8;"></rect><foreignObject width="80.46875" height="72"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>保密?</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(408.390625,375)" style="opacity: 1;"><g transform="translate(-72.6328125,-36)" class="label"><rect rx="0" ry="0" width="145.265625" height="72" style="fill:#e8e8e8;"></rect><foreignObject width="145.265625" height="72"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>密钥配送?</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(143.984375,589)" style="opacity: 1;"><g transform="translate(-135.984375,-36)" class="label"><rect rx="0" ry="0" width="271.96875" height="72" style="fill:#e8e8e8;"></rect><foreignObject width="271.96875" height="72"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>中间人攻击?/篡改?</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(143.984375,925.40625)" style="opacity: 1;"><g transform="translate(-40.234375,-36)" class="label"><rect rx="0" ry="0" width="80.46875" height="72" style="fill:#e8e8e8;"></rect><foreignObject width="80.46875" height="72"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>伪装?</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(143.984375,1139.40625)" style="opacity: 1;"><g transform="translate(-40.234375,-36)" class="label"><rect rx="0" ry="0" width="80.46875" height="72" style="fill:#e8e8e8;"></rect><foreignObject width="80.46875" height="72"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>否认?</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(143.984375,1535.34375)" style="opacity: 1;"><g transform="translate(-32.4140625,-36)" class="label"><rect rx="0" ry="0" width="64.828125" height="72" style="fill:#e8e8e8;"></rect><foreignObject width="64.828125" height="72"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>用于</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(550.59375,1032.40625)" style="opacity: 1;"><g transform="translate(-72.6328125,-36)" class="label"><rect rx="0" ry="0" width="145.265625" height="72" style="fill:#e8e8e8;"></rect><foreignObject width="145.265625" height="72"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>公钥认证?</span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0" style="fill:#e8e8e8;"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0" style="fill:#e8e8e8;"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g></g><g class="nodes"><g class="node encrypto" id="A" transform="translate(408.390625,54)" style="opacity: 1;"><rect rx="5" ry="5" x="-42.4140625" y="-46" width="84.828125" height="92" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-32.4140625,-36)"><foreignObject width="64.828125" height="72"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">明文</div></foreignObject></g></g></g><g class="node encrypto" id="B" transform="translate(408.390625,268)" style="opacity: 1;"><rect rx="5" ry="5" x="-74.8125" y="-46" width="149.625" height="92" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-64.8125,-36)"><foreignObject width="129.625" height="72"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">对称密码</div></foreignObject></g></g></g><g class="node encrypto" id="C" transform="translate(408.390625,482)" style="opacity: 1;"><rect rx="5" ry="5" x="-74.8125" y="-46" width="149.625" height="92" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-64.8125,-36)"><foreignObject width="129.625" height="72"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">公钥密码</div></foreignObject></g></g></g><g class="node encrypto" id="D" transform="translate(143.984375,757.203125)" style="opacity: 1;"><rect rx="5" ry="5" x="-107.203125" y="-46" width="214.40625" height="92" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-97.203125,-36)"><foreignObject width="194.40625" height="72"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">单向散列函数</div></foreignObject></g></g></g><g class="node encrypto" id="E" transform="translate(143.984375,1032.40625)" style="opacity: 1;"><rect rx="5" ry="5" x="-91" y="-46" width="182" height="92" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-81,-36)"><foreignObject width="162" height="72"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">消息认证码</div></foreignObject></g></g></g><g class="node encrypto" id="F" transform="translate(143.984375,1337.375)" style="opacity: 1;"><rect rx="5" ry="5" x="-74.8125" y="-46" width="149.625" height="92" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-64.8125,-36)"><foreignObject width="129.625" height="72"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">数字签名</div></foreignObject></g></g></g><g class="node encrypto" id="G" transform="translate(550.59375,1642.34375)" style="opacity: 1;"><rect rx="5" ry="5" x="-42.4140625" y="-46" width="84.828125" height="92" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-32.4140625,-36)"><foreignObject width="64.828125" height="72"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">证书</div></foreignObject></g></g></g><g class="node sys" id="s1" transform="translate(408.390625,757.203125)" style="opacity: 1;"><circle x="-107.203125" y="-46" r="107.203125" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-97.203125,-36)"><foreignObject width="194.40625" height="72"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">混合密码系统</div></foreignObject></g></g></g><g class="node sys" id="s2" transform="translate(722.5625,1337.375)" style="opacity: 1;"><circle x="-136.96875" y="-46" r="136.96875" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-126.96875,-36)"><foreignObject width="253.9375" height="72"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">公钥基础设施 PKI</div></foreignObject></g></g></g></g></g></g></svg></div><p>&nbsp;</p></div>
 </body>
 </html>

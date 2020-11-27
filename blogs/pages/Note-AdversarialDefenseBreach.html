@@ -1,0 +1,845 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>论文笔记-AdversarialDefenseBreach-李皓阳</title><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+
+
+/**
+ * NexT for Typora
+ * Brought to you by Bill Chen || https://github.com/BillChen2K/typora-theme-next
+ *
+ * - Want code ligatures for JetBrains Mono?
+ * - Search for `font-variant-ligatures: none;` and comment that line.
+ *
+ * - Want to change the font size in exported pdf?
+ * - Change the variable `--export-font-size` below.
+ **/
+
+:root {
+    --base-font-size: 16px;
+    --highlight-color: rgb(0, 160, 160);
+    --text-color: #333;
+    --headings-color: #262a30;
+    --export-font-size: 13px;
+    --select-text-bg-color: #262a30;
+    --select-text-font-color: #eee;
+}
+
+* {
+    /* Disable ligatures */
+    font-variant-ligatures: none;
+}
+
+
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
+
+html,
+body,
+#write {
+    color: var(--text-color);
+    font-size: var(--base-font-size);
+    background: #fcfcfc;
+    font-family: Overpass, "GlowSansSC", "Helvetica Neue", "pingfang sc", "microsoft yahei", sans-serif;
+    font-weight: 400;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    /* letter-spacing: -0.5px; */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--headings-color);
+    font-weight: 700;
+    line-height: 1.5;
+    margin: 20px 0 15px
+}
+
+.CodeMirror pre {
+    font-family: 'JetBrains Mono';
+    font-size: 0.95em;
+    line-height: 1.65em;
+}
+
+#write {
+    max-width: 914px;
+    text-align: justify;
+}
+
+#write>h1:first-child {
+    margin-top: 1.75rem;
+}
+
+#write>h2:first-child {
+    margin-top: 1.5rem;
+}
+
+#write>h3:first-child {
+    margin-top: 1rem;
+}
+
+#write>h4:first-child {
+    margin-top: 0.5rem;
+}
+
+h1 {
+    font-size: 2.5em
+}
+
+h2 {
+    font-size: 1.75 em
+}
+
+h3 {
+    font-size: 1.45em
+}
+
+h4 {
+    font-size: 1.25em
+}
+
+h5 {
+    font-size: 1.1em
+}
+
+h6 {
+    font-size: 1em;
+    font-weight: bold
+}
+
+#write code {
+    color: var(--highlight-color);
+}
+
+p {
+    color: var(--text-color);
+    line-height: 1.7rem;
+    margin: 0 0 8px;
+}
+
+#write ul {
+    line-height: 1.75rem;
+    margin-block-start: 0.6em;
+    margin-block-end: 0.6em;
+}
+
+#write ol li {
+    line-height: 1.75rem;
+    margin-block-start: 0.6em;
+    margin-block-end: 0.6em;
+}
+
+u {
+    text-decoration: none;
+    border-bottom: 1px solid #999;
+}
+
+#write>h3.md-focus:before {
+    left: -1.875rem;
+    top: 0.5rem;
+    padding: 2px;
+}
+
+#write>h4.md-focus:before {
+    left: -1.875rem;
+    top: 0.3125rem;
+    padding: 2px;
+}
+
+#write>h5.md-focus:before {
+    left: -1.875rem;
+    top: 0.25rem;
+    padding: 2px;
+}
+
+#write>h6.md-focus:before {
+    left: -1.875rem;
+    top: .125rem;
+    padding: 2px;
+}
+
+@media screen and (max-width: 48em) {
+    blockquote {
+        margin-left: 1rem;
+        margin-right: 0;
+        padding: 0.5em;
+    }
+    /* .h1,
+    h1 {
+        font-size: 2.827rem;
+    }
+    .h2,
+    h2 {
+        font-size: 1.999rem;
+    }
+    .h3,
+    h3 {
+        font-size: 1.413rem;
+    }
+    .h4,
+    h4 {
+        font-size: 1.250rem;
+    }
+    .h5,
+    h5 {
+        font-size: 1.150rem;
+    }
+    .h6,
+    h6 {
+        font-size: 1rem;
+    } */
+}
+
+a .md-def-url {
+    color: #262a30;
+}
+
+a {
+    color: var(--highlight-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition-duration: 0.5s;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 1em;
+    margin: 0 0 20px;
+    width: 100%;
+}
+
+table tr:nth-child(2n),
+thead {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background: #f5f5f5
+}
+
+caption,
+td,
+th {
+    font-weight: 400;
+    padding: 8px;
+    text-align: left;
+    vertical-align: middle
+}
+
+table tr th {
+    border-bottom: 3px solid #ddd;
+    font-weight: 700;
+    padding-bottom: 10px;
+    background-color: var(--bg-color);
+}
+
+td,
+th {
+    border: 1px solid #ddd;
+}
+
+th {
+    font-weight: 700;
+    padding-bottom: 10px
+}
+
+td {
+    border-bottom-width: 1px
+}
+
+
+/* Inline Code */
+
+code,
+.md-fences {
+    background: #eee;
+    border-radius: 3px;
+    color: #555;
+    padding: 2px 4px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    font-family: 'JetBrains Mono';
+    font-size: 0.935em;
+}
+
+
+/* Code Blocks */
+
+.md-fences {
+    margin: 0 0 20px;
+    font-size: 0.9em;
+    line-height: 1.5em;
+    padding: 0.4em 1em;
+    padding-top: 0.4em;
+}
+
+.task-list {
+    padding-left: 0;
+}
+
+.task-list-item {
+    padding-left: 2rem;
+}
+
+.task-list-item input {
+    top: 3px;
+}
+
+.task-list-item input {
+    outline: none;
+    margin-bottom: 0.5em;
+}
+
+.task-list-item input::before {
+    content: "";
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    vertical-align: middle;
+    text-align: center;
+    border: 1px solid gray;
+    background-color: #fdfdfd;
+    margin-left: -0.1rem;
+    margin-right: 0.1rem;
+    margin-top: -0.9rem;
+}
+
+.task-list-item input:checked::before {
+    padding-left: 0.125em;
+    content: '✔';
+    /*◘*/
+    font-size: 0.8125rem;
+    line-height: 0.9375rem;
+    margin-top: -0.9rem;
+}
+
+
+/* Chrome 29+ */
+
+@media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
+    .task-list-item input:before {
+        margin-top: -0.2rem;
+    }
+    .task-list-item input:checked:before,
+    .task-list-item input[checked]:before {
+        margin-top: -0.2rem;
+    }
+}
+
+blockquote {
+    border-left: 4px solid #ddd;
+    color: #666;
+    margin: 0;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 0 15px
+}
+
+blockquote p {
+    color: #666
+}
+
+blockquote cite::before {
+    content: '-';
+    padding: 0 5px
+}
+
+
+/* #write pre.md-meta-block {
+    min-height: 30px;
+    background: #f8f8f8;
+    padding: 1.5em;
+    font-weight: 300;
+    font-size: 1em;
+    padding-bottom: 1.5em;
+    padding-top: 3em;
+    margin-top: -1.5em;
+    color: #999;
+    border-left: 1000px #f8f8f8 solid;
+    margin-left: -1000px;
+    border-right: 1000px #f8f8f8 solid;
+    margin-right: -1000px;
+    margin-bottom: 2em;
+    font-size: 0.8em;
+    line-height: 1.5em;
+    font-family: 'JetBrains Mono';
+} */
+
+#write pre.md-meta-block {
+    padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f1f1f1;
+    border: 0;
+    border-radius: 3px;
+    color: hsl(0, 0%, 53%);
+    margin-top: 0 !important;
+    margin-bottom: 2em;
+    font-size: 0.8em;
+    line-height: 1.5em;
+    font-family: 'JetBrains Mono';
+}
+
+.MathJax_Display {
+    font-size: 0.9em;
+    margin-top: 0.5em;
+    margin-bottom: 0;
+}
+
+p.mathjax-block,
+.mathjax-block {
+    padding-bottom: 0;
+}
+
+.mathjax-block>.code-tooltip {
+    bottom: 5px;
+    box-shadow: none;
+}
+
+.md-image>.md-meta {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.md-image>img {
+    margin-top: 2px;
+}
+
+.md-image>.md-meta:first-of-type:before {
+    padding-left: 4px;
+}
+
+#typora-source {
+    color: #555;
+}
+
+
+/** ui for windows **/
+
+#md-searchpanel {
+    border-bottom: 1px solid #ccc;
+}
+
+#md-searchpanel .btn {
+    border: 1px solid #ccc;
+}
+
+#md-notification:before {
+    top: 14px;
+}
+
+#md-notification {
+    background: #eee;
+}
+
+.megamenu-menu-panel .btn {
+    border: 1px solid #ccc;
+}
+
+#write>h3.md-focus:before {
+    left: -1.5625rem;
+    top: .375rem;
+}
+
+#write>h4.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write>h5.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write>h6.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+.md-image>.md-meta {
+    border-radius: 3px;
+    padding: 2px 0 0 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: inherit;
+}
+
+.md-toc {
+    margin-top: 20px;
+    padding-bottom: 5px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #efefef;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#md-notification:before {
+    top: 10px;
+}
+
+
+/** focus mode */
+
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state {
+    visibility: visible;
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+.file-tree-node {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.file-node-title {
+    padding-top: 2px;
+}
+
+.outline-item {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+
+/* 
+.modal-footer .btn-default,
+.modal-footer .btn-primary {
+    border: 2px solid #222;
+}
+
+
+
+#md-searchpanel .btn:not(.close-btn):hover {
+    background: #fff;
+    border-color: #222;
+    color: #222;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#md-searchpanel .btn:not(.close-btn) {
+    background: #222;
+    border-color: #222;
+    color: #fff;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    transition-duration: .2s;
+}
+
+.searchpanel-search-option-btn {
+    border-radius: 0px;
+    border: 1px solid #222;
+} */
+
+/* Search panel & UI */
+
+#md-searchpanel .btn {
+    border: none;
+}
+
+#md-searchpanel input {
+    box-shadow: none;
+}
+
+.searchpanel-search-option-btn {
+    border-color: #aaa;
+    border-radius: 0;
+}
+
+.modal-dialog .btn {
+    background: #222;
+    border-width: 2px;
+    border-color: #222;
+    border-radius: 0;
+    color: #fff;
+    display: inline-block;
+    font-size: .875em;
+    line-height: 2rem;
+    padding: 0 20px;
+    margin: 5px;
+    text-decoration: none;
+    transition-delay: 0s;
+    transition-duration: .2s;
+    transition-timing-function: ease-in-out
+}
+
+.modal-dialog .btn:hover {
+    background: #eee;
+    border-color: #222;
+    color: #222;
+}
+
+
+/* Printing issue */
+
+.typora-export * {
+    -webkit-print-color-adjust: exact;
+}
+
+.typora-export p {
+    font-size: var(--export-font-size) !important;
+}
+
+.typora-export li {
+    font-size: var(--export-font-size);
+    line-height: 2rem;
+}
+
+.typora-export #write {
+    font-size: var(--export-font-size) !important;
+}
+
+table,
+pre {
+    page-break-inside: avoid;
+}
+
+pre {
+    word-wrap: break-word;
+}
+
+hr {
+    background-image: repeating-linear-gradient(-45deg, #ddd, #ddd 4px, transparent 4px, transparent 8px);
+    border: 0;
+    height: 3px;
+    margin: 40px 0
+}
+
+ .typora-export li, .typora-export p, .typora-export,  .footnote-line {white-space: normal;} 
+</style>
+</head>
+<body class='typora-export os-windows'>
+<div id='write'  class=''><h1><a name="breach-adversarial-defenses" class="md-header-anchor"></a><span>Breach Adversarial Defenses</span></h1><p><span>By LI Haoyang 2020.11.11 (branched)</span></p><h2><a name="content" class="md-header-anchor"></a><span>Content</span></h2><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n564"><a class="md-toc-inner" href="#breach-adversarial-defenses">Breach Adversarial Defenses</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n567"><a class="md-toc-inner" href="#content">Content</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n569"><a class="md-toc-inner" href="#paper-list">Paper-list</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n668"><a class="md-toc-inner" href="#breach">Breach</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n669"><a class="md-toc-inner" href="#adversarial-example-defenses-ensembles-of-weak-defenses-are-not-strong---2017">Adversarial Example Defenses: Ensembles of Weak Defenses are not Strong - 2017</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n676"><a class="md-toc-inner" href="#threat-model-and-defense-approach">Threat model and defense approach</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n702"><a class="md-toc-inner" href="#experiments">Experiments</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n718"><a class="md-toc-inner" href="#inspirations">Inspirations</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n721"><a class="md-toc-inner" href="#bypassing-ten-detection-methods---aisec-2017">Bypassing Ten Detection Methods - AISec 2017</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n728"><a class="md-toc-inner" href="#classifier-and-adversarial-example">Classifier and adversarial example</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n742"><a class="md-toc-inner" href="#threat-model-datasets-and-approaches">Threat model, datasets and approaches</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n772"><a class="md-toc-inner" href="#secondary-classification-based-detection">Secondary classification based detection</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n774"><a class="md-toc-inner" href="#adversarial-re-training-2-methods">Adversarial Re-training (2 methods)</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n794"><a class="md-toc-inner" href="#examining-convolutional-layers-1-method">Examining Convolutional Layers (1 method)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n806"><a class="md-toc-inner" href="#principal-component-analysis-detection">Principal component analysis detection</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n807"><a class="md-toc-inner" href="#input-image-pca-1-method">Input Image PCA (1 method)</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n819"><a class="md-toc-inner" href="#dimensionality-reduction-1-method">Dimensionality Reduction (1 method)</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n832"><a class="md-toc-inner" href="#hidden-layer-pca-1-method">Hidden layer PCA (1 method)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n837"><a class="md-toc-inner" href="#distributional-detection">Distributional detection</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n839"><a class="md-toc-inner" href="#maximum-mean-discrpancy-1-method">Maximum mean discrpancy (1 method)</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n855"><a class="md-toc-inner" href="#kernel-density-estimation-1-method">Kernel density estimation (1 method)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n879"><a class="md-toc-inner" href="#normalization-detection">Normalization detection</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n880"><a class="md-toc-inner" href="#dropout-randomization-1-method">Dropout randomization (1 method)</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n910"><a class="md-toc-inner" href="#mean-blur-1-method">Mean blur (1 method)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n923"><a class="md-toc-inner" href="#lessons">Lessons</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n946"><a class="md-toc-inner" href="#inspirations-n946">Inspirations</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n949"><a class="md-toc-inner" href="#obfuscated-gradients-give-a-false-sense-of-security---icml-2018">Obfuscated Gradients Give a False Sense of Security - ICML 2018</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n954"><a class="md-toc-inner" href="#setting">Setting</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n975"><a class="md-toc-inner" href="#obfuscated-gradients">Obfuscated gradients</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n1007"><a class="md-toc-inner" href="#attack-techniques">Attack techniques</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n1028"><a class="md-toc-inner" href="#breach-proposed-defenses-in-iclr-2018">Breach proposed defenses in ICLR 2018</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n1030"><a class="md-toc-inner" href="#adversarial-training-madry-et-al-2018">Adversarial training (Madry et al. 2018)</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n1043"><a class="md-toc-inner" href="#cascade-adversarial-training-na-et-al-2018">Cascade adversarial training (Na et al. 2018)</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n1053"><a class="md-toc-inner" href="#thermometer-encoding--adversarial-training-szegedy-et-al-2013">Thermometer encoding + adversarial training (Szegedy et al. 2013)</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n1062"><a class="md-toc-inner" href="#input-transformations-guo-et-al-2018">Input transformations (Guo et al. 2018)</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n1072"><a class="md-toc-inner" href="#local-intrinsic-dimensionality-lid-ma-et-al-2018">Local intrinsic dimensionality (LID) (Ma et al. 2018)</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n1078"><a class="md-toc-inner" href="#stochastic-activation-pruning-sap-dhilon-et-al-2018">Stochastic activation pruning (SAP) (Dhilon et al. 2018)</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n1084"><a class="md-toc-inner" href="#mitigating-through-randomization-xie-et-al-2018">Mitigating through randomization (Xie et al 2018)</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n1090"><a class="md-toc-inner" href="#pixel-defend-song-et-al-2018">Pixel defend (Song et al. 2018)</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n1096"><a class="md-toc-inner" href="#defense-gan-samangouei-et-al-2018">Defense-GAN (Samangouei et al. 2018)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n1102"><a class="md-toc-inner" href="#evaluation-scheme">Evaluation scheme</a></span></p></div><h2><a name="paper-list" class="md-header-anchor"></a><span>Paper-list</span></h2><ul><li><p><em><span>Nicholas Carlini, David Wagner. Adversarial Examples Are Not Easily Detected: Bypassing Ten Detection Methods. AISec 2017. </span><strong><a href='https://arxiv.org/abs/1705.07263'><span> arXiv:1705.07263</span></a></strong></em></p><p><span>Breached:</span></p><ul><li><p><em><span>Secondary classification based detection</span></em></p><ul><li><em><span>Zhitao Gong, Wenlu Wang, and Wei-Shinn Ku. 2017. Adversarial and Clean Data Are Not Twins. arXiv preprint arXiv:1704.04960 (2017).</span></em><span> (</span><strong><span>Adversarial Retraining</span></strong><span>)</span></li><li><em><span>Kathrin Grosse, Praveen Manoharan, Nicolas Papernot, Michael Backes, and Patrick McDaniel. 2017. On the (Statistical) Detection of Adversarial Examples. arXiv preprint arXiv:1702.06280 (2017).</span></em><span> (</span><strong><span>Adversarial Retraining</span></strong><span>)</span></li><li><em><span>Jan Hendrik Metzen, Tim Genewein, Volker Fischer, and Bastian Bischoff. 2017. On Detecting Adversarial Perturbations. In International Conference on Learning Representations. arXiv preprint arXiv:1702.04267.</span></em><span> (</span><strong><span>Examining Convolutional Layers</span></strong><span>)</span></li></ul></li><li><p><em><span>Principal component analysis detection</span></em></p><ul><li><em><span>Arjun Nitin Bhagoji, Daniel Cullina, and Prateek Mittal. 2017. Dimensionality Reduction as a Defense against Evasion Attacks on Machine Learning Classifiers. arXiv preprint arXiv:1704:02654 (2017).</span></em><span>(</span><strong><span>Dimensionality Reduction</span></strong><span>)</span></li><li><em><span>Dan Hendrycks and Kevin Gimpel. 2017. Early Methods for Detecting Adversarial Images. In International Conference on Learning Representations(WorkshopTrack).</span></em><span> (</span><strong><span>Input Image PCA</span></strong><span>)</span></li><li><em><span>Xin Li and Fuxin Li. 2016. Adversarial Examples Detection in Deep Networks with Convolutional Filter Statistics. arXiv preprint arXiv:1612.07767 (2016)</span></em><span> (</span><strong><span>Hidden Layer PCA</span></strong><span>)</span></li></ul></li><li><p><em><span>Distributional detection</span></em></p><ul><li><em><span>Reuben Feinman, Ryan R Curtin, Saurabh Shintre, and Andrew B Gardner. 2017. Detecting Adversarial Samples from Artifacts. arXiv preprint arXiv:1703.00410 (2017).</span></em><span> (</span><strong><span>Kernel Density Estimation</span></strong><span>)</span></li><li><em><span>Kathrin Grosse, Praveen Manoharan, Nicolas Papernot, Michael Backes, and Patrick McDaniel. 2017. On the (Statistical) Detection of Adversarial Examples. arXiv preprint arXiv:1702.06280 (2017).</span></em><span> (</span><mark><span>Two methods proposed in one paper.</span></mark><span>) (</span><strong><span>Maximum Mean Discrepancy</span></strong><span>)</span></li></ul></li><li><p><em><span>Normalization detection</span></em></p><ul><li><em><span>Reuben Feinman, Ryan R Curtin, Saurabh Shintre, and Andrew B Gardner. 2017. Detecting Adversarial Samples from Artifacts. arXiv preprint arXiv:1703.00410 (2017).</span></em><span> (</span><mark><span>Two methods proposed in one paper</span></mark><span>) (</span><strong><span>Dropout Randomization</span></strong><span>)</span></li><li><em><span>Xin Li and Fuxin Li. 2016. Adversarial Examples Detection in Deep Networks with Convolutional Filter Statistics. arXiv preprint arXiv:1612.07767 (2016)</span></em><span> (</span><mark><span>Two methods proposed in one paper</span></mark><span>) (</span><strong><span>Mean Blur</span></strong><span>)</span></li></ul></li></ul></li><li><p><em><span>Warren He, James Wei, Xinyun Chen, Nicholas Carlini, Dawn Song. Adversarial Example Defenses: Ensembles of Weak Defenses are not Strong. 2017. </span><strong><a href='https://arxiv.org/abs/1706.04701'><span> arXiv:1706.04701</span></a></strong></em></p><p><span>Breached:</span></p><ul><li><p><em><span>feature squeezing</span></em></p><ul><li><em><span>XU, W., EVANS, D., AND QI, Y. Feature squeezing: Detecting adversarial examples in deep neural networks. arXiv preprint arXiv:1704.01155 (2017).</span></em></li><li><em><span>XU, W., EVANS, D., AND QI, Y. Feature squeezing mitigates and detects Carlini/Wagner adversarial examples. arXiv preprint arXiv:1705.10686 (2017).</span></em></li></ul></li><li><p><em><span>specialists+1</span></em></p><ul><li><em><span>ABBASI, M., AND GAGN´E, C. Robustness to adversarial examples through an ensemble of specialists. arXiv preprint arXiv:1702.06856 (2017).</span></em></li></ul></li><li><p><em><span>ensemble of three detectors</span></em></p><ul><li><em><span>FEINMAN, R., CURTIN, R. R., SHINTRE, S., AND GARDNER, A. B. Detecting adversarial samples from artifacts. arXiv preprint arXiv:1703.00410 (2017)</span></em></li><li><em><span>GONG, Z., WANG, W., AND KU, W.-S. Adversarial and clean data are not twins. arXiv preprint arXiv:1704.04960 (2017).</span></em></li><li><em><span>METZEN, J. H., GENEWEIN, T., FISCHER, V., AND BISCHOFF, B. On detecting adversarial perturbations. arXiv preprint arXiv:1702.04267 (2017).</span></em></li></ul></li></ul></li><li><p><em><span>Anish Athalye, Nicholas Carlini, David Wagner. Obfuscated Gradients Give a False Sense of Security: Circumventing Defenses to Adversarial Examples. ICML 2018. </span><strong><a href='http://export.arxiv.org/abs/1802.00420'><span> arXiv:1802.00420</span></a></strong></em></p><p><span>Un-breached:</span></p><ul><li><p><em><span>Adversarial Training</span></em></p><ul><li><em><span>Madry, A., Makelov, A., Schmidt, L., Tsipras, D., and Vladu, A. Towards deep learning models resistant to adversarial attacks. International Conference on Learning Representations, 2018. URL </span><a href='https://openreview.net/forum?id=rJzIBfZAb' target='_blank' class='url'>https://openreview.net/forum?id=rJzIBfZAb</a><span>. accepted as poster</span></em><span> (</span><strong><span>Adversarial Training with PGD</span></strong><span>)</span></li><li><em><span>Na, T., Ko, J. H., and Mukhopadhyay, S. Cascade adversarial machine learning regularized with a unified embedding. In International Conference on Learning Representations, 2018. URL </span><a href='https://openreview.net/forum?id=HyRVBzap-' target='_blank' class='url'>https://openreview.net/forum?id=HyRVBzap-</a><span>.</span></em><span> (</span><strong><span>Cascade Adversarial Training</span></strong><span>)</span></li></ul></li></ul><p><span>Breached:</span></p><ul><li><p><em><span>Gradient Shattering</span></em></p><ul><li><em><span>Jacob Buckman, Aurko Roy, Colin Raffel, Ian Goodfellow. Thermometer Encoding: One Hot Way To Resist Adversarial Examples. ICLR 2018. URL: </span><a href='https://openreview.net/forum?id=S18Su--CW' target='_blank' class='url'>https://openreview.net/forum?id=S18Su--CW</a></em><span> (</span><strong><span>Thermometer Encoding</span></strong><span>)</span></li><li><em><span>Guo, C., Rana, M., Cisse, M., and van der Maaten, L. Countering adversarial images using input transformations. International Conference on Learning Representations, 2018. URL </span><a href='https://openreview.net/forum?id=SyJ7ClWCb' target='_blank' class='url'>https://openreview.net/forum?id=SyJ7ClWCb</a><span>. accepted as poster</span></em><span> (</span><strong><span>Input Transformations</span></strong><span>)</span></li><li><em><span>Ma, X., Li, B., Wang, Y., Erfani, S. M., Wijewickrema, S., Schoenebeck, G., Houle, M. E., Song, D., and Bailey, J. Characterizing adversarial subspaces using local intrinsic dimensionality. International Conference on Learning Representations, 2018. URL </span><a href='https://openreview.net/forum?id=B1gJ1L2aW' target='_blank' class='url'>https://openreview.net/forum?id=B1gJ1L2aW</a><span>. accepted as oral presentation.</span></em><span> (</span><strong><span>Local Intrinsic Dimensionality</span></strong><span>)</span></li></ul></li><li><p><em><span>Stochastic Gradients</span></em></p><ul><li><em><span>Dhillon, G. S., Azizzadenesheli, K., Bernstein, J. D., Kossaifi, J., Khanna, A., Lipton, Z. C., and Anandkumar, A. Stochastic activation pruning for robust adversarial defense. International Conference on Learning Representations, 2018. URL </span><a href='https://openreview.net/forum?id=H1uR4GZRZ' target='_blank' class='url'>https://openreview.net/forum?id=H1uR4GZRZ</a><span>. accepted as poster.</span></em><span> (</span><strong><span>Stochastic Activation Pruning</span></strong><span>)</span></li><li><em><span>Xie, C., Wang, J., Zhang, Z., Ren, Z., and Yuille, A. Mitigating adversarial effects through randomization. International Conference on Learning Representations,2018. URL </span><a href='https://openreview.net/forum?id=Sk9yuql0Z' target='_blank' class='url'>https://openreview.net/forum?id=Sk9yuql0Z</a><span>. accepted as poster.</span></em><span> (</span><strong><span>Mitigating Through Randomization</span></strong><span>)</span></li></ul></li><li><p><em><span>Vanishing &amp; Exploding Gradients</span></em></p><ul><li><em><span>Song, Y., Kim, T., Nowozin, S., Ermon, S., and Kushman, N. Pixeldefend: Leveraging generative models to understand and defend against adversarial examples. International Conference on Learning Representations, 2018. URL </span><a href='https://openreview.net/forum?id=rJUYGxbCW' target='_blank' class='url'>https://openreview.net/forum?id=rJUYGxbCW</a><span>. accepted as poster.</span></em><span> (</span><strong><span>PixelDefend</span></strong><span>)</span></li><li><em><span>Samangouei, P., Kabkab, M., and Chellappa, R. Defensegan: Protecting classifiers against adversarial attacks using generative models. International Conference on Learning Representations, 2018. URL </span><a href='https://openreview.net/forum?id=BkJ3ibb0-' target='_blank' class='url'>https://openreview.net/forum?id=BkJ3ibb0-</a><span>. accepted as poster</span></em><span> (</span><strong><span>Defense-GAN</span></strong><span>)</span></li></ul></li></ul></li></ul><h2><a name="breach" class="md-header-anchor"></a><span>Breach</span></h2><h3><a name="adversarial-example-defenses-ensembles-of-weak-defenses-are-not-strong---2017" class="md-header-anchor"></a><span>Adversarial Example Defenses: Ensembles of Weak Defenses are not Strong - 2017</span></h3><blockquote><p><em><span>Warren He, James Wei, Xinyun Chen, Nicholas Carlini, Dawn Song. Adversarial Example Defenses: Ensembles of Weak Defenses are not Strong. arXiv preprint 2017. </span><strong><a href='https://arxiv.org/abs/1706.04701'><span> arXiv:1706.04701</span></a></strong></em></p></blockquote><blockquote><p><span>We ask whether a strong defense can be created by combining multiple (possibly weak) defenses.</span></p></blockquote><blockquote><p><span>For all the components of these defenses and the combined defenses themselves, we show that an adaptive adversary can create adversarial examples successfully with low distortion.</span></p></blockquote><h4><a name="threat-model-and-defense-approach" class="md-header-anchor"></a><span>Threat model and defense approach</span></h4><p><span>They consider a white-box scenario where the adversary has full knowledge of the model and two capacities of adversaries:</span></p><ul><li><strong><span>Static adversary</span></strong><span>, not aware of the defense methods used.</span></li><li><strong><span>Adaptive adversary</span></strong><span>, aware of the defense methods used and able to adapt attacks accordingly.</span></li></ul><p><span>There are two major approaches for defense</span></p><ul><li><span>Produce correct predictions on adversarial examples while preserving the performance on clean examples.</span></li><li><span>Detect the adversarial example without two many false positives (i.e. preserving the performance on clean examples.)</span></li></ul><p><span>In this paper, they consider three ensembles of defenses:</span></p><ul><li><p><span>Feature squeezing and </span><em><span>specialists+1</span></em><span> (designed to ensemble)</span></p><ul><li><p><span>Feature squeezing proposes to preprocess the input examples by color depth reduction, spatial smoothing or their combination.</span></p></li><li><p><em><span>Specialists+1</span></em></p><blockquote><p><span>The defense consists of a generalist classifier (which classifies among all classes) and a collection of specialists (which classify among subsets of the classes).</span></p></blockquote></li></ul></li><li><p><span>A customized ensemble of adversarial detectors</span></p></li></ul><h4><a name="experiments" class="md-header-anchor"></a><span>Experiments</span></h4><p><span>They randomly sample 100 correctly classified images from two datasets, MNIST and CIFAR-10.</span></p><p><span>Adversarial examples are generated using an optimization approach with the following objective:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n705" cid="n705" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processed" style="text-align: center;"><span class="MathJax_SVG" id="MathJax-Element-3-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="37.673ex" height="3.309ex" viewBox="0 -1054.3 16220.1 1424.6" role="img" focusable="false" style="vertical-align: -0.86ex; max-width: 100%;"><defs><path stroke-width="0" id="E1054-MJMAIN-6C" d="M42 46H56Q95 46 103 60V68Q103 77 103 91T103 124T104 167T104 217T104 272T104 329Q104 366 104 407T104 482T104 542T103 586T103 603Q100 622 89 628T44 637H26V660Q26 683 28 683L38 684Q48 685 67 686T104 688Q121 689 141 690T171 693T182 694H185V379Q185 62 186 60Q190 52 198 49Q219 46 247 46H263V0H255L232 1Q209 2 183 2T145 3T107 3T57 1L34 0H26V46H42Z"></path><path stroke-width="0" id="E1054-MJMAIN-6F" d="M28 214Q28 309 93 378T250 448Q340 448 405 380T471 215Q471 120 407 55T250 -10Q153 -10 91 57T28 214ZM250 30Q372 30 372 193V225V250Q372 272 371 288T364 326T348 362T317 390T268 410Q263 411 252 411Q222 411 195 399Q152 377 139 338T126 246V226Q126 130 145 91Q177 30 250 30Z"></path><path stroke-width="0" id="E1054-MJMAIN-73" d="M295 316Q295 356 268 385T190 414Q154 414 128 401Q98 382 98 349Q97 344 98 336T114 312T157 287Q175 282 201 278T245 269T277 256Q294 248 310 236T342 195T359 133Q359 71 321 31T198 -10H190Q138 -10 94 26L86 19L77 10Q71 4 65 -1L54 -11H46H42Q39 -11 33 -5V74V132Q33 153 35 157T45 162H54Q66 162 70 158T75 146T82 119T101 77Q136 26 198 26Q295 26 295 104Q295 133 277 151Q257 175 194 187T111 210Q75 227 54 256T33 318Q33 357 50 384T93 424T143 442T187 447H198Q238 447 268 432L283 424L292 431Q302 440 314 448H322H326Q329 448 335 442V310L329 304H301Q295 310 295 316Z"></path><path stroke-width="0" id="E1054-MJMAIN-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path stroke-width="0" id="E1054-MJMATHI-78" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path><path stroke-width="0" id="E1054-MJMAIN-2032" d="M79 43Q73 43 52 49T30 61Q30 68 85 293T146 528Q161 560 198 560Q218 560 240 545T262 501Q262 496 260 486Q259 479 173 263T84 45T79 43Z"></path><path stroke-width="0" id="E1054-MJMAIN-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path stroke-width="0" id="E1054-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E1054-MJMAIN-7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path><path stroke-width="0" id="E1054-MJMAIN-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path stroke-width="0" id="E1054-MJMAIN-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path stroke-width="0" id="E1054-MJMAIN-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path stroke-width="0" id="E1054-MJMATHI-63" d="M34 159Q34 268 120 355T306 442Q362 442 394 418T427 355Q427 326 408 306T360 285Q341 285 330 295T319 325T330 359T352 380T366 386H367Q367 388 361 392T340 400T306 404Q276 404 249 390Q228 381 206 359Q162 315 142 235T121 119Q121 73 147 50Q169 26 205 26H209Q321 26 394 111Q403 121 406 121Q410 121 419 112T429 98T420 83T391 55T346 25T282 0T202 -11Q127 -11 81 37T34 159Z"></path><path stroke-width="0" id="E1054-MJMAIN-22C5" d="M78 250Q78 274 95 292T138 310Q162 310 180 294T199 251Q199 226 182 208T139 190T96 207T78 250Z"></path><path stroke-width="0" id="E1054-MJMATHI-4A" d="M447 625Q447 637 354 637H329Q323 642 323 645T325 664Q329 677 335 683H352Q393 681 498 681Q541 681 568 681T605 682T619 682Q633 682 633 672Q633 670 630 658Q626 642 623 640T604 637Q552 637 545 623Q541 610 483 376Q420 128 419 127Q397 64 333 21T195 -22Q137 -22 97 8T57 88Q57 130 80 152T132 174Q177 174 182 130Q182 98 164 80T123 56Q115 54 115 53T122 44Q148 15 197 15Q235 15 271 47T324 130Q328 142 387 380T447 625Z"></path><path stroke-width="0" id="E1054-MJMATHI-46" d="M48 1Q31 1 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q146 66 215 342T285 622Q285 629 281 629Q273 632 228 634H197Q191 640 191 642T193 659Q197 676 203 680H742Q749 676 749 669Q749 664 736 557T722 447Q720 440 702 440H690Q683 445 683 453Q683 454 686 477T689 530Q689 560 682 579T663 610T626 626T575 633T503 634H480Q398 633 393 631Q388 629 386 623Q385 622 352 492L320 363H375Q378 363 398 363T426 364T448 367T472 374T489 386Q502 398 511 419T524 457T529 475Q532 480 548 480H560Q567 475 567 470Q567 467 536 339T502 207Q500 200 482 200H470Q463 206 463 212Q463 215 468 234T473 274Q473 303 453 310T364 317H309L277 190Q245 66 245 60Q245 46 334 46H359Q365 40 365 39T363 19Q359 6 353 0H336Q295 2 185 2Q120 2 86 2T48 1Z"></path><path stroke-width="0" id="E1054-MJMATHI-3B8" d="M35 200Q35 302 74 415T180 610T319 704Q320 704 327 704T339 705Q393 701 423 656Q462 596 462 495Q462 380 417 261T302 66T168 -10H161Q125 -10 99 10T60 63T41 130T35 200ZM383 566Q383 668 330 668Q294 668 260 623T204 521T170 421T157 371Q206 370 254 370L351 371Q352 372 359 404T375 484T383 566ZM113 132Q113 26 166 26Q181 26 198 36T239 74T287 161T335 307L340 324H145Q145 321 136 286T120 208T113 132Z"></path><path stroke-width="0" id="E1054-MJMAIN-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path><path stroke-width="0" id="E1054-MJMATHI-79" d="M21 287Q21 301 36 335T84 406T158 442Q199 442 224 419T250 355Q248 336 247 334Q247 331 231 288T198 191T182 105Q182 62 196 45T238 27Q261 27 281 38T312 61T339 94Q339 95 344 114T358 173T377 247Q415 397 419 404Q432 431 462 431Q475 431 483 424T494 412T496 403Q496 390 447 193T391 -23Q363 -106 294 -155T156 -205Q111 -205 77 -183T43 -117Q43 -95 50 -80T69 -58T89 -48T106 -45Q150 -45 150 -87Q150 -107 138 -122T115 -142T102 -147L99 -148Q101 -153 118 -160T152 -167H160Q177 -167 186 -165Q219 -156 247 -127T290 -65T313 -9T321 21L315 17Q309 13 296 6T270 -6Q250 -11 231 -11Q185 -11 150 11T104 82Q103 89 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E1054-MJMAIN-6C"></use><use xlink:href="#E1054-MJMAIN-6F" x="278" y="0"></use><use xlink:href="#E1054-MJMAIN-73" x="778" y="0"></use><use xlink:href="#E1054-MJMAIN-73" x="1172" y="0"></use><use xlink:href="#E1054-MJMAIN-28" x="1566" y="0"></use><g transform="translate(1955,0)"><use xlink:href="#E1054-MJMATHI-78" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E1054-MJMAIN-2032" x="808" y="583"></use></g><use xlink:href="#E1054-MJMAIN-29" x="2821" y="0"></use><use xlink:href="#E1054-MJMAIN-3D" x="3488" y="0"></use><use xlink:href="#E1054-MJMAIN-7C" x="4544" y="0"></use><use xlink:href="#E1054-MJMAIN-7C" x="4822" y="0"></use><g transform="translate(5100,0)"><use xlink:href="#E1054-MJMATHI-78" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E1054-MJMAIN-2032" x="808" y="583"></use></g><use xlink:href="#E1054-MJMAIN-2212" x="6188" y="0"></use><use xlink:href="#E1054-MJMATHI-78" x="7188" y="0"></use><use xlink:href="#E1054-MJMAIN-7C" x="7760" y="0"></use><g transform="translate(8038,0)"><use xlink:href="#E1054-MJMAIN-7C" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E1054-MJMAIN-32" x="393" y="674"></use><use transform="scale(0.707)" xlink:href="#E1054-MJMAIN-32" x="393" y="-403"></use></g><use xlink:href="#E1054-MJMAIN-2B" x="8992" y="0"></use><use xlink:href="#E1054-MJMATHI-63" x="9992" y="0"></use><use xlink:href="#E1054-MJMAIN-22C5" x="10648" y="0"></use><use xlink:href="#E1054-MJMATHI-4A" x="11148" y="0"></use><use xlink:href="#E1054-MJMAIN-28" x="11781" y="0"></use><g transform="translate(12170,0)"><use xlink:href="#E1054-MJMATHI-46" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E1054-MJMATHI-3B8" x="909" y="-218"></use></g><use xlink:href="#E1054-MJMAIN-28" x="13244" y="0"></use><g transform="translate(13633,0)"><use xlink:href="#E1054-MJMATHI-78" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E1054-MJMAIN-2032" x="808" y="583"></use></g><use xlink:href="#E1054-MJMAIN-29" x="14500" y="0"></use><use xlink:href="#E1054-MJMAIN-2C" x="14889" y="0"></use><use xlink:href="#E1054-MJMATHI-79" x="15334" y="0"></use><use xlink:href="#E1054-MJMAIN-29" x="15831" y="0"></use></g></svg></span></div><script type="math/tex; mode=display" id="MathJax-Element-3">\text{loss}(x^\prime)=||x^\prime-x||_2^2+c\cdot J(F_{\theta}(x^\prime),y)</script></div></div><p><span>The measurement of distortion is the </span><span class='math-in-toc'>$L_2$</span><span>-norm, i.e.</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n707" cid="n707" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processed" style="text-align: center;"><span class="MathJax_SVG" id="MathJax-Element-5-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="26.748ex" height="6.119ex" viewBox="0 -1212.1 11516.3 2634.7" role="img" focusable="false" style="vertical-align: -3.304ex; max-width: 100%;"><defs><path stroke-width="0" id="E1056-MJMATHI-64" d="M366 683Q367 683 438 688T511 694Q523 694 523 686Q523 679 450 384T375 83T374 68Q374 26 402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487H491Q506 153 506 145Q506 140 503 129Q490 79 473 48T445 8T417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157Q33 205 53 255T101 341Q148 398 195 420T280 442Q336 442 364 400Q369 394 369 396Q370 400 396 505T424 616Q424 629 417 632T378 637H357Q351 643 351 645T353 664Q358 683 366 683ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"></path><path stroke-width="0" id="E1056-MJMAIN-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path stroke-width="0" id="E1056-MJMATHI-78" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path><path stroke-width="0" id="E1056-MJMAIN-2217" d="M229 286Q216 420 216 436Q216 454 240 464Q241 464 245 464T251 465Q263 464 273 456T283 436Q283 419 277 356T270 286L328 328Q384 369 389 372T399 375Q412 375 423 365T435 338Q435 325 425 315Q420 312 357 282T289 250L355 219L425 184Q434 175 434 161Q434 146 425 136T401 125Q393 125 383 131T328 171L270 213Q283 79 283 63Q283 53 276 44T250 35Q231 35 224 44T216 63Q216 80 222 143T229 213L171 171Q115 130 110 127Q106 124 100 124Q87 124 76 134T64 161Q64 166 64 169T67 175T72 181T81 188T94 195T113 204T138 215T170 230T210 250L74 315Q65 324 65 338Q65 353 74 363T98 374Q106 374 116 368T171 328L229 286Z"></path><path stroke-width="0" id="E1056-MJMAIN-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path><path stroke-width="0" id="E1056-MJMAIN-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path stroke-width="0" id="E1056-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E1056-MJSZ2-2211" d="M60 948Q63 950 665 950H1267L1325 815Q1384 677 1388 669H1348L1341 683Q1320 724 1285 761Q1235 809 1174 838T1033 881T882 898T699 902H574H543H251L259 891Q722 258 724 252Q725 250 724 246Q721 243 460 -56L196 -356Q196 -357 407 -357Q459 -357 548 -357T676 -358Q812 -358 896 -353T1063 -332T1204 -283T1307 -196Q1328 -170 1348 -124H1388Q1388 -125 1381 -145T1356 -210T1325 -294L1267 -449L666 -450Q64 -450 61 -448Q55 -446 55 -439Q55 -437 57 -433L590 177Q590 178 557 222T452 366T322 544L56 909L55 924Q55 945 60 948Z"></path><path stroke-width="0" id="E1056-MJMATHI-69" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E1056-MJMAIN-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path stroke-width="0" id="E1056-MJMAIN-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path stroke-width="0" id="E1056-MJSZ3-221A" d="M424 -948Q422 -947 313 -434T202 80L170 31Q165 24 157 10Q137 -21 137 -21Q131 -16 124 -8L111 5L264 248L473 -720Q473 -717 727 359T983 1440Q989 1450 1001 1450Q1007 1450 1013 1445T1020 1433Q1020 1425 742 244T460 -941Q458 -950 439 -950H436Q424 -950 424 -948Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E1056-MJMATHI-64" x="0" y="0"></use><use xlink:href="#E1056-MJMAIN-28" x="523" y="0"></use><g transform="translate(912,0)"><use xlink:href="#E1056-MJMATHI-78" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E1056-MJMAIN-2217" x="808" y="583"></use></g><use xlink:href="#E1056-MJMAIN-2C" x="1937" y="0"></use><use xlink:href="#E1056-MJMATHI-78" x="2382" y="0"></use><use xlink:href="#E1056-MJMAIN-29" x="2954" y="0"></use><use xlink:href="#E1056-MJMAIN-3D" x="3620" y="0"></use><g transform="translate(4676,0)"><use xlink:href="#E1056-MJSZ3-221A" x="0" y="-395"></use><rect stroke="none" width="5839" height="60" x="1000" y="995"></rect><g transform="translate(1000,0)"><use xlink:href="#E1056-MJSZ2-2211" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E1056-MJMATHI-69" x="848" y="-1534"></use><use xlink:href="#E1056-MJMAIN-28" x="1444" y="0"></use><g transform="translate(1833,0)"><use xlink:href="#E1056-MJMATHI-78" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E1056-MJMAIN-2217" x="808" y="452"></use><use transform="scale(0.707)" xlink:href="#E1056-MJMATHI-69" x="808" y="-429"></use></g><use xlink:href="#E1056-MJMAIN-2212" x="3080" y="0"></use><g transform="translate(4080,0)"><use xlink:href="#E1056-MJMATHI-78" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E1056-MJMATHI-69" x="808" y="-213"></use></g><g transform="translate(4996,0)"><use xlink:href="#E1056-MJMAIN-29" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E1056-MJMAIN-32" x="550" y="583"></use></g></g></g></g></svg></span></div><script type="math/tex; mode=display" id="MathJax-Element-5">d(x^*,x)=\sqrt{\sum_{i}(x^*_i-x_i)^2}</script></div></div><p><span>with input images scaled to </span><span class='math-in-toc'>$[0,1]$</span><span>.</span></p><p><span>They generate adversarial examples adaptive to feature squeezing defense as shown below.</span></p><p><img src="imgs/adens_visualization1.jpg" width=50%></img><img src="imgs/adens_visualization2.jpg" width=50%></img></p><p><span>They use a modified multiple classifier version of objective to generate adversarial examples for </span><em><span>specialists+1</span></em><span>:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n712" cid="n712" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processed" style="text-align: center;"><span class="MathJax_SVG" id="MathJax-Element-7-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="53.01ex" height="5.997ex" viewBox="0 -1054.3 22823.6 2582.1" role="img" focusable="false" style="vertical-align: -3.548ex; max-width: 100%;"><defs><path stroke-width="0" id="E1058-MJMAIN-6C" d="M42 46H56Q95 46 103 60V68Q103 77 103 91T103 124T104 167T104 217T104 272T104 329Q104 366 104 407T104 482T104 542T103 586T103 603Q100 622 89 628T44 637H26V660Q26 683 28 683L38 684Q48 685 67 686T104 688Q121 689 141 690T171 693T182 694H185V379Q185 62 186 60Q190 52 198 49Q219 46 247 46H263V0H255L232 1Q209 2 183 2T145 3T107 3T57 1L34 0H26V46H42Z"></path><path stroke-width="0" id="E1058-MJMAIN-6F" d="M28 214Q28 309 93 378T250 448Q340 448 405 380T471 215Q471 120 407 55T250 -10Q153 -10 91 57T28 214ZM250 30Q372 30 372 193V225V250Q372 272 371 288T364 326T348 362T317 390T268 410Q263 411 252 411Q222 411 195 399Q152 377 139 338T126 246V226Q126 130 145 91Q177 30 250 30Z"></path><path stroke-width="0" id="E1058-MJMAIN-73" d="M295 316Q295 356 268 385T190 414Q154 414 128 401Q98 382 98 349Q97 344 98 336T114 312T157 287Q175 282 201 278T245 269T277 256Q294 248 310 236T342 195T359 133Q359 71 321 31T198 -10H190Q138 -10 94 26L86 19L77 10Q71 4 65 -1L54 -11H46H42Q39 -11 33 -5V74V132Q33 153 35 157T45 162H54Q66 162 70 158T75 146T82 119T101 77Q136 26 198 26Q295 26 295 104Q295 133 277 151Q257 175 194 187T111 210Q75 227 54 256T33 318Q33 357 50 384T93 424T143 442T187 447H198Q238 447 268 432L283 424L292 431Q302 440 314 448H322H326Q329 448 335 442V310L329 304H301Q295 310 295 316Z"></path><path stroke-width="0" id="E1058-MJMAIN-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path stroke-width="0" id="E1058-MJMATHI-78" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path><path stroke-width="0" id="E1058-MJMAIN-2032" d="M79 43Q73 43 52 49T30 61Q30 68 85 293T146 528Q161 560 198 560Q218 560 240 545T262 501Q262 496 260 486Q259 479 173 263T84 45T79 43Z"></path><path stroke-width="0" id="E1058-MJMAIN-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path stroke-width="0" id="E1058-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E1058-MJMAIN-7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path><path stroke-width="0" id="E1058-MJMAIN-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path stroke-width="0" id="E1058-MJMAIN-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path stroke-width="0" id="E1058-MJMAIN-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path stroke-width="0" id="E1058-MJMATHI-63" d="M34 159Q34 268 120 355T306 442Q362 442 394 418T427 355Q427 326 408 306T360 285Q341 285 330 295T319 325T330 359T352 380T366 386H367Q367 388 361 392T340 400T306 404Q276 404 249 390Q228 381 206 359Q162 315 142 235T121 119Q121 73 147 50Q169 26 205 26H209Q321 26 394 111Q403 121 406 121Q410 121 419 112T429 98T420 83T391 55T346 25T282 0T202 -11Q127 -11 81 37T34 159Z"></path><path stroke-width="0" id="E1058-MJSZ2-2211" d="M60 948Q63 950 665 950H1267L1325 815Q1384 677 1388 669H1348L1341 683Q1320 724 1285 761Q1235 809 1174 838T1033 881T882 898T699 902H574H543H251L259 891Q722 258 724 252Q725 250 724 246Q721 243 460 -56L196 -356Q196 -357 407 -357Q459 -357 548 -357T676 -358Q812 -358 896 -353T1063 -332T1204 -283T1307 -196Q1328 -170 1348 -124H1388Q1388 -125 1381 -145T1356 -210T1325 -294L1267 -449L666 -450Q64 -450 61 -448Q55 -446 55 -439Q55 -437 57 -433L590 177Q590 178 557 222T452 366T322 544L56 909L55 924Q55 945 60 948Z"></path><path stroke-width="0" id="E1058-MJMATHI-6A" d="M297 596Q297 627 318 644T361 661Q378 661 389 651T403 623Q403 595 384 576T340 557Q322 557 310 567T297 596ZM288 376Q288 405 262 405Q240 405 220 393T185 362T161 325T144 293L137 279Q135 278 121 278H107Q101 284 101 286T105 299Q126 348 164 391T252 441Q253 441 260 441T272 442Q296 441 316 432Q341 418 354 401T367 348V332L318 133Q267 -67 264 -75Q246 -125 194 -164T75 -204Q25 -204 7 -183T-12 -137Q-12 -110 7 -91T53 -71Q70 -71 82 -81T95 -112Q95 -148 63 -167Q69 -168 77 -168Q111 -168 139 -140T182 -74L193 -32Q204 11 219 72T251 197T278 308T289 365Q289 372 288 376Z"></path><path stroke-width="0" id="E1058-MJMAIN-2208" d="M84 250Q84 372 166 450T360 539Q361 539 377 539T419 540T469 540H568Q583 532 583 520Q583 511 570 501L466 500Q355 499 329 494Q280 482 242 458T183 409T147 354T129 306T124 272V270H568Q583 262 583 250T568 230H124V228Q124 207 134 177T167 112T231 48T328 7Q355 1 466 0H570Q583 -10 583 -20Q583 -32 568 -40H471Q464 -40 446 -40T417 -41Q262 -41 172 45Q84 127 84 250Z"></path><path stroke-width="0" id="E1058-MJMAIN-7B" d="M434 -231Q434 -244 428 -250H410Q281 -250 230 -184Q225 -177 222 -172T217 -161T213 -148T211 -133T210 -111T209 -84T209 -47T209 0Q209 21 209 53Q208 142 204 153Q203 154 203 155Q189 191 153 211T82 231Q71 231 68 234T65 250T68 266T82 269Q116 269 152 289T203 345Q208 356 208 377T209 529V579Q209 634 215 656T244 698Q270 724 324 740Q361 748 377 749Q379 749 390 749T408 750H428Q434 744 434 732Q434 719 431 716Q429 713 415 713Q362 710 332 689T296 647Q291 634 291 499V417Q291 370 288 353T271 314Q240 271 184 255L170 250L184 245Q202 239 220 230T262 196T290 137Q291 131 291 1Q291 -134 296 -147Q306 -174 339 -192T415 -213Q429 -213 431 -216Q434 -219 434 -231Z"></path><path stroke-width="0" id="E1058-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E1058-MJMAIN-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path><path stroke-width="0" id="E1058-MJMAIN-2026" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60ZM525 60Q525 84 542 102T585 120Q609 120 627 104T646 61Q646 36 629 18T586 0T543 17T525 60ZM972 60Q972 84 989 102T1032 120Q1056 120 1074 104T1093 61Q1093 36 1076 18T1033 0T990 17T972 60Z"></path><path stroke-width="0" id="E1058-MJMATHI-4B" d="M285 628Q285 635 228 637Q205 637 198 638T191 647Q191 649 193 661Q199 681 203 682Q205 683 214 683H219Q260 681 355 681Q389 681 418 681T463 682T483 682Q500 682 500 674Q500 669 497 660Q496 658 496 654T495 648T493 644T490 641T486 639T479 638T470 637T456 637Q416 636 405 634T387 623L306 305Q307 305 490 449T678 597Q692 611 692 620Q692 635 667 637Q651 637 651 648Q651 650 654 662T659 677Q662 682 676 682Q680 682 711 681T791 680Q814 680 839 681T869 682Q889 682 889 672Q889 650 881 642Q878 637 862 637Q787 632 726 586Q710 576 656 534T556 455L509 418L518 396Q527 374 546 329T581 244Q656 67 661 61Q663 59 666 57Q680 47 717 46H738Q744 38 744 37T741 19Q737 6 731 0H720Q680 3 625 3Q503 3 488 0H478Q472 6 472 9T474 27Q478 40 480 43T491 46H494Q544 46 544 71Q544 75 517 141T485 216L427 354L359 301L291 248L268 155Q245 63 245 58Q245 51 253 49T303 46H334Q340 37 340 35Q340 19 333 5Q328 0 317 0Q314 0 280 1T180 2Q118 2 85 2T49 1Q31 1 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Z"></path><path stroke-width="0" id="E1058-MJMAIN-7D" d="M65 731Q65 745 68 747T88 750Q171 750 216 725T279 670Q288 649 289 635T291 501Q292 362 293 357Q306 312 345 291T417 269Q428 269 431 266T434 250T431 234T417 231Q380 231 345 210T298 157Q293 143 292 121T291 -28V-79Q291 -134 285 -156T256 -198Q202 -250 89 -250Q71 -250 68 -247T65 -230Q65 -224 65 -223T66 -218T69 -214T77 -213Q91 -213 108 -210T146 -200T183 -177T207 -139Q208 -134 209 3L210 139Q223 196 280 230Q315 247 330 250Q305 257 280 270Q225 304 212 352L210 362L209 498Q208 635 207 640Q195 680 154 696T77 713Q68 713 67 716T65 731Z"></path><path stroke-width="0" id="E1058-MJMAIN-3B" d="M78 370Q78 394 95 412T138 430Q162 430 180 414T199 371Q199 346 182 328T139 310T96 327T78 370ZM78 60Q78 85 94 103T137 121Q202 121 202 8Q202 -44 183 -94T144 -169T118 -194Q115 -194 106 -186T95 -174Q94 -171 107 -155T137 -107T160 -38Q161 -32 162 -22T165 -4T165 4Q165 5 161 4T142 0Q110 0 94 18T78 60Z"></path><path stroke-width="0" id="E1058-MJMATHI-79" d="M21 287Q21 301 36 335T84 406T158 442Q199 442 224 419T250 355Q248 336 247 334Q247 331 231 288T198 191T182 105Q182 62 196 45T238 27Q261 27 281 38T312 61T339 94Q339 95 344 114T358 173T377 247Q415 397 419 404Q432 431 462 431Q475 431 483 424T494 412T496 403Q496 390 447 193T391 -23Q363 -106 294 -155T156 -205Q111 -205 77 -183T43 -117Q43 -95 50 -80T69 -58T89 -48T106 -45Q150 -45 150 -87Q150 -107 138 -122T115 -142T102 -147L99 -148Q101 -153 118 -160T152 -167H160Q177 -167 186 -165Q219 -156 247 -127T290 -65T313 -9T321 21L315 17Q309 13 296 6T270 -6Q250 -11 231 -11Q185 -11 150 11T104 82Q103 89 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E1058-MJMAIN-2217" d="M229 286Q216 420 216 436Q216 454 240 464Q241 464 245 464T251 465Q263 464 273 456T283 436Q283 419 277 356T270 286L328 328Q384 369 389 372T399 375Q412 375 423 365T435 338Q435 325 425 315Q420 312 357 282T289 250L355 219L425 184Q434 175 434 161Q434 146 425 136T401 125Q393 125 383 131T328 171L270 213Q283 79 283 63Q283 53 276 44T250 35Q231 35 224 44T216 63Q216 80 222 143T229 213L171 171Q115 130 110 127Q106 124 100 124Q87 124 76 134T64 161Q64 166 64 169T67 175T72 181T81 188T94 195T113 204T138 215T170 230T210 250L74 315Q65 324 65 338Q65 353 74 363T98 374Q106 374 116 368T171 328L229 286Z"></path><path stroke-width="0" id="E1058-MJMATHI-55" d="M107 637Q73 637 71 641Q70 643 70 649Q70 673 81 682Q83 683 98 683Q139 681 234 681Q268 681 297 681T342 682T362 682Q378 682 378 672Q378 670 376 658Q371 641 366 638H364Q362 638 359 638T352 638T343 637T334 637Q295 636 284 634T266 623Q265 621 238 518T184 302T154 169Q152 155 152 140Q152 86 183 55T269 24Q336 24 403 69T501 205L552 406Q599 598 599 606Q599 633 535 637Q511 637 511 648Q511 650 513 660Q517 676 519 679T529 683Q532 683 561 682T645 680Q696 680 723 681T752 682Q767 682 767 672Q767 650 759 642Q756 637 737 637Q666 633 648 597Q646 592 598 404Q557 235 548 205Q515 105 433 42T263 -22Q171 -22 116 34T60 167V183Q60 201 115 421Q164 622 164 628Q164 635 107 637Z"></path><path stroke-width="0" id="E1058-MJMATHI-4A" d="M447 625Q447 637 354 637H329Q323 642 323 645T325 664Q329 677 335 683H352Q393 681 498 681Q541 681 568 681T605 682T619 682Q633 682 633 672Q633 670 630 658Q626 642 623 640T604 637Q552 637 545 623Q541 610 483 376Q420 128 419 127Q397 64 333 21T195 -22Q137 -22 97 8T57 88Q57 130 80 152T132 174Q177 174 182 130Q182 98 164 80T123 56Q115 54 115 53T122 44Q148 15 197 15Q235 15 271 47T324 130Q328 142 387 380T447 625Z"></path><path stroke-width="0" id="E1058-MJMATHI-46" d="M48 1Q31 1 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q146 66 215 342T285 622Q285 629 281 629Q273 632 228 634H197Q191 640 191 642T193 659Q197 676 203 680H742Q749 676 749 669Q749 664 736 557T722 447Q720 440 702 440H690Q683 445 683 453Q683 454 686 477T689 530Q689 560 682 579T663 610T626 626T575 633T503 634H480Q398 633 393 631Q388 629 386 623Q385 622 352 492L320 363H375Q378 363 398 363T426 364T448 367T472 374T489 386Q502 398 511 419T524 457T529 475Q532 480 548 480H560Q567 475 567 470Q567 467 536 339T502 207Q500 200 482 200H470Q463 206 463 212Q463 215 468 234T473 274Q473 303 453 310T364 317H309L277 190Q245 66 245 60Q245 46 334 46H359Q365 40 365 39T363 19Q359 6 353 0H336Q295 2 185 2Q120 2 86 2T48 1Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E1058-MJMAIN-6C"></use><use xlink:href="#E1058-MJMAIN-6F" x="278" y="0"></use><use xlink:href="#E1058-MJMAIN-73" x="778" y="0"></use><use xlink:href="#E1058-MJMAIN-73" x="1172" y="0"></use><use xlink:href="#E1058-MJMAIN-28" x="1566" y="0"></use><g transform="translate(1955,0)"><use xlink:href="#E1058-MJMATHI-78" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E1058-MJMAIN-2032" x="808" y="583"></use></g><use xlink:href="#E1058-MJMAIN-29" x="2821" y="0"></use><use xlink:href="#E1058-MJMAIN-3D" x="3488" y="0"></use><use xlink:href="#E1058-MJMAIN-7C" x="4544" y="0"></use><use xlink:href="#E1058-MJMAIN-7C" x="4822" y="0"></use><g transform="translate(5100,0)"><use xlink:href="#E1058-MJMATHI-78" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E1058-MJMAIN-2032" x="808" y="583"></use></g><use xlink:href="#E1058-MJMAIN-2212" x="6188" y="0"></use><use xlink:href="#E1058-MJMATHI-78" x="7188" y="0"></use><use xlink:href="#E1058-MJMAIN-7C" x="7760" y="0"></use><g transform="translate(8038,0)"><use xlink:href="#E1058-MJMAIN-7C" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E1058-MJMAIN-32" x="393" y="674"></use><use transform="scale(0.707)" xlink:href="#E1058-MJMAIN-32" x="393" y="-403"></use></g><use xlink:href="#E1058-MJMAIN-2B" x="8992" y="0"></use><use xlink:href="#E1058-MJMATHI-63" x="9992" y="0"></use><g transform="translate(10592,0)"><use xlink:href="#E1058-MJSZ2-2211" x="2794" y="0"></use><g transform="translate(0,-1147)"><use transform="scale(0.707)" xlink:href="#E1058-MJMATHI-6A" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E1058-MJMAIN-2208" x="412" y="0"></use><use transform="scale(0.707)" xlink:href="#E1058-MJMAIN-7B" x="1079" y="0"></use><use transform="scale(0.707)" xlink:href="#E1058-MJMAIN-31" x="1579" y="0"></use><use transform="scale(0.707)" xlink:href="#E1058-MJMAIN-2C" x="2079" y="0"></use><use transform="scale(0.707)" xlink:href="#E1058-MJMAIN-2026" x="2357" y="0"></use><use transform="scale(0.707)" xlink:href="#E1058-MJMAIN-2C" x="3529" y="0"></use><use transform="scale(0.707)" xlink:href="#E1058-MJMAIN-32" x="3807" y="0"></use><use transform="scale(0.707)" xlink:href="#E1058-MJMATHI-4B" x="4307" y="0"></use><use transform="scale(0.707)" xlink:href="#E1058-MJMAIN-2B" x="5196" y="0"></use><use transform="scale(0.707)" xlink:href="#E1058-MJMAIN-31" x="5974" y="0"></use><use transform="scale(0.707)" xlink:href="#E1058-MJMAIN-7D" x="6473" y="0"></use><use transform="scale(0.707)" xlink:href="#E1058-MJMAIN-3B" x="6973" y="0"></use><g transform="translate(5127,0)"><use transform="scale(0.707)" xlink:href="#E1058-MJMATHI-79" x="0" y="0"></use><use transform="scale(0.5)" xlink:href="#E1058-MJMAIN-2217" x="705" y="513"></use></g><use transform="scale(0.707)" xlink:href="#E1058-MJMAIN-2208" x="8204" y="0"></use><g transform="translate(6273,0)"><use transform="scale(0.707)" xlink:href="#E1058-MJMATHI-55" x="0" y="0"></use><use transform="scale(0.5)" xlink:href="#E1058-MJMATHI-6A" x="965" y="-213"></use></g></g></g><use xlink:href="#E1058-MJMATHI-4A" x="17792" y="0"></use><use xlink:href="#E1058-MJMAIN-28" x="18425" y="0"></use><g transform="translate(18814,0)"><use xlink:href="#E1058-MJMATHI-46" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E1058-MJMATHI-6A" x="909" y="-213"></use></g><use xlink:href="#E1058-MJMAIN-28" x="19848" y="0"></use><g transform="translate(20237,0)"><use xlink:href="#E1058-MJMATHI-78" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E1058-MJMAIN-2032" x="808" y="583"></use></g><use xlink:href="#E1058-MJMAIN-29" x="21103" y="0"></use><use xlink:href="#E1058-MJMAIN-2C" x="21492" y="0"></use><use xlink:href="#E1058-MJMATHI-79" x="21937" y="0"></use><use xlink:href="#E1058-MJMAIN-29" x="22434" y="0"></use></g></svg></span></div><script type="math/tex; mode=display" id="MathJax-Element-7">\text{loss}(x^\prime)=||x^\prime-x||_2^2+c\sum_{j\in\{1,\dots,2K+1\};y^*\in U_j}J(F_j(x^\prime),y)</script></div></div><p><span>In which, </span><span class='math-in-toc'>$U_i$</span><span> is the set of classes that classifier </span><span class='math-in-toc'>$j$</span><span> is mostly confused.</span></p><p><img src="imgs/adens_visualization3.jpg" width=50%></img><img src="imgs/adens_details.jpg" width=50%></img></p><p><span>They ensemble a set of detectors and test the resulted robustness. This ensemble is also found to be not robust enough.</span></p><blockquote><p><strong><span>Attack results on CIFAR-10</span></strong><span> The </span><span class='math-in-toc'>$L_2$</span><span> distortion required to construct adversarial examples on an unsecured network is 0.11. To construct adversarial examples on this network </span><span class='math-in-toc'>$G(\cdot)$</span><span> with the three defenses increases the distortion to 0.18, an increase of 60%. However, this distortion is still imperceptible.</span></p></blockquote><h4><a name="inspirations" class="md-header-anchor"></a><span>Inspirations</span></h4><p><span>This paper is too old to give good inspirations. </span></p><p><span>It claims that an ensemble of weak defenses does not make it strong and it seems to be true, since these defenses are &quot;weak&quot;.</span></p><h3><a name="bypassing-ten-detection-methods---aisec-2017" class="md-header-anchor"></a><span>Bypassing Ten Detection Methods - AISec 2017</span></h3><p><span>Code: </span><a href='http://nicholas.carlini.com/code/nn_breaking_detection' target='_blank' class='url'>http://nicholas.carlini.com/code/nn_breaking_detection</a></p><blockquote><p><em><span>Nicholas Carlini, David Wagner. Adversarial Examples Are Not Easily Detected: Bypassing Ten Detection Methods. AISec 2017. </span><strong><a href='https://arxiv.org/abs/1705.07263'><span> arXiv:1705.07263</span></a></strong></em></p></blockquote><blockquote><p><span>In order to better understand the space of adversarial examples, we survey ten recent proposals that are designed for detection and compare their efficacy. We show that all can be defeated by constructing new loss functions.</span></p></blockquote><p><img src="imgs/bypassten_demo.jpg"></img></p><h4><a name="classifier-and-adversarial-example" class="md-header-anchor"></a><span>Classifier and adversarial example</span></h4><p><span>The classifier they consider in this paper is a feed-forward neural network, denoted as </span><span class='math-in-toc'>$F(\cdot)$</span><span>. The probability that </span><span class='math-in-toc'>$x$</span><span> is labeled with class </span><span class='math-in-toc'>$i$</span><span> is denoted as </span><span class='math-in-toc'>$F(x)_i$</span><span>, and the </span><span class='math-in-toc'>$i$</span><span>th layer&#39;s output is denoted as </span><span class='math-in-toc'>$F^{i}(x)$</span><span>.</span></p><p><span>The </span><span class='math-in-toc'>$i$</span><span>th layer computes</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n731" cid="n731" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processed" style="text-align: center;"><span class="MathJax_SVG" id="MathJax-Element-19-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="33.561ex" height="2.942ex" viewBox="0 -949 14449.6 1266.7" role="img" focusable="false" style="vertical-align: -0.738ex; max-width: 100%;"><defs><path stroke-width="0" id="E1070-MJMATHI-46" d="M48 1Q31 1 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q146 66 215 342T285 622Q285 629 281 629Q273 632 228 634H197Q191 640 191 642T193 659Q197 676 203 680H742Q749 676 749 669Q749 664 736 557T722 447Q720 440 702 440H690Q683 445 683 453Q683 454 686 477T689 530Q689 560 682 579T663 610T626 626T575 633T503 634H480Q398 633 393 631Q388 629 386 623Q385 622 352 492L320 363H375Q378 363 398 363T426 364T448 367T472 374T489 386Q502 398 511 419T524 457T529 475Q532 480 548 480H560Q567 475 567 470Q567 467 536 339T502 207Q500 200 482 200H470Q463 206 463 212Q463 215 468 234T473 274Q473 303 453 310T364 317H309L277 190Q245 66 245 60Q245 46 334 46H359Q365 40 365 39T363 19Q359 6 353 0H336Q295 2 185 2Q120 2 86 2T48 1Z"></path><path stroke-width="0" id="E1070-MJMATHI-69" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E1070-MJMAIN-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path stroke-width="0" id="E1070-MJMATHI-78" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path><path stroke-width="0" id="E1070-MJMAIN-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path stroke-width="0" id="E1070-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E1070-MJMATHI-52" d="M230 637Q203 637 198 638T193 649Q193 676 204 682Q206 683 378 683Q550 682 564 680Q620 672 658 652T712 606T733 563T739 529Q739 484 710 445T643 385T576 351T538 338L545 333Q612 295 612 223Q612 212 607 162T602 80V71Q602 53 603 43T614 25T640 16Q668 16 686 38T712 85Q717 99 720 102T735 105Q755 105 755 93Q755 75 731 36Q693 -21 641 -21H632Q571 -21 531 4T487 82Q487 109 502 166T517 239Q517 290 474 313Q459 320 449 321T378 323H309L277 193Q244 61 244 59Q244 55 245 54T252 50T269 48T302 46H333Q339 38 339 37T336 19Q332 6 326 0H311Q275 2 180 2Q146 2 117 2T71 2T50 1Q33 1 33 10Q33 12 36 24Q41 43 46 45Q50 46 61 46H67Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628Q287 635 230 637ZM630 554Q630 586 609 608T523 636Q521 636 500 636T462 637H440Q393 637 386 627Q385 624 352 494T319 361Q319 360 388 360Q466 361 492 367Q556 377 592 426Q608 449 619 486T630 554Z"></path><path stroke-width="0" id="E1070-MJMATHI-65" d="M39 168Q39 225 58 272T107 350T174 402T244 433T307 442H310Q355 442 388 420T421 355Q421 265 310 237Q261 224 176 223Q139 223 138 221Q138 219 132 186T125 128Q125 81 146 54T209 26T302 45T394 111Q403 121 406 121Q410 121 419 112T429 98T420 82T390 55T344 24T281 -1T205 -11Q126 -11 83 42T39 168ZM373 353Q367 405 305 405Q272 405 244 391T199 357T170 316T154 280T149 261Q149 260 169 260Q282 260 327 284T373 353Z"></path><path stroke-width="0" id="E1070-MJMATHI-4C" d="M228 637Q194 637 192 641Q191 643 191 649Q191 673 202 682Q204 683 217 683Q271 680 344 680Q485 680 506 683H518Q524 677 524 674T522 656Q517 641 513 637H475Q406 636 394 628Q387 624 380 600T313 336Q297 271 279 198T252 88L243 52Q243 48 252 48T311 46H328Q360 46 379 47T428 54T478 72T522 106T564 161Q580 191 594 228T611 270Q616 273 628 273H641Q647 264 647 262T627 203T583 83T557 9Q555 4 553 3T537 0T494 -1Q483 -1 418 -1T294 0H116Q32 0 32 10Q32 17 34 24Q39 43 44 45Q48 46 59 46H65Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Q285 635 228 637Z"></path><path stroke-width="0" id="E1070-MJMATHI-55" d="M107 637Q73 637 71 641Q70 643 70 649Q70 673 81 682Q83 683 98 683Q139 681 234 681Q268 681 297 681T342 682T362 682Q378 682 378 672Q378 670 376 658Q371 641 366 638H364Q362 638 359 638T352 638T343 637T334 637Q295 636 284 634T266 623Q265 621 238 518T184 302T154 169Q152 155 152 140Q152 86 183 55T269 24Q336 24 403 69T501 205L552 406Q599 598 599 606Q599 633 535 637Q511 637 511 648Q511 650 513 660Q517 676 519 679T529 683Q532 683 561 682T645 680Q696 680 723 681T752 682Q767 682 767 672Q767 650 759 642Q756 637 737 637Q666 633 648 597Q646 592 598 404Q557 235 548 205Q515 105 433 42T263 -22Q171 -22 116 34T60 167V183Q60 201 115 421Q164 622 164 628Q164 635 107 637Z"></path><path stroke-width="0" id="E1070-MJMATHI-41" d="M208 74Q208 50 254 46Q272 46 272 35Q272 34 270 22Q267 8 264 4T251 0Q249 0 239 0T205 1T141 2Q70 2 50 0H42Q35 7 35 11Q37 38 48 46H62Q132 49 164 96Q170 102 345 401T523 704Q530 716 547 716H555H572Q578 707 578 706L606 383Q634 60 636 57Q641 46 701 46Q726 46 726 36Q726 34 723 22Q720 7 718 4T704 0Q701 0 690 0T651 1T578 2Q484 2 455 0H443Q437 6 437 9T439 27Q443 40 445 43L449 46H469Q523 49 533 63L521 213H283L249 155Q208 86 208 74ZM516 260Q516 271 504 416T490 562L463 519Q447 492 400 412L310 260L413 259Q516 259 516 260Z"></path><path stroke-width="0" id="E1070-MJMAIN-22C5" d="M78 250Q78 274 95 292T138 310Q162 310 180 294T199 251Q199 226 182 208T139 190T96 207T78 250Z"></path><path stroke-width="0" id="E1070-MJMAIN-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path stroke-width="0" id="E1070-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E1070-MJMAIN-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path stroke-width="0" id="E1070-MJMATHI-62" d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E1070-MJMATHI-46" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E1070-MJMATHI-69" x="1104" y="583"></use><use xlink:href="#E1070-MJMAIN-28" x="1124" y="0"></use><use xlink:href="#E1070-MJMATHI-78" x="1513" y="0"></use><use xlink:href="#E1070-MJMAIN-29" x="2085" y="0"></use><use xlink:href="#E1070-MJMAIN-3D" x="2752" y="0"></use><use xlink:href="#E1070-MJMATHI-52" x="3808" y="0"></use><use xlink:href="#E1070-MJMATHI-65" x="4567" y="0"></use><use xlink:href="#E1070-MJMATHI-4C" x="5033" y="0"></use><use xlink:href="#E1070-MJMATHI-55" x="5714" y="0"></use><use xlink:href="#E1070-MJMAIN-28" x="6481" y="0"></use><g transform="translate(6870,0)"><use xlink:href="#E1070-MJMATHI-41" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E1070-MJMATHI-69" x="1060" y="583"></use></g><use xlink:href="#E1070-MJMAIN-22C5" x="8186" y="0"></use><g transform="translate(8686,0)"><use xlink:href="#E1070-MJMATHI-46" x="0" y="0"></use><g transform="translate(780,412)"><use transform="scale(0.707)" xlink:href="#E1070-MJMATHI-69" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E1070-MJMAIN-2212" x="345" y="0"></use><use transform="scale(0.707)" xlink:href="#E1070-MJMAIN-31" x="1123" y="0"></use></g></g><use xlink:href="#E1070-MJMAIN-28" x="10715" y="0"></use><use xlink:href="#E1070-MJMATHI-78" x="11104" y="0"></use><use xlink:href="#E1070-MJMAIN-29" x="11676" y="0"></use><use xlink:href="#E1070-MJMAIN-2B" x="12287" y="0"></use><g transform="translate(13287,0)"><use xlink:href="#E1070-MJMATHI-62" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E1070-MJMATHI-69" x="606" y="583"></use></g><use xlink:href="#E1070-MJMAIN-29" x="14060" y="0"></use></g></svg></span></div><script type="math/tex; mode=display" id="MathJax-Element-19">F^i(x)=ReLU(A^i\cdot F^{i-1}(x)+b^i)</script></div></div><p><span>and for a network with </span><span class='math-in-toc'>$n$</span><span> layers, the output of the </span><span class='math-in-toc'>$n$</span><span>th layer, known as logits, is </span><span class='math-in-toc'>$Z(x)=F^n(x)$</span><span> and the final output is a softmaxed logits, representing the distribution of probabilities:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n733" cid="n733" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-23-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-23">F(x)=\text{softmax}(Z(x))</script></div></div><p><span>The classification result </span><span class='math-in-toc'>$C(x)$</span><span> is then acquired using argmax:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n735" cid="n735" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-25-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-25">C(x)=\arg\max_i(F(x)_i)</script></div></div><p><span>An input is defined to be </span><em><span>natural</span></em><span> to the classifier if it is an instance that was benignly created. For a natural input </span><span class='math-in-toc'>$x$</span><span>, classified as </span><span class='math-in-toc'>$C(x)=l$</span><span>, </span><span class='math-in-toc'>$x^\prime$</span><span> is defined as an untargeted </span><em><span>adversarial example</span></em><span> if </span><span class='math-in-toc'>$x^\prime$</span><span> is close to </span><span class='math-in-toc'>$x$</span><span> and </span><span class='math-in-toc'>$C(x^\prime)\neq l$</span><span>, and </span><span class='math-in-toc'>$x^\prime$</span><span> is further called a </span><em><span>targeted adversarial example</span></em><span> if it&#39;s designed to be classified as a target label, i.e. </span><span class='math-in-toc'>$C(x^\prime)=t\neq l$</span><span>.</span></p><p><span>They use a configured C&amp;W attack to generate adversarial examples by solving the following optimization using gradient descent:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n738" cid="n738" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-34-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-34">\text{minimize }||x^\prime-x||_2^2+c\cdot\ell(x^\prime)</script></div></div><p><span>The loss function </span><span class='math-in-toc'>$\ell$</span><span> is defined as</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n740" cid="n740" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-36-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-36">\ell(x^\prime)=\max(\max\{Z(x^\prime)_i:i\neq t\}-Z(x^\prime)_t,-\kappa)</script></div></div><p><span>This loss is designed to close up the difference between the target logit and the next-most-likely logit. The use of logit rather than probability is critical here.</span></p><h4><a name="threat-model-datasets-and-approaches" class="md-header-anchor"></a><span>Threat model, datasets and approaches</span></h4><p><span>They consider two datasets, MNIST and CIFAR-10.</span></p><p><span>They consider three different threat models with the presence of a detector.</span></p><ul><li><p><em><span>Zero-Knowledge Adversary</span></em></p><p><span>It generates adversarial example on the unsecured model </span><span class='math-in-toc'>$F$</span><span> without awareness of the existence of a detector </span><span class='math-in-toc'>$D$</span><span>.</span></p></li><li><p><em><span>Perfect-Knowledge Adversary</span></em></p><p><span>It is aware of the existence of a detector </span><span class='math-in-toc'>$D$</span><span>, knows the model parameters used by </span><span class='math-in-toc'>$D$</span><span> and is able to use these to attempt to evade both the original network and the detector simultaneously.</span></p></li><li><p><em><span>Limited-Knowledge Adversary</span></em></p><p><span>It is aware that the model is being secured with a given detection scheme, knows how it was trained, but does not have access to the trained detector </span><span class='math-in-toc'>$D$</span><span>.</span></p></li></ul><p><span>Corresponding to the three threat models, they propose three approaches:</span></p><ul><li><p><em><span>Evaluate with a strong attack (Zero-Knowledge)</span></em></p><blockquote><p><span>In this step we generate adversarial examples with C&amp;W’s attack and check whether the defense can detect this strong attack.</span></p></blockquote><p><span>If this succeeds, then the following is not interesting.</span></p></li><li><p><em><span>Perform an adaptive, white-box attack (Perfect-Knowledge)</span></em></p><blockquote><p><span>To perform this attack, we construct a new loss function, and generate adversarial examples that both fool the classifier and also evade the detector.</span></p></blockquote></li><li><p><em><span>Construct a black-box attack (Limited-Knowledge)</span></em></p><blockquote><p><span>This evaluation is only interesting if (a) the zero-knowledge attack failed to generate adversarial examples, and (b) the perfect-knowledge attack succeeded.</span></p></blockquote><blockquote><p><span>In order to mount this attack, we rely on the transferability</span>
+<span>property: the attacker trains a substitute model in the same way as the original model, but on a separate training set (of similar size, and quality).</span></p></blockquote></li></ul><h4><a name="secondary-classification-based-detection" class="md-header-anchor"></a><span>Secondary classification based detection</span></h4><p><span>This category of detection schemes builds a secondary classifier which attempts to detect adversarial examples.</span></p><h5><a name="adversarial-re-training-2-methods" class="md-header-anchor"></a><span>Adversarial Re-training (2 methods)</span></h5><p><em><span>Grosse et al.</span></em><span> introduce a new </span><span class='math-in-toc'>$N+1$</span><span> class, with one class solely for adversarial examples and train the network to detect adversarial examples, as shown in the following procedure:</span></p><ol start='' ><li><span>Train a model </span><span class='math-in-toc'>$F_{base}$</span><span> on the training data </span><span class='math-in-toc'>$\mathcal{X_0}=\mathcal{X}$</span></li><li><span>Generate adversarial examples on model </span><span class='math-in-toc'>$F_{base}$</span><span> for each </span><span class='math-in-toc'>$(x_i,y_i)\in\mathcal{X}$</span><span> and call these examples </span><span class='math-in-toc'>$x^\prime$</span><span>.</span></li><li><span>Let </span><span class='math-in-toc'>$\mathcal{X}_1=\mathcal{X}_0\cup\{(x_i^\prime,N+1):i\in|\mathcal{X}|\}$</span><span>, where </span><span class='math-in-toc'>$N+1$</span><span> is the new label for adversarial examples.</span></li><li><span>Train a model </span><span class='math-in-toc'>$F_{secured}$</span><span> on the training data </span><span class='math-in-toc'>$\mathcal{X}_1$</span><span>.</span></li></ol><p><em><span>Gong et al.</span></em><span> use a similar method, but instead of re-training the model, they construct a binary classifier </span><span class='math-in-toc'>$D$</span><span> that simply learns to partitions the instances </span><span class='math-in-toc'>$x$</span><span> from </span><span class='math-in-toc'>$x^\prime$</span><span> by training on the following set</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n786" cid="n786" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-55-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-55">\mathcal{X}_1=\{(x_i,1):i\in|\mathcal{X}|\}\cup\{(x_i^\prime,0):i\in|\mathcal{X}|\}</script></div></div><blockquote><p><span>We re-implement these two defenses and find that adversarial retraining is able to detect adversarial examples when generated with the fast gradient sign and JSMA attacks with near-100% accuracy.</span></p></blockquote><p><span>The attack fails in </span><em><span>Zero-Knowledge Attack Evaluation</span></em><span>, but succeeds in </span><em><span>Perfect-Knowledge Attack Evaluation</span></em><span> and </span><em><span>Limited-Knowledge Attack Evaluation</span></em><span> (for </span><em><span>Grosse et al.</span></em><span>) </span></p><p><span>For the defense proposed </span><em><span>Gong et al.</span></em><span>, they constructed a substitute </span><span class='math-in-toc'>$N+1$</span><span> classifier under perfect knowledge scenario, i.e.</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n791" cid="n791" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-57-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-57">G(x)_i=\begin{cases}
+Z_{F}(x)_i&\text{if }i\le N\\
+(Z_D(x)+1)\cdot\max_jZ_F(x)_j&\text{if }i=N+1
+\end{cases}</script></div></div><blockquote><p><span>That is, we directly attack the defended model. Our experiments revealed that these defenses are ineffective and add almost no increase in robustness.</span></p></blockquote><h5><a name="examining-convolutional-layers-1-method" class="md-header-anchor"></a><span>Examining Convolutional Layers (1 method)</span></h5><p><em><span>Metzen et al</span></em><span> propose to augment the classification neural network with a detection neural network that takes its input from various intermediate layers of the classification network. This detection network is further trained identically to the detector proposed by </span><em><span>Gong et al</span></em><span>.</span></p><blockquote><p><span>We then train the detector by attaching it to the output ofthe first</span>
+<span>residual block as done in [18]. We confirmed that their detector is able to detect adversarial examples with 99% probability on simple attacks (fast gradient sign or JSMA).</span></p></blockquote><p><span>In </span><em><span>Zero-Knowledge Attack Evaluation</span></em><span>,</span></p><blockquote><p><span>The best detector we were able to train correctly obtains an 81% true positive rate at 28% false positive rate.</span></p></blockquote><p><span>In </span><em><span>Perfect-Knowledge Attack Evaluation</span></em><span>,</span></p><blockquote><p><span>Our white-box attack completely defeats Metzen’s defense: it is able to produce adversarial examples that simultaneously are mis-classified by the original network and evade the detector.</span></p></blockquote><p><span>They use the same function </span><span class='math-in-toc'>$G(\cdot)$</span><span> as before.</span></p><p><span>And this defense also fails in </span><em><span>Limited-Knowledge Attack Evaluation</span></em><span>.</span></p><h4><a name="principal-component-analysis-detection" class="md-header-anchor"></a><span>Principal component analysis detection</span></h4><h5><a name="input-image-pca-1-method" class="md-header-anchor"></a><span>Input Image PCA (1 method)</span></h5><p><em><span>Hendrycks &amp; Gimpel</span></em><span> </span><em><span>use PCA to detect natural images from adversarial examples, finding that adversarial examples place a higher weight on the larger principal components than natural images and lower weight on the earlier principal components</span></em></p><p><img src="imgs/bypassten_visualization.jpg" width=80%></img></p><p><span>In </span><em><span>Zero-Knowledge Attack Evaluation</span></em><span>,</span></p><blockquote><p><span>On the MNIST data set, their defense does detect zeroknowledge attacks, if the attacker does not attempt to defeat the defense.</span></p></blockquote><p><span>But looking deeper, they find that this difference is intrinsic in MNIST</span></p><blockquote><p><span>In short, the detected difference between the natural and adversarial examples is because the border pixels are nearly always zero for natural MNIST instances, whereas typical adversarial examples have non-zero values on the border.</span></p></blockquote><p><span>In </span><em><span>Perfect-Knowledge Attack Evaluation</span></em><span>,</span></p><blockquote><p><span>We can generate adversarial examples that are restricted to change only the first k principal components.</span></p></blockquote><h5><a name="dimensionality-reduction-1-method" class="md-header-anchor"></a><span>Dimensionality Reduction (1 method)</span></h5><p><em><span>Bhagoji et al.</span></em><span> propose a defense based on dimensionality reduction. They reduce the </span><span class='math-in-toc'>$W\cdot H\cdot C=N$</span><span>-dimensional input to a much smaller </span><span class='math-in-toc'>$K$</span><span>-dimensional input using PCA and train a classifier on this smaller input. Since PCA loses spatial locality, a convolutional network cannot be used.</span></p><p><span>This defense restricts the attackers such that they can only manipulate the first </span><span class='math-in-toc'>$K$</span><span> components.</span></p><p><img src="imgs/bypassten_visualization2.jpg" width=80%></img></p><p><span>They train such models with </span><span class='math-in-toc'>$K$</span><span> dimensions ranging form 9 to 784 components.</span></p><p><span>In </span><em><span>Perfect-Knowledge Attack Evaluation</span></em><span>,</span></p><blockquote><p><span>The most difficult model to attack uses only the first 25 principal components.</span></p></blockquote><blockquote><p><span>However, crucially, we find that even the model that keeps the</span>
+<span>first 25 principal components is less robust than almost any standard, unsecured convolutional neural network;</span></p></blockquote><p><em><span>Bhagoji et al.</span></em><span> also propose to project the images into a reduced-dimension manifold and train a CNN on it, but</span></p><blockquote><p><span>In our experiments we found that this approach is no more robust</span>
+<span>than an unsecured convolutional network (applied to the original image), despite only using a limited number of the principal components</span></p></blockquote><h5><a name="hidden-layer-pca-1-method" class="md-header-anchor"></a><span>Hidden layer PCA (1 method)</span></h5><p><em><span>Li et al.</span></em><span> </span><em><span>apply PCA to the values after inner convolutional layers of the neural network, and use a cascade classifier to detect adversarial examples. Specifically, they propose building a cascade classifier that accepts the input as natural only if all classifiers </span><span class='math-in-toc'>$C_i$</span><span> accept the input, but rejects it if any do. Each classifier </span><span class='math-in-toc'>$C_i$</span><span> a linear SVM that acts on the PCA of the </span><span class='math-in-toc'>$i$</span><span>th convolutional layer of the network.</span></em></p><p><span>In </span><em><span>Zero-Knowledge Attack Evaluation</span></em><span>,</span></p><blockquote><p><span>This results causes the cascade classifiers to have a 92% and 98% false positive rates on MNIST/CIFAR. We conclude that Li’s defense is not effective against the C&amp;W attack.</span></p></blockquote><h4><a name="distributional-detection" class="md-header-anchor"></a><span>Distributional detection</span></h4><p><span>These defenses detect adversarial examples by comparing the distribution of natural images to that of adversarial examples.</span></p><h5><a name="maximum-mean-discrpancy-1-method" class="md-header-anchor"></a><span>Maximum mean discrpancy (1 method)</span></h5><p><em><span>Grosse et al.</span></em><span> use an approximation of the computationally infeasible Maximum Mean Discrepancy (MMD) that is used to test whether two sets are drawn from the same underlying distribution.</span></p><p><span>They use Fisher&#39;s permutation test to test whether </span><span class='math-in-toc'>$X_1$</span><span> and </span><span class='math-in-toc'>$X_2$</span><span> are drawn from the same distribution as follows</span></p><ol start='' ><li><span>Let </span><span class='math-in-toc'>$a=MMD(X_1,X_2)$</span><span>.</span></li><li><span>Shuffle the elements of </span><span class='math-in-toc'>$X_1$</span><span> and </span><span class='math-in-toc'>$X_2$</span><span> into two new sets </span><span class='math-in-toc'>$Y_1$</span><span> and </span><span class='math-in-toc'>$Y_2$</span><span>.</span></li><li><span>Let </span><span class='math-in-toc'>$b=MMD(Y_1,Y_2)$</span><span>.</span></li><li><span>If </span><span class='math-in-toc'>$a&lt;b$</span><span> then conclude that they are drawn from different distributions.</span></li></ol><p><span>In </span><em><span>Zero-Knowledge Attack Evaluation</span></em><span>,</span></p><blockquote><p><span>Even when using a set of 100 images, MMD fails to reject the null hypothesis (p &gt; 0.05). MMD also fails to detect attacks on CIFAR, even with a set size as large as 10, 000 (which uses every sample in the test set).</span></p></blockquote><p><mark><span>It seems to indicate that adversarial examples are from the same distribution of natural examples?</span></mark></p><h5><a name="kernel-density-estimation-1-method" class="md-header-anchor"></a><span>Kernel density estimation (1 method)</span></h5><p><em><span>Feinman et al.</span></em><span> </span><em><span>use a Gaussian Mixture Model to model outputs from the final hidden layer of a neural network, and argue that adversarial examples belong to a different distribution than that of natural images.</span></em></p><p><span>Given an instance </span><span class='math-in-toc'>$x$</span><span> labeled as </span><span class='math-in-toc'>$t$</span><span>, kernel density estimation estimates the likelihood of </span><span class='math-in-toc'>$x$</span><span> as</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n858" cid="n858" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-78-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-78">KDE(x)=\frac{1}{|X_t|}\sum_{s\in X_t}\text{exp}(\frac{|F^{n-1}(x)-F^{n-1}(s)|^2}{\sigma^2})</script></div></div><p><span>The detector is then constructed by selecting a threshold </span><span class='math-in-toc'>$\tau$</span><span> and reporting </span><span class='math-in-toc'>$x$</span><span> as adversarial if </span><span class='math-in-toc'>$KDE(x)&lt;\tau$</span><span>, otherwise reporting </span><span class='math-in-toc'>$x$</span><span> as natural.</span></p><p><span>In </span><em><span>Zero-Knowledge Attack Evaluation</span></em><span>,</span></p><blockquote><p><span>Feinman’s defense is able to detect C&amp;W adversarial examples on MNIST, but not on CIFAR.</span></p></blockquote><blockquote><p><span>Surprisingly, we find that 80% of the time, the adversarial example has a higher likelihood score than the original image.</span></p></blockquote><p><span>In </span><em><span>Perfect-Knowledge Attack Evaluation</span></em><span>,</span></p><p><span>After obtaining the detectable adversarial example </span><span class='math-in-toc'>$\hat{x}$</span><span> using C&amp;W attack, they crafted a further optimization with penalty on being detected, i.e.</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n867" cid="n867" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-84-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-84">\text{minimize }||x-x^\prime||_2^2+c\cdot(\ell(x^\prime)+\ell_2(x^\prime))</script></div></div><p><span>where the penalty is</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n869" cid="n869" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-85-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-85">\ell_2(x^\prime)=\max(-\log(KDE(x^\prime))-\epsilon, 0)</script></div></div><blockquote><p><span>This approach is effective at generating adversarial examples</span>
+<span>for MNIST that are not detected by Feinman’s defense.</span></p></blockquote><blockquote><p><span>We believe the reason this defense is so much more effective</span>
+<span>on MNIST than on CIFAR because this defense is effectively a Knearest-neighbor classifier with a neural network feature extractor.</span></p></blockquote><blockquote><p><span>In fact, prior work has shown that using an RBF kernel SVM (essentially identical to what is done here) is effective at defending MNIST to adversarial examples.</span></p></blockquote><p><span>In </span><em><span>Limited-Knowledge Attack Evaluation</span></em><span>,</span></p><blockquote><p><span>We found that when the defender uses the first 95% of the training data, and the last 5% of the training data is left for the adversary (who uses it to form their own KDE estimator), the attack still succeeds with equal distortion.</span></p></blockquote><h4><a name="normalization-detection" class="md-header-anchor"></a><span>Normalization detection</span></h4><h5><a name="dropout-randomization-1-method" class="md-header-anchor"></a><span>Dropout randomization (1 method)</span></h5><p><em><span>Feinman et al. propose a second detection method called Bayesian neural network uncertainty that measures the uncertainty of the neural network on the given input.</span></em></p><p><span>They add randomization to the network using </span><em><span>Dropout</span></em><span>, hoping that a natural image will have the same (correct) label regardless of the random values chosen, while adversarial examples not.</span></p><p><span>Apply the randomized network </span><span class='math-in-toc'>$F_r$</span><span> to the input </span><span class='math-in-toc'>$L$</span><span> times, the uncertainty is defined as</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n884" cid="n884" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-88-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-88">U(x)=\left(\frac{1}{L}\sum_{i=1}^L||F_r(x)||\right)-
+\left|\left|\frac{1}{L}\sum_{i=1}^L F_r(x)\right|\right|</script></div></div><p><span>in which </span><span class='math-in-toc'>$||\cdot||$</span><span> denotes the squared </span><span class='math-in-toc'>$L_2$</span><span> norm.</span></p><blockquote><p><span>In other words, the uncertainty is the sum of the variances of each component of the output, computed over the </span><span class='math-in-toc'>$L$</span><span> outputs from the randomized network.</span></p></blockquote><p><span>The detector is constructed with a threshold, i.e. the example is adversarial if </span><span class='math-in-toc'>$U(x)&gt;\tau$</span><span>, otherwise natural.</span></p><blockquote><p><span>When we run this detection scheme on the adversarial examples</span>
+<span>generated by the FGS and JSMA attack algorithms on MNIST, it detects 96% of adversarial examples with a false positive rate lower than 1% when </span><span class='math-in-toc'>$\tau= 0.02$</span><span>.</span></p></blockquote><p><span>In </span><em><span>Zero-Knowledge Attack Evaluation</span></em><span>, </span></p><blockquote><p><span>We generated adversarial examples with C&amp;W’s attack and find 75% of these adversarial examples are detected by this defense on MNIST. Surprisingly, this defense is even more effective at detecting attacks on CIFAR: it detects 95% of C&amp;W adversarial examples.</span></p></blockquote><p><span>In </span><em><span>Perfect-Knowledge Attack Evaluation</span></em><span>,</span></p><p><span>They first define a new objective for adversary, i.e.</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n896" cid="n896" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-94-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-94">G(x)_i=\begin{cases}
+Z(x)_i&\text{ if }i\le N\\
+(1+U(x)-\tau)\cdot\max_iZ(x)_i&\text{ if }i=N+1
+\end{cases}</script></div></div><blockquote><p><span>However, </span><strong><span>this attack fails</span></strong><span>: the defense is still able to detect 60% of adversarial examples.</span></p></blockquote><p><span>They further notice that </span><span class='math-in-toc'>$U(\cdot)$</span><span> is calculated based on the probability </span><span class='math-in-toc'>$F(\cdot)$</span><span>, therefore they change the loss function, sample </span><span class='math-in-toc'>$K$</span><span> different deterministic networks </span><span class='math-in-toc'>$\{Z_j(\cdot):j\in[1,K]\}$</span><span>, each with different randomness used during dropout.</span></p><p><span>They then construct a new loss function by</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n901" cid="n901" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-99-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-99">\ell^\prime(x^\prime)=\sum_{j=1}^K\ell_{Z_j}(x^\prime)</script></div></div><p><span>And use this to launch a C&amp;W attack.</span></p><blockquote><p><span>This approach successfully generates adversarial examples that</span>
+<span>fool the dropout defense with 98% success.</span></p></blockquote><p><span>In </span><em><span>Limited-Knowledge Attack Evaluation</span></em><span>,</span></p><blockquote><p><span>It turns out that adversarial examples generated with the white-box approach transfer with high probability across models.</span></p></blockquote><blockquote><p><span>On MNIST, we find that adversarial examples generated with</span>
+<span>our algorithm transfer to G with 90% success.</span></p></blockquote><h5><a name="mean-blur-1-method" class="md-header-anchor"></a><span>Mean blur (1 method)</span></h5><p><em><span>The second detection method proposed by Li et al. applies a 3 × 3 average filter to blur the image before applying the classifier.</span></em></p><p><span>In </span><em><span>Zero-Knowledge Attack Evaluation</span></em><span>,</span></p><blockquote><p><span>we find that this defense effectively removes low-confidence adversarial examples (</span><mark><span>80% ineffective</span></mark><span>)</span></p></blockquote><blockquote><p><span>To ensure they remain adversarial after blurring, we must increase the distortion by a factor of 3×.</span></p></blockquote><p><span>In </span><em><span>Perfect-Knowledge Attack Evaluation</span></em><span>,</span></p><p><span>They construct a new network </span><span class='math-in-toc'>$F^\prime$</span><span> by</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n919" cid="n919" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-101-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-101">F^\prime(x)=F(\text{blur}(x))</script></div></div><p><span>and apply C&amp;W attack.</span></p><blockquote><p><span>When we do so, we find that the mean distance to adversarial examples does not increase.</span></p></blockquote><h4><a name="lessons" class="md-header-anchor"></a><span>Lessons</span></h4><p><span>Based on the examination of the ten defense methods above, they conclude several properties of adversarial examples:</span></p><ul><li><strong><em><span>Randomization can increase required distortion</span></em></strong></li><li><strong><em><span>MNIST properties may not hold on CIFAR.</span></em></strong></li><li><strong><em><span>Detection neural networks can be bypassed</span></em></strong></li><li><strong><em><span>Operating on raw pixel values is ineffective</span></em></strong></li></ul><p><span>And give several recommendations for defenses:</span></p><ul><li><strong><em><span>Evaluate using a strong attack</span></em></strong></li><li><strong><em><span>Demonstrate white-box attacks fail</span></em></strong></li><li><strong><em><span>Report false positive and true positive rates</span></em></strong></li><li><strong><em><span>Evaluate on more than MNIST</span></em></strong></li><li><strong><em><span>Release source code</span></em></strong></li></ul><h4><a name="inspirations-n946" class="md-header-anchor"></a><span>Inspirations</span></h4><p><span>This paper shows the power of adaptive attacks, while most of the evaluated defenses are effective against a zero-knowledge adversary, they fail in face of a perfect-knowledge scenario.</span></p><p><span>The most intriguing finding should be the failure of those methods that try to detect adversarial examples by distributional hints, it seems to indicate that adversarial examples are or can be in the same distribution with natural examples.</span></p><h3><a name="obfuscated-gradients-give-a-false-sense-of-security---icml-2018" class="md-header-anchor"></a><span>Obfuscated Gradients Give a False Sense of Security - ICML 2018</span></h3><p><span>Code: </span><a href='https://github.com/anishathalye/obfuscated-gradients' target='_blank' class='url'>https://github.com/anishathalye/obfuscated-gradients</a></p><blockquote><p><em><span>Anish Athalye, Nicholas Carlini, David Wagner. Obfuscated Gradients Give a False Sense of Security: Circumventing Defenses to Adversarial Examples. ICML 2018. </span><strong><a href='http://export.arxiv.org/abs/1802.00420'><span> arXiv:1802.00420</span></a></strong></em></p></blockquote><p><span>This is an analysis against the defenses of adversarial attack.</span></p><h4><a name="setting" class="md-header-anchor"></a><span>Setting</span></h4><p><span>The classification of the network is denoted as</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n956" cid="n956" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-102-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-102">c(x)=\arg\max_{i}f(x)_{i}</script></div></div><p><span>In which, </span><span class='math-in-toc'>$f(x)_i$</span><span> represents the probability that image </span><span class='math-in-toc'>$x$</span><span> corresponds to label </span><span class='math-in-toc'>$i$</span><span>, </span><span class='math-in-toc'>$x\in[0,1]^{w\cdot h\cdot c}$</span><span> is a image of width </span><span class='math-in-toc'>$w$</span><span>, height </span><span class='math-in-toc'>$h$</span><span> and </span><span class='math-in-toc'>$c$</span><span> channels. The true label of </span><span class='math-in-toc'>$x$</span><span> is </span><span class='math-in-toc'>$c^{*}(x)$</span><span>.</span></p><p><span>An adversarial example </span><span class='math-in-toc'>$x^{&#39;}$</span><span> suffices two properties, given an image </span><span class='math-in-toc'>$x$</span><span> and classifier </span><span class='math-in-toc'>$f(\cdot)$</span><span>:</span></p><ul><li><span class='math-in-toc'>$\cal{D}(x,x^{&#39;})$</span><span> is small for some distance metric </span><span class='math-in-toc'>$\cal{D}$</span></li><li><span class='math-in-toc'>$c(x^{&#39;})\neq c^*(x)$</span><span>, the classification is different</span></li></ul><p><span>They consider </span><span class='math-in-toc'>$l_{\infty}$</span><span> and </span><span class='math-in-toc'>$l_2$</span><span> distance in the normalized </span><span class='math-in-toc'>$[0,1]$</span><span> space.</span></p><p><span>The following model is evaluated:</span></p><ul><li><span>A standard 5-layer convolutional neural network for MNIST (99.3%)</span></li><li><span>A wide-ResNet model for CIFAR-10 (95%)</span></li><li><span>An InceptionV3 network for ImageNet (78.0% top-1, 93.9% top-5)</span></li></ul><p><span>They use an iterative optimization-based methods, i.e.</span></p><p><strong><span>For a given instance </span><span class='math-in-toc'>$x$</span><span>, search for a </span><span class='math-in-toc'>$\delta$</span><span> such that </span><span class='math-in-toc'>$c(x+\delta)\neq c^*(x)$</span><span> either minimizing </span><span class='math-in-toc'>$||\delta||$</span><span> or maximizing the classification loss on </span><span class='math-in-toc'>$f(x+\delta)$</span><span>.</span></strong></p><h4><a name="obfuscated-gradients" class="md-header-anchor"></a><span>Obfuscated gradients</span></h4><blockquote><p><span>A defense is said to cause gradient masking if it “does not have useful gradients” for generating adversarial examples. gradient masking is known to be an incomplete defense to adversarial examples.</span></p></blockquote><p><span>They discover three categories of obfuscated gradients defenses:</span></p><ul><li><p><strong><span>Shattered Gradients</span></strong></p><p><em><span>It&#39;s caused when a defense is non-differentiable, introduces numeric instability or other wise causes a gradient to be nonexistent or incorrect.</span></em></p></li><li><p><strong><span>Stochastic Gradients</span></strong></p><p><em><span>It&#39;s caused by randomized defenses, where either the network itself is randomized or the input is randomly transformed before being fed to the classifier, causing the gradients to become randomized.</span></em></p></li><li><p><strong><span>Exploding &amp; Vanishing Gradients</span></strong></p><p><em><span>It&#39;s often caused by defenses that consist of multiple iterations of neural network evaluation, feeding the output of one computation as the input of the next.</span></em></p></li></ul><p><span>They summarize the following clues for the possible presence of obfuscated gradient:</span></p><ul><li><p><strong><span>One-step attacks perform better than iterative attacks</span></strong></p><p><span>This indicates that iterative attacks are stuck in local minima.</span></p></li><li><p><strong><span>Black-box attacks are better than white-box attacks</span></strong></p><p><span>Black-box attacks do not use gradients.</span></p></li><li><p><strong><span>Unbounded attacks do not reach 100% success</span></strong></p><p><span>An unbounded attack should always reach 100% success unless it&#39;s stuck in local minima.</span></p></li><li><p><strong><span>Random sampling finds adversarial examples</span></strong></p><p><span>This indicates the existence of adversarial examples.</span></p></li><li><p><strong><span>Increasing distortion bound does not increase success</span></strong></p><p><span>This indicates that the bound is never reached, hence the attack is stuck in local minima.</span></p></li></ul><p><mark><span>Just because the adversarial examples are not easy to found, does not prove that the model is adversarially robust.</span></mark></p><h4><a name="attack-techniques" class="md-header-anchor"></a><span>Attack techniques</span></h4><p><strong><span>Backward Pass Differentiable Approximation (BPDA) for shattered gradients</span></strong></p><p><span>Non-differentiable defenses use a non-differentiable preprocessing model </span><span class='math-in-toc'>$g(\cdot)$</span><span> to pre-process the inputs, i.e.</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n1010" cid="n1010" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-127-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-127">\hat{f}(x)=f(g(x)),s.t.g(x)\approx x</script></div></div><p><span>If </span><span class='math-in-toc'>$g(\cdot)$</span><span> is neither smooth nor differentiable, it&#39;s not possible to backpropagate through it the gradient signals that white-box attack requires.</span></p><p><span>Their circumvent method is to approximate the gradient of </span><span class='math-in-toc'>$g(x)$</span><span> with </span><span class='math-in-toc'>$x$</span><span>, i.e.</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n1013" cid="n1013" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-131-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-131">\nabla_x g(x)\approx \nabla_x x=1</script></div></div><p><span> the derivative of </span><span class='math-in-toc'>$f(g(x))$</span><span> at the point </span><span class='math-in-toc'>$\hat{x}$</span><span> can be then approximated:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n1015" cid="n1015" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-134-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-134">\nabla_x f(g(x))|_{x=\hat{x}}\approx\nabla_x f(x)|_{x=g(\hat{x})}</script></div></div><p><span>hence the backpropagation works again.</span></p><p><span>The proposed BPDA approach is</span></p><p><em><span>Let </span><span class='math-in-toc'>$f(\cdot)=f^{1\dots j}(\cdot)$</span><span> be a neural network, and </span><span class='math-in-toc'>$f^{i}(\cdot)$</span><span> (i.e. the </span><span class='math-in-toc'>$i$</span><span>-th layer) is a non-differentiable layer. To approximate </span><span class='math-in-toc'>$\nabla_x f(x)$</span><span>, first find a differentiable approximation </span><span class='math-in-toc'>$g(x)$</span><span> such that </span><span class='math-in-toc'>$g(x)\approx f^{i}(x)$</span><span>, then approximate </span><span class='math-in-toc'>$\nabla_x f(x)$</span><span> by performing the forward pass through </span><span class='math-in-toc'>$f(\cdot)$</span><span>, but on the backward pass, replacing </span><span class='math-in-toc'>$f^{i}(x)$</span><span> with </span><span class='math-in-toc'>$g(x)$</span><span>.</span></em></p><p><strong><span>Expectation over transformation for stochastic gradients</span></strong></p><p><span>When the gradients are randomized, the proposed method is to estimate the gradients of the stochastic function.</span></p><p><span>When the classifier use sampled transformation </span><span class='math-in-toc'>$t\sim T$</span><span> for preprocessing, one can use EOT to optimize the expectation over the transformation, i.e.</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n1022" cid="n1022" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-146-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-146">\Bbb{E}_{t\sim T}f(t(x))</script></div></div><p><span>The randomized gradient is reconstructed by expectation</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n1024" cid="n1024" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-147-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-147">\nabla\Bbb{E}_{t\sim T}f(t(x))=\Bbb{E}_{t\sim T}\nabla f(t(x))</script></div></div><p><strong><span>Reparameterization for vanishing &amp; exploding gradients</span></strong></p><p><span>The defenses leading vanishing or exploding gradients use an unstable processor </span><span class='math-in-toc'>$g(\cdot)$</span><span> that causes this trouble for attacks.</span></p><p><span>They make a change of variable, i.e. </span><span class='math-in-toc'>$x=h(z)$</span><span> for some function </span><span class='math-in-toc'>$h(\cdot)$</span><span> such that </span><span class='math-in-toc'>$g(h(z))=h(z)$</span><span> for all </span><span class='math-in-toc'>$z$</span><span> while </span><span class='math-in-toc'>$h(\cdot)$</span><span> is differentiable.</span></p><h4><a name="breach-proposed-defenses-in-iclr-2018" class="md-header-anchor"></a><span>Breach proposed defenses in ICLR 2018</span></h4><p><img src="imgs/ogfs_breach.jpg" width=50%></img></p><h5><a name="adversarial-training-madry-et-al-2018" class="md-header-anchor"></a><span>Adversarial training (Madry et al. 2018)</span></h5><p><span>Adversarial training uses online generated adversarial examples to augment the training data, i.e.</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n1032" cid="n1032" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-154-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-154">\theta^{*}=\mathop{\arg\min}_{\theta}\Bbb{E}_{(x,y)\in\mathcal{X}}\left[\max_{\theta\in[-\epsilon,\epsilon]^N}l(x+\delta;y;F_{\theta})\right]</script></div></div><p><span>Pros</span></p><ul><li><span>No evidence that obfuscated gradients are caused.</span></li></ul><p><span>Cons</span></p><ul><li><span>Difficult at ImageNet scale</span></li><li><span>No trans-metric robustness</span></li></ul><h5><a name="cascade-adversarial-training-na-et-al-2018" class="md-header-anchor"></a><span>Cascade adversarial training (Na et al. 2018)</span></h5><p><span>The idea is same with adversarial training, i.e. augment data with adversarial examples. But instead doing it online, it training model in cascade, using the adversarial examples of the previous model to augment the data of the next model.</span></p><p><span>Pros</span></p><ul><li><span>No evidence that the claimed robustness is reduced.</span></li></ul><p><span>Cons</span></p><ul><li><span>The robustness itself is naturally not good enough.</span></li></ul><h5><a name="thermometer-encoding--adversarial-training-szegedy-et-al-2013" class="md-header-anchor"></a><span>Thermometer encoding + adversarial training (Szegedy et al. 2013)</span></h5><p><span>The purpose of thermometer encoding is to break the linearity of neural networks.</span></p><p><em><span>Given an image </span><span class='math-in-toc'>$x$</span><span>, for each pixel color </span><span class='math-in-toc'>$x_{i,j,c}$</span><span>, the </span><span class='math-in-toc'>$l$</span><span>-level thermometer encoding </span><span class='math-in-toc'>$\tau(x_{i,j,c})$</span><span> is a </span><span class='math-in-toc'>$l$</span><span>-dimensional vector where </span><span class='math-in-toc'>$\tau(x_{i,j,c})_k=1$</span><span> if </span><span class='math-in-toc'>$x_{i,j,c}&gt;k/l$</span><span>, and </span><span class='math-in-toc'>$0$</span><span> otherwise.</span></em></p><p><span>The author performs adversarial training on thermometer encoded networks with the proposed Logit-Space Projected Gradient Ascent (LS-PGA) as an attack.</span></p><p><span>This defense leads to gradient shattering.</span></p><p><span>They use BPDA approach to breach this defense, replacing the backwards pass with the following function </span><span class='math-in-toc'>$\hat{\tau}(x)$</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n1059" cid="n1059" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-164-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-164">\hat{\tau}(x_{i,j,c})_k=\min(\max(x_{i,j,c}-k/l,0),1)</script></div></div><p><span>It suffices that</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n1061" cid="n1061" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-165-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-165">\tau(x_{i,j,c})_k=\mathop{floor}(\hat{\tau}(x_{i,j,c})_k)</script></div></div><h5><a name="input-transformations-guo-et-al-2018" class="md-header-anchor"></a><span>Input transformations (Guo et al. 2018)</span></h5><p><span>The author propose two transformations to counter adversarial examples:</span></p><ol start='' ><li><span>Randomly drop pixels and restore them by performing </span><em><span>total variance minimization</span></em><span>.</span></li><li><em><span>Image quilting</span></em><span>: reconstruct images by replacing small patches with patches from &quot;clean&quot; images, using minimum graph cuts in overlapping boundary regions to remove edge artifacts.</span></li></ol><blockquote><p><span>The authors do not succeed in white-box attacks, crediting lack of access to test-time randomness as “particularly crucial in developing strong defenses”.</span></p></blockquote><p><span>They circumvent this defense using a combination of EOT and BPDA.</span></p><h5><a name="local-intrinsic-dimensionality-lid-ma-et-al-2018" class="md-header-anchor"></a><span>Local intrinsic dimensionality (LID) (Ma et al. 2018)</span></h5><blockquote><p><span>LID is a general-purpose metric that measures the distance from an input to its neighbors.</span></p></blockquote><p><span>The author propose using LID to characterize properties of adversarial examples and detect them.</span></p><blockquote><p><span>Instead of actively attacking the detection method, we find that LID is not able to detect high confidence adversarial examples.</span></p></blockquote><h5><a name="stochastic-activation-pruning-sap-dhilon-et-al-2018" class="md-header-anchor"></a><span>Stochastic activation pruning (SAP) (Dhilon et al. 2018)</span></h5><p><span>SAP randomly drops some neurons of each layer of </span><span class='math-in-toc'>$f^i$</span><span> to </span><span class='math-in-toc'>$0$</span><span> with probability proportional to their absolute value. It essentially applies dropout at each layer where instead of dropping with uniform probability, nodes are dropped with a weighted distribution.</span></p><blockquote><p><span>To resolve this difficulty, we estimate the gradients by computing the expectation over instantiations of randomness.</span></p></blockquote><blockquote><p><span>At each iteration of gradient descent, instead of taking a step in the direction of </span><span class='math-in-toc'>$\nabla_x f(x)$</span><span> we move in the direction of </span><span class='math-in-toc'>$\sum_{i=1}^k\nabla_x f(x)$</span><span> where each invocation is randomized with SAP.</span></p></blockquote><h5><a name="mitigating-through-randomization-xie-et-al-2018" class="md-header-anchor"></a><span>Mitigating through randomization (Xie et al 2018)</span></h5><p><span>The author propose to add a randomization layer before the input to the classifier to defend against adversarial examples.</span></p><blockquote><p><span>For a classifier that takes a </span><span class='math-in-toc'>$299\times 299$</span><span> input, the defense first randomly rescales the image to a </span><span class='math-in-toc'>$r\times r$</span><span> image, with </span><span class='math-in-toc'>$r\in[299,331)$</span><span>, and then randomly zero-pads the image so that the result is </span><span class='math-in-toc'>$331\times 331$</span><span>. The output is then fed to the classifier.</span></p></blockquote><blockquote><p><span>We find the authors’ ensemble attack overfits to the ensemble with fixed randomization. We bypass this defense by applying EOT, optimizing over the (in this case, discrete) distribution of transformations.</span></p></blockquote><h5><a name="pixel-defend-song-et-al-2018" class="md-header-anchor"></a><span>Pixel defend (Song et al. 2018)</span></h5><p><span>The author proposes to use a PixelCNN generative model to project a potential adversarial example back onto the data manifold before feeding it into a classifier under the assumption that adversarial examples mainly lie in the low-probability region of the data distribution.</span></p><blockquote><p><span>The authors dismiss the possibility of end-to-end attacks on PixelDefend due to the difficulty of differentiating through an unrolled version of PixelDefend due to vanishing gradients and computation cost.</span></p></blockquote><blockquote><p><span>We sidestep the problem of computing gradients through an unrolled version of PixelDefend by approximating gradients with BPDA, and we successfully mount an end-to-end attack using this technique</span></p></blockquote><h5><a name="defense-gan-samangouei-et-al-2018" class="md-header-anchor"></a><span>Defense-GAN (Samangouei et al. 2018)</span></h5><p><span>Same idea with Pixel defend, but replacing the PixelCNN with GAN.</span></p><p><span>They show that it&#39;s possible to construct an adversarial example on the manifold, i.e.</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n1099" cid="n1099" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display MathJax_SVG_Processing"><span class="MathJax_SVG" id="MathJax-Element-174-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"></span></div><script type="math/tex; mode=display" id="MathJax-Element-174">x^{'}=G(z),s.t.\ x^{'}\approx x,c(x^{'})\neq c(x)</script></div></div><blockquote><p><span>We therefore construct a second attack using BPDA to evade Defense-GAN, although at only a 45% success rate.</span></p></blockquote><h4><a name="evaluation-scheme" class="md-header-anchor"></a><span>Evaluation scheme</span></h4><p><span>The following elements may be held secret to the defender</span></p><ul><li><span>model architecture</span></li><li><span>model weights</span></li><li><span>training algorithm</span></li><li><span>training data</span></li><li><span>test time randomness</span></li><li><span>query access and type</span></li></ul><blockquote><p><strong><span>We believe any compelling threat model should at the very least grant knowledge of the model architecture, training algorithm, and allow query access.</span></strong></p></blockquote><blockquote><p><span>A defense being specified completely, with all hyperparameters given, is a prerequisite for claims to be testable.</span></p></blockquote><blockquote><p><span>A strong defense is robust not only against existing attacks, but also against future attacks within the specified threat model.</span></p></blockquote><blockquote><p><strong><span>An adaptive attack is one that is constructed after a defense has been completely specified, where the adversary takes advantage of knowledge of the defense and is only restricted by the threat model.</span></strong></p></blockquote><blockquote><p><span>One useful attack approach is to perform many attacks and report the mean over the best attack per image. That is, for a set of attacks  </span><span class='math-in-toc'>$a\in\cal{A}$</span><span> instead of reporting the value </span><span class='math-in-toc'>$\min_{a\in\cal{A}}\text{mean}_{x\in\cal{A}}f(a(x))$</span><span>, report </span><span class='math-in-toc'>$\text{mean}_{x\in\cal{A}}\min_{a\in\cal{A}}f(a(x))$</span><span>.</span></p></blockquote><p>&nbsp;</p></div>
+</body>
+</html>

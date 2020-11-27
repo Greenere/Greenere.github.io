@@ -1,6 +1,6 @@
 <div position="relative">
 <center>
-<img src="imgs/me.png" width=200em></img>
+<img src="imgs/me_yunnan.jpg" width=25%></img>
 <hr>
 <font size="6"><b>HAOYANG LI</b></font><br>
 <hr>
@@ -24,6 +24,7 @@ Welcome to Haoyang Li's History.<br>
 <hr>
 </center>
 </div>
+
 
 
 

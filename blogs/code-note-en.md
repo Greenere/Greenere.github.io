@@ -6,7 +6,7 @@ This is a graph note for the book "*Code: The Hidden Language of Computer Hardwa
 
 [TOC]
 
-## HOW TO BUILD A COMPUTER
+## How to Build a Computer
 
 ```mermaid
 graph TD
@@ -118,7 +118,7 @@ classDef common fill:#555555,color:white,stroke-width:0px
 classDef soft fill:#0101,stroke-width:0px
 ```
 
-## IDEAS BEFORE COMPUTER
+## Ideas before Computer
 
 ```mermaid
 graph LR
@@ -243,7 +243,7 @@ classDef common fill:#555555,color:white,stroke-width:0px
 classDef people fill:#0101,stroke-width:0px
 ```
 
-## CODES BEFORE COMPUTER
+## Coding
 
 ```mermaid
 graph TD
@@ -276,7 +276,7 @@ ASCII-.->UNICODE
 classDef node fill:gray,stroke-width:0px,color:white
 ```
 
-## NUMBER
+## Numeric Coding
 
 ```mermaid
 graph LR
@@ -342,7 +342,7 @@ style Notation fill:white,stroke:black
 style Math fill:white,stroke:black
 ```
 
-## IMAGE
+## Image Coding
 
 ```mermaid
 graph LR
@@ -377,7 +377,7 @@ BM-.->|OCR|VC
 classDef node fill:gray,stroke-width:0px,color:white
 ```
 
-## AUDIO
+## Audio Coding
 
 ```mermaid
 graph LR
