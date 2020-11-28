@@ -12,7 +12,7 @@ This is a resume/CV originally set up for application. `You can click the red te
 <table align="center" border="0">
     <tr>
         <td align="left">Sep. 2016 -June 2020</td>
-        <td align="left">Bachelor’s Degree, Electronic and Information Engineering, 3.9/4.0 (Top 7%)<br>
+        <td align="left">Bachelor of Engineering, Electronic and Information Engineering, 3.91/4.0 (Top 10)<br>
             Huazhong University of Science and Technology,<br> Wuhan, Hubei, China</td>
     </tr>
     <tr>
@@ -23,6 +23,7 @@ This is a resume/CV originally set up for application. `You can click the red te
         </td>
     </tr>
 </table>
+
 **WORK & INTERNSHIPS**
 
 <table align="center" border="0">
@@ -52,7 +53,7 @@ This is a resume/CV originally set up for application. `You can click the red te
         <td align="left">Dec.2019<br>–<br>May.2020</td>
         <td align="left">
         <b>Graduate Design:</b>The generation and detection of deepfakes. <br>
-        <b>My role:</b>Auther. <br>
+        <b>My role:</b>Author. <br>
         <b>Tech involved:</b>Human Face Detection, Human Face Alignment, Convolutional Auto-encoder, Image Color Transfer, Image Fusion. <br>
         <b>Project description:</b>
         <br>
@@ -106,6 +107,7 @@ This is a resume/CV originally set up for application. `You can click the red te
         </td>
     </tr>
 </table>
+
 **PUBLICATIONS**
 
 <table width=400 align="center" border="0">
@@ -118,14 +120,13 @@ This is a resume/CV originally set up for application. `You can click the red te
         </td>
     </tr>
 </table>
-
-**PROGRAMMING & TOOL SKILLS**
+**TECHNICAL SKILLS**
 
 <table width=400 align="center" border="0">
     <tr>
         <td align="left">
             <div title="Being able to create large project or implement complicated algorithms with it.">
-                Very Familiar
+                Proficient
             </div>
         </td>
         <td align="left">Python, C</td>
@@ -147,6 +148,7 @@ This is a resume/CV originally set up for application. `You can click the red te
         <td align="left">Java, Go</td>
     </tr>
 </table>
+
 
 <font size='1'>*Technically these are markup languages</font>
 
@@ -241,19 +243,19 @@ This is a resume/CV originally set up for application. `You can click the red te
         <td align="left">Took charge of the exhibition “100 Years Development of China’s Modern Poems” in the major library as the vice proprietor in Xiayu Association of Poetry. Plus, I also participated in the organization of the second Show of Traditional Culture and published the first poetry anthology of our association with other members. </td>
     </tr>
 </table>
-
 **INTERESTS**
 
 <table width=400 align="center" border="0">
     <tr>
         <td align="left">Research</td>
-        <td align="left">Computer vision, Image processing, Adversarial Example</td>
+        <td align="left">Adversarial Learning, Computer Vision, Image Processing</td>
     </tr>
     <tr>
         <td align="left">Extracurricular</td>
         <td align="left">Reading, Poetry, <a href="interests/graphicDesign.html" title="Click for a small gallery">Graphic design</a>, Writing, Hiking, Traveling, Badminton</td>
     </tr>
 </table>
+
 
 ---
 
