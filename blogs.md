@@ -72,9 +72,10 @@
 - <a href="blogs/pages/code-note-en.html" target="_blank">How to Build a Computer</a>
 - <a href="blogs/pages/encrypto-note-en.html" target="_blank">The Evolution of Cryptography</a>
 
-## Machine Learning
+## Concepts
 
 - <a href="blogs/pages/Concept-SVM.html">Basic Concepts of Support Vector Machine (SVM)</a>
+- <a href="blogs/pages/Concept-CVCategory.html">The Categories of Computer Vision</a>
 
 ## Zhihu Articles
 
