@@ -17,6 +17,8 @@
 - <a href="blogs/pages/Single-AdversarialTrainingTricks.html" target="_blank">Bag of Tricks for Adversarial Training</a>
 - <a href="blogs/pages/Single-AdversarialVulnerabilityFirstorder.html" target="_blank">First-order Adversarial Vulnerability</a>
 - <a href="blogs/pages/Single-ShortcutLearning.html" target="_blank">Shortcut Learning as a Concept</a>
+- <a href="blogs/pages/Single-AdversarialInevitable.html" target="_blank">Are Adversarial Example Inevitable?</a>
+- <a href="blogs/pages/Single-FeaturePurification.html" target="_blank">Feature Purification : an Explanation for Adversarial Training</a>
 
 ### Explanation/Interpretation
 
@@ -27,8 +29,8 @@
 ### Adversarial Attack
 
 - <a href="blogs/pages/Note-AdversarialAttack.html" target="_blank">Adversarial Attacks</a>
-
 - <a href="blogs/pages/Note-AdversarialExampleOD.html" target="_blank">Adversarial Example in Object Detection</a>
+- <a href="blogs/pages/Note-AdversarialAttackRestricted.html" target="_blank">Restricted Adversarial Attacks</a>
 
 ### Adversarial Defense
 
@@ -46,6 +48,7 @@
 ### Re-purpose Adversarial Example
 
 - <a href="blogs/pages/Note-AdversarialAugmentation.html" target="_blank">Adversarial Augmentation</a>
+- <a href="blogs/pages/Note-AdversarialGenerative.html" target="_blank">Adversarial and Generative</a>
 
 ## Object Detection
 
@@ -58,11 +61,9 @@
 
 ## Neural Networks
 
-### Interpretation
+- <a href="blogs/pages/Single-InvertibleResNet.html" target="_blank">Invertible Residual Network</a>
 
 - <a href="blogs/pages/Note-NeuralNetworkInterpretation.html" target="_blank">Interpretation of Neural Networks</a>
-
-### Structure
 
 - <a href="blogs/pages/Note-OrthogonalConvolution.html" target="_blank">Orthogonal Convolution</a>
 
@@ -76,6 +77,8 @@
 - <a href="blogs/pages/Concept-SVM.html">Basic Concepts of Support Vector Machine (SVM)</a>
 
 ## Zhihu Articles
+
+- <a href="https://zhuanlan.zhihu.com/p/296809584">对抗训练——终极数据增强？</a>
 
 - <a href="https://zhuanlan.zhihu.com/p/269203978">什么是对抗样本？——稳健性和泛化性的交集</a>
 - <a href="https://zhuanlan.zhihu.com/p/268154711">对抗样本是什么？——数据的一小步，模型的一大步</a>
