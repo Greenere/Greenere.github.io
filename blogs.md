@@ -4,6 +4,8 @@
 
 [TOC]
 
+Most of them are notes.
+
 ## Adversarial Example
 
 - <a href="blogs/pages/Map-AdversarialExample.html" target="_blank">A Map of Adversarial Example Research</a>
@@ -19,6 +21,7 @@
 - <a href="blogs/pages/Single-ShortcutLearning.html" target="_blank">Shortcut Learning as a Concept</a>
 - <a href="blogs/pages/Single-AdversarialInevitable.html" target="_blank">Are Adversarial Example Inevitable?</a>
 - <a href="blogs/pages/Single-FeaturePurification.html" target="_blank">Feature Purification : an Explanation for Adversarial Training</a>
+- <a href="blogs/pages/Single-InductiveBias.html" target="_blank">Higher-level Inductive Biases</a>
 
 ### Explanation/Interpretation
 
@@ -40,6 +43,7 @@
   - <a href="blogs/pages/Note-AdversarialTraining1.html" target="_blank">Adversarial Defense by Adversarial Training - 1</a>
   - <a href="blogs/pages/Note-AdversarialTraining2.html" target="_blank">Adversarial Defense by Adversarial Training - 2</a>
   - <a href="blogs/pages/Note-AdversarialRegularization.html" target="_blank">Adversarial Defense by Regularization</a>
+      - <a href="blogs/pages/Note-AdversarialLabelSmoothing.html" target="_blank">Adversarial Label Smoothing and Logit Squeezing</a>
   - <a href="blogs/pages/Note-AdversarialVerification.html" target="_blank">Provable Defense</a>
   - <a href="blogs/pages/Note-AdversarialDefenseStructure.html" target="_blank">Robust Structure</a>
 - <a href="blogs/pages/Note-AdversarialDefenseBreach.html" target="_blank">Breach Adversarial Defenses</a>
@@ -76,13 +80,16 @@
 
 - <a href="blogs/pages/Concept-SVM.html">Basic Concepts of Support Vector Machine (SVM)</a>
 - <a href="blogs/pages/Concept-CVCategory.html">The Categories of Computer Vision</a>
+- <a href="blogs/pages/Concept-Channel.html" target="_blank">The Channel in Convolutional Neural Nets</a>
 
 ## Zhihu Articles
+
+- <a href="https://zhuanlan.zhihu.com/p/337880063" target="_blank">对抗正则化——盲人摸象还是对症下药？</a>
 
 - <a href="https://zhuanlan.zhihu.com/p/296809584">对抗训练——终极数据增强？</a>
 
 - <a href="https://zhuanlan.zhihu.com/p/269203978">什么是对抗样本？——稳健性和泛化性的交集</a>
-- <a href="https://zhuanlan.zhihu.com/p/268154711">对抗样本是什么？——数据的一小步，模型的一大步</a>
+- <a href="https://zhuanlan.zhihu.com/p/268154711">对抗样本问题——数据的一小步，模型的一大步</a>
 
 ## History
 
