@@ -22,6 +22,7 @@ Most of them are notes.
 - <a href="blogs/pages/Single-AdversarialInevitable.html" target="_blank">Are Adversarial Example Inevitable?</a>
 - <a href="blogs/pages/Single-FeaturePurification.html" target="_blank">Feature Purification : an Explanation for Adversarial Training</a>
 - <a href="blogs/pages/Single-InductiveBias.html" target="_blank">Higher-level Inductive Biases</a>
+- <a href="blogs/pages/Single-OptimismAdversity.html" target="_blank">Optimism at the Face of Adversity</a>
 
 ### Explanation/Interpretation
 
@@ -66,10 +67,9 @@ Most of them are notes.
 ## Neural Networks
 
 - <a href="blogs/pages/Single-InvertibleResNet.html" target="_blank">Invertible Residual Network</a>
-
 - <a href="blogs/pages/Note-NeuralNetworkInterpretation.html" target="_blank">Interpretation of Neural Networks</a>
-
 - <a href="blogs/pages/Note-OrthogonalConvolution.html" target="_blank">Orthogonal Convolution</a>
+- <a href="blogs/pages/Single-NormalizingFlow.html" target="_blank">Normalizing Flow</a>
 
 ## Reading Notes
 
