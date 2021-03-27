@@ -111,6 +111,14 @@ This is a resume/CV originally set up for application. `You can click the red te
 **PUBLICATIONS**
 
 <table width=400 align="center" border="0">
+     <tr>
+        <td align="left">
+         Mar.2021 <br> Publized
+        </td>
+        <td align="left">
+         <i>Haoyang Li, Xinggang Wang. Noise Modulation: Let Your Model Interpret Itself.  <a href="https://arxiv.org/abs/2103.10603">arXiv:2103.10603</a></i>
+        </td>
+    </tr>
     <tr>
         <td align="left">
          Oct.2020 <br> Published
