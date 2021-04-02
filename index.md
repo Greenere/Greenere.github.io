@@ -1,12 +1,14 @@
 <div position="relative">
 <center>
-<img src="imgs/me_yunnan.jpg" width=25%></img>
+<img src="imgs/me_yunnan.jpg" width=30%></img>
 <hr>
 <font size="6"><b>HAOYANG LI</b></font><br>
 <hr>
 <a href="resume.html"><font size="5">RESUME</font></a>
 <font size="5">·</font>
-<a href='subpages/researchProject.html'><font size="5">RESEARCH&PROJECTS</font></a>
+<a href='subpages/research.html'><font size="5">RESEARCH</font></a>
+<font size="5">·</font>
+<a href='subpages/project.html'><font size="5">PROJECT</font></a>
 <font size="5">·</font>
 <!--<a href='dataMine.html'><font size="5">DATAMINE</font></a>
 <font size="5">·</font>-->
