@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
-<title>project</title><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+<title>project</title><link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
 .mac-os-11 { --title-bar-height:28px; }
 html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
 body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
@@ -164,510 +164,328 @@ mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
 .md-require-zoom-fix foreignobject { font-size: var(--mermaid-font-zoom); }
 
 
-/**
- * NexT for Typora
- * Brought to you by Bill Chen || https://github.com/BillChen2K/typora-theme-next
- *
- * - Want code ligatures for JetBrains Mono?
- * - Search for `font-variant-ligatures: none;` and comment that line.
- *
- * - Want to change the font size in exported pdf?
- * - Change the variable `--export-font-size` below.
- **/
-
 :root {
-    --base-font-size: 16px;
-    --highlight-color: rgb(0, 160, 160);
-    --text-color: #333;
-    --headings-color: #262a30;
-    --export-font-size: 13px;
-    --select-text-bg-color: #262a30;
-    --select-text-font-color: #eee;
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
 }
 
-* {
-    /* Disable ligatures */
-    font-variant-ligatures: none;
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
 }
 
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
 
-/* latin-ext */
-
-/* latin */
-
-/* latin-ext */
-
-/* latin */
-
-/* latin-ext */
-
-/* latin */
-
-/* latin-ext */
-
-/* latin */
-
-/* latin-ext */
-
-/* latin */
-
-/* latin-ext */
-
-/* latin */
-
-html,
-body,
 #write {
-    color: var(--text-color);
-    font-size: var(--base-font-size);
-    background: #fcfcfc;
-    font-family: Overpass, "GlowSansSC", "Helvetica Neue", "pingfang sc", "microsoft yahei", sans-serif;
-    font-weight: 400;
-    line-height: 1.15;
-    -webkit-text-size-adjust: 100%;
-    /* letter-spacing: -0.5px; */
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
 }
 
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-    color: var(--headings-color);
-    font-weight: 700;
-    line-height: 1.5;
-    margin: 20px 0 15px
-}
-
-.CodeMirror pre {
-    font-family: 'JetBrains Mono';
-    font-size: 0.95em;
-    line-height: 1.65em;
-}
-
-#write {
-    max-width: 914px;
-    text-align: justify;
-}
-
-#write>h1:first-child {
-    margin-top: 1.75rem;
-}
-
-#write>h2:first-child {
-    margin-top: 1.5rem;
-}
-
-#write>h3:first-child {
+    position: relative;
     margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
 }
-
-#write>h4:first-child {
-    margin-top: 0.5rem;
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
 }
-
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
 h1 {
-    font-size: 2.5em
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
 }
 
-h2 {
-    font-size: 1.75 em
-}
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
 
 h3 {
-    font-size: 1.45em
+    font-size: 1.5em;
+    line-height: 1.43;
 }
-
 h4 {
-    font-size: 1.25em
+    font-size: 1.25em;
 }
-
 h5 {
-    font-size: 1.1em
+    font-size: 1em;
 }
-
 h6 {
-    font-size: 1em;
-    font-weight: bold
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
 }
 
-#write code {
-    color: var(--highlight-color);
+li p.first {
+    display: inline-block;
 }
-
-p {
-    color: var(--text-color);
-    line-height: 1.7rem;
-    margin: 0 0 8px;
+ul,
+ol {
+    padding-left: 30px;
 }
-
-#write ul {
-    line-height: 1.75rem;
-    margin-block-start: 0.6em;
-    margin-block-end: 0.6em;
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
 }
-
-#write ol li {
-    line-height: 1.75rem;
-    margin-block-start: 0.6em;
-    margin-block-end: 0.6em;
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
 }
-
-u {
-    text-decoration: none;
-    border-bottom: 1px solid #999;
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
 }
-
-#write>h3.md-focus:before {
-    left: -1.875rem;
-    top: 0.5rem;
-    padding: 2px;
+blockquote blockquote {
+    padding-right: 0;
 }
-
-#write>h4.md-focus:before {
-    left: -1.875rem;
-    top: 0.3125rem;
-    padding: 2px;
-}
-
-#write>h5.md-focus:before {
-    left: -1.875rem;
-    top: 0.25rem;
-    padding: 2px;
-}
-
-#write>h6.md-focus:before {
-    left: -1.875rem;
-    top: .125rem;
-    padding: 2px;
-}
-
-@media screen and (max-width: 48em) {
-    blockquote {
-        margin-left: 1rem;
-        margin-right: 0;
-        padding: 0.5em;
-    }
-    /* .h1,
-    h1 {
-        font-size: 2.827rem;
-    }
-    .h2,
-    h2 {
-        font-size: 1.999rem;
-    }
-    .h3,
-    h3 {
-        font-size: 1.413rem;
-    }
-    .h4,
-    h4 {
-        font-size: 1.250rem;
-    }
-    .h5,
-    h5 {
-        font-size: 1.150rem;
-    }
-    .h6,
-    h6 {
-        font-size: 1rem;
-    } */
-}
-
-a .md-def-url {
-    color: #262a30;
-}
-
-a {
-    color: var(--highlight-color);
-    text-decoration: none;
-    font-weight: bold;
-    transition-duration: 0.5s;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
 table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    font-size: 1em;
-    margin: 0 0 20px;
-    width: 100%;
+    padding: 0;
+    word-break: initial;
 }
-
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
 table tr:nth-child(2n),
 thead {
-    background-color: #f9f9f9;
+    background-color: #f8f8f8;
 }
-
-tbody tr:hover {
-    background: #f5f5f5
-}
-
-caption,
-td,
-th {
-    font-weight: 400;
-    padding: 8px;
-    text-align: left;
-    vertical-align: middle
-}
-
-table tr th {
-    border-bottom: 3px solid #ddd;
-    font-weight: 700;
-    padding-bottom: 10px;
-    background-color: var(--bg-color);
-}
-
-td,
-th {
-    border: 1px solid #ddd;
-}
-
-th {
-    font-weight: 700;
-    padding-bottom: 10px
-}
-
-td {
-    border-bottom-width: 1px
-}
-
-
-/* Inline Code */
-
-code,
-.md-fences {
-    background: #eee;
-    border-radius: 3px;
-    color: #555;
-    padding: 2px 4px;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    font-family: 'JetBrains Mono';
-    font-size: 0.935em;
-}
-
-
-/* Code Blocks */
-
-.md-fences {
-    margin: 0 0 20px;
-    font-size: 0.9em;
-    line-height: 1.5em;
-    padding: 0.4em 1em;
-    padding-top: 0.4em;
-}
-
-.task-list {
-    padding-left: 0;
-}
-
-.task-list-item {
-    padding-left: 2rem;
-}
-
-.task-list-item input {
-    top: 3px;
-}
-
-.task-list-item input {
-    outline: none;
-    margin-bottom: 0.5em;
-}
-
-.task-list-item input::before {
-    content: "";
-    display: inline-block;
-    width: 1rem;
-    height: 1rem;
-    vertical-align: middle;
-    text-align: center;
-    border: 1px solid gray;
-    background-color: #fdfdfd;
-    margin-left: -0.1rem;
-    margin-right: 0.1rem;
-    margin-top: -0.9rem;
-}
-
-.task-list-item input:checked::before {
-    padding-left: 0.125em;
-    content: '✔';
-    /*◘*/
-    font-size: 0.8125rem;
-    line-height: 0.9375rem;
-    margin-top: -0.9rem;
-}
-
-
-/* Chrome 29+ */
-
-@media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
-    .task-list-item input:before {
-        margin-top: -0.2rem;
-    }
-    .task-list-item input:checked:before,
-    .task-list-item input[checked]:before {
-        margin-top: -0.2rem;
-    }
-}
-
-blockquote {
-    border-left: 4px solid #ddd;
-    color: #666;
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
     margin: 0;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    padding: 0 15px
+    padding: 6px 13px;
 }
-
-blockquote p {
-    color: #666
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
 }
-
-blockquote cite::before {
-    content: '-';
-    padding: 0 5px
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
 }
-
-
-/* #write pre.md-meta-block {
-    min-height: 30px;
-    background: #f8f8f8;
-    padding: 1.5em;
-    font-weight: 300;
-    font-size: 1em;
-    padding-bottom: 1.5em;
-    padding-top: 3em;
-    margin-top: -1.5em;
-    color: #999;
-    border-left: 1000px #f8f8f8 solid;
-    margin-left: -1000px;
-    border-right: 1000px #f8f8f8 solid;
-    margin-right: -1000px;
-    margin-bottom: 2em;
-    font-size: 0.8em;
-    line-height: 1.5em;
-    font-family: 'JetBrains Mono';
-} */
-
-#write pre.md-meta-block {
-    padding: 1rem;
-    font-size: 85%;
-    line-height: 1.45;
-    background-color: #f1f1f1;
-    border: 0;
-    border-radius: 3px;
-    color: hsl(0, 0%, 53%);
-    margin-top: 0 !important;
-    margin-bottom: 2em;
-    font-size: 0.8em;
-    line-height: 1.5em;
-    font-family: 'JetBrains Mono';
-}
-
-.MathJax_Display {
-    font-size: 0.9em;
-    margin-top: 0.5em;
+table th:last-child,
+table td:last-child {
     margin-bottom: 0;
 }
 
-p.mathjax-block,
-.mathjax-block {
-    padding-bottom: 0;
-}
-
-.mathjax-block>.code-tooltip {
-    bottom: 5px;
-    box-shadow: none;
-}
-
-.md-image>.md-meta {
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-}
-
-.md-image>img {
-    margin-top: 2px;
-}
-
-.md-image>.md-meta:first-of-type:before {
+.CodeMirror-lines {
     padding-left: 4px;
 }
 
-#typora-source {
-    color: #555;
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
 }
 
-
-/** ui for windows **/
-
-#md-searchpanel {
-    border-bottom: 1px solid #ccc;
-}
-
-#md-searchpanel .btn {
-    border: 1px solid #ccc;
-}
-
-#md-notification:before {
-    top: 14px;
-}
-
-#md-notification {
-    background: #eee;
-}
-
-.megamenu-menu-panel .btn {
-    border: 1px solid #ccc;
-}
-
-#write>h3.md-focus:before {
-    left: -1.5625rem;
-    top: .375rem;
-}
-
-#write>h4.md-focus:before {
-    left: -1.5625rem;
-    top: .285714286rem;
-}
-
-#write>h5.md-focus:before {
-    left: -1.5625rem;
-    top: .285714286rem;
-}
-
-#write>h6.md-focus:before {
-    left: -1.5625rem;
-    top: .285714286rem;
-}
-
-.md-image>.md-meta {
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
     border-radius: 3px;
-    padding: 2px 0 0 4px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
     font-size: 0.9em;
     color: inherit;
 }
 
 .md-tag {
-    color: inherit;
+    color: #a7a7a7;
+    opacity: 1;
 }
 
-.md-toc {
-    margin-top: 20px;
-    padding-bottom: 5px;
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
 }
 
 .sidebar-tabs {
     border-bottom: none;
-}
-
-.mac-seamless-mode #typora-sidebar {
-    background-color: #efefef;
 }
 
 #typora-quick-open {
@@ -682,20 +500,23 @@ p.mathjax-block,
     border-width: 1px;
 }
 
-#md-notification:before {
-    top: 10px;
-}
-
-
 /** focus mode */
-
 .on-focus-mode blockquote {
     border-left-color: rgba(85, 85, 85, 0.12);
 }
 
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
 .file-node-content:hover .file-node-icon,
-.file-node-content:hover .file-node-open-state {
+.file-node-content:hover .file-node-open-state{
     visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
 }
 
 .md-lang {
@@ -706,134 +527,32 @@ p.mathjax-block,
     --item-hover-bg-color: #E6F0FE;
 }
 
-.file-tree-node {
-    margin-top: 8px;
-    margin-bottom: 8px;
-}
-
-.file-node-title {
-    padding-top: 2px;
-}
-
-.outline-item {
-    padding-top: 5px;
-    padding-bottom: 5px;
-    cursor: pointer;
-}
-
-/* 
-.modal-footer .btn-default,
-.modal-footer .btn-primary {
-    border: 2px solid #222;
-}
-
-
-
-#md-searchpanel .btn:not(.close-btn):hover {
-    background: #fff;
-    border-color: #222;
-    color: #222;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-}
-
-#md-searchpanel .btn:not(.close-btn) {
-    background: #222;
-    border-color: #222;
-    color: #fff;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    transition-duration: .2s;
-}
-
-.searchpanel-search-option-btn {
-    border-radius: 0px;
-    border: 1px solid #222;
-} */
-
-/* Search panel & UI */
-
-#md-searchpanel .btn {
-    border: none;
-}
-
-#md-searchpanel input {
-    box-shadow: none;
-}
-
-.searchpanel-search-option-btn {
-    border-color: #aaa;
-    border-radius: 0;
-}
-
-.modal-dialog .btn {
-    background: #222;
-    border-width: 2px;
-    border-color: #222;
-    border-radius: 0;
-    color: #fff;
-    display: inline-block;
-    font-size: .875em;
-    line-height: 2rem;
-    padding: 0 20px;
-    margin: 5px;
-    text-decoration: none;
-    transition-delay: 0s;
-    transition-duration: .2s;
-    transition-timing-function: ease-in-out
-}
-
-.modal-dialog .btn:hover {
-    background: #eee;
-    border-color: #222;
-    color: #222;
-}
-
-
-/* Printing issue */
-
-.typora-export * {
-    -webkit-print-color-adjust: exact;
-}
-
-.typora-export p {
-    font-size: var(--export-font-size) !important;
-}
-
-.typora-export li {
-    font-size: var(--export-font-size);
-    line-height: 2rem;
-}
-
-.typora-export #write {
-    font-size: var(--export-font-size) !important;
-}
-
-table,
-pre {
-    page-break-inside: avoid;
-}
-
-pre {
-    word-wrap: break-word;
-}
-
-hr {
-    background-image: repeating-linear-gradient(-45deg, #ddd, #ddd 4px, transparent 4px, transparent 8px);
+#md-notification .btn {
     border: 0;
-    height: 3px;
-    margin: 40px 0
 }
 
- :root {--mermaid-font-zoom:2.25em ;} 
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+ :root {--mermaid-font-zoom:1.25em ;}  .typora-export li, .typora-export p, .typora-export,  .footnote-line {white-space: normal;} 
 </style>
 </head>
 <body class='typora-export os-windows'>
 <div id='write'  class=''><h1><a name="projects" class="md-header-anchor"></a><span>Projects</span></h1><h3><a name="the-generation-and-detection-of-deepfakes-dec-2019---may-2020" class="md-header-anchor"></a><span>The Generation and Detection of Deepfakes, Dec. 2019 - May 2020</span></h3><p><span>Code: </span><a href='https://github.com/Greenere/faceswap' target='_blank' class='url'>https://github.com/Greenere/faceswap</a></p><p><span>This is my graduate design for my bachelor&#39;s degree. The major focus is the generation of deepfakes, more specificly, face swapped videos. I adjust the existing method with some minor improvements for generation part. The detection of deepfakes appears as a survey in the final paper.</span></p><h3><a name="scheme" class="md-header-anchor"></a><span>Scheme</span></h3><p><span>It takes a lot of work for auxiliary modules to construct an end-to-end pipeline as shown below:</span></p><p><img src="imgs/fw_skeleton.png" width=80%></img></p><p><span>Each video is first digested into frames, ceating two small datasets of faces after </span><strong><span>Face Detection</span></strong><span> and </span><strong><span>Face Alignment</span></strong><span>. These two datasets are then used to train </span><strong><span>Intracoder</span></strong><span> and </span><strong><span>Color Correction</span></strong><span> modules. At inference, these two modules together swap the original faces but maintain the original color, creating a new datasets of swapped faces. These swapped faces are then fused with corresponding original face and de-aligned to the original posture. Merging the original background with de-aligned swapped face creates a frame of final deepfake. Assemble these frames, there comes the final deepfake.</span></p><p><span>I adopt a public MTCNN for </span><strong><span>Face Detection</span></strong><span>, warp affine for </span><strong><span>Face Alignment</span></strong><span>  and </span><strong><span>Posture Reduction</span></strong><span>, Poisson image blending for </span><strong><span>Image Fusion</span></strong><span>. The major works are </span><strong><span>Intracoder</span></strong><span> and </span><strong><span>Color Correction</span></strong><span>.</span></p><h3><a name="intracoder" class="md-header-anchor"></a><span>Intracoder</span></h3><p><span>The structure of </span><strong><span>Intracoder</span></strong><span> is shown below:</span></p><p><img src="imgs/fw_intracoder.png" width=80%></img></p><p><span> </span></p><p><span>Just like the initial scheme of deepfakes, two auto-encoders share the same encoder that force the encoder to map two types of faces into the same latent space. The decoders are owned distinctly by each type of face. After sufficient training, we can then map the origin face into the domain of target face. The synthesized face has the posture of original face and the identity of target face. The posture information is more abstract and the identity information is more concrete. To maintain the more abstract posture, I use a more deeper encoder compared with decoder. </span></p><h3><a name="color-correction" class="md-header-anchor"></a><span>Color Correction</span></h3><p><span>Most of other implementations use a classical method to correct the color:</span></p><p><em><span>Reinhard E, Adhikhmin M, Gooch B, et al. Color transfer between images[J]. IEEE Computer graphics and applications, 2001.</span></em></p><p><span>In my case, I also want the color correction module to super-resolute the swapped face and correct artifacts brought by </span><strong><span>Intracoder</span></strong><span>. So I use another pair of auto-encoders as shown below:</span></p><p><img src="imgs/fw_colorcorrection.png" width=80%></img></p><p><span>Color information is rather shallow, so the decoder is actually only one layer deep.</span></p><h3><a name="results" class="md-header-anchor"></a><span>Results</span></h3><p><span>The performance of swapping faces is satisfactory:</span></p><p><img src="imgs/fw_faceswaps.png" width=80%></img></p><p><span>But the deepfake video generated is not as good as the public implementations:</span></p> <table>
 <tbody><tr>
-<td align="right"><img width="65%" src="imgs/id1-4.gif" title="Gesture donator"></td>
-<td align="center"><img width="100%" src="imgs/id19-1.gif" title="Identity donator"></td>
-<td align="left"><img width="65%" src="imgs/id1-id19-4-1.gif" title="Deepfake generated"></td>
+<td align="right"><img width="65%" src="https://github.com/Greenere/faceswap/raw/master/imgs/id1-4.gif" title="Gesture donator"></td>
+<td align="center"><img width="100%" src="https://github.com/Greenere/faceswap/raw/master/imgs/id19-1.gif" title="Identity donator"></td>
+<td align="left"><img width="65%" src="https://github.com/Greenere/faceswap/raw/master/imgs/id1-id19-4-1.gif" title="Deepfake generated"></td>
 </tr>
 <tr>
 <td width="25%" align="right">Gesture donator</td>

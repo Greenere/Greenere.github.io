@@ -48,9 +48,9 @@ But the deepfake video generated is not as good as the public implementations:
 
  <table>
 <tr>
-<td align="right"><img width=65% src="imgs/id1-4.gif" title="Gesture donator"/></td>
-<td align="center"><img width=100% src="imgs/id19-1.gif" title="Identity donator"/></td>
-<td align="left"><img width=65% src="imgs/id1-id19-4-1.gif" title="Deepfake generated"/></td>
+<td align="right"><img width=65% src="https://github.com/Greenere/faceswap/raw/master/imgs/id1-4.gif" title="Gesture donator"/></td>
+<td align="center"><img width=100% src="https://github.com/Greenere/faceswap/raw/master/imgs/id19-1.gif" title="Identity donator"/></td>
+<td align="left"><img width=65% src="https://github.com/Greenere/faceswap/raw/master/imgs/id1-id19-4-1.gif" title="Deepfake generated"/></td>
 </tr>
 <tr>
 <td width=25% align="right">Gesture donator</td>
@@ -58,6 +58,7 @@ But the deepfake video generated is not as good as the public implementations:
 <td width=25% align="left">Deepfake generated</td>
 </tr>
 </table>
+
 
 This is expected as I use no temporal information. It is easy to see inter-frame artifacts from the generated deepfake.
 
