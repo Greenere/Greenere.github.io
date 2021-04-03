@@ -21,6 +21,10 @@
 
 Written for the popularization of science and technologies in china.
 
+- [Transformer 的稳健性更好吗？](https://zhuanlan.zhihu.com/p/361105702)
+
+- [Density&Robustness](https://zhuanlan.zhihu.com/p/355959295)
+
 - <a href="https://zhuanlan.zhihu.com/p/341533105" target="_blank">对抗攻击——优化噪声的艺术</a>
 
 - <a href="https://zhuanlan.zhihu.com/p/337880063" target="_blank">对抗正则化——盲人摸象还是对症下药？</a>
@@ -70,7 +74,10 @@ Taken for thoughts. <code type="button" onclick="displaySwitch(this,'conceptual-
 Detailed notaries for important, interesting or useful papers. <code type="button" onclick="displaySwitch(this,'single-paper-notes')" onselectstart="return false;" style="cursor:pointer">SHOW</code>
 
 <div id="single-paper-notes" style="display:none">
-<ul><li><a href="blogs/pages/Single-AdversarialVulnerability.html" target="_blank"><span>Adversarial&nbsp;Vulnerability&nbsp;for&nbsp;any&nbsp;Classifier</span></a></li><li><a href="blogs/pages/Single-AdversarialPAC.html" target="_blank"><span>PAC&nbsp;Learning&nbsp;with&nbsp;Adversary</span></a></li><li><a href="blogs/pages/Single-AdversarialTrainingTricks.html" target="_blank"><span>Bag&nbsp;of&nbsp;Tricks&nbsp;for&nbsp;Adversarial&nbsp;Training</span></a></li><li><a href="blogs/pages/Single-AdversarialVulnerabilityFirstorder.html" target="_blank"><span>First-order&nbsp;Adversarial&nbsp;Vulnerability</span></a></li><li><a href="blogs/pages/Single-ShortcutLearning.html" target="_blank"><span>Shortcut&nbsp;Learning&nbsp;as&nbsp;a&nbsp;Concept</span></a></li><li><a href="blogs/pages/Single-AdversarialInevitable.html" target="_blank"><span>Are&nbsp;Adversarial&nbsp;Example&nbsp;Inevitable?</span></a></li><li><a href="blogs/pages/Single-FeaturePurification.html" target="_blank"><span>Feature&nbsp;Purification&nbsp;:&nbsp;an&nbsp;Explanation&nbsp;for&nbsp;Adversarial&nbsp;Training</span></a></li><li><a href="blogs/pages/Single-InductiveBias.html" target="_blank"><span>Higher-level Inductive Biases</span></a></li><li><a href="blogs/pages/Single-OptimismAdversity.html" target="_blank"><span>Optimism&nbsp;at&nbsp;the&nbsp;Face&nbsp;of&nbsp;Adversity</span></a></li><li><a href="blogs/pages/Note-FewShotLearningSurvey.html" target="_blank"><span>Summarized Survey of Few-Shot Learning</span></a></li></ul>
+<ul><li><a href="blogs/pages/Single-AdversarialVulnerability.html" target="_blank"><span>Adversarial&nbsp;Vulnerability&nbsp;for&nbsp;any&nbsp;Classifier</span></a></li>
+    <li><a href="blogs/pages/Single-AdversarialPAC.html" target="_blank"><span>PAC&nbsp;Learning&nbsp;with&nbsp;Adversary</span></a></li><li><a href="blogs/pages/Single-AdversarialTrainingTricks.html" target="_blank"><span>Bag&nbsp;of&nbsp;Tricks&nbsp;for&nbsp;Adversarial&nbsp;Training</span></a></li><li><a href="blogs/pages/Single-AdversarialVulnerabilityFirstorder.html" target="_blank"><span>First-order&nbsp;Adversarial&nbsp;Vulnerability</span></a></li><li><a href="blogs/pages/Single-ShortcutLearning.html" target="_blank"><span>Shortcut&nbsp;Learning&nbsp;as&nbsp;a&nbsp;Concept</span></a></li><li><a href="blogs/pages/Single-AdversarialInevitable.html" target="_blank"><span>Are&nbsp;Adversarial&nbsp;Example&nbsp;Inevitable?</span></a></li><li><a href="blogs/pages/Single-FeaturePurification.html" target="_blank"><span>Feature&nbsp;Purification&nbsp;:&nbsp;an&nbsp;Explanation&nbsp;for&nbsp;Adversarial&nbsp;Training</span></a></li><li><a href="blogs/pages/Single-InductiveBias.html" target="_blank"><span>Higher-level Inductive Biases</span></a></li><li><a href="blogs/pages/Single-OptimismAdversity.html" target="_blank"><span>Optimism&nbsp;at&nbsp;the&nbsp;Face&nbsp;of&nbsp;Adversity</span></a></li><li><a href="blogs/pages/Note-FewShotLearningSurvey.html" target="_blank"><span>Summarized Survey of Few-Shot Learning</span></a></li>
+    <li><a href="blogs/pages/Single-SelfAttentionAndConvolution.html" target="_blank"><span>Self-Attention and Convolution</span></a></li>
+    </ul>
 </div>
 
 ### Dense Paper Notes
