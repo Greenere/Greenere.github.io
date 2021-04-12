@@ -7,13 +7,15 @@ lihaoyangjingzhou@outlook.com
 
 - Sep. 2016 - June 2020
 
-  **B.E. Electronic and Information Engineering**, 3.91/4.0 (Top 10)
+  **Bachelor of Engineering, Electronic and Information Engineering**
+
+  GPA: 3.91/4.0 (Top 10)
 
   Huazhong University of Science and Technology, Wuhan, Hubei, China
 
 - Aug. 2018
 
-  Summer School, Artificial Intelligence
+  Summer School, Knowledge Representation
 
   Oriel College, Oxford University, Oxford United Kingdom
 
@@ -27,7 +29,7 @@ lihaoyangjingzhou@outlook.com
 
 - July 2019 - May 2020
 
-  **Research Assistant**, Data Science and Computer Vision Lab
+  **Undergraduate Research Assistant**, Data Science and Computer Vision Lab
 
   National Anti-counterfeit Engineering Research Center,
 
@@ -37,11 +39,11 @@ lihaoyangjingzhou@outlook.com
 
 - Mar. 2021 Publized
 
-  *Haoyang Li, Xinggang Wang. Noise Modulation: Let Your Model Interpret Itself.  arXiv preprint , [arXiv:2103.10603](https://arxiv.org/abs/2103.10603)*
+  Haoyang Li, Xinggang Wang. Noise Modulation: Let Your Model Interpret Itself.  arXiv preprint , [arXiv:2103.10603](https://arxiv.org/abs/2103.10603)
 
 - Mar. 2021 Published
 
-  *Haoyang Li, Heng Li, Hansong Zhang, Wei Yuan, <a href="http://www.sciencedirect.com/science/article/pii/S0031320320304921">Black-box attack against handwritten signature verification with region-restricted adversarial perturbations</a>, **Pattern Recognition**, Volume 111,2021,107689,ISSN 0031-3203*
+  Haoyang Li, Heng Li, Hansong Zhang, Wei Yuan, <a href="http://www.sciencedirect.com/science/article/pii/S0031320320304921">Black-box attack against handwritten signature verification with region-restricted adversarial perturbations</a>, **Pattern Recognition**, Volume 111,2021,107689,ISSN 0031-3203
 
 **PROJECTS**
 
