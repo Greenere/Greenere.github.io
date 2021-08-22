@@ -2,10 +2,11 @@
 <html>
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
-<title>research</title><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
 .mac-os-11 { --title-bar-height:28px; }
 html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
-body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
 iframe { margin: auto; }
 a.url { word-break: break-all; }
 a:active, a:hover { outline: 0px; }
@@ -66,7 +67,7 @@ div.hr:focus { cursor: none; }
 #write pre.ty-contain-cm { white-space: normal; }
 .CodeMirror-gutters { margin-right: 4px; }
 .md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
-.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
 #write .md-fences.mock-cm { white-space: pre-wrap; }
 .md-fences.md-fences-with-lineno { padding-left: 0px; }
 #write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
@@ -91,6 +92,7 @@ blockquote > :first-child, li > :first-child { margin-top: 0px; }
   .typora-export #write { break-after: avoid; }
   .typora-export #write::after { height: 0px; }
   .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
 }
 .footnote-line { margin-top: 0.714em; font-size: 0.7em; }
 a img, img a { cursor: pointer; }
@@ -135,15 +137,6 @@ kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 
 .md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
 code { text-align: left; vertical-align: initial; }
 a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
-.md-inline-math .MathJax_SVG .noError { display: none !important; }
-.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
-.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
-.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
-.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
-.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
-.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
-.MathJax_SVG * { transition: none 0s ease 0s; }
-.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
 .os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
 .md-diagram-panel > svg { max-width: 100%; }
 [lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
@@ -154,14 +147,60 @@ iframe { max-width: 100%; width: 100%; border: none; }
 .highlight td, .highlight tr { border: 0px; }
 mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
 .md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
-mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
 @media print {
   .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
 }
 .md-diagram-panel .messageText { stroke: none !important; }
 .md-diagram-panel .start-state { fill: var(--node-fill); }
 .md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-require-zoom-fix { height: auto; margin-top: 16px; margin-bottom: 16px; }
 .md-require-zoom-fix foreignobject { font-size: var(--mermaid-font-zoom); }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
 
 
 /**
@@ -825,10 +864,164 @@ hr {
     margin: 40px 0
 }
 
- :root {--mermaid-font-zoom:1.25em ;}  .typora-export li, .typora-export p, .typora-export,  .footnote-line {white-space: normal;} 
-</style>
+
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+
+g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+.MathJax g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+							stroke-width: 0;
+						} :root {--mermaid-font-zoom:1.25em ;}  .typora-export li, .typora-export p, .typora-export,  .footnote-line {white-space: normal;} 
+</style><title>research</title>
 </head>
-<body class='typora-export os-windows'>
-<div id='write'  class=''><h1><a name="research" class="md-header-anchor"></a><span>Research</span></h1><h2><a name="noise-modulation-for-interpretable-input-gradients---feb-2021" class="md-header-anchor"></a><span>Noise Modulation for Interpretable Input-gradients - Feb 2021</span></h2><p><em><span>Haoyang Li, Xinggang Wang. Noise Modulation: Let Your Model Interpret Itself.  arXiv preprint , </span><a href='https://arxiv.org/abs/2103.10603'><span>arXiv:2103.10603</span></a></em></p><p><span>Waiting for acceptance...</span></p><h2><a name="black-box-attack-against-signature-verification---july-2019" class="md-header-anchor"></a><span>Black-box Attack against Signature Verification - July 2019</span></h2><p><span>Code: </span><a href='https://github.com/Greenere/rap_attack' target='_blank' class='url'>https://github.com/Greenere/rap_attack</a></p><p><em><span>Haoyang Li, Heng Li, Hansong Zhang, Wei Yuan, </span><a href='http://www.sciencedirect.com/science/article/pii/S0031320320304921'><span>Black-box attack against handwritten signature verification with region-restricted adversarial perturbations</span></a><span>, Pattern Recognition, Volume 111, 2021,107689, ISSN 0031-3203</span></em></p><p><span>This research was started in July 2019. I met Prof. Wei Yuan at the course, Security of Network and Information. The course essay was about adversarial example, and I was intrigued by this topic. Later I joined in Prof. Wei Yuan&#39;s lab and extended the idea in the course essay into a journal paper.</span></p><p><span>We chose signature as the target domain because Hansong Zhang was working on the verification of signatures. It was handy to attack. </span><mark><span>The major challenge besides black-box was the imperceptibility of adversarial perturbations. Given the clean background of signature images, most existing perturbations were quite obvious.</span></mark><span> I came up with the idea to restrict the perturbations onto the stroke region, solving these two problems at once.</span></p><p><img src="imgs/rsaeg_scheme.jpg"></img></p><p><span>The scheme of attacking algorithm, namely RSAEG, is displayed above. It can be viewed as a gradient-free version of </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.746ex" height="2.344ex" viewBox="0 -755.9 751.6 1009.2" role="img" focusable="false" style="vertical-align: -0.588ex;"><defs><path stroke-width="0" id="E1-MJMATHI-6C" d="M117 59Q117 26 142 26Q179 26 205 131Q211 151 215 152Q217 153 225 153H229Q238 153 241 153T246 151T248 144Q247 138 245 128T234 90T214 43T183 6T137 -11Q101 -11 70 11T38 85Q38 97 39 102L104 360Q167 615 167 623Q167 626 166 628T162 632T157 634T149 635T141 636T132 637T122 637Q112 637 109 637T101 638T95 641T94 647Q94 649 96 661Q101 680 107 682T179 688Q194 689 213 690T243 693T254 694Q266 694 266 686Q266 675 193 386T118 83Q118 81 118 75T117 65V59Z"></path><path stroke-width="0" id="E1-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E1-MJMATHI-6C" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E1-MJMAIN-30" x="421" y="-213"></use></g></svg></span><script type="math/tex">l_0</script><span> Projected Gradient Descent (PGD) attack. </span><mark><span>The </span><strong><span>Acquire</span></strong><span> module and </span><strong><span>Select</span></strong><span> module together estimate the gradient using a masked random noise. This approximated gradient is further used to guide black-box optimization. In our experiment, a binary search would perform quite well.</span></mark></p><p><img src="imgs/rsaeg_adv.jpg" width=45%></img><img src="imgs/rsaeg_bc.jpg" width=55%></img></p><p><span>The left are an example of our adversarial examples generated for signature. With all perturbations restricted to the stroke region, it is almost impossible to figure if this example are perturbed or not. Since only the stroke region, i.e. foreground of image, is perturbed, these adversarial perturbations can survive background cleaning as presented in the right. More analysis and results can be found in the original paper. </span></p><hr><p><span>BACK TO </span><strong><a href='../resume.html'><span>RESUME</span></a></strong><span> OR </span><strong><a href='../index.html'><span>HOME</span></a></strong></p></div>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='research'><span>Research</span></h1><p><span>Haoyang Li</span></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" href="#research">Research</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n2"><a class="md-toc-inner" href="#noise-modulation-for-interpretable-input-gradients---feb-2021">Noise Modulation for Interpretable Input-gradients - Feb 2021</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n5"><a class="md-toc-inner" href="#black-box-attack-against-signature-verification---july-2019">Black-box Attack against Signature Verification - July 2019</a></span></p></div><h2 id='noise-modulation-for-interpretable-input-gradients---feb-2021'><span>Noise Modulation for Interpretable Input-gradients - Feb 2021</span></h2><p><em><span>Haoyang Li, Xinggang Wang. Noise Modulation: Let Your Model Interpret Itself.  arXiv preprint , </span><a href='https://arxiv.org/abs/2103.10603'><span>arXiv:2103.10603</span></a></em></p><p><span>It is not a unpublished work and it is unlikely to get published someday. But I still think it is an interesting paper.</span></p><p><img src="imgs/nm_demo.jpg" width=60%></img></p><p><span>I was studying how to defend a deep neural network model from </span><a href='https://openai.com/blog/adversarial-example-research/'><span>adversarial attacks</span></a><span>, and the state-of-the-art methods are all based on </span><a href='https://arxiv.org/abs/1706.06083'><span>adversarial training</span></a><span>. So I studied the models acquired through adversarial training. Basically there are three major differences from standard models:</span></p><ol><li><span>It is more robust to adversarial attacks, despite still breachable by more advanced attacking strategies.</span></li><li><span>It becomes less confident about its predictions, while a standard model tends to present a result with high confidence score (near 100%).</span></li><li><span>It has a clean and interpretable input-gradients compared to the noisy and mistery input-gradients of standard models.</span></li></ol><p><span>The literature tends to attribute the first one to the second and third features, and a bunch of works are devoted to finding an alternative to adversarial training that poses the second or the third feature because adversarial training is  expensive in terms of computations.</span></p><p><span>The third feature is also used to supplement that models acquired through adversarial training have a better interpretability. </span><mark><span>And this work of mine basically proposes a cheap alternative to recover the third feature, i.e. the clean and interpetable input-gradients</span></mark><span>.</span></p><p><img src="imgs/nm_structure.png" width=80%></img></p><p><span>As shown above, this method, namely </span><em><span>noise modulation</span></em><span> is simple and easy to implement. It adds a preprocessor to the training pipeline such that each image is multiplied with a noise of the same size twice before it gets fed to the model. </span><mark><span>The intuition is that since the informative components are now hiding in a bunch of noisy pixels, the model is forced to learn to only use the critical components thus cleaning the input-gradients, making them interpretable to human</span></mark><span>.</span></p><p><img src="imgs/nm_tradeoff.jpg" width=95%></img></p><p><mark><span>However, as shown above, this increasement of interpretabilities brings a drop of accuracies that we could barely explain</span></mark><span>. This is also the major concern of reviewers, which we could not justify. I think that it shall not get published officially until this problem is well addressed.</span></p><h2 id='black-box-attack-against-signature-verification---july-2019'><span>Black-box Attack against Signature Verification - July 2019</span></h2><p><span>Code: </span><a href='https://github.com/Greenere/rap_attack' target='_blank' class='url'>https://github.com/Greenere/rap_attack</a></p><p><em><span>Haoyang Li, Heng Li, Hansong Zhang, Wei Yuan, </span><a href='http://www.sciencedirect.com/science/article/pii/S0031320320304921'><span>Black-box attack against handwritten signature verification with region-restricted adversarial perturbations</span></a><span>, Pattern Recognition, Volume 111, 2021,107689, ISSN 0031-3203</span></em></p><p><span>This research was started in July 2019. I met Prof. Wei Yuan at the course, Security of Network and Information. The course essay was about adversarial example, and I was intrigued by this topic. Later I joined in Prof. Wei Yuan&#39;s lab and extended the idea in the course essay into a journal paper.</span></p><p><span>We chose signature as the target domain because Hansong Zhang was working on the verification of signatures. It was handy to attack. </span><mark><span>The major challenge besides black-box was the imperceptibility of adversarial perturbations. Given the clean background of signature images, most existing perturbations were quite obvious.</span></mark><span> I came up with the idea to restrict the perturbations onto the stroke region, solving these two problems at once.</span></p><p><img src="imgs/rsaeg_scheme.jpg"></img></p><p><span>The scheme of attacking algorithm, namely RSAEG, is displayed above. It can be viewed as a gradient-free version of </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.662ex" height="1.945ex" role="img" focusable="false" viewBox="0 -694 734.6 859.6" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.375ex;"><defs><path id="MJX-2-TEX-I-1D459" d="M117 59Q117 26 142 26Q179 26 205 131Q211 151 215 152Q217 153 225 153H229Q238 153 241 153T246 151T248 144Q247 138 245 128T234 90T214 43T183 6T137 -11Q101 -11 70 11T38 85Q38 97 39 102L104 360Q167 615 167 623Q167 626 166 628T162 632T157 634T149 635T141 636T132 637T122 637Q112 637 109 637T101 638T95 641T94 647Q94 649 96 661Q101 680 107 682T179 688Q194 689 213 690T243 693T254 694Q266 694 266 686Q266 675 193 386T118 83Q118 81 118 75T117 65V59Z"></path><path id="MJX-2-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><use data-c="1D459" xlink:href="#MJX-2-TEX-I-1D459"></use></g><g data-mml-node="mn" transform="translate(331,-150) scale(0.707)"><use data-c="30" xlink:href="#MJX-2-TEX-N-30"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>l</mi><mn>0</mn></msub></math></mjx-assistive-mml></mjx-container><script type="math/tex">l_0</script><span> Projected Gradient Descent (PGD) attack. </span><mark><span>The </span><strong><span>Acquire</span></strong><span> module and </span><strong><span>Select</span></strong><span> module together estimate the gradient using a masked random noise. This approximated gradient is further used to guide black-box optimization. In our experiment, a binary search would perform quite well.</span></mark></p><p><img src="imgs/rsaeg_adv.jpg" width=45%></img><img src="imgs/rsaeg_bc.jpg" width=55%></img></p><p><span>The left are an example of our adversarial examples generated for signature. With all perturbations restricted to the stroke region, it is almost impossible to figure if this example are perturbed or not. Since only the stroke region, i.e. foreground of image, is perturbed, these adversarial perturbations can survive background cleaning as presented in the right. More analysis and results can be found in the original paper. </span></p><hr><p><span>BACK TO </span><strong><a href='../resume.html'><span>RESUME</span></a></strong><span> OR </span><strong><a href='../index.html'><span>HOME</span></a></strong></p><div id="floating" style="z-index: 9999; position: fixed ! important; left: 10px; top: 10px;">
+<span width="100%" style="position: absolute; width:20px; left: 0px; top: 0px;">
+<a class="md-toc-inner" href="#research" style="text-decoration:none;" title="Back to the top">
+<font size="10em">🔝</font>
+</a>
+</span>
+</div></div></div>
 </body>
 </html>
