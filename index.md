@@ -25,13 +25,8 @@ Welcome to Haoyang Li's History.<br>
     You may reach me at <b><a href="mailto:lihaoyangjingzhou@outlook.com">lihaoyangjingzhou@outlook.com</a></b>
 <hr>
 <img src="https://visitor-badge.glitch.me/badge?page_id=greenere.index" alt="visitor badge"/>
-<hr>
 </center>
 </div>
-
-
-
-
 
 
 

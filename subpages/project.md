@@ -112,7 +112,15 @@ We named this client as "WELLMAIL", "W" stands for Yun Wang, "L" and "L" stand f
 
 ## Minor Projects
 
-### 3-D displayer (with 2-D LED array), May 2019 - June 2019
+### Cornell Fall 2021 Class of ECE, CS & INFO Visualization & Analysis,  Oct. 2021
+
+This is a data visualization course project realized with D3.js, check the visualization outcome in web page <a href="../visualizations/cornell_class/cornell_class_ece_cs_info_fall2021.html">here</a>.
+
+It is a course project in collaboration with Han Xia, Yingxin Lin and  Yuhao Lu. 
+
+<img src="../visualizations/cornell_class/cornell_class_ece_cs_info_fall2021.jpg"></img>
+
+### 3-D displayer (with 2-D LED array), May 2019 - Jun. 2019
 
 This title is weird somehow. Well, it was a hardware project. We were required to craft a 3-D dsiplayer using a 2-D LED array, based on the persistence of vision. In plain text, we would rotate a plate planted with LEDs to create a hovering hologram of object that looked like a three dimensional one.  I was a part of a group of three, and majorly in responsible for the algorithm and software.
 
