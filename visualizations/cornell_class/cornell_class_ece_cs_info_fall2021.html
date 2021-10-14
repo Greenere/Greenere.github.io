@@ -411,7 +411,7 @@
       const annotations = svg1.append("g").attr("id", "annotations");
 
       
-      const leftAxis = d3.axisLeft(timeScale)
+      const leftAxis = d3.axisLeft(timeScale).tickValues([8/24, 9/24, 10/24, 11/24, 12/24, 13/24, 14/24, 15/24, 16/24, 17/24, 18/24, 19/24, 20/24])
         .tickFormat((d) => {
           let min = (d * 24 - Math.floor(d * 24)) * 60;
           if (Math.floor(min) === 23) { min = 24 }
@@ -803,7 +803,7 @@
       });
 
       
-      const leftAxis = d3.axisLeft(timeScale)
+      const leftAxis = d3.axisLeft(timeScale).tickValues([8/24, 9/24, 10/24, 11/24, 12/24, 13/24, 14/24, 15/24, 16/24, 17/24, 18/24, 19/24, 20/24])
         .tickFormat((d) => {
           let min = (d * 24 - Math.floor(d * 24)) * 60;
           if (Math.floor(min) === 23) { min = 24 }
