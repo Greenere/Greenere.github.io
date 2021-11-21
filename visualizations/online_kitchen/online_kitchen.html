@@ -1,0 +1,162 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Online Kitchen</title>
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+        <style>
+            .gridlines .domain{
+                display: none;
+            }
+            .gridlines{
+                stroke-dasharray: 5,5;
+                stroke:silver;
+                opacity: 0.2;
+            }
+            .centered{
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+            }
+
+            * {
+               font-family: "Century Gothic";
+            }
+
+            body{
+                background-color: ivory;
+            }
+
+            text.inscription{
+                font-family: "Lucida Handwriting";
+                font-weight: bold;
+                fill:slategray;
+                opacity: 0.5;
+            }
+
+            text.subtitle{
+                font-weight: bolder;
+                fill:#493323;
+            }
+
+            .title{
+                font-weight: bolder;
+                color:#493323;
+                opacity: 0.7;
+                font-size: xx-large;
+            }
+
+            .description{
+                font-family: 'Lucida Sans';
+                font-size: 20px;
+                font-weight: 400;
+                color:#493323;
+                font-weight: bold;
+                text-align: justify;
+            }
+
+            .reset-btn{
+                width: 70px;
+                color: grey;
+                padding: 4px 12px;
+                border: 1px solid rgba(0,0,0,0.21);
+                border-radius: 5px;
+            }
+            .reset-btn:hover{
+                cursor: pointer;
+                border-radius: 2px;
+                color: black;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="centered">
+            <p class="title">ONLINE KITCHEN - DESIGN YOUR OWN MEAL!</p>
+        </div><br/>
+        <div class="centered description">
+        <p style="width:1100px">
+            Authors: Haoyang Li (hl2425) , Yuhao Lu (yl3539) , Yue Wang (yw2359) , Yue Zhao (yz2697)<br/><br/>
+            Please draft a meal using foods provided by the menu and check 
+            the nutrition facts of this meal (per 100-gram) and look for the state where 
+            this meal can be most easily composed.
+            <br/>
+            <br/>
+            To select a food, just drag an icon from the menu and place it onto the plate.
+            If you want to remove it, just drag it out of the plate and it will get pulled back 
+            to the original place.
+            You can mouse over each data dot on the radar chart to inspect the exact equivalent value 
+            of corresponding nutrition components for the meal you drafted. You can also mouse over
+            each tick of the legend to highlight data dots that fall into the corresponding value range.
+            <br/><br/>
+            <span  class="reset-btn"> RESET</span>
+        </p>
+        </div>
+        <div class="centered">
+            <div class="svg-1">
+                <svg id="plate_and_food" width=500 height=500 style="border: 0px black solid;">
+                    <text id="label_food" text-anchor="start" alignment-baseline="hanging"></text>
+                </svg>
+            </div>
+            <div>
+                <svg id="nutrition-radar" width=600 height=500 style="border: 0px black solid;"></svg><br/><br/>
+            </div>
+        </div>
+        <div class="centered description">
+            <br/>
+            <p style="width:1100px">
+                A production-by-state distribution "map" of America is shown below. You can mouseover 
+                data dots to inspect state names. For any selected food 
+                that the state has a good portion of its total production, the state "grows" by a unit.
+                Find the largest state, it produces all components of your meal!
+            </p><br/>
+            </div>
+        <div class="centered">
+             <svg id="productionmap" height="800" width="1100">
+                 <text id="label_map" class="inscription" text-anchor="start" alignment-baseline="hanging"></text>
+             </svg>
+        </div>
+        <div class="centered description">
+            <p style="width:1100px">
+                How is your experience with our online kitchen ? Welcome next time!
+            </p><br/>
+            </div>
+        <script src="src/radarChart.js"></script>
+        <script src="src/productionMap.js"></script>
+        <script src="src/plate.js"></script>
+        <script>
+            var idList = [];
+            var nutritions;
+            var us;
+            var foodList;
+
+            const requestData = async () => {
+                nutritions = await d3.json("data/nutritions_preprocessed.json");
+                us = await d3.json("data/production_state.json");
+                let foodData = await d3.json("data/foodList.json");
+                foodList = foodData.data;
+                foodList.sort(function(d1, d2) {
+                    return d1["id"] - d2["id"];
+                })                                   
+
+                updateFoodList(foodList);
+                updateMapView(us, [])
+
+                let resetButton = document.querySelector(".reset-btn")
+                resetButton.addEventListener("click",function(){
+                    idList = []
+                    updateRadarChart(nutritions, idList);
+                    updateMapView(us, [])
+                    let a = foodIcons.selectAll("image.on-plate")
+                                        .transition()
+                                        .duration(500)
+                                        .attr("x", d=>{
+                                                d.x = d.originX
+                                                d.y = d.originY
+                                            return d.originX
+                                        }).attr("y",d=>d.originY)
+                })
+            }
+            requestData();
+            
+        </script>
+    </body>
+</html>
