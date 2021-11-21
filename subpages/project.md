@@ -112,6 +112,14 @@ We named this client as "WELLMAIL", "W" stands for Yun Wang, "L" and "L" stand f
 
 ## Minor Projects
 
+### Online Kitchen - Interactive Visualization, Nov. 2021
+
+This is a data visualization course project realized with D3.js, check the visualization outcome in web page <a href="../visualizations/online_kitchen/online_kitchen.html">here</a>.
+
+It is a course project in collaboration with Yuhao Lu, Yue Wang and Yue Zhao.
+
+<img src="imgs/online-kitchen.png"></img> 
+
 ### Cornell Fall 2021 Class of ECE, CS & INFO Visualization & Analysis,  Oct. 2021
 
 This is a data visualization course project realized with D3.js, check the visualization outcome in web page <a href="../visualizations/cornell_class/cornell_class_ece_cs_info_fall2021.html">here</a>.
