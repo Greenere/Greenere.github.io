@@ -1,0 +1,186 @@
+{
+    "nodes": [
+      {
+        "Weight": 45,
+        "Name": "C",
+        "Affiliation": "C"
+      },
+      {
+        "Weight": 68,
+        "Name": "C++",
+        "Affiliation": "C++"
+      },
+      {
+        "Weight": 98,
+        "Name": "Java",
+        "Affiliation": "Java"
+      },
+      {
+        "Weight": 121,
+        "Name": "JavaScript",
+        "Affiliation": "JavaScript"
+      },
+      {
+        "Weight": 106,
+        "Name": "Python",
+        "Affiliation": "Python"
+      }
+    ],
+    "edges": [
+      {
+        "source": "C",
+        "target": "C",
+        "weight": 6855,
+        "sourceIndex": 0,
+        "targetIndex": 0
+      },
+      {
+        "source": "C",
+        "target": "C++",
+        "weight": 6804,
+        "sourceIndex": 0,
+        "targetIndex": 1
+      },
+      {
+        "source": "C",
+        "target": "JavaScript",
+        "weight": 7081,
+        "sourceIndex": 0,
+        "targetIndex": 3
+      },
+      {
+        "source": "C",
+        "target": "Python",
+        "weight": 9226,
+        "sourceIndex": 0,
+        "targetIndex": 4
+      },
+      {
+        "source": "C++",
+        "target": "C",
+        "weight": 5198,
+        "sourceIndex": 1,
+        "targetIndex": 0
+      },
+      {
+        "source": "C++",
+        "target": "C++",
+        "weight": 9876,
+        "sourceIndex": 1,
+        "targetIndex": 1
+      },
+      {
+        "source": "C++",
+        "target": "JavaScript",
+        "weight": 8158,
+        "sourceIndex": 1,
+        "targetIndex": 3
+      },
+      {
+        "source": "C++",
+        "target": "Python",
+        "weight": 10619,
+        "sourceIndex": 1,
+        "targetIndex": 4
+      },
+      {
+        "source": "Java",
+        "target": "C++",
+        "weight": 6093,
+        "sourceIndex": 2,
+        "targetIndex": 1
+      },
+      {
+        "source": "Java",
+        "target": "Java",
+        "weight": 13749,
+        "sourceIndex": 2,
+        "targetIndex": 2
+      },
+      {
+        "source": "Java",
+        "target": "JavaScript",
+        "weight": 13311,
+        "sourceIndex": 2,
+        "targetIndex": 3
+      },
+      {
+        "source": "Java",
+        "target": "Python",
+        "weight": 12995,
+        "sourceIndex": 2,
+        "targetIndex": 4
+      },
+      {
+        "source": "JavaScript",
+        "target": "C",
+        "weight": 5647,
+        "sourceIndex": 3,
+        "targetIndex": 0
+      },
+      {
+        "source": "JavaScript",
+        "target": "C++",
+        "weight": 8908,
+        "sourceIndex": 3,
+        "targetIndex": 1
+      },
+      {
+        "source": "JavaScript",
+        "target": "Java",
+        "weight": 11374,
+        "sourceIndex": 3,
+        "targetIndex": 2
+      },
+      {
+        "source": "JavaScript",
+        "target": "JavaScript",
+        "weight": 32964,
+        "sourceIndex": 3,
+        "targetIndex": 3
+      },
+      {
+        "source": "JavaScript",
+        "target": "Python",
+        "weight": 22006,
+        "sourceIndex": 3,
+        "targetIndex": 4
+      },
+      {
+        "source": "Python",
+        "target": "C",
+        "weight": 6746,
+        "sourceIndex": 4,
+        "targetIndex": 0
+      },
+      {
+        "source": "Python",
+        "target": "C++",
+        "weight": 10351,
+        "sourceIndex": 4,
+        "targetIndex": 2
+      },
+      {
+        "source": "Python",
+        "target": "Java",
+        "weight": 8725,
+        "sourceIndex": 4,
+        "targetIndex": 3
+      },
+      {
+        "source": "Python",
+        "target": "JavaScript",
+        "weight": 16745,
+        "sourceIndex": 4,
+        "targetIndex": 4
+      },
+      {
+        "source": "Python",
+        "target": "Python",
+        "weight": 26992,
+        "sourceIndex": 4,
+        "targetIndex": 4
+      }
+    ]
+  }
+  

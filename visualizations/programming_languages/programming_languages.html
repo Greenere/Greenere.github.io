@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Programming Languages</title>
+    <style>
+      body {
+        background-color: "seashell";
+      }
+      .darktheme {
+        background-color: black;
+        opacity: 0.8;
+      }
+      .centered {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+      }
+
+      .description {
+        font-size: 20px;
+        font-weight: 400;
+        color: #493323;
+        text-align: justify;
+      }
+
+      .description-title{
+        font-size: 20px;
+        font-weight: 600;
+        color: #493323;
+        text-transform: uppercase;
+      }
+
+      .title{
+        font-size:xx-large;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+
+      .authors{
+        font-size: 16px;
+      }
+
+      body {
+        font-family: 'Roboto', sans-serif;
+      }
+
+      .labels {
+        font-size: 10px;
+        fill: seashell;
+        user-select: none;
+      }
+
+      footer{
+        font-size: smaller;
+        color: gray;
+      }
+    </style>
+    <!-- relationship -->
+    <style>
+      .node {
+        cursor: grab;
+      }
+      .link {
+        fill: seashell;
+      }
+      .yearGrids {
+        stroke: seashell;
+        stroke-width: 1;
+        stroke-dasharray: 5, 5;
+        opacity: 0.2;
+      }
+      text.std-print-text {
+        fill: seashell;
+        font-size: 15px;
+        filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 1));
+      }
+    </style>
+    <!-- balloon -->
+    <style>
+      g.clock {
+        cursor: grab;
+      }
+      #speed-chart-annotations path.domain {
+        color: seashell;
+        stroke-width: 2;
+      }
+      #speed-chart-annotations .axis .tick line {
+        color: seashell;
+        stroke-width: 2;
+      }
+      #speed-chart-annotations .tick text {
+        fill: seashell;
+      }
+      .chart-title {
+        font-size: larger;
+        font-weight: bolder;
+      }
+      .chart-subtitle{
+        font-size: 16px;
+      }
+    </style>
+    <!-- search -->
+    <style>
+      .gridlines line {
+        stroke: #bbb;
+      }
+
+      .gridlines .domain {
+        stroke: none;
+      }
+
+      .ticks {
+        font-size: 10px;
+      }
+
+      .tooltip {
+        cursor: default;
+      }
+      /* #my-select {
+        margin-bottom: 1em;
+        padding: 0.25em;
+        border: 0;
+        border-bottom: 2px solid currentcolor;
+        font-weight: bold;
+        letter-spacing: 0.1em;
+        border-radius: 0;
+      }
+      #my-select:focus,
+      #my-select:active {
+        outline: 0;
+        border-bottom-color: goldenrod;
+      } */
+    </style>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+  </head>
+  <body>
+    <div class="centered">
+      <p class="title">Programming Languages</p>
+    </div>
+    <div class="centered authors">
+      <p>
+        By Haoyang Li (hl2425) , Yuhao Lu (yl3539) , Yue Wang (yw2359) ,
+        Yue Zhao (yz2697)
+      </p>
+    </div>
+    <div class="centered darktheme">
+      <svg width="1200" height="50" id="padding"></svg>
+    </div>
+    <!-- relationship -->
+    <div class="centered darktheme">
+      <svg id="relation-chart" width="1200" height="600"></svg>
+    </div>
+    <!-- balloon -->
+    <div class="centered darktheme">
+      <svg id="speed-chart" width="1200" height="500"></svg>
+    </div>
+    <div class="centered description-title">
+      <p style="width:1100px">The History of Programming Languages</p>
+    </div>
+    <div class = "centered description">
+      <p style="width: 1100px; margin-top: 0;"> 
+        The family net is constructed by recursing the parents of 
+        many popular programming languages and connecting them to 
+        the early languages that we know. All connections 
+        are constructed according to Wikipedia. It is not a complete family 
+        net of the entire world of programming languages.
+        All programming languages root from the initial languages, Assembly, which is 
+        just a direct mapping of machine instructions.</br></br>
+        The majority of programming languages is compiled. 
+        The initial interpreted language appeared in 1960s, 
+        but the burst of interpreted languages happened in 1990s 
+        when Python and JavaScript were invented 
+        along with the commercialization of Internet. 
+        Other than Assembly, Loops is also neight compiled nor interpreted, 
+        it is a language designed for registers.
+        We can see from the family net that Lisp, C, C++ and Smalltalk are 
+        the most influencial programming languages. They are all pioneers 
+        of their time, whose influence is not surprising.
+        </br></br>
+        The efficiency presents the results published in 
+        <a href="https://github.com/niklas-heer/speed-comparison" target="_blank">speed-comparison</a>.
+        It is the time that each language spends on calculating pi using an iterative method.
+        The speed of interpreted languages is obviously much slower than compiled languages.
+        Unless specially designed for high performance scenarios, new languages tend to be slower 
+        since human, rather than machine, is the major bottleneck in mordern development.
+      </p>
+    </div>
+    <div class="centered description-title">
+      <p style="width:1100px">The Popularity of Programming Languages</p>
+    </div>
+    <div class="centered description">
+      <p  style="width: 1100px; margin-top: 0;">
+        It is unrealistic to show the popularity trending of all programming languages, but it will be interesting though to 
+        just show the most popular ones.
+        The popularity diagram consists of a bar chart and a line chart. The data source for both charts comes from 
+        <a href="https://trends.google.com/trends" target="_blank">Google Trends</a>. 
+       Referring to the data of the line chart, we selected the top four hottest technologies as search queries worldwide from 2004-02 to
+           2021-12. Users can switch the search query by clicking on the Select dropdown box. For the data of the bar chart,
+            we picked five different programming languages within North America from 2004-02 to 2021-12. By hovering over the line chart, 
+            the content of the bar chart will change respectively as the corresponding timeline changes.
+      </p>
+    </div>
+    <!-- search -->
+    <div class="container centered">
+      <div style="flex-direction: column; display: flex;">
+        <svg
+          class="barchart"
+          height="500"
+          width="900"
+          style="margin-top: 0px; margin-left: 0px"
+          id="barchart"
+        ></svg>
+          <select
+          id="my-select"
+          style="margin-left: 50px; margin-top: 20px; width: 200px"
+          name="line"
+        ></select>
+      </div>
+      <svg id="relationship-chord" height="500" width="300"></svg>
+    </div>
+    <div class="centered description">
+      <p  style="width: 1100px; margin-top: 20;">
+        The correlation between technologies and programming languages is not obvious in most cases.
+        But it can be found that some of the technologies demonstrate connections with programming languages.
+        For example, as the "Machine Learning" popularity increases over time, the popularity of "Python" increases
+        correspondingly.</br></br>
+        The chord diagram displays the result of 
+        <a href="https://stackoverflow.blog/2021/08/02/2021-stack-overflow-developer-survey-results/" target="_blank">a survey conducted by Stack Overflow</a>.The flow between one language to another 
+        represents the portion of people who works in one language currently, but wish to work in another language in the future.
+        The flows are colored the same as its target language. In the future, there seems to be more growth in the popularity of 
+        Python and JavaScript.
+      </p>
+    </div>
+    <div class="centered" style="margin-top: 20px; margin-bottom: 20px;">
+      <img width="50" height="50" x="0" y="0" src="data/cornell_seal_simple.svg"></img>
+      <footer style="width: 200px;margin-left: 10px; margin-top: 10px;">
+        This is a project for INFO 5100 in Cornell University.
+      </footer>
+    </div>
+    <!-- relationship -->
+    <script src="src/relation.js"></script>
+    <!-- balloon -->
+    <script src="src/speed.js"></script>
+    <!-- search -->
+    <script src="src/trend.js"></script>
+    <!--Flow Chord-->
+    <script src="src/flow.js"></script>
+  </body>
+</html>

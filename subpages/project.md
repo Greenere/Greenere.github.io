@@ -112,13 +112,25 @@ We named this client as "WELLMAIL", "W" stands for Yun Wang, "L" and "L" stand f
 
 ## Minor Projects
 
+### Programming Languages - Interactive Visualization, Dec. 2021
+
+This is a data visualization course project realized with D3.js, check the visualization outcome in web page <a href="../visualizations/programming_languages/programming_languages.html">here</a>.
+
+It is a course project in collaboration with Yuhao Lu, Yue Wang and Yue Zhao.
+
+The project aims to display some interesting facts about programming languages in terms of their histories and popularities.
+
+![programming_languages_familynet](imgs/pl_familynet.png)
+
+![programming_languages_speed](imgs/pl_speed.png)
+
 ### Online Kitchen - Interactive Visualization, Nov. 2021
 
 This is a data visualization course project realized with D3.js, check the visualization outcome in web page <a href="../visualizations/online_kitchen/online_kitchen.html">here</a>.
 
 It is a course project in collaboration with Yuhao Lu, Yue Wang and Yue Zhao.
 
-<img src="imgs/online-kitchen.png"></img> 
+![online_kitchen_demo](imgs/online_kitchen.png) 
 
 ### Cornell Fall 2021 Class of ECE, CS & INFO Visualization & Analysis,  Oct. 2021
 
