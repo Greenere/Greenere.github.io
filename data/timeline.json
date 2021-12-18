@@ -1,7 +1,128 @@
 [
     {
-        "start":"2016.9",
-        "end":"2020.6",
-        "event":"Huazhong University of Science and Technology"
+        "start":"2016.09",
+        "end":"2020.06",
+        "event":"Huazhong University of Science and Technology",
+        "type":"education"
+    },
+    {
+        "start":"2016.09",
+        "end":"2017.02",
+        "event":"Special Activity of Youth League",
+        "type":"activity"
+    },
+    {
+        "start":"2017.07",
+        "end":"2017.07",
+        "event":"Society Investigation in Xinjiang",
+        "type":"activity"
+    },
+    {
+        "start":"2017.07",
+        "end":"2018.07",
+        "event":"Vice Proprietor in Xiayu Association of Poetry",
+        "type":"activity"
+    },
+    {
+        "start":"2017.09",
+        "end":"2018.07",
+        "event":"Graphic Designer in Student International Communication Association",
+        "type":"activity"
+    },
+    {
+        "start":"2018.08",
+        "end":"2018.08",
+        "event":"Summer School in Oxford University",
+        "type":"education"
+    },
+    {
+        "start":"2018.11",
+        "end":"2018.12",
+        "event":"WELLMAIL: An Email Client with Graphic User Interface",
+        "type":"project"
+    },
+    {
+        "start":"2019.03",
+        "end":"2019.04",
+        "event":"Passport Character Recognition for Digital Image Processing Course",
+        "type":"project"
+    },
+    {
+        "start":"2019.05",
+        "end":"2019.06",
+        "event":"3D Displayer with 2D LED Array",
+        "type":"project"
+    },
+    {
+        "start":"2019.12",
+        "end":"2020.05",
+        "event":"FACESWAP: A Face Swapping System for Short Videos",
+        "type":"project"
+    },
+    {
+        "start":"2019.11",
+        "end":"2019.12",
+        "event":"WEIBE: A Weibo Emotion Analysis System",
+        "type":"project"
+    },
+    {
+        "start":"2019.07",
+        "end":"2019.09",
+        "event":"Summer Research over Adversarial Machine Learning",
+        "type":"research"
+    },
+    {
+        "start":"2019.07",
+        "end":"2020.05",
+        "event":"Research Engineer Intern in National Anti-counterfeit Engineering Research Center",
+        "type":"intern"
+    },
+    {
+        "start":"2019.08",
+        "end":"2019.08",
+        "event":"Engineer Intern in Fiberhome",
+        "type":"intern"
+    },
+    {
+        "start":"2020.07",
+        "end":"2020.09",
+        "event":"Software Engineer in TP-Link over Internet Protocol Camera",
+        "type":"job"
+    },
+    {
+        "start":"2020.09",
+        "end":"2021.04",
+        "event":"Research Assitant over Adversarial Machine Learning in Media and Communication Lab",
+        "type":"research"
+    },
+    {
+        "start":"2021.04",
+        "end":"2021.07",
+        "event":"Software Algorithm Engineer Intern in Realai",
+        "type":"intern"
+    },
+    {
+        "start":"2021.08",
+        "end":"2022.12",
+        "event":"Cornell University",
+        "type":"education"
+    },
+    {
+        "start":"2021.10",
+        "end":"2021.12",
+        "event":"INFO5100: Data Visualization Storyboards",
+        "type":"project"
+    },
+    {
+        "start":"2021.09",
+        "end":"2021.12",
+        "event":"CS6670: Turn an Image Classifier into a Simple Generator",
+        "type":"research"
+    },
+    {
+        "start":"2021.09",
+        "end":"2022.05",
+        "event":"Honey Comb Analysis Software",
+        "type":"project"
     }
 ]

@@ -1,10 +1,196 @@
 <html>
-    <head>
-        <meta charset="utf-8"/>
-        <title>Timeline</title>
-        <script src="https://d3js.org/d3.v7.min.js"></script>
-    </head>
-    <body>
-        <h1>UNDER CONSTRUCTION</h1>
-    </body>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Timeline</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        .centered {
+            display: flex;
+            justify-content: center;
+        }
+
+        .grids .domain {
+            display: none;
+        }
+
+        .grids {
+            stroke-dasharray: 5, 5;
+            opacity: 0.5;
+        }
+
+        .legend-text {
+            text-transform: uppercase;
+        }
+
+        rect.timelines {
+            filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.5));
+        }
+    </style>
+</head>
+
+<body>
+    <div class="centered">
+        <h2>THE TIMELINE OF HAOYANG SINCE 2016</h2>
+    </div>
+    <div class="centered">
+        <svg id="time-chart" width="800" height="600"></svg>
+    </div>
+    <script>
+        const svg = d3.select("svg#time-chart")
+        const width = svg.attr("width")
+        const height = svg.attr("height")
+        const margin = {
+            left: 20,
+            right: 20,
+            top: 20,
+            bottom: 20
+        }
+
+        const annotations = svg.append("g").attr("id", "chart-annotations")
+            .attr("transform", `translate(${margin.left}, ${margin.top})`)
+
+        const chartArea = svg.append("g").attr("id", "chart-area")
+            .attr("transform", `translate(${margin.left}, ${margin.top})`)
+
+        const tips = svg.append("g").attr("id", "chart-tips")
+            .attr("transform", `translate(${margin.left}, ${margin.top})`)
+
+        const chartWidth = width - margin.left - margin.right;
+        const chartHeight = height - margin.top - margin.bottom;
+
+        const label = tips.append("text").attr("class", "labels")
+            .attr("x", 0).attr("y", chartHeight + margin.bottom/2)
+            .attr("dominant-baseline", "central").text("")
+
+        const plotTimeLine = async function () {
+            let data = await d3.json("data/timeline.json")
+            const lineMargin = {
+                top: 0.1,
+                bottom: 0.1
+            }
+
+            const parseTime = d3.timeParse("%Y.%m")
+
+            data.forEach((d, i) => {
+                d.start = parseTime(d.start)
+                d.end = parseTime(d.end)
+            });
+
+            // console.log(data)
+
+            const timeStarts = data.map(d => d.start)
+            const timeEnds = data.map(d => d.end)
+            const timeTicks = timeStarts.concat(timeEnds)
+            const timeExtent = d3.extent(timeTicks, d => d)
+
+            const timeScale = d3.scaleTime().domain(timeExtent).range([0, chartWidth])
+
+            const timeAxis = d3.axisTop().scale(timeScale)
+            const timeGrids = d3.axisTop().scale(timeScale).tickSize(-chartHeight).tickFormat(" ")
+            annotations.append("g").attr("class", "x axis")
+                .call(timeAxis)
+            annotations.append("g").attr("class", "x grids")
+                .call(timeGrids)
+
+            const typeScale = d3.scaleOrdinal(d3.schemeCategory10)
+
+            data.sort((a, b) => {
+                // let lena = timeScale(a.end) - timeScale(a.start)
+                // let lenb = timeScale(b.end) - timeScale(b.start)
+                // return lenb-lena
+                return timeScale(a.start) - timeScale(b.start)
+            })
+
+            data.forEach((d, i) => {
+                d.id = i;
+            })
+
+            const idExtent = d3.extent(data, d => d.id)
+            const idScale = d3.scaleLinear().domain([0, data.length]).range([0, chartHeight * 0.9])
+            const lineWidth = idScale(1) - idScale(0)
+
+            chartArea.selectAll("rect.timelines").data(data)
+                .join("rect").attr("class", "timelines")
+                .attr("y", d => idScale(d.id) + lineWidth * lineMargin.top)
+                .attr("x", d => timeScale(d.start))
+                .attr("width", d => {
+                    let width = timeScale(d.end) - timeScale(d.start)
+                    if (width < 1) {
+                        width = 10;
+                    }
+                    return width;
+                })
+                .attr("height", lineWidth * (1 - lineMargin.top - lineMargin.bottom))
+                .attr("fill", d => typeScale(d.type))
+                .attr("stroke", "black").attr("stroke-width", 0)
+                .attr("opacity", 0.9).attr("rx", 3)
+                .on("mouseover", function () {
+                    let target = d3.select(this)
+                    let d = target.datum()
+                    label.text(d.event)
+                    target.attr("stroke-width", 2).attr("opacity", 1)
+                })
+                .on("mouseout", function () {
+                    let target = d3.select(this)
+                    label.text("")
+                    target.attr("stroke-width", 0).attr("opacity", 0.9)
+                })
+
+
+            const legendTick = tips.selectAll("g.legend-ticks").data(
+                    [
+                        [0, 'education'],
+                        [1, 'activity'],
+                        [2, 'intern'],
+                        [3, 'job'],
+                        [4, 'research'],
+                        [5, 'project']
+                    ]
+                )
+                .join("g").attr("class", "legend-ticks")
+
+            legendTick.append("rect")
+                .attr("x", 0)
+                .attr("y", d => idScale(data.length - 5 + d[0]) + lineWidth * lineMargin.top)
+                .attr("width", 20)
+                .attr("height", lineWidth * (1 - lineMargin.top - lineMargin.bottom))
+                .attr("fill", d => typeScale(d[1]))
+
+            legendTick.append("text").attr("class", "legend-text")
+                .attr("x", 23)
+                .attr("y", d => idScale(data.length - 5 + d[0]) + lineWidth * (1 - lineMargin.top - lineMargin
+                    .bottom) / 2 + 2)
+                .attr("text-anchor", "start")
+                .attr("dominant-baseline", "central")
+                .attr("fill", d => typeScale(d[1]))
+                .text(d => d[1])
+
+            const today = new Date();
+            const todayMark = annotations.append("g").attr("id", "today-mark")
+            todayMark.append("line")
+                .attr("class", "today-mark")
+                .attr("x1", timeScale(today))
+                .attr("y1", lineWidth * lineMargin.top)
+                .attr("x2", timeScale(today))
+                .attr("y2", chartHeight + margin.bottom / 2)
+                .attr("stroke", "red")
+                .attr("stroke-width", 2)
+                .attr("opacity", 0.8)
+            todayMark.append("text")
+                .attr("class", "today-mark")
+                .attr("x", 5 + timeScale(today))
+                .attr("y", chartHeight)
+                .attr("dominant-baseline", "central")
+                .text("today")
+        }
+
+        plotTimeLine();
+    </script>
+</body>
+
 </html>
