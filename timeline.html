@@ -27,9 +27,9 @@
             text-transform: uppercase;
         }
 
-        rect.timelines {
+        /* rect.timelines {
             filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.5));
-        }
+        } */
     </style>
 </head>
 
@@ -38,7 +38,7 @@
         <h2>THE TIMELINE OF HAOYANG SINCE 2016</h2>
     </div>
     <div class="centered">
-        <svg id="time-chart" width="800" height="600"></svg>
+        <svg id="time-chart" width="1000" height="600"></svg>
     </div>
     <script>
         const svg = d3.select("svg#time-chart")
@@ -66,12 +66,16 @@
         const label = tips.append("text").attr("class", "labels")
             .attr("x", 0).attr("y", chartHeight + margin.bottom/2)
             .attr("dominant-baseline", "central").text("")
+        
+        const curveGen = d3.line().x(d=>d[0]).y(d=>d[1]).curve(d3.curveCardinal.tension(0.95))
+
+        const today = new Date();
 
         const plotTimeLine = async function () {
             let data = await d3.json("data/timeline.json")
             const lineMargin = {
-                top: 0.1,
-                bottom: 0.1
+                top: 0.2,
+                bottom: 0.
             }
 
             const parseTime = d3.timeParse("%Y.%m")
@@ -97,7 +101,7 @@
             annotations.append("g").attr("class", "x grids")
                 .call(timeGrids)
 
-            const typeScale = d3.scaleOrdinal(d3.schemeCategory10)
+            const typeScale = d3.scaleOrdinal(d3.schemeTableau10)
 
             data.sort((a, b) => {
                 // let lena = timeScale(a.end) - timeScale(a.start)
@@ -110,9 +114,42 @@
                 d.id = i;
             })
 
+            let curveData = {
+                "education":[],
+                "activity":[],
+                "intern":[],
+                "job":[],
+                "research":[],
+                "project":[]
+            }
+
             const idExtent = d3.extent(data, d => d.id)
             const idScale = d3.scaleLinear().domain([0, data.length]).range([0, chartHeight * 0.9])
             const lineWidth = idScale(1) - idScale(0)
+
+            data.forEach(d=>{
+                curveData[d.type].push([timeScale(d.start) + 5, 
+                                        idScale(d.id) + lineWidth * lineMargin.top + lineWidth * (1 - lineMargin.top - lineMargin.bottom)/2])
+            })
+
+            Object.keys(curveData).forEach(key=>{
+                let newPath = [];
+                for (let i = 0; i < curveData[key].length-1; i++){
+                    newPath.push(curveData[key][i])
+                    newPath.push([curveData[key][i][0], curveData[key][i+1][1]])
+                }
+                newPath.push(curveData[key][curveData[key].length-1])
+                curveData[key] = newPath;
+            })
+
+            curveData = Object.keys(curveData).map(d=>{ return {"type":d, "path":curveData[d]}})
+
+            chartArea.selectAll("path.curveline").data(curveData)
+                .join("path").attr("class", "curveline")
+                .attr("d", d=>curveGen(d.path))
+                .attr("fill", "none")
+                .attr("stroke", d=>typeScale(d.type))
+                .attr("opacity", 0.5).attr("stroke-width", 5)
 
             chartArea.selectAll("rect.timelines").data(data)
                 .join("rect").attr("class", "timelines")
@@ -127,18 +164,18 @@
                 })
                 .attr("height", lineWidth * (1 - lineMargin.top - lineMargin.bottom))
                 .attr("fill", d => typeScale(d.type))
-                .attr("stroke", "black").attr("stroke-width", 0)
-                .attr("opacity", 0.9).attr("rx", 3)
+                .attr("stroke", d=>typeScale(d.type)).attr("stroke-width", 0)
+                .attr("opacity", 1).attr("rx", 5)
                 .on("mouseover", function () {
                     let target = d3.select(this)
                     let d = target.datum()
                     label.text(d.event)
-                    target.attr("stroke-width", 2).attr("opacity", 1)
+                    target.attr("stroke-width", 3)
                 })
                 .on("mouseout", function () {
                     let target = d3.select(this)
                     label.text("")
-                    target.attr("stroke-width", 0).attr("opacity", 0.9)
+                    target.attr("stroke-width", 0)
                 })
 
 
@@ -170,7 +207,7 @@
                 .attr("fill", d => typeScale(d[1]))
                 .text(d => d[1])
 
-            const today = new Date();
+            
             const todayMark = annotations.append("g").attr("id", "today-mark")
             todayMark.append("line")
                 .attr("class", "today-mark")
@@ -186,7 +223,7 @@
                 .attr("x", 5 + timeScale(today))
                 .attr("y", chartHeight)
                 .attr("dominant-baseline", "central")
-                .text("today")
+                .text("today→")
         }
 
         plotTimeLine();
