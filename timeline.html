@@ -64,10 +64,10 @@
         const chartHeight = height - margin.top - margin.bottom;
 
         const label = tips.append("text").attr("class", "labels")
-            .attr("x", 0).attr("y", chartHeight + margin.bottom/2)
+            .attr("x", 0).attr("y", chartHeight + margin.bottom / 2)
             .attr("dominant-baseline", "central").text("")
-        
-        const curveGen = d3.line().x(d=>d[0]).y(d=>d[1]).curve(d3.curveCardinal.tension(0.95))
+
+        const curveGen = d3.line().x(d => d[0]).y(d => d[1]).curve(d3.curveCardinal.tension(0.95))
 
         const today = new Date();
 
@@ -115,59 +115,69 @@
             })
 
             let curveData = {
-                "education":[],
-                "activity":[],
-                "intern":[],
-                "job":[],
-                "research":[],
-                "project":[]
+                "education": [],
+                "activity": [],
+                "intern": [],
+                "job": [],
+                "research": [],
+                "project": []
             }
 
             const idExtent = d3.extent(data, d => d.id)
             const idScale = d3.scaleLinear().domain([0, data.length]).range([0, chartHeight * 0.9])
             const lineWidth = idScale(1) - idScale(0)
 
-            data.forEach(d=>{
-                curveData[d.type].push([timeScale(d.start) + 5, 
-                                        idScale(d.id) + lineWidth * lineMargin.top + lineWidth * (1 - lineMargin.top - lineMargin.bottom)/2])
+            data.forEach(d => {
+                curveData[d.type].push([timeScale(d.start) + 5,
+                    idScale(d.id) + lineWidth * lineMargin.top + lineWidth * (1 - lineMargin
+                        .top - lineMargin.bottom) / 2
+                ])
             })
 
-            Object.keys(curveData).forEach(key=>{
+            Object.keys(curveData).forEach(key => {
                 let newPath = [];
-                for (let i = 0; i < curveData[key].length-1; i++){
+                for (let i = 0; i < curveData[key].length - 1; i++) {
                     newPath.push(curveData[key][i])
-                    newPath.push([curveData[key][i][0], curveData[key][i+1][1]])
+                    newPath.push([curveData[key][i][0], curveData[key][i + 1][1]])
                 }
-                newPath.push(curveData[key][curveData[key].length-1])
+                newPath.push(curveData[key][curveData[key].length - 1])
                 curveData[key] = newPath;
             })
 
-            curveData = Object.keys(curveData).map(d=>{ return {"type":d, "path":curveData[d]}})
+            curveData = Object.keys(curveData).map(d => {
+                return {
+                    "type": d,
+                    "path": curveData[d]
+                }
+            })
 
             chartArea.selectAll("path.curveline").data(curveData)
                 .join("path").attr("class", "curveline")
-                .attr("d", d=>curveGen(d.path))
+                .attr("d", d => curveGen(d.path))
                 .attr("fill", "none")
-                .attr("stroke", d=>typeScale(d.type))
+                .attr("stroke", d => typeScale(d.type))
                 .attr("opacity", 0.5)
                 .attr("stroke-width", 5)
-                .on("mouseover", function(){
+                .style("cursor", "pointer")
+                .on("mousedown", function () {
                     let target = d3.select(this)
                     let d = target.datum()
                     target.attr("opacity", 1)
+                    label.text(`The line of ${d.type}`)
                     chartArea.selectAll(`rect.${d.type}`)
-                    .attr("stroke", "black")
+                        .attr("stroke", "black")
                 })
-                .on("mouseout", function(){
+                .on("mouseup", function () {
                     let target = d3.select(this)
                     let d = target.datum()
                     target.attr("opacity", 0.5)
+                    label.text("")
                     chartArea.selectAll(`rect.${d.type}`)
-                    .attr("stroke", typeScale(d.type))
+                        .attr("stroke", typeScale(d.type))
                 })
 
             chartArea.selectAll("rect.timelines").data(data)
-                .join("rect").attr("class", d=>`timelines ${d.type}`)
+                .join("rect").attr("class", d => `timelines ${d.type}`)
                 .attr("y", d => idScale(d.id) + lineWidth * lineMargin.top)
                 .attr("x", d => timeScale(d.start))
                 .attr("width", d => {
@@ -179,7 +189,7 @@
                 })
                 .attr("height", lineWidth * (1 - lineMargin.top - lineMargin.bottom))
                 .attr("fill", d => typeScale(d.type))
-                .attr("stroke", d=>typeScale(d.type))
+                .attr("stroke", d => typeScale(d.type))
                 .attr("stroke-width", 3)
                 .attr("opacity", 1).attr("rx", 1)
                 .on("mouseover", function () {
@@ -224,7 +234,7 @@
                 .attr("fill", d => typeScale(d[1]))
                 .text(d => d[1])
 
-            
+
             const todayMark = annotations.append("g").attr("id", "today-mark")
             todayMark.append("line")
                 .attr("class", "today-mark")
