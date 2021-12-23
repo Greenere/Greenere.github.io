@@ -29,7 +29,7 @@ lihaoyangjingzhou@outlook.com or hl2425@cornell.edu
 
 - Apr. 2021 - July 2021
 
-  **Algorithm Engineer Intern**, over AI security,
+  **Software Algorithm Engineer Intern**, over AI security,
 
   Realai, Beijing, China
 
@@ -49,7 +49,7 @@ lihaoyangjingzhou@outlook.com or hl2425@cornell.edu
 
 - July 2019 - May 2020
 
-  **Undergraduate Research Assistant**, advised by Prof. Wei Yuan
+  **Research Engineer Intern**, advised by Prof. Wei Yuan
 
   Data Science and Computer Vision Lab, National Anti-counterfeit Engineering Research Center,
 
@@ -65,52 +65,10 @@ lihaoyangjingzhou@outlook.com or hl2425@cornell.edu
 
   Haoyang Li, Heng Li, Hansong Zhang, Wei Yuan, <a href="http://www.sciencedirect.com/science/article/pii/S0031320320304921">Black-box attack against handwritten signature verification with region-restricted adversarial perturbations</a>, **Pattern Recognition**, Volume 111,2021,107689,ISSN 0031-3203
 
-**PROJECTS**
+**PROJECTS & RESEARCH**
 
-- Dec. 2019 - May. 2020
-
-  `GRADUATE DESIGN` <a href="subpages/project.html#the-generation-and-detection-of-deepfakes-dec-2019---may-2020">The Generation and Detection of Deepfakes.</a>
-
-  `DESCRIPTION` I first explored the existing generation and detection methods for deepfake, and then implement my own face swap pipeline using two intertwined auto-encoders. The detection part appeared as a short review due to resource limitations.
-
-  `TECH INVOLVED` Human Face Detection, Convolutional Neural Networks, Image Color Transfer, Image Fusion
-
-- Nov. 2019 - Dec. 2019 
-
-  `COURSE DESIGN` <a href="subpages/project.html#weibe-weibo-emotion-analysis-system-nov-2019---dec-2019">"WEIBE" weibo emotion analysis system.</a>
-
-  `DESCRIPTION` We built a system to watch the trending topics in Weibo (the Chinese Twitter) and analyze related posts for their emotional tendencies. The results are displayed in the form of word cloud and scattered dots for further analysis.
-
-  `TECH INVOLVED` Web Crawler, Design & Implementation of Frontend and Backend, NoSQL Database (Mongodb).
-
-- Jan. 2019
-
-    `COMPETITION`  <a href="subpages/project.html#louvre-evacuation-strategy-icm-2019-jan-2019">Louvre Evacuation Strategy</a>
-
-    `DESCRIPTION` We designed a cellular network model to represent the Louvre palace crowded with people. Using this model, we simulated multiple evacutaion strategies and presented the most efficient one for competition. It was a project for the Interdisciplinary Contest in Modeling (ICM) in 2019.
-
-- Nov. 2018 - Dec. 2018 
-
-  `COURSE DESIGN` <a href="subpages/project.html#wellmail-e-mail-client-nov-2018---dec-2018">"WELLMAIL" e-mail client.</a>
-
-  `DESCRIPTION` We designed and implemented a fully functional e-mail client with graphic interface. It was developed with Python, using SMTP and IMAP4 protocols.
-  `TECH INVOLVED` Email Processing, Internet Programming with Python, GUI Programming with PyQt
-
-**TECHNICAL SKILLS**
-
-`MAJOR` Python, C
-
-`MINOR` Git, Shell, MATLAB, JavaScript, LaTeX, HTML
-
-`KNOWN` Java, Go, SQL
-
-**INTERESTS**
-
-`RESEARCH` Machine Learning, Adversarial Attacks & Defense
-
-`AMUSEMENT` Reading & Creative Writing, Poetry, Graphic Design
-
-I used to be obessed with Computer Vision until I explored a bunch of works and realized that the "Computer Vision" I was obessed with has evolved into something tedious and trivial. The problems related to [adversarial example](https://en.wikipedia.org/wiki/Adversarial_machine_learning) are still attractive to me, but other works that "renew" SOTA crazily are no longer interesting to me.
+- <a href="subpages/project.html">PROJECTS</a>
+- <a href="subpages/research.html">RESEARCH</a>
 
 **HONORS AND AWARDS**
 
