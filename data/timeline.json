@@ -74,7 +74,7 @@
     {
         "start":"2019.07",
         "end":"2020.05",
-        "event":"Research Engineer Intern in National Anti-counterfeit Engineering Research Center",
+        "event":"Research Engineer Intern in National Anti-counterfeit Engineering Research Center (part-time)",
         "type":"intern"
     },
     {
@@ -122,7 +122,25 @@
     {
         "start":"2021.09",
         "end":"2022.05",
-        "event":"Honey Comb Analysis Software",
+        "event":"ECE 6930/6931: Reconstruct Honeycomb Structure from a Single Image",
         "type":"project"
+    },
+    {
+        "start":"2022.03",
+        "end":"2022.05",
+        "event":"ECE 5710: DSL for Microservices",
+        "type":"project"
+    },
+    {
+        "start":"2022.02",
+        "end":"2022.05",
+        "event":"ECE 5720: Parallel Algorithms",
+        "type":"project"
+    },
+    {
+        "start":"2022.05",
+        "end":"2022.08",
+        "event":"Software Engineer Intern in Google's Verily",
+        "type":"intern"
     }
 ]
