@@ -1,0 +1,61 @@
+/* 
+.header {
+  padding-top: 20px;
+  background-color: white;
+  text-align: center;
+  color: #189AB4;
+} */
+
+/* .icon {
+  background-color: white;
+  color: blue;
+} */
+
+.title_text {
+  color: #186f83;
+  font-weight: bold;
+  font-family: Monaco;
+}
+
+.text_color {
+  color: #186f83;
+}
+
+.chart_title {
+  color: #186f83;
+  font-weight: bold;
+  font-family: Monaco;
+  text-align: center;
+}
+
+
+.game {
+  background-color: #e4f3f5;
+  padding-top: 20px;
+  color: #186f83;
+  font-size: 30px;
+  text-align: center;
+}
+
+/* #lineChart {
+
+} */
+
+.gridlines line {
+  stroke: #bbb;
+}
+
+.gridlines .domain {
+  stroke: none;
+}
+
+g.lollipop line.stick {
+  stroke-width: 2px;
+}
+g.mouseover text {
+  font-family: Arial, sans-serif;
+}
+g.mouseover text:first-child {
+  font-weight: bold;
+}
+/*  colors: #05445E #189AB4 #75E6DA #D4F1F4  #fcf6bd #4cc9f0 #94bfa7 #FEDE00*/
