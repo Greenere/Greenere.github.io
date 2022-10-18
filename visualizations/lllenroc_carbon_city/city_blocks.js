@@ -146,6 +146,7 @@ function setTarget() {
     alert("Set the target between 1 and 50");
   }
 
+  current_best_carbon = Infinity;
   update_card_texts();
 
 }
