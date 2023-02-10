@@ -142,5 +142,11 @@
         "end":"2022.08",
         "event":"Software Engineer Intern in Google's Verily",
         "type":"intern"
+    },
+    {
+        "start":"2023.01",
+        "end":"2024.01",
+        "event":"Software Engineer in Google's Verily",
+        "type":"job"
     }
 ]
