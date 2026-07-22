@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Picturedit</title>
+  <script type="module" crossorigin src="/picturedit/assets/index-C384ufqg.js"></script>
+  <link rel="stylesheet" crossorigin href="/picturedit/assets/index-CpMgoLkL.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Header / Tab Bar -->
+    <header id="header">
+      <button type="button" id="logo" title="Plugin Manager" aria-label="Open Plugin Manager" data-i18n-title="app.header.pluginManager.title" data-i18n-aria-label="app.header.pluginManager.aria">picturedit</button>
+      <nav id="tabs">
+        <button type="button" class="tab-btn active" data-tab="compose" data-i18n="app.tabs.compose">Compose</button>
+        <button type="button" class="tab-btn" data-tab="develop" data-i18n="app.tabs.develop">Develop</button>
+      </nav>
+      <div id="header-actions">
+        <div id="export-filename-wrap">
+          <input type="text" id="export-filename" value="picturedit-export" spellcheck="false" title="Export filename (without extension)" data-i18n-title="app.header.exportFilename.title" />
+          <span id="export-filename-ext">.png</span>
+        </div>
+        <button type="button" id="btn-export-settings-trigger" class="btn-icon" title="Export settings" aria-label="Export settings" aria-expanded="false" data-i18n-title="app.header.exportSettings.title" data-i18n-aria-label="app.header.exportSettings.aria">
+          <span class="btn-icon-glyph btn-icon-settings" aria-hidden="true"></span>
+        </button>
+        <button type="button" id="btn-export" class="btn-primary" data-i18n="app.header.export">Export</button>
+        <div id="export-settings-popover" class="hidden" role="dialog" aria-label="Export settings" data-i18n-aria-label="app.export.dialog.aria">
+          <div class="export-popover-head">
+            <div class="export-popover-title" data-i18n="app.export.title">Export Settings</div>
+          </div>
+          <div class="export-popover-body">
+            <div class="export-summary-block">
+              <div class="export-summary-line">
+                <span class="export-summary-label" data-i18n="app.export.source">Source</span>
+                <span id="export-current-summary" class="export-summary-value">4:3 • 1080 × 1440</span>
+              </div>
+              <div class="export-summary-line">
+                <span class="export-summary-label" data-i18n="app.export.output">Output</span>
+                <span id="export-output-summary" class="export-summary-value">4:3 • 1080 × 1440 • Est. 1.24 MB</span>
+              </div>
+            </div>
+            <div class="toggle-row export-settings-source hidden">
+              <label for="export-source-toggle" data-i18n="app.export.exportSource.label">Use original file</label>
+              <label class="pmm-toggle" for="export-source-toggle">
+                <input type="checkbox" class="pmm-checkbox" id="export-source-toggle" />
+                <div class="pmm-track"></div>
+              </label>
+            </div>
+            <div class="export-format-row" role="tablist" aria-label="Export format" data-i18n-aria-label="app.export.format.aria">
+              <button type="button" class="export-format-btn active" data-format="png">PNG</button>
+              <button type="button" class="export-format-btn" data-format="jpg">JPG</button>
+            </div>
+            <div class="slider-row export-settings-jpg hidden">
+              <label for="export-jpg-quality" data-i18n="app.export.quality">Quality</label>
+              <input type="range" id="export-jpg-quality" min="50" max="100" value="90" step="1" title="JPEG export quality" data-i18n-title="app.export.quality.title" />
+              <span id="export-jpg-quality-val" class="slider-val">90</span>
+            </div>
+            <div class="slider-row export-settings-png">
+              <label for="export-png-scale" data-i18n="app.export.scale">Scale</label>
+              <input type="range" id="export-png-scale" min="10" max="100" value="100" step="1" title="PNG export downsample scale" data-i18n-title="app.export.scale.title" />
+              <span id="export-png-scale-val" class="slider-val">100%</span>
+            </div>
+            <div class="export-settings-hint" data-i18n="app.export.hint">PNG scale keeps the aspect ratio unchanged.</div>
+          </div>
+          <div class="export-popover-actions">
+            <button type="button" id="btn-export-settings-reset" class="btn-secondary btn-sm" data-i18n="app.export.reset">Reset</button>
+            <button type="button" id="btn-export-settings-close" class="btn-secondary btn-sm" data-i18n="app.export.close">Close</button>
+            <button type="button" id="btn-export-settings-save" class="btn-primary btn-sm" data-i18n="app.export.save">Save</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- COMPOSE TAB -->
+    <div id="tab-compose" class="tab-panel active">
+
+      <div id="compose-left-rail" class="panel-rail panel-rail-left" data-tab-id="compose">
+        <aside id="compose-left" class="panel-column" data-panel-key="compose-left" data-panel-side="left">
+          <div class="panel-body"></div>
+        </aside>
+      </div>
+
+      <!-- Canvas -->
+      <main id="compose-center">
+        <button type="button" id="btn-compose-compare-toggle" class="preview-float-btn hidden" title="Compare version A and B on canvas" aria-label="Compare version A and B on canvas" data-i18n-title="app.compose.compare.title" data-i18n-aria-label="app.compose.compare.aria">
+          <span class="preview-float-icon" aria-hidden="true"></span>
+        </button>
+        <div id="compose-preview-wrap">
+          <div id="canvas-wrapper">
+            <canvas id="main-canvas"></canvas>
+            <div id="slot-overlays"></div>
+            <div id="grid-seam-overlays"></div>
+            <div id="compare-overlay" class="hidden">
+              <div id="compare-divider"></div>
+            </div>
+            <div id="text-overlays"></div>
+          </div>
+          <div id="compare-status" class="hidden" aria-hidden="true">
+            <span id="compare-label-a">A</span>
+            <span id="compare-label-b">B</span>
+          </div>
+        </div>
+        <div id="canvas-hint" data-i18n="app.compose.canvasHint">Click a slot to select it</div>
+      </main>
+
+      <div id="compose-right-rail" class="panel-rail panel-rail-right" data-tab-id="compose">
+        <aside id="panel-text" class="collapsible-panel panel-column" data-panel-key="panel-text" data-panel-side="right">
+          <div class="panel-body">
+            <section class="panel-section text-panel-section text-layers-section" id="text-layers-section" data-section-id="compose-text-layers">
+              <h3 data-i18n="app.compose.textLayers.title">Text Layers</h3>
+              <div class="text-panel-list-viewport">
+                <div id="text-layer-list"></div>
+              </div>
+              <button type="button" id="btn-add-text" data-i18n="app.compose.textLayers.add">+ Add Text</button>
+            </section>
+
+            <section class="panel-section text-panel-section text-properties-section hidden" id="active-text-props" data-section-id="compose-text-properties">
+              <h3 data-i18n="app.compose.textProperties.title">Text Properties</h3>
+              <div class="text-panel-section-body">
+                <div class="prop-field">
+                  <span class="prop-label" data-i18n="app.compose.textProperties.text">Text</span>
+                  <textarea id="text-content" placeholder="Your text here" rows="3" data-i18n-placeholder="app.compose.textProperties.textPlaceholder"></textarea>
+                </div>
+                <div class="prop-field">
+                  <span class="prop-label" data-i18n="app.compose.textProperties.font">Font</span>
+                  <div id="text-font"></div>
+                </div>
+                <div class="slider-row">
+                  <label for="text-size" data-i18n="app.compose.textProperties.size">Size</label>
+                  <input type="range" id="text-size" min="10" max="200" value="48" title="Font size" data-i18n-title="app.compose.textProperties.size.title" />
+                  <span id="text-size-val" class="slider-val">48</span>
+                </div>
+                <div class="prop-inline">
+                  <span class="prop-label" data-i18n="app.compose.textProperties.color">Color</span>
+                  <div id="text-color"></div>
+                </div>
+                <div class="slider-row">
+                  <label for="text-opacity" data-i18n="app.compose.textProperties.opacity">Opacity</label>
+                  <input type="range" id="text-opacity" min="0" max="100" value="100" title="Text opacity" data-i18n-title="app.compose.textProperties.opacity.title" />
+                  <span id="text-opacity-val" class="slider-val">100</span>
+                </div>
+                <div class="prop-field">
+                  <span class="prop-label" data-i18n="app.compose.textProperties.align">Align</span>
+                  <div id="text-align-btns">
+                    <button type="button" class="align-btn active" data-align="left" title="Align left" data-i18n-title="app.compose.textProperties.alignLeft">
+                      <svg width="14" height="12" viewBox="0 0 14 12" fill="currentColor"><rect x="0" y="0" width="14" height="2" rx="1"/><rect x="0" y="5" width="9" height="2" rx="1"/><rect x="0" y="10" width="11" height="2" rx="1"/></svg>
+                    </button>
+                    <button type="button" class="align-btn" data-align="center" title="Align center" data-i18n-title="app.compose.textProperties.alignCenter">
+                      <svg width="14" height="12" viewBox="0 0 14 12" fill="currentColor"><rect x="0" y="0" width="14" height="2" rx="1"/><rect x="2.5" y="5" width="9" height="2" rx="1"/><rect x="1.5" y="10" width="11" height="2" rx="1"/></svg>
+                    </button>
+                    <button type="button" class="align-btn" data-align="right" title="Align right" data-i18n-title="app.compose.textProperties.alignRight">
+                      <svg width="14" height="12" viewBox="0 0 14 12" fill="currentColor"><rect x="0" y="0" width="14" height="2" rx="1"/><rect x="5" y="5" width="9" height="2" rx="1"/><rect x="3" y="10" width="11" height="2" rx="1"/></svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </aside>
+
+        <aside id="panel-slot" class="collapsible-panel panel-column" data-panel-key="panel-slot" data-panel-side="right">
+          <div class="panel-body">
+          </div>
+        </aside>
+      </div>
+
+    </div><!-- /tab-compose -->
+
+    <!-- DEVELOP TAB -->
+    <div id="tab-develop" class="tab-panel">
+
+      <div id="develop-left-rail" class="panel-rail panel-rail-left" data-tab-id="develop">
+        <aside id="develop-left" class="panel-column" data-panel-key="develop-left" data-panel-side="left">
+          <div class="panel-body"></div>
+        </aside>
+      </div>
+
+      <!-- Center: preview canvas -->
+      <main id="develop-center">
+        <button type="button" id="btn-develop-compare-toggle" class="preview-float-btn hidden" title="Compare original and adjusted image" aria-label="Compare original and adjusted image" data-i18n-title="app.develop.compare.title" data-i18n-aria-label="app.develop.compare.aria">
+          <span class="preview-float-icon" aria-hidden="true"></span>
+        </button>
+        <div id="develop-empty-state" aria-live="polite">
+          <div id="develop-empty-dropzone">
+            <div class="develop-empty-title" data-i18n="app.develop.emptyTitle">Select an image</div>
+            <div class="develop-empty-copy" data-i18n="app.develop.emptyCopy">Pick one from the left, or drop an image here</div>
+          </div>
+        </div>
+        <div id="develop-preview-wrap" class="hidden">
+          <div id="develop-compare-status" class="hidden" aria-hidden="true">
+            <span id="develop-compare-label-a" data-i18n="app.develop.compare.original">Original</span>
+            <span id="develop-compare-label-b" data-i18n="app.develop.compare.adjusted">Adjusted</span>
+          </div>
+          <div id="develop-canvas-shell">
+            <canvas id="develop-canvas"></canvas>
+            <div id="develop-compare-overlay" class="hidden">
+              <div id="develop-compare-divider"></div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <div id="develop-right-rail" class="panel-rail panel-rail-right" data-tab-id="develop">
+        <aside id="develop-panel-curve" class="collapsible-panel panel-column" data-panel-key="develop-panel-curve" data-panel-side="right">
+          <div class="panel-body"></div>
+        </aside>
+
+        <aside id="develop-panel-adjust" class="collapsible-panel panel-column" data-panel-key="develop-panel-adjust" data-panel-side="right">
+          <div class="panel-body"></div>
+        </aside>
+      </div>
+
+    </div><!-- /tab-develop -->
+
+  </div><!-- /app -->
+
+  <!-- Export progress modal -->
+  <div id="export-progress-overlay" class="hidden">
+    <div id="export-progress-card">
+      <div id="export-progress-stage" data-i18n="app.export.progress.preparing">Preparing…</div>
+      <div id="export-progress-bar-wrap">
+        <div id="export-progress-bar"></div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
