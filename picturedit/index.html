@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Picturedit</title>
   <link rel="icon" href="/picturedit/assets/favicon-aIK17aZK.ico" />
-  <script type="module" crossorigin src="/picturedit/assets/index-DftK3a0W.js"></script>
-  <link rel="stylesheet" crossorigin href="/picturedit/assets/index-BkxmPYP4.css">
+  <script type="module" crossorigin src="/picturedit/assets/index-BvDrFo5Q.js"></script>
+  <link rel="stylesheet" crossorigin href="/picturedit/assets/index-B7Ogl3eP.css">
 </head>
 <body>
   <div id="app">
@@ -19,6 +19,7 @@
       <nav id="tabs">
         <button type="button" class="tab-btn active" data-tab="compose" data-i18n="app.tabs.compose">Compose</button>
         <button type="button" class="tab-btn" data-tab="develop" data-i18n="app.tabs.develop">Develop</button>
+        <button type="button" class="tab-btn" data-tab="album" data-i18n="app.tabs.album">Album</button>
       </nav>
       <div id="header-actions">
         <div id="export-filename-wrap">
@@ -216,6 +217,25 @@
       </div>
 
     </div><!-- /tab-develop -->
+
+    <!-- ALBUM TAB -->
+    <div id="tab-album" class="tab-panel">
+
+      <div id="album-left-rail" class="panel-rail panel-rail-left" data-tab-id="album">
+        <aside id="album-left" class="panel-column" data-panel-key="album-left" data-panel-side="left">
+          <div class="panel-body"></div>
+        </aside>
+      </div>
+
+      <main id="album-center">
+        <div id="album-toolbar" class="album-toolbar"></div>
+        <div id="album-grid" class="album-grid"></div>
+        <div id="album-pagination" class="album-pagination hidden"></div>
+      </main>
+
+      <div id="album-right-rail" class="panel-rail panel-rail-right" data-tab-id="album"></div>
+
+    </div><!-- /tab-album -->
 
   </div><!-- /app -->
 
