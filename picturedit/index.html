@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Picturedit</title>
   <link rel="icon" href="/picturedit/assets/favicon-aIK17aZK.ico" />
-  <script type="module" crossorigin src="/picturedit/assets/index-CGgsvgr_.js"></script>
-  <link rel="stylesheet" crossorigin href="/picturedit/assets/index-qh_FWka3.css">
+  <script type="module" crossorigin src="/picturedit/assets/index-B4tt1KF7.js"></script>
+  <link rel="stylesheet" crossorigin href="/picturedit/assets/index-Dbp8Xx4m.css">
 </head>
 <body>
   <div id="app">
@@ -23,8 +23,10 @@
       </nav>
       <div id="header-actions">
         <div id="export-filename-wrap">
+          <div id="export-filename-fill"></div>
           <input type="text" id="export-filename" value="picturedit-export" spellcheck="false" title="Export filename (without extension)" data-i18n-title="app.header.exportFilename.title" />
           <span id="export-filename-ext">.png</span>
+          <span id="export-filename-progress-label"></span>
         </div>
         <button type="button" id="btn-export-settings-trigger" class="btn-icon" title="Export settings" aria-label="Export settings" aria-expanded="false" data-i18n-title="app.header.exportSettings.title" data-i18n-aria-label="app.header.exportSettings.aria">
           <span class="btn-icon-glyph btn-icon-settings" aria-hidden="true"></span>
@@ -202,6 +204,7 @@
             <div id="develop-compare-overlay" class="hidden">
               <div id="develop-compare-divider"></div>
             </div>
+            <div id="develop-loading-overlay" class="hidden"></div>
           </div>
         </div>
       </main>
@@ -242,16 +245,6 @@
     </div><!-- /tab-album -->
 
   </div><!-- /app -->
-
-  <!-- Export progress modal -->
-  <div id="export-progress-overlay" class="hidden">
-    <div id="export-progress-card">
-      <div id="export-progress-stage" data-i18n="app.export.progress.preparing">Preparing…</div>
-      <div id="export-progress-bar-wrap">
-        <div id="export-progress-bar"></div>
-      </div>
-    </div>
-  </div>
 
 </body>
 </html>
