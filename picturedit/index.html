@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Picturedit</title>
   <link rel="icon" href="/picturedit/assets/favicon-aIK17aZK.ico" />
-  <script type="module" crossorigin src="/picturedit/assets/index-BPd-rEbU.js"></script>
-  <link rel="stylesheet" crossorigin href="/picturedit/assets/index-fWShb-dN.css">
+  <script type="module" crossorigin src="/picturedit/assets/index-BH1JGbiJ.js"></script>
+  <link rel="stylesheet" crossorigin href="/picturedit/assets/index-BW5gaYXt.css">
 </head>
 <body>
   <div id="app">
@@ -103,6 +103,7 @@
               <div id="compare-divider"></div>
             </div>
             <div id="text-overlays"></div>
+            <div id="text-guides"></div>
           </div>
           <div id="compare-status" class="hidden" aria-hidden="true">
             <span id="compare-label-a">A</span>
@@ -140,6 +141,11 @@
                   <span id="text-size-val" class="slider-val">48</span>
                 </div>
                 <div class="slider-row">
+                  <label for="text-weight" data-i18n="app.compose.textProperties.weight">Weight</label>
+                  <input type="range" id="text-weight" min="100" max="900" step="100" value="400" title="Font weight" data-i18n-title="app.compose.textProperties.weight.title" />
+                  <span id="text-weight-val" class="slider-val">400</span>
+                </div>
+                <div class="slider-row">
                   <label for="text-letter-spacing" data-i18n="app.compose.textProperties.letterSpacing">Spacing</label>
                   <input type="range" id="text-letter-spacing" min="-10" max="50" value="0" title="Letter spacing (% of font size)" data-i18n-title="app.compose.textProperties.letterSpacing.title" />
                   <span id="text-letter-spacing-val" class="slider-val">0</span>
@@ -166,6 +172,18 @@
                       <svg width="14" height="12" viewBox="0 0 14 12" fill="currentColor"><rect x="0" y="0" width="14" height="2" rx="1"/><rect x="5" y="5" width="9" height="2" rx="1"/><rect x="3" y="10" width="11" height="2" rx="1"/></svg>
                     </button>
                   </div>
+                </div>
+                <div class="toggle-row">
+                  <label for="text-vertical-toggle" data-i18n="app.compose.textProperties.vertical">Vertical text</label>
+                  <label class="pmm-toggle" for="text-vertical-toggle">
+                    <input type="checkbox" class="pmm-checkbox" id="text-vertical-toggle" />
+                    <div class="pmm-track"></div>
+                  </label>
+                </div>
+                <div class="slider-row">
+                  <label for="text-rotation" data-i18n="app.compose.textProperties.rotation">Rotation</label>
+                  <input type="range" id="text-rotation" min="-180" max="180" step="1" value="0" title="Rotation in degrees — or drag the handle above the selected text" data-i18n-title="app.compose.textProperties.rotation.title" />
+                  <span id="text-rotation-val" class="slider-val">0</span>
                 </div>
                 <div class="toggle-row text-effect-toggle-row">
                   <label for="text-stroke-toggle" data-i18n="app.compose.textProperties.stroke">Outline</label>
