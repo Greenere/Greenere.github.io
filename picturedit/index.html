@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Picturedit</title>
   <link rel="icon" href="/picturedit/assets/favicon-aIK17aZK.ico" />
-  <script type="module" crossorigin src="/picturedit/assets/index-CJ-uOZFF.js"></script>
-  <link rel="stylesheet" crossorigin href="/picturedit/assets/index-Bw_KeY2l.css">
+  <script type="module" crossorigin src="/picturedit/assets/index-BPd-rEbU.js"></script>
+  <link rel="stylesheet" crossorigin href="/picturedit/assets/index-fWShb-dN.css">
 </head>
 <body>
   <div id="app">
@@ -20,6 +20,7 @@
         <button type="button" class="tab-btn active" data-tab="compose" data-i18n="app.tabs.compose">Compose</button>
         <button type="button" class="tab-btn" data-tab="develop" data-i18n="app.tabs.develop">Develop</button>
         <button type="button" class="tab-btn" data-tab="album" data-i18n="app.tabs.album">Album</button>
+        <button type="button" class="tab-btn" data-tab="draft" data-i18n="app.tabs.draft">Drafts</button>
       </nav>
       <div id="header-actions">
         <div id="export-filename-wrap">
@@ -138,6 +139,11 @@
                   <input type="range" id="text-size" min="10" max="200" value="48" title="Font size" data-i18n-title="app.compose.textProperties.size.title" />
                   <span id="text-size-val" class="slider-val">48</span>
                 </div>
+                <div class="slider-row">
+                  <label for="text-letter-spacing" data-i18n="app.compose.textProperties.letterSpacing">Spacing</label>
+                  <input type="range" id="text-letter-spacing" min="-10" max="50" value="0" title="Letter spacing (% of font size)" data-i18n-title="app.compose.textProperties.letterSpacing.title" />
+                  <span id="text-letter-spacing-val" class="slider-val">0</span>
+                </div>
                 <div class="prop-inline">
                   <span class="prop-label" data-i18n="app.compose.textProperties.color">Color</span>
                   <div id="text-color"></div>
@@ -159,6 +165,57 @@
                     <button type="button" class="align-btn" data-align="right" title="Align right" data-i18n-title="app.compose.textProperties.alignRight">
                       <svg width="14" height="12" viewBox="0 0 14 12" fill="currentColor"><rect x="0" y="0" width="14" height="2" rx="1"/><rect x="5" y="5" width="9" height="2" rx="1"/><rect x="3" y="10" width="11" height="2" rx="1"/></svg>
                     </button>
+                  </div>
+                </div>
+                <div class="toggle-row text-effect-toggle-row">
+                  <label for="text-stroke-toggle" data-i18n="app.compose.textProperties.stroke">Outline</label>
+                  <label class="pmm-toggle" for="text-stroke-toggle">
+                    <input type="checkbox" class="pmm-checkbox" id="text-stroke-toggle" />
+                    <div class="pmm-track"></div>
+                  </label>
+                </div>
+                <div id="text-stroke-controls" class="text-effect-controls hidden">
+                  <div class="prop-inline">
+                    <span class="prop-label" data-i18n="app.compose.textProperties.strokeColor">Outline color</span>
+                    <div id="text-stroke-color"></div>
+                  </div>
+                  <div class="slider-row">
+                    <label for="text-stroke-width" data-i18n="app.compose.textProperties.strokeWidth">Width</label>
+                    <input type="range" id="text-stroke-width" min="1" max="30" value="3" />
+                    <span id="text-stroke-width-val" class="slider-val">3</span>
+                  </div>
+                </div>
+                <div class="toggle-row text-effect-toggle-row">
+                  <label for="text-shadow-toggle" data-i18n="app.compose.textProperties.shadow">Shadow</label>
+                  <label class="pmm-toggle" for="text-shadow-toggle">
+                    <input type="checkbox" class="pmm-checkbox" id="text-shadow-toggle" />
+                    <div class="pmm-track"></div>
+                  </label>
+                </div>
+                <div id="text-shadow-controls" class="text-effect-controls hidden">
+                  <div class="prop-inline">
+                    <span class="prop-label" data-i18n="app.compose.textProperties.shadowColor">Shadow color</span>
+                    <div id="text-shadow-color"></div>
+                  </div>
+                  <div class="slider-row">
+                    <label for="text-shadow-opacity" data-i18n="app.compose.textProperties.opacity">Opacity</label>
+                    <input type="range" id="text-shadow-opacity" min="0" max="100" value="60" />
+                    <span id="text-shadow-opacity-val" class="slider-val">60</span>
+                  </div>
+                  <div class="slider-row">
+                    <label for="text-shadow-blur" data-i18n="app.compose.textProperties.shadowBlur">Blur</label>
+                    <input type="range" id="text-shadow-blur" min="0" max="100" value="8" />
+                    <span id="text-shadow-blur-val" class="slider-val">8</span>
+                  </div>
+                  <div class="slider-row">
+                    <label for="text-shadow-x" data-i18n="app.compose.textProperties.shadowOffsetX">Offset X</label>
+                    <input type="range" id="text-shadow-x" min="-50" max="50" value="2" />
+                    <span id="text-shadow-x-val" class="slider-val">2</span>
+                  </div>
+                  <div class="slider-row">
+                    <label for="text-shadow-y" data-i18n="app.compose.textProperties.shadowOffsetY">Offset Y</label>
+                    <input type="range" id="text-shadow-y" min="-50" max="50" value="4" />
+                    <span id="text-shadow-y-val" class="slider-val">4</span>
                   </div>
                 </div>
               </div>
@@ -243,6 +300,24 @@
       </div>
 
     </div><!-- /tab-album -->
+
+    <!-- DRAFT TAB -->
+    <div id="tab-draft" class="tab-panel">
+
+      <div id="draft-left-rail" class="panel-rail panel-rail-left" data-tab-id="draft">
+        <aside id="draft-left" class="panel-column" data-panel-key="draft-left" data-panel-side="left">
+          <div class="panel-body"></div>
+        </aside>
+      </div>
+
+      <main id="draft-center">
+        <div id="draft-toolbar" class="album-toolbar"></div>
+        <div id="draft-grid" class="draft-grid"></div>
+      </main>
+
+      <div id="draft-right-rail" class="panel-rail panel-rail-right" data-tab-id="draft"></div>
+
+    </div><!-- /tab-draft -->
 
   </div><!-- /app -->
 
