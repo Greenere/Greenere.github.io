@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Picturedit</title>
   <link rel="icon" href="/picturedit/assets/favicon-aIK17aZK.ico" />
-  <script type="module" crossorigin src="/picturedit/assets/index-BfawcvBJ.js"></script>
-  <link rel="stylesheet" crossorigin href="/picturedit/assets/index-BTz8ucUD.css">
+  <script type="module" crossorigin src="/picturedit/assets/index-NGFAKM2d.js"></script>
+  <link rel="stylesheet" crossorigin href="/picturedit/assets/index-giehFyC6.css">
 </head>
 <body>
   <div id="app">
@@ -117,16 +117,18 @@
         <aside id="panel-text" class="collapsible-panel panel-column" data-panel-key="panel-text" data-panel-side="right">
           <div class="panel-body">
             <section class="panel-section text-panel-section text-layers-section" id="text-layers-section" data-section-id="compose-text-layers">
-              <h3 data-i18n="app.compose.textLayers.title">Text Layers</h3>
+              <h3 data-i18n="app.compose.textLayers.title">Layers</h3>
+              <div class="layer-tools" id="layer-tools"></div>
               <div class="text-panel-list-viewport">
                 <div id="text-layer-list"></div>
               </div>
-              <button type="button" id="btn-add-text" data-i18n="app.compose.textLayers.add">+ Add Text</button>
             </section>
 
-            <section class="panel-section text-panel-section text-properties-section hidden" id="active-text-props" data-section-id="compose-text-properties">
-              <h3 data-i18n="app.compose.textProperties.title">Text Properties</h3>
-              <div class="text-panel-section-body">
+            <section class="panel-section text-panel-section text-properties-section" id="active-text-props" data-section-id="compose-text-properties">
+              <h3 data-i18n="app.compose.textProperties.title">Properties</h3>
+              <div class="props-empty prop-label" id="props-empty"></div>
+              <div id="shape-props-host"></div>
+              <div class="text-panel-section-body hidden" id="text-props-body">
                 <div class="prop-field">
                   <span class="prop-label" data-i18n="app.compose.textProperties.text">Text</span>
                   <textarea id="text-content" placeholder="Your text here" rows="3" data-i18n-placeholder="app.compose.textProperties.textPlaceholder"></textarea>
